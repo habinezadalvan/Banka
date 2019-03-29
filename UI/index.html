@@ -10,16 +10,16 @@
 </head>
 <body>
     <!-- main navigation bar -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbarId">
        <div class="navbar1" >
             <span class="open-slide">
-                <i class="fas fa-bars" onclick="showHiddenMenu()"></i>
+                <i class="fas fa-bars" onclick="showHiddenMenu()" id="barsmenu"></i>
             </span>
             <ul class="navbar-nav">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Client Portal</a></li>
-                <li><a href="#">Staff Portal</a></li>
-                <li><a href="#">Admin Portal</a></li>
+                <li><a href="#" onclick="signupFunction()">sign up</a></li>
+                <li><a href="#" onclick="signinFunction()">sign in</a></li>
+                <li><a href="#" onclick="contactUsFunction()">contact us</a></li>
             </ul>
        </div>
         <div class="navbar2">
@@ -33,9 +33,9 @@
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenu()">&times;</a>
         <a href="#">Home</a>
-        <a href="#">Client Portal</a>
-        <a href="#">Staff Portal</a>
-        <a href="#">Admin Portal</a>
+        <a href="#" onclick="signupFunction()">sign up</a>
+        <a href="#" onclick="signinFunction()">sign in</a>
+        <a href="#" onclick="contactUsFunction()">contact us</a>
 
     </div>
     <!-- main area -->
@@ -72,11 +72,31 @@
             </figure>    
         </div>
         <div class="main-area-images non-slider">
+            <div class="non-sliderOne">
+                <div class="more">
+                    <h1>More with Banka</h1>
+                </div>
+                <div class="homeServices one">
+                    <i class="fas fa-play-circle"></i>
+                    <a href="#"><h3>With Banka you can <strong>Create Account</strong></h3></a>
+                </div>
+                <div class="homeServices two">
+                    <i class="fas fa-play-circle"></i>
+                    <a href="#"><h3>With Banka staff can <strong>Debit</strong></h3></a>
+                </div>
+                <div class="homeServices three">
+                    <i class="fas fa-play-circle"></i>
+                    <a href="#"><h3>With Banka staff can <strong>Credit</strong></h3></a>
+                </div>
+                
+            </div>
+            <div class="non-sliderTwo">
 
+            </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" id="footerId">
         <div></div>
     </footer>
     
