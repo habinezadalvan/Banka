@@ -16,3 +16,11 @@ const closeHiddenMenu = () => {
     document.getElementById('barsmenu').style.transitionDelay= '1.2s';
 };
 
+const signupFunction = () =>{
+    document.getElementById('userSignUp').style.display = 'block';
+    document.getElementById('userSignUp').style.scaleY = '1.2s';
+}
+
+const closeSignUpFunction = () =>{
+    document.getElementById('userSignUp').style.display = 'none'; 
+}

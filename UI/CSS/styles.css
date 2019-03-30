@@ -397,7 +397,7 @@ body{
     padding: 0;
     font-size: 20px;
     display: flex;
-    border-radius: 5px;
+    border-radius: 10px;
     background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
     background-size: 100% 100%;
     animation: homeServices 10s  ease infinite;
@@ -413,7 +413,7 @@ body{
     height: 70px;
     padding-top: 7px;
     background-color: rgb(253, 176, 9);
-    border-radius: 5px;
+    border-radius: 10px;
     margin-top: 20px;
     background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
     background-size: 100% 100%;
@@ -464,6 +464,104 @@ body{
     75%{margin-top:10px}
     100%{margin-top:0}
 }
+/* css styles for user sign up */
+
+.non-sliderTwo{
+    font-family: sans-serif;
+}
+.non-sliderTwo .signUp{
+    display: none;
+    position: relative;
+    margin: 50px auto;
+    width: 90%;
+    background: #3b5998;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px; 
+}
+.non-sliderTwo .signUp h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.non-sliderTwo .signUp .signUpInput{
+    position: relative;
+}
+.non-sliderTwo .signUp .signUpInput input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    margin-bottom: 20px;
+}
+.non-sliderTwo .signUp .signUpInput label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:0;
+    margin-top: -10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    pointer-events: none;
+    transition: .9s;
+}
+.non-sliderTwo .signUp .signUpInput input:focus ~ label,
+.non-sliderTwo .signUp .signUpInput input:valid ~ label
+{
+    top: -10px;
+    left: 0;
+    color: rgb(253, 176, 9);
+    font-size: 15px;
+}
+
+.non-sliderTwo .signUp input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 270px;
+}
+.closeSignUp-icon{
+    text-decoration: none;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+}
+/* media queries fron sign up button */
+
+@media all and (max-width: 1439px){
+    .non-sliderTwo .signUp input[type="submit"]{
+        margin-left: 155px;
+    }
+}
+@media all and (max-width: 959px){
+    .non-sliderTwo .signUp input[type="submit"]{
+        margin-left: 255px;
+    }
+}
+@media all and (max-width: 649px){
+    .non-sliderTwo .signUp input[type="submit"]{
+        margin-left: 118px;
+    }
+}
+
 /* footer styling */
 
 .footer{
