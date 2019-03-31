@@ -35,3 +35,31 @@ const loginFunction = () =>{
 const closeLignFunction = () =>{
     document.getElementById('userLogin').style.display = 'none'; 
 }
+
+// AFTER SIGN UP PAGE
+const showHiddenMenuArea = () => {
+    document.getElementById('hidden-nav-bar').style.width = '20%';
+    document.getElementById('main-areaPage').style.marginLeft = '20%';
+    document.getElementById('navbarId').style.marginLeft = '20%';
+    document.getElementById('barsMenu').style.display = 'none';
+};
+const closeHiddenMenuArea = () => {
+    document.getElementById('hidden-nav-bar').style.width = '0';
+    document.getElementById('main-areaPage').style.marginLeft = '0';
+    document.getElementById('navbarId').style.marginLeft = '0';
+    document.getElementById('barsMenu').style.display = 'block';
+    document.getElementById('barsMenu').style.transitionDelay= '1.2s';
+};
+
+// CREATE ACOUNT FIELD
+
+// display create account
+const showCreateAccount = () =>{
+    document.getElementById('usercreateAccount').style.display = 'block';
+    document.getElementById('usercreateAccount').style.scaleY = '1.2s';
+}
+// close create account
+const closeCreateAccount = () =>{
+    document.getElementById('usercreateAccount').style.display = 'none'; 
+}
+console.log('hey there')

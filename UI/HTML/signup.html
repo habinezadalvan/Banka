@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <!-- main navigation bar -->
+    <nav class="navbar" id="navbarId">
+       <div class="navbar1" >
+            <span class="open-slide">
+                <i class="fas fa-bars" onclick="showHiddenMenuArea()" id="barsMenu"></i>
+            </span>
+            <ul class="navbar-nav">
+                <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
+                <li><a href="#" onclick="signupFunction()">Transactions</a></li>
+                <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
+                <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
+            </ul>
+       </div>
+        <div class="navbar2">
+            <span class="banka">
+                <i class="fas fa-university"></i>
+                <span>Banka</span> 
+            </span> 
+        </div>
+    </nav>
+    <!-- Side navigation bar -->
+    <div id="hidden-nav-bar" class="side-nav-bar">
+        <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
+        <a href="#" onclick="showCreateAccount()">Create Account</a>
+        <a href="#" onclick="signupFunction()">Transactions</a>
+        <a href="../index.html">Logout</a>
+        <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
+
+    </div>
+    <!-- main area -->
+    <section id="main-areaPage" >
+        <div class="main-area-left" id="main-area-leftId">
+            <div class="profileImage">
+                <h2>Your profile</h2>
+                <img src="../ASSETS/icon.png" alt="profile" width="100px" height="100px">
+                <button><a href="#">Edit Profile Picture</a></button>
+                <h3>User: Habineza Leon Christian</h3>
+                <h3>Your Accounts: 0 account(s)</h3>
+            </div>
+        </div>
+        <div class="main-area-right" id="main-area-rightId">
+            <!-- <h1>Welcome Banka!</h1> -->
+            <!-- CREATE ACCOUNT -->
+            <div class="createAccount" id="usercreateAccount">
+                <h2>Create Account</h2>
+                <form action="">
+                    <div class="createAccountInput">
+                        <input type="number" name="" required="">
+                        <label for="">Account Number</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="text" name="" required="">
+                        <label for="">First name</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="text" name="" required="">
+                        <label for="">Last name</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="email" name="" required="">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="password" name="" required="">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="float" name="" required="">
+                        <label for="">Openning Balance</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <select name="accountType" id="">
+                            <option value="">Account Type</option>
+                            <option value="Saving">Saving</option>
+                            <option value="Current">Current</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Create Account">
+                </form>
+                <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div></div>
+    </footer>
+    
+<script src="../JS/index.js"></script>
+</body>
+</html>
