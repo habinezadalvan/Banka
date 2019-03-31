@@ -953,6 +953,22 @@ body{
         font-size: 10px;
     }
 }
+
+/* AFTER LOGIN DASHBOARD STYLING */
+.main-area-right .transactionsPage{
+    height: 450px;
+}
+#main-areaPage{
+    height: 1200px;
+}
+
+/* media queries for after login dashboard page */
+@media all and (max-width: 649px){
+    #main-areaPage{
+        height: 1600px;
+    }
+    
+}
 /* footer styling */
 
 .footer{
