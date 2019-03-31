@@ -333,6 +333,9 @@ body{
 #main-area .slider .longParagraph p{
     font-size: 25px;
 }
+#main-area .slider .paragraph p{
+    color: white;
+}
 #main-area .slider h1{
     font-size: 90px;
     font-weight: bold;
@@ -395,7 +398,8 @@ body{
     flex-basis: 50%;
 }
 .homeServices{
-    margin-top: 10px;
+    width: 90%;
+    margin: 10px auto 0 auto;
     padding: 0;
     font-size: 20px;
     display: flex;
@@ -412,11 +416,12 @@ body{
 }
 
 .more{
+    width: 90%;
     height: 70px;
     padding-top: 7px;
     background-color: rgb(253, 176, 9);
     border-radius: 10px;
-    margin-top: 20px;
+    margin: 20px auto 0 auto;
     background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
     background-size: 100% 100%;
     animation: homeServices 10s  ease infinite;
@@ -560,6 +565,100 @@ body{
 }
 @media all and (max-width: 649px){
     .non-sliderTwo .signUp input[type="submit"]{
+        margin-left: 118px;
+    }
+}
+/* css styles for login UI */
+
+.non-sliderTwo .login{
+    display: none;
+    position: relative;
+    margin: 50px auto;
+    width: 90%;
+    background: #3b5998;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px; 
+}
+.non-sliderTwo .login h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.non-sliderTwo .login .loginInput{
+    position: relative;
+}
+.non-sliderTwo .login .loginInput input{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    margin-bottom: 20px;
+}
+.non-sliderTwo .login .loginInput label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:0;
+    margin-top: -10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    pointer-events: none;
+    transition: .9s;
+}
+.non-sliderTwo .login .loginInput input:focus ~ label,
+.non-sliderTwo .login .loginInput input:valid ~ label
+{
+    top: -10px;
+    left: 0;
+    color: rgb(253, 176, 9);
+    font-size: 15px;
+}
+
+.non-sliderTwo .login input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 270px;
+}
+.closeSignUp-icon{
+    text-decoration: none;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+}
+/* media queries fron sign up button */
+
+@media all and (max-width: 1439px){
+    .non-sliderTwo .login input[type="submit"]{
+        margin-left: 155px;
+    }
+}
+@media all and (max-width: 959px){
+    .non-sliderTwo .login input[type="submit"]{
+        margin-left: 255px;
+    }
+}
+@media all and (max-width: 649px){
+    .non-sliderTwo .login input[type="submit"]{
         margin-left: 118px;
     }
 }

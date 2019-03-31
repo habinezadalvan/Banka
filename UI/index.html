@@ -18,7 +18,7 @@
             <ul class="navbar-nav">
                 <li><a href="#">Home</a></li>
                 <li><a href="#" onclick="signupFunction()">sign up</a></li>
-                <li><a href="#" onclick="signinFunction()">sign in</a></li>
+                <li><a href="#" onclick="loginFunction()">Login</a></li>
                 <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
             </ul>
        </div>
@@ -34,7 +34,7 @@
         <a href="#" class="close-icon" onclick="closeHiddenMenu()">&times;</a>
         <a href="#">Home</a>
         <a href="#" onclick="signupFunction()">sign up</a>
-        <a href="#" onclick="signinFunction()">sign in</a>
+        <a href="#" onclick="loginFunction()">Login</a>
         <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
 
     </div>
@@ -62,7 +62,7 @@
                     <p>Get started by signUp for new Client</p>
                     <img src="./ASSETS/pexels-photo-886465.jpeg" alt="image1">
                 </div>
-                <div class="slides">
+                <div class="slides paragraph">
                         <p>Login and enjoy all Banka services.
                         </p>
                     <img src="./ASSETS/pexels-photo.jpg" alt="image1">
@@ -89,6 +89,7 @@
                 
             </div>
             <div class="non-sliderTwo">
+                <!-- SIGN UP -->
                 <div class="signUp" id="userSignUp">
                     <h2>Sign Up form</h2>
                     <form action="">
@@ -112,6 +113,23 @@
                     </form>
                     <a href="#" class="closeSignUp-icon" id="closeSignUp" onclick="closeSignUpFunction()">&times;</a>
                 </div>
+
+                <!-- LOGIN -->
+                <div class="login" id="userLogin">
+                        <h2>Login form</h2>
+                        <form action="">
+                            <div class="loginInput">
+                                <input type="email" name="" required="">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="loginInput">
+                                <input type="password" name="" required="">
+                                <label for="password">Password</label>
+                            </div>
+                            <input type="submit" value="Login">
+                        </form>
+                        <a href="#" class="closeSignUp-icon" id="closeLogin" onclick="closeLignFunction()">&times;</a>
+                    </div>
             </div>
         </div>
     </section>
