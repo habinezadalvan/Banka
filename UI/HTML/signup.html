@@ -17,7 +17,7 @@
             </span>
             <ul class="navbar-nav">
                 <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
-                <li><a href="#" onclick="signupFunction()">Transactions</a></li>
+                <li><a href="#" onclick="showTransaction()">Transactions</a></li>
                 <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
                 <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
             </ul>
@@ -33,7 +33,7 @@
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
         <a href="#" onclick="showCreateAccount()">Create Account</a>
-        <a href="#" onclick="signupFunction()">Transactions</a>
+        <a href="#" onclick="showTransaction()">Transactions</a>
         <a href="../index.html">Logout</a>
         <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
 
@@ -90,6 +90,33 @@
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
             </div>
+            <!-- TRANSACTION FIELD -->
+
+           <div class="transactionsPage" id="transaction-page">
+               <h3>List of Transactions</h3>
+                <table>
+                    <tr>
+                        <th>No</th>
+                        <th>Account Number</th>
+                        <th>Amount</th>
+                        <th>Cashier</th>
+                        <th>Transaction Type</th>
+                        <th>Old Balance</th>
+                        <th>New Balance</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                </table>
+                <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a>
+           </div>
+            
 
         </div>
     </section>

@@ -62,4 +62,16 @@ const showCreateAccount = () =>{
 const closeCreateAccount = () =>{
     document.getElementById('usercreateAccount').style.display = 'none'; 
 }
+// TRANSACTIONS
+
+// display transactions
+const showTransaction = () =>{
+    document.getElementById('transaction-page').style.display = 'block';
+    document.getElementById('transaction-page').style.scaleY = '1.2s';
+}
+// close transaction page
+const closeTransactions = () =>{
+    document.getElementById('transaction-page').style.display = 'none'; 
+}
+
 console.log('hey there')
