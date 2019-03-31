@@ -562,6 +562,9 @@ body{
     .non-sliderTwo .signUp input[type="submit"]{
         margin-left: 255px;
     }
+    #main-area{
+        height: 1170px;
+    }
 }
 @media all and (max-width: 649px){
     .non-sliderTwo .signUp input[type="submit"]{
@@ -656,6 +659,7 @@ body{
     .non-sliderTwo .login input[type="submit"]{
         margin-left: 255px;
     }
+    
 }
 @media all and (max-width: 649px){
     .non-sliderTwo .login input[type="submit"]{
