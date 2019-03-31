@@ -15,12 +15,23 @@ const closeHiddenMenu = () => {
     document.getElementById('barsmenu').style.display = 'block';
     document.getElementById('barsmenu').style.transitionDelay= '1.2s';
 };
-
+// DISPLAY SIGN UP
 const signupFunction = () =>{
     document.getElementById('userSignUp').style.display = 'block';
     document.getElementById('userSignUp').style.scaleY = '1.2s';
 }
-
+// CLOSE SIGN UP
 const closeSignUpFunction = () =>{
     document.getElementById('userSignUp').style.display = 'none'; 
+}
+
+// DISPLAY LOGIN
+
+const loginFunction = () =>{
+    document.getElementById('userLogin').style.display = 'block';
+    document.getElementById('userLogin').style.scaleY = '1.2s';
+}
+
+const closeLignFunction = () =>{
+    document.getElementById('userLogin').style.display = 'none'; 
 }
