@@ -943,15 +943,25 @@ body{
     background: #6b9aff;
 }
 /* media queries for transactions */
-@media all and (max-width: 649px){
+@media all and (max-width: 1024px){
     .main-area-right .transactionsPage{
-        font-size: 12px;
+        font-size: 10px;
+        height: 350px;
     }
 }
+
 @media all and (max-width: 959px){
     .main-area-right .transactionsPage{
         font-size: 10px;
     }
+}
+
+@media all and (max-width: 649px){
+    .main-area-right .transactionsPage{
+        font-size: 12px;
+
+    }
+    
 }
 
 /* AFTER LOGIN DASHBOARD STYLING */
@@ -968,6 +978,24 @@ body{
         height: 1600px;
     }
     
+}
+/* VIEW ACCOUNTS STYLING */
+.main-area-right .transactionsPage table tr input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    font-size: 10px;
+    text-align: center;
+    margin-left: 3px;
+}
+.main-area-right .transactionsPage table tr i{
+    margin: 4px;
+    color: gold;
 }
 /* footer styling */
 
