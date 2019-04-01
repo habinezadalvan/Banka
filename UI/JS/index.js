@@ -74,4 +74,16 @@ const closeTransactions = () =>{
     document.getElementById('transaction-page').style.display = 'none'; 
 }
 
+// VIEW SPECIFIC ACCOUNT RECORD
+
+// display specific account
+const viewSpecificAccountRecord = () =>{
+    document.getElementById('viewSpeficAccount').style.display = 'block';
+    document.getElementById('viewSpeficAccount').style.scaleY = '1.2s';
+}
+
+// close specific account page
+const closeSpecificAccount = () =>{
+    document.getElementById('viewSpeficAccount').style.display = 'none'; 
+}
 console.log('hey there')

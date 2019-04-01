@@ -93,7 +93,7 @@
             <!-- TRANSACTION FIELD -->
 
            <div class="transactionsPage" id="transaction-page">
-               <h3>List of Transactions</h3>
+               <h3>List of Users' Accounts</h3>
                <table>
                     <tr>
                         <th>No</th>
@@ -105,7 +105,7 @@
                         <th>Balance</th>
                         <th>Options</th>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>1</td>
                         <td>00040-0699-2754-100</td>
                         <td>02-10-2018</td>
@@ -115,7 +115,7 @@
                         <td>700,000 frw</td>
                         <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>2</td>
                         <td>00040-0699-2700-105</td>
                         <td>03-10-2018</td>
@@ -125,7 +125,7 @@
                         <td>900,000 frw</td>
                         <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>3</td>
                         <td>00040-0699-2754-078</td>
                         <td>02-10-2018</td>
@@ -135,7 +135,7 @@
                         <td>1,000,000 frw</td>
                         <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>4</td>
                         <td>00040-0699-2764-070</td>
                         <td>02-10-2018</td>
@@ -145,7 +145,7 @@
                         <td>700,000 frw</td>
                         <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>5</td>
                         <td>00040-0699-2754-085</td>
                         <td>02-10-2018</td>
@@ -155,7 +155,7 @@
                         <td>700,000 frw</td>
                         <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
                     </tr>
-                    <tr>
+                    <tr onclick="viewSpecificAccountRecord()">
                         <td>6</td>
                         <td>00040-0699-2750-020</td>
                         <td>02-10-2018</td>
@@ -168,6 +168,33 @@
 
                 </table>
                 <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a>
+           </div>
+
+           <!-- VIEW SPECIFIC ACCOUNT RECORD -->
+           <div class="transactionsPage" id="viewSpeficAccount">
+               <h2>Client</h2>
+               <img src="../ASSETS/icon.png" alt="icon">
+               <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Account Number</th>
+                    <th>Created On</th>
+                    <th>Owner</th>
+                    <th>Bank Type</th>
+                    <th>Status</th>
+                    <th>Balance</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>00040-0699-2754-100</td>
+                    <td>02-10-2018</td>
+                    <td>GISA Chris</td>
+                    <td>Saving</td>
+                    <td>Active</td>
+                    <td>700,000 frw</td>
+                </tr>
+               </table>
+               <a href="#" class="closecreateAccount-icon" id="closeSpecificAccount" onclick="closeSpecificAccount()">&times;</a>
            </div>
             
 
