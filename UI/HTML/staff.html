@@ -16,7 +16,7 @@
                 <i class="fas fa-bars" onclick="showHiddenMenuArea()" id="barsMenu"></i>
             </span>
             <ul class="navbar-nav">
-                <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
+                <li><a href="#" onclick="showCreateAccount()">Credit</a></li>
                 <li><a href="#" onclick="showTransaction()">Users' Accounts</a></li>
                 <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
                 <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
@@ -53,40 +53,32 @@
             <!-- <h1>Welcome Banka!</h1> -->
             <!-- CREATE ACCOUNT -->
             <div class="createAccount" id="usercreateAccount">
-                <h2>Create Account</h2>
+                <h2>Credit</h2>
                 <form action="">
                     <div class="createAccountInput">
                         <input type="number" name="" required="">
                         <label for="">Account Number</label>
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" required="">
-                        <label for="">First name</label>
-                    </div>
-                    <div class="createAccountInput">
-                        <input type="text" name="" required="">
-                        <label for="">Last name</label>
-                    </div>
-                    <div class="createAccountInput">
-                        <input type="email" name="" required="">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="createAccountInput">
-                        <input type="password" name="" required="">
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="createAccountInput">
                         <input type="float" name="" required="">
-                        <label for="">Openning Balance</label>
+                        <label for="">Amount</label>
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="text" name="" required="">
+                        <label for="">Cashier</label>
                     </div>
                     <div class="createAccountInput">
                         <select name="accountType" id="">
-                            <option value="">Account Type</option>
-                            <option value="Saving">Saving</option>
-                            <option value="Current">Current</option>
+                            <option value="">Transaction Type</option>
+                            <option value="Current">Credit</option>
                         </select>
                     </div>
-                    <input type="submit" value="Create Account">
+                    <div class="createAccountInput">
+                        <input type="float" name="" required="">
+                        <label for="">Account Balance</label>
+                    </div>
+                    
+                    <input type="submit" value="Credit">
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
             </div>
