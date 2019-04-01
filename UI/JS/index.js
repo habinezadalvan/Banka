@@ -86,4 +86,17 @@ const viewSpecificAccountRecord = () =>{
 const closeSpecificAccount = () =>{
     document.getElementById('viewSpeficAccount').style.display = 'none'; 
 }
+// DEBIT PAGE FOR STAFF
+// display debit
+const showDebitPage = () =>{
+    document.getElementById('debitId').style.display = 'block';
+    document.getElementById('debitId').style.scaleY = '1.2s';
+}
+
+// close debit page
+const closeDebitPage = () =>{
+    document.getElementById('debitId').style.display = 'none'; 
+}
+
+
 console.log('hey there')
