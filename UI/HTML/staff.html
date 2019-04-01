@@ -17,6 +17,7 @@
             </span>
             <ul class="navbar-nav">
                 <li><a href="#" onclick="showCreateAccount()">Credit</a></li>
+                <li><a href="#" onclick="showDebitPage()">Debit</a></li>
                 <li><a href="#" onclick="showTransaction()">Users' Accounts</a></li>
                 <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
                 <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
@@ -32,8 +33,9 @@
     <!-- Side navigation bar -->
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
-        <a href="#" onclick="showCreateAccount()">Create Account</a>
-        <a href="#" onclick="showTransaction()">Transactions</a>
+        <a href="#" onclick="showCreateAccount()">Credit</a>
+        <a href="#" onclick="showDebitPage()">Debit</a>
+        <a href="#" onclick="showTransaction()">Users' Accounts</a>
         <a href="../index.html">Logout</a>
         <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
 
@@ -51,7 +53,7 @@
         </div>
         <div class="main-area-right" id="main-area-rightId">
             <!-- <h1>Welcome Banka!</h1> -->
-            <!-- CREATE ACCOUNT -->
+            <!-- CREDIT -->
             <div class="createAccount" id="usercreateAccount">
                 <h2>Credit</h2>
                 <form action="">
@@ -82,7 +84,39 @@
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
             </div>
-            <!-- TRANSACTION FIELD -->
+
+            <!-- DEBIT -->
+            <div class="createAccount" id="debitId">
+                    <h2>Debit</h2>
+                    <form action="">
+                        <div class="createAccountInput">
+                            <input type="number" name="" required="">
+                            <label for="">Account Number</label>
+                        </div>
+                        <div class="createAccountInput">
+                            <input type="float" name="" required="">
+                            <label for="">Amount</label>
+                        </div>
+                        <div class="createAccountInput">
+                            <input type="text" name="" required="">
+                            <label for="">Cashier</label>
+                        </div>
+                        <div class="createAccountInput">
+                            <select name="accountType" id="">
+                                <option value="">Transaction Type</option>
+                                <option value="Current">Debit</option>
+                            </select>
+                        </div>
+                        <div class="createAccountInput">
+                            <input type="float" name="" required="">
+                            <label for="">Account Balance</label>
+                        </div>
+                        
+                        <input type="submit" value="Debit">
+                    </form>
+                    <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeDebitPage()">&times;</a>
+                </div>
+            <!-- LIST OF ACCOUNTS -->
 
            <div class="transactionsPage" id="transaction-page">
                <h3>List of Users' Accounts</h3>
