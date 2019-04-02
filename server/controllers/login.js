@@ -6,7 +6,7 @@ import validation from '../helpers/login';
 
 dotenv.config();
 
-// class for signup endpoint
+// class for login endpoint
 class Login {
   static login(req, res) {
     const { error } = validation.loginValidation(req.body);
