@@ -80,6 +80,23 @@ class Account {
       },
     });
   }
+
+  // DELETE A BANK ACCOUNT
+  static deleteAccount(req, res) {
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === (req.params.accountNumber));
+    if (!accountData) {
+      return res.status(404).json({
+        status: 404,
+        message: 'The account you are trying to delete do not exist',
+      });
+    }
+    const accountToBeDeleted = account.indexOf(accountData);
+    account.splice(accountToBeDeleted);
+    return res.status(200).json({
+      status: 200,
+      message: 'The bank account has been deleted successfully',
+    });
+  }
 }
 
 export default Account;
