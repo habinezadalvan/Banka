@@ -13,6 +13,13 @@ class ValidateAccounts {
     };
     return Joi.validate(accountData, Schema);
   }
+
+  static patchValidation(accountData) {
+    const Schema = {
+      status: Joi.string().required(),
+    };
+    return Joi.validate(accountData, Schema);
+  }
 }
 
 export default ValidateAccounts;
