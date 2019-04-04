@@ -40,36 +40,39 @@
     </div>
     <!-- main area -->
     <section id="main-area">
-        <div class="main-area-images slider">
+        <!-- SLIDING PART WITH IMAGES -->
+        <div class="main-area-images slider" id="sliderId">
             <figure>
                 <div class="slides">
                     <h1>welcome to BANKA</h1>
-                    <img src="./ASSETS/pexels-photo-1068523.jpeg" alt="image1">
+                    <img src="./ASSETS/pexels-photo-1068523.jpeg" alt="image1" width="100%" height="100%">
                 </div>
                 <div class="slides">
                         <p>Banka is a light-weight core banking application that powers banking operations like account
                         creation, customer deposit and withdrawals.
                         </p>
-                    <img src="./ASSETS/pexels-photo-1449052.jpeg" alt="image1">
+                    <img src="./ASSETS/pexels-photo-1449052.jpeg" alt="image1" width="100%" height="100%">
                 </div>
                 <div class="slides longParagraph">
                     <p>This app is meant to support a single bank, where
                         users can signup and create bank accounts online,
                         but must visit the branch to withdraw or deposit money..</p>
-                    <img src="./ASSETS/pexels-photo-1661004.jpeg" alt="image1">
+                    <img src="./ASSETS/bank-banking-blue-50987.jpg" alt="image1" width="100%" height="100%">
                 </div>
                 <div class="slides">
                     <p>Get started by signUp for new Client</p>
-                    <img src="./ASSETS/pexels-photo-886465.jpeg" alt="image1">
+                    <img src="./ASSETS/pexels-photo-886465.jpeg" alt="image1" width="100%" height="100%">
                 </div>
                 <div class="slides paragraph">
                         <p>Login and enjoy all Banka services.
                         </p>
-                    <img src="./ASSETS/pexels-photo.jpg" alt="image1">
+                    <img src="./ASSETS/pexels-photo.jpg" alt="image1" width="100%" height="100%">
                 </div>
             </figure>    
         </div>
+        <!-- NON-SLIDING PART -->
         <div class="main-area-images non-slider">
+            <!-- Part with short descriptions in yellow rectangle -->
             <div class="non-sliderOne">
                 <div class="more">
                     <h1>More with Banka</h1>
@@ -88,6 +91,7 @@
                 </div>
                 
             </div>
+            <!-- area that displays sign up and login and advertisement area-->
             <div class="non-sliderTwo">
                 <!-- SIGN UP -->
                 <div class="signUp" id="userSignUp">
@@ -129,7 +133,10 @@
                             <input type="submit" value="Login">
                         </form>
                         <a href="#" class="closeSignUp-icon" id="closeLogin" onclick="closeLignFunction()">&times;</a>
-                    </div>
+                </div>
+                <div id="ads-area" class="adsArea">
+                    <h1>Advertisement Area</h1>
+                </div>
             </div>
         </div>
     </section>
