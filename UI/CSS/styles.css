@@ -47,8 +47,8 @@ body{
     
 }
 .navbar a:hover{
-    background-color: #ddd;
-    color: black;
+    background-color: #46619b;
+    color: rgb(253, 176, 9);
 }
 
 .fa-bars{
@@ -221,14 +221,14 @@ body{
    
 }
 
-/* main area styling */
+/* MAIN AREA STYLING */
 
 #main-area{
    display: flex;
    flex-direction: column;
    transition: margin-left 0.5s; 
    width: 100%;
-   height: 1000px;
+   height: 670px;
    padding: 0;
    margin:0;
 }
@@ -239,16 +239,16 @@ body{
 }
 
 #main-area .slider{
-    flex-basis: 50%;
+    flex-basis: 40%;
     border-bottom-left-radius: 2%;
     overflow: hidden;
-    background: #6b9aff;
+    background: #6f8ac5;
     z-index: 2;
     border-bottom: 5px solid rgb(253, 176, 9);
 }
 #main-area .non-slider{
-    background: #6b9aff;
-    flex-basis: 50%;
+    background: #3b5998;
+    flex-basis: 60%;
 }
 
 #main-area .slider figure div{
@@ -327,7 +327,7 @@ body{
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 130px;
+    padding-top: 70px;
     width: 20%;
     font-family: Arial, Helvetica, sans-serif;
     z-index: 3;
@@ -344,7 +344,7 @@ body{
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 100px;
+    padding-top: 30px;
     width: 20%;
     font-family: Arial, Helvetica, sans-serif;
     z-index: 3;
@@ -362,7 +362,7 @@ body{
         height: 500px;
     }
     #main-area .slider h1{
-        font-size: 70px;
+        font-size: 60px;
     }
     #main-area .slider p{
         font-size: 25px;
@@ -370,6 +370,7 @@ body{
     }
 }
 @media all and (max-width: 649px){
+    
     #main-area .slider figure img{
         width: 100%;
         height: 500px;
@@ -390,45 +391,56 @@ body{
 /* styles for non-sliding body */
 .non-slider{
     display: flex;
+    flex-direction: row;
 }
 .non-sliderOne{
-    flex-basis: 50%;
-    margin: 50px 0 0 10px;
+    flex-basis: 30%;
+    margin: 15px 0 15px 10px;
 
 }
 .non-sliderTwo{
-    flex-basis: 50%;
+    flex-basis: 70%;
 }
 .homeServices{
     width: 90%;
-    margin: 10px auto 0 auto;
+    margin: 15px auto;
     padding: 0;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     border-radius: 10px;
-    background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
-    background-size: 100% 100%;
-    animation: homeServices 10s  ease infinite;
+    background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 ); 
+     background-size: 100% 100%;
+     transition-property: all;
+     transition-duration: 1s;
+    /* animation: homeServices 4s; */
     
 }
-@keyframes homeServices{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+.homeServices:hover{
+    background:#3b5998;
+    transform: rotateY(180deg);
 }
+/* @keyframes homeServices{
+    0%{left: -1000px}
+    100%{left: 0px;}
+} */
 
 .more{
     width: 90%;
-    height: 70px;
+    height: 60px;
     padding-top: 7px;
     color: #ddd;
     border-radius: 10px;
     margin: 20px auto 0 auto;
     background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
     background-size: 100% 100%;
-    animation: homeServices 10s  ease infinite;
+    transition-property: all;
+     transition-duration: 1s;
+    /* animation: homeServices 10s  ease infinite; */
 }
-
+.more:hover{
+    background:#3b5998;
+    transform: rotateY(180deg);
+}
 .homeServices a{
     text-decoration: none;
     color:white;
@@ -438,29 +450,31 @@ body{
 
 .non-sliderOne h1{
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 .homeServices a strong{
-    font-size: 30px;
+    font-size: 20px;
     color: rgb(253, 176, 9);
 }
 .homeServices i{
-    margin: 30px 20px;
-    font-size: 30px;
+    margin: 20px 10px;
+    font-size: 20px;
     color: white;
 }
 
 /* media queries for homeServices */
 @media all and (max-width: 959px){
     .non-slider{
-        display: block;
+        flex-direction: column;
+        flex-flow: column-reverse;
     }
 }
 @media all and (max-width: 649px){
-    .non-slider{
-        display: block;
-        width: 100%;
+    #main-area .non-slider{
+        flex-direction: column;
+        flex-flow: column-reverse;
     }
+    
 }
 /* keyframes for homeServices */
 .more .one .two .three{
@@ -479,7 +493,7 @@ body{
     font-family: sans-serif;
 }
 .non-sliderTwo .signUp{
-    /* display: none; */
+    display: none;
     position: relative;
     margin: 50px auto;
     width: 90%;
@@ -488,6 +502,14 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+
+/* signup keyframes animation */
+@keyframes animation{
+    0%{top:-100px;}
+    100%{top:0px;}
 }
 .non-sliderTwo .signUp h2{
     margin: 0 0 30px;
@@ -542,7 +564,12 @@ body{
     border-radius: 10px;
     font-size: 18px;
     text-align: center;
-    margin-left: 270px;
+    margin-left: 437px;
+}
+.non-sliderTwo .signUp input[type="submit"]:hover{
+    background: rgb(253, 176, 9);
+    opacity: .5;
+    color: #3b5998;
 }
 .closeSignUp-icon{
     text-decoration: none;
@@ -553,20 +580,21 @@ body{
     right: 15px;
 
 }
+.closeSignUp-icon:hover{
+    color: #6b9aff;
+}
 /* media queries fron sign up button */
 
 @media all and (max-width: 1439px){
     .non-sliderTwo .signUp input[type="submit"]{
-        margin-left: 155px;
+        margin-left: 255px;
     }
 }
 @media all and (max-width: 959px){
     .non-sliderTwo .signUp input[type="submit"]{
         margin-left: 255px;
+
     }
-    /* #main-area{
-        height: 1170px;
-    } */
 }
 @media all and (max-width: 649px){
     .non-sliderTwo .signUp input[type="submit"]{
@@ -576,7 +604,7 @@ body{
 /* css styles for login UI */
 
 .non-sliderTwo .login{
-    /* display: none; */
+    display: none;
     position: relative;
     margin: 50px auto;
     width: 90%;
@@ -585,6 +613,12 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+@keyframes animation{
+    0%{top:-100px;}
+    100%{top:0px;}
 }
 .non-sliderTwo .login h2{
     margin: 0 0 30px;
@@ -639,7 +673,12 @@ body{
     border-radius: 10px;
     font-size: 18px;
     text-align: center;
-    margin-left: 270px;
+    margin-left: 430px;
+}
+.non-sliderTwo .login input[type="submit"]:hover{
+    background: rgb(253, 176, 9);
+    opacity: .5;
+    color: #3b5998;
 }
 .closeSignUp-icon{
     text-decoration: none;
@@ -668,20 +707,39 @@ body{
         margin-left: 118px;
     }
 }
+.adsArea{
+    position: relative;
+    padding: 0;
+    text-align: center;
+    margin-top: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(253, 176, 9);
+    font-size: 40px;
+    font-weight: 900;
+    animation: 2s adsarea;
+    animation-fill-mode: forwards;
+}
+.adsArea:hover{
+    color: #4a6f8d;
+}
+@keyframes adsarea{
+    0%{left: -200px;}
+    100%{left: 0px;}
+}
 /* AFTER SIGN UP PAGE STYLING */
 #main-areaPage{
-    background: #6b9aff;
+    background:#3b5998;
     display: flex;
     flex-direction: row;
     transition: margin-left 0.5s; 
+    border-top: 4px solid rgb(253, 176, 9);
     width: 100%;
-    /* height: 1400px; */
+    height: 726px;
 }
 .fa-bars{
     display: none;
 }
 .main-area-left{
-    border-right: 1px solid #3b5998;
     flex-basis: 30%;
 }
 .main-area-right{
@@ -692,7 +750,7 @@ body{
 .profileImage{
     display: block;
     position: relative;
-    margin: 200px auto;
+    margin: 80px auto 0 auto;
     width: 80%;
     height: 350px;
     background: #3b5998;
@@ -703,18 +761,15 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
-    transition-delay: 1.2, 0ms;
-    animation: 10s profile infinite;
+    animation: 2s profile;
+    animation-fill-mode: forwards;
 }
 
 
 
 @keyframes profile{
-0%{color: white;margin-top:100px;margin-bottom: 100px;}
-25%{color: rgb(252, 193, 66);margin-top:100px;margin-bottom: 100px;}
-50%{color: rgb(253, 176, 9);margin-top:200px;margin-bottom: 200px;}
-75%{color: teal;margin-top:200px;margin-bottom: 200px;}
-100%{color: white;margin-top:100px;margin-bottom: 100px;}
+0%{top:-80px}
+100%{top: 0px}
 }
 
 .profileImage h2{
@@ -749,14 +804,42 @@ body{
 .profileImage button a:hover{
     color: #3b5998;
 }
+.signupDashboard{ 
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 170px;
+    text-align: center;
+    padding: 0 80px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #ddd;
 
+}
+/* animation for sign dashboard message */
+    .signupDashboard h2{
+    position: relative;
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+@keyframes animation{
+    0%{top:-1000px;}
+    100%{top:0px;}
+}
+.signupDashboard h3, span{
+    position: relative;
+    animation: 2s leftanimation;
+    animation-fill-mode: forwards;
+} 
+@keyframes leftanimation{
+    0%{left:-50px;}
+    100%{left:0px;}
+}
 /* media queries for after sign up page */
 
 @media all and (max-width: 649px){
     #main-areaPage{
-        display: block;
-        /* height: 1200px; */
-        margin-top: -120px;
+        flex-flow: column-reverse;
+       height: 1080px;
+        /* display: block; */
     }
     .main-area-left{
         flex-basis: 10%;
@@ -765,34 +848,49 @@ body{
     .main-area-right{
         flex-basis: 90%;
     }
+    .profileImage{
+        margin-bottom: 80px;
+    }
+    .adsArea{
+        font-size: 30px;
+    }
+    .signupDashboard{ 
+        margin-top: 20px;
+    
+    }
+    .signupDashboard {
+        font-size: 15px;
+        line-height: 1.2;
+        padding-bottom: 20px;
+    }
 }
 
 /* CSS STYLES FOR MAIN-AREA RIGHT SIDE */
-.main-area-right h1{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 50px;
-    font-weight: bold;
-    color: gold;
-}
+
 /* media queries for main-area rigt side part */
 @media all and (max-width: 649px){
-    .main-area-right h1{
-        font-size: 40px;
-    }
+    
 }
 /* create account styling */
 
 
 .main-area-right .createAccount{
-    /* display: none; */
+    display: none;
     position: relative;
-    margin: 50px auto;
+    margin: 50px auto 0 auto;
     width: 90%;
     background: #3b5998;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animation{
+0%{top:-50px;}
+100%{top:0px;}
 }
 .main-area-right .createAccount h2{
     margin: 0 0 30px;
@@ -895,13 +993,14 @@ body{
     .main-area-right .createAccount input[type="submit"]{
         margin-left:0;
     }
+    
 }
 
 /* TRANSACTION FIELD */
 .main-area-right .transactionsPage{
 
     /* border: 2px solid red; */
-    /* display: none; */
+    display: none;
     position: relative;
     margin: 50px auto;
     width: 90%;
@@ -914,8 +1013,15 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+
 }
 
+@keyframes animation{
+0%{top:-50px;}
+100%{top:0px;}
+}
 .main-area-right .transactionsPage h2{
     margin: 0 0 30px;
     padding: 0;
