@@ -49,7 +49,7 @@ const submitSignupFunction = () => {
   const confirmPassword = document.getElementById('confirmPasswordInput');
   const errorMessage = document.getElementById('errorMessage');
   const submitbutton = document.getElementById('submitbutton');
-  if ((password.value === confirmPassword.value) && (password.value.length >= 6 && password.value.length <= 12)) {
+  if ((password.value === confirmPassword.value) && (password.value.length >= 6 && password.value.length <= 12) && (password.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,12})$/))) {
     password.style.borderBottom = 'thin solid green';
     confirmPassword.style.borderBottom = 'thin solid green';
     errorMessage.display = 'none';
@@ -98,7 +98,7 @@ const loginSubmitFunction = () => {
 const onInputLoginFunction = () => {
   const password = document.getElementById('loginPasswordField');
   const errorMessageLogin = document.getElementById('errorMessageLogin');
-  if (password.value.length >= 6 && password.value.length <= 12) {
+  if ((password.value.length >= 6 && password.value.length <= 12) && (password.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,12})$/))) {
     loginButton.removeAttribute('disabled');
     password.style.borderBottom = 'thin solid green';
     errorMessageLogin.style.display = 'none';

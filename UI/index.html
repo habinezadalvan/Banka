@@ -110,7 +110,7 @@
                             <label for="email">Email</label>
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" required="" id="signupInput" oninput="submitSignupFunction()">
+                            <input type="password" name="" required="" id="signupInput" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
                             <label for="password">Password</label>
                         </div>
                         <div class="signUpInput">
@@ -118,7 +118,7 @@
                             <label for="password">compare Password</label>
                         </div>
                         <div id="errorMessage" class="errMessage">
-                            <p>Both passwords should match and have 6 to 12 characters</p>
+                            <p>Both passwords should match and have 6 to 12 characters, with at least one ([A-Z] & [a-z] & [0-9]</p>
                         </div>
                         <input type="submit" value="Sign Up" id="submitbutton">
                     </form>
@@ -134,11 +134,11 @@
                                 <label for="email">Email</label>
                             </div>
                             <div class="loginInput">
-                                <input type="password" name="" required="" id="loginPasswordField" oninput="onInputLoginFunction()">
+                                <input type="password" name="" required="" id="loginPasswordField" oninput="onInputLoginFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
                                 <label for="password">Password</label>
                             </div>
                             <div id="errorMessageLogin" class="errMessage">
-                                <p>Password characters should be 6 to 12</p>
+                                <p>Password characters should be 6 to 12, with ([A-Z], [a-z], [0-9]</p>
                             </div>
                             <input type="submit" value="Login" id="loginButton" onclick="loginSubmitFunction()">
                         </form>
