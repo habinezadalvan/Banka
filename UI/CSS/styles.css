@@ -374,6 +374,10 @@ body{
         font-size: 25px;
         padding-top: 135px;
     }
+   
+    #main-area .slider .Three p{
+        color: white;
+    }
 }
 @media all and (max-width: 649px){
     
