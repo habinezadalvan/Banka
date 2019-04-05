@@ -43,27 +43,27 @@
         <!-- SLIDING PART WITH IMAGES -->
         <div class="main-area-images slider" id="sliderId">
             <figure>
-                <div class="slides">
+                <div class="slides One">
                     <h1>welcome to BANKA</h1>
                     <img src="./ASSETS/pexels-photo-1068523.jpeg" alt="image1" width="100%" height="100%">
                 </div>
-                <div class="slides">
+                <div class="slides Two">
                         <p>Banka is a light-weight core banking application that powers banking operations like account
                         creation, customer deposit and withdrawals.
                         </p>
                     <img src="./ASSETS/pexels-photo-1449052.jpeg" alt="image1" width="100%" height="100%">
                 </div>
-                <div class="slides longParagraph">
+                <div class="slides longParagraph Three">
                     <p>This app is meant to support a single bank, where
                         users can signup and create bank accounts online,
                         but must visit the branch to withdraw or deposit money..</p>
                     <img src="./ASSETS/bank-banking-blue-50987.jpg" alt="image1" width="100%" height="100%">
                 </div>
-                <div class="slides">
+                <div class="slides Four">
                     <p>Get started by signUp for new Client</p>
                     <img src="./ASSETS/pexels-photo-886465.jpeg" alt="image1" width="100%" height="100%">
                 </div>
-                <div class="slides paragraph">
+                <div class="slides paragraph Five">
                         <p>Login and enjoy all Banka services.
                         </p>
                     <img src="./ASSETS/pexels-photo.jpg" alt="image1" width="100%" height="100%">
@@ -110,10 +110,17 @@
                             <label for="email">Email</label>
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" required="">
+                            <input type="password" name="" required="" id="signupInput" oninput="submitSignupFunction()">
                             <label for="password">Password</label>
                         </div>
-                        <input type="submit" value="Sign Up">
+                        <div class="signUpInput">
+                            <input type="password" name="" required="" id="confirmPasswordInput" oninput="submitSignupFunction()">
+                            <label for="password">compare Password</label>
+                        </div>
+                        <div id="errorMessage" class="errMessage">
+                            <p>Both passwords should match and have 6 to 12 characters</p>
+                        </div>
+                        <input type="submit" value="Sign Up" id="submitbutton">
                     </form>
                     <a href="#" class="closeSignUp-icon" id="closeSignUp" onclick="closeSignUpFunction()">&times;</a>
                 </div>
@@ -121,16 +128,19 @@
                 <!-- LOGIN -->
                 <div class="login" id="userLogin">
                         <h2>Login form</h2>
-                        <form action="./HTML/login.html">
+                        <form action="" id="loginFormAtt">
                             <div class="loginInput">
-                                <input type="email" name="" required="">
+                                <input type="email" name="" required="" id="loginEmailField">
                                 <label for="email">Email</label>
                             </div>
                             <div class="loginInput">
-                                <input type="password" name="" required="">
+                                <input type="password" name="" required="" id="loginPasswordField" oninput="onInputLoginFunction()">
                                 <label for="password">Password</label>
                             </div>
-                            <input type="submit" value="Login">
+                            <div id="errorMessageLogin" class="errMessage">
+                                <p>Password characters should be 6 to 12</p>
+                            </div>
+                            <input type="submit" value="Login" id="loginButton" onclick="loginSubmitFunction()">
                         </form>
                         <a href="#" class="closeSignUp-icon" id="closeLogin" onclick="closeLignFunction()">&times;</a>
                 </div>
