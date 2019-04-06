@@ -4,6 +4,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import server from '../app';
+import users from '../models/signup';
 
 dotenv.config();
 
@@ -37,16 +38,16 @@ describe('signup', () => {
         firstName: 'chris',
         lastName: 'habineza',
         email: 'habine@gmail.com',
-        password: 'qwertyytt',
-        confirmPassword: 'qwerty',
+        password: 'qwerty',
+        confirmPassword: 'qwer',
       })
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(400);
         done();
       });
   });
 
-  it('should give an error when the email entered already exists in the system', (done) => {
+  it('should varify whether email has been used/ is already in the system ', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
         firstName: 'chris',
@@ -56,9 +57,12 @@ describe('signup', () => {
         confirmPassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(201);
-        done();
+        const signupdata = users.find(email => email.email === res.body.email);
+        if (signupdata) {
+          res.should.have.status(400);
+        }
       });
+    done();
   });
 
   it('should give an error when firstName is not entered', (done) => {
@@ -92,7 +96,6 @@ describe('signup', () => {
       .post('/api/v1/auth/signup').send({
         firstName: 'chris',
         lastName: 'habineza',
-        emai: 'habine@gmail.com',
         password: 'qwerty',
         confirmPassword: 'qwerty',
       })
@@ -107,7 +110,6 @@ describe('signup', () => {
         firstName: 'chris',
         lastName: 'habineza',
         email: 'habine@gmail.com',
-        passw: 'qwerty',
         confirmPassword: 'qwerty',
       })
       .end((err, res) => {
@@ -122,7 +124,6 @@ describe('signup', () => {
         lastName: 'habineza',
         email: 'habine@gmail.com',
         password: 'qwerty',
-        confirmPa: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -134,20 +135,6 @@ describe('signup', () => {
       .get('/api/v1/users')
       .end((err, res) => {
         res.should.have.status(200);
-        done();
-      });
-  });
-  it('should give an error password and confirm password do not match 2', (done) => {
-    chai.request(server)
-      .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
-        email: 'habine@gmail.com',
-        password: 'qwe',
-        confirmPassword: 'qwerty',
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
         done();
       });
   });

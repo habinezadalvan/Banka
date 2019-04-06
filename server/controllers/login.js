@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import login from '../models/login';
+import users from '../models/signup';
 import validation from '../helpers/login';
 
 dotenv.config();
@@ -16,25 +16,43 @@ class Login {
         error: error.details[0].message,
       });
     }
-    const newId = (login.length + 1);
-    const newPassword = toString(req.body.password);
-    const logindata = {
-      id: newId,
-      email: req.body.email,
-      password: newPassword,
-    };
-    // sign up Authentication
-    const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
-    logindata.password = bcrypt.hash(logindata.password, 10);
-
-    login.push(logindata);
-    return res.status(201).json({
-      status: 201,
-      data: {
-        token,
-      },
-      message: 'Welcome to Banka, you have successfully login',
-    });
+    const newPassword = (req.body.password);
+    let logindata = users.find(email => email.email === req.body.email);
+    if (!logindata) {
+      return res.status(400).json({
+        status: 400,
+        message: 'INCORRECT EMAIL OR PASSWORD',
+      });
+    }
+    const truePassword = bcrypt.compareSync(newPassword, logindata.password);
+    if (truePassword) {
+      logindata = {
+        id: logindata.id,
+        firstName: logindata.firstName,
+        lastName: logindata.lastName,
+        email: req.body.email,
+        password: truePassword,
+      };
+      // sign up Authentication
+      const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
+      users.push(logindata);
+      res.status(200).json({
+        status: 200,
+        data: {
+          token,
+          id: logindata.id,
+          firstName: logindata.firstName,
+          lastName: logindata.lastName,
+          email: logindata.email,
+        },
+        message: 'Welcome to Banka, you have successfully login',
+      });
+    } else {
+      res.status(400).json({
+        status: 400,
+        message: 'INCORRECT EMAIL OR PASSWORD',
+      });
+    }
   }
 }
 
