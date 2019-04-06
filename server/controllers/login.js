@@ -16,38 +16,43 @@ class Login {
         error: error.details[0].message,
       });
     }
-    const newId = (req.user);
     const newPassword = (req.body.password);
     let logindata = users.find(email => email.email === req.body.email);
     if (!logindata) {
-      console.log(logindata);
       return res.status(400).json({
         status: 400,
-        message: 'Your email is not yet in the system, You might not yet signed up',
+        message: 'INCORRECT EMAIL OR PASSWORD',
       });
     }
-    bcrypt.hash(newPassword, 10, (err, hash) => {
+    const truePassword = bcrypt.compareSync(newPassword, logindata.password);
+    if (truePassword) {
       logindata = {
-        id: newId,
+        id: logindata.id,
         firstName: logindata.firstName,
         lastName: logindata.lastName,
         email: req.body.email,
-        password: hash,
+        password: truePassword,
       };
       // sign up Authentication
       const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
       users.push(logindata);
-      return res.status(201).json({
-        status: 201,
+      res.status(200).json({
+        status: 200,
         data: {
           token,
+          id: logindata.id,
           firstName: logindata.firstName,
           lastName: logindata.lastName,
           email: logindata.email,
         },
         message: 'Welcome to Banka, you have successfully login',
       });
-    });
+    } else {
+      res.status(400).json({
+        status: 400,
+        message: 'INCORRECT EMAIL OR PASSWORD',
+      });
+    }
   }
 }
 
