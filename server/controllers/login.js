@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import login from '../models/login';
+import users from '../models/signup';
 import validation from '../helpers/login';
 
 dotenv.config();
@@ -16,24 +16,37 @@ class Login {
         error: error.details[0].message,
       });
     }
-    const newId = (login.length + 1);
-    const newPassword = toString(req.body.password);
-    const logindata = {
-      id: newId,
-      email: req.body.email,
-      password: newPassword,
-    };
-    // sign up Authentication
-    const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
-    logindata.password = bcrypt.hash(logindata.password, 10);
-
-    login.push(logindata);
-    return res.status(201).json({
-      status: 201,
-      data: {
-        token,
-      },
-      message: 'Welcome to Banka, you have successfully login',
+    const newId = (req.user);
+    const newPassword = (req.body.password);
+    let logindata = users.find(email => email.email === req.body.email);
+    if (!logindata) {
+      console.log(logindata);
+      return res.status(400).json({
+        status: 400,
+        message: 'Your email is not yet in the system, You might not yet signed up',
+      });
+    }
+    bcrypt.hash(newPassword, 10, (err, hash) => {
+      logindata = {
+        id: newId,
+        firstName: logindata.firstName,
+        lastName: logindata.lastName,
+        email: req.body.email,
+        password: hash,
+      };
+      // sign up Authentication
+      const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
+      users.push(logindata);
+      return res.status(201).json({
+        status: 201,
+        data: {
+          token,
+          firstName: logindata.firstName,
+          lastName: logindata.lastName,
+          email: logindata.email,
+        },
+        message: 'Welcome to Banka, you have successfully login',
+      });
     });
   }
 }

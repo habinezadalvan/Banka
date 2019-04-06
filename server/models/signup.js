@@ -1,4 +1,4 @@
-const signup = [
+const users = [
   {
     status: 201,
     data: {
@@ -23,4 +23,4 @@ const signup = [
   },
 ];
 
-export default signup;
+export default users;

@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import signup from '../models/signup';
+import users from '../models/signup';
 import validation from '../helpers/signup';
 
 dotenv.config();
@@ -9,7 +9,7 @@ dotenv.config();
 // class for signup endpoint
 class SignUp {
   static getUsers(req, res) {
-    const users = signup;
+    const signedUsers = users;
     res.status(200).json({
       status: 200,
       data: users,
@@ -24,12 +24,12 @@ class SignUp {
         error: error.details[0].message,
       });
     }
-    const newId = (signup.length + 1);
+    const newId = (users.length + 1);
     const newPassword = (req.body.password);
-    let signupdata = signup.find(email => email.email === req.body.email);
+    let signupdata = users.find(email => email.email === req.body.email);
     if (signupdata) {
-      return res.status(201).json({
-        status: 201,
+      return res.status(400).json({
+        status: 400,
         message: 'The email you have entered already exists in the system, try another one!',
       });
     }
@@ -47,12 +47,12 @@ class SignUp {
       const token = jwt.sign({ id: signupdata.id }, process.env.SECRETKEY);
       // validate confirmPassword
       if (req.body.password !== req.body.confirmPassword) {
-        return res.status(201).json({
-          status: 201,
+        return res.status(400).json({
+          status: 400,
           message: 'Password and confirm password do not match!',
         });
       }
-      signup.push(signupdata);
+      users.push(signupdata);
       return res.status(201).json({
         status: 201,
         data: {
