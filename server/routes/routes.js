@@ -8,6 +8,7 @@ import auth from '../middleware/auth';
 const router = express.Router();
 
 router.get('/api/v1/users', SignUp.getUsers);
+router.get('/api/v1/accounts', Account.getAllCounts);
 router.post('/api/v1/auth/signup', SignUp.signup);
 router.post('/api/v1/auth/signin', Login.login);
 router.post('/api/v1/accounts', Account.createBankAccount);

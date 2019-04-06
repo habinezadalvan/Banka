@@ -3,6 +3,21 @@ import validation from '../helpers/accounts';
 
 
 class Account {
+  // GET ALL ACCOUNTS
+  static getAllCounts(erq, res) {
+    const accountData = account;
+    if (!accountData) {
+      return res.status(404).json({
+        status: 404,
+        message: 'No bank account found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: accountData,
+    });
+  }
+
   // CREATE BANK ACCOUNT
   static createBankAccount(req, res) {
     const { error } = validation.AccountsValidation(req.body);
@@ -12,22 +27,17 @@ class Account {
         error: error.details[0].message,
       });
     }
-    let accountData = account.find(bankAcc => bankAcc.accountNumber === req.body.accountNumber);
-    if (accountData) {
-      return res.status(400).json({
-        status: 400,
-        message: 'The account you are trying to create already exist',
-      });
-    }
     const newId = (account.length + 1);
-    accountData = {
+    const accountnumber = (4000744000 + account.length);
+    const accountData = {
       id: newId,
-      accountNumber: req.body.accountNumber,
+      accountNumber: accountnumber,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       type: req.body.type,
-      openingBalance: req.body.openingBalance,
+      status: 'active',
+      openingBalance: '0 frw',
     };
     account.push(accountData);
     return res.status(201).json({
@@ -60,14 +70,14 @@ class Account {
         message: 'The account you are trying to activate or deactivate do not exist',
       });
     } if (accountData && accountData.status === 'active') {
-      return res.status(200).json({
-        status: 200,
+      return res.status(400).json({
+        status: 400,
         message: 'The account has been already activated',
       });
     }
     if (accountData && accountData.status === 'dormant') {
-      return res.status(200).json({
-        status: 200,
+      return res.status(400).json({
+        status: 400,
         message: 'The account has been already deactivated',
       });
     }

@@ -4,12 +4,12 @@ import Joi from 'joi';
 class ValidateAccounts {
   static AccountsValidation(accountData) {
     const Schema = {
-      accountNumber: Joi.number().required(),
+      accountNumber: Joi.number(),
       firstName: Joi.string().required(),
       lastName: Joi.string().required(),
       email: Joi.string().required().email().max(100),
+      status: Joi.valid('active', 'dormant'),
       type: Joi.string().required(),
-      openingBalance: Joi.required(),
     };
     return Joi.validate(accountData, Schema);
   }
