@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import account from '../models/account';
 import validation from '../helpers/accounts';
 
@@ -63,37 +64,30 @@ class Account {
       });
     }
     // verify if the account activate or deactive exist
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === (req.params.accountNumber));
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
     if (!accountData) {
-      return res.status(404).json({
+      res.status(404).json({
         status: 404,
         message: 'The account you are trying to activate or deactivate do not exist',
       });
-    } if (accountData && accountData.status === 'active') {
-      return res.status(400).json({
-        status: 400,
-        message: 'The account has been already activated',
-      });
-    }
-    if (accountData && accountData.status === 'dormant') {
-      return res.status(400).json({
-        status: 400,
-        message: 'The account has been already deactivated',
-      });
     }
     accountData.status = req.body.status;
-    return res.status(200).json({
+    res.status(200).json({
       status: 200,
-      accountNumber: {
+      data: {
         accountData: accountData.accountNumber,
         status: accountData.status,
+        firstName: accountData.firstName,
+        lastName: accountData.lastName,
+        email: accountData.email,
+        accountBalance: '0 frw',
       },
     });
   }
 
   // DELETE A BANK ACCOUNT
   static deleteAccount(req, res) {
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === (req.params.accountNumber));
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
     if (!accountData) {
       return res.status(404).json({
         status: 404,

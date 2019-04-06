@@ -16,7 +16,7 @@ class ValidateAccounts {
 
   static patchValidation(accountData) {
     const Schema = {
-      status: Joi.string().required(),
+      status: Joi.string().required().valid('active', 'dormant'),
     };
     return Joi.validate(accountData, Schema);
   }
