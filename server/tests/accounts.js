@@ -163,4 +163,13 @@ describe('Bank accounts', () => {
         done();
       });
   });
+  // it('should throw an error when the account to be deleted is not an integer', (done) => {
+  //   chai.request(server)
+  //     .delete('/api/v1/account/4000744000dsf')
+  //     .end((err, res) => {
+  //       res.should.have.status(400);
+  //       res.body.should.have.property('message');
+  //       done();
+  //     });
+  // });
 });
