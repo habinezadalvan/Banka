@@ -14,7 +14,7 @@ const emptyDivLogin = document.getElementById('emptyDiv');
 
 const showHiddenMenu = () => {
   hiddenNavBar.style.display = 'block';
-  hiddenNavBar.style.width = '20%';
+  hiddenNavBar.style.width = '30%';
   mainArea.style.marginLeft = '0';
   navBar.style.marginLeft = '0';
   footer.style.marginLeft = '0';
@@ -128,16 +128,29 @@ const closeHiddenMenuArea = () => {
 // display create account
 const showCreateAccount = () => {
   document.getElementById('usercreateAccount').style.display = 'block';
-  document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
+  document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
-  // document.getElementById('usercreateAccount').style.display = 'block';
   document.getElementById('debitId').style.display = 'none';
+  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
 // close create account
 const closeCreateAccount = () => {
   document.getElementById('usercreateAccount').style.display = 'none';
+  document.getElementById('signupDashboard').style.display = 'block';
+};
+// RESET PASSWORD
+const showResetPassword = () => {
+  document.getElementById('restpassword').style.display = 'block';
+  document.getElementById('transaction-page').style.display = 'none';
+  document.getElementById('usercreateAccount').style.display = 'none';
+  document.getElementById('signupDashboard').style.display = 'none';
+  document.getElementById('viewSpeficAccount').style.display = 'none';
+  document.getElementById('debitId').style.display = 'none';
+};
+const closeResetPassword = () => {
+  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'block';
 };
 // create account password validation
@@ -161,8 +174,9 @@ const onInputPasswordCreateAccount = () => {
 // display transactions
 const showTransaction = () => {
   document.getElementById('transaction-page').style.display = 'block';
-  document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
+  document.getElementById('restpassword').style.display = 'none';
+  document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
   // document.getElementById('transaction-page').style.display = 'block';
   document.getElementById('debitId').style.display = 'none';
@@ -180,6 +194,7 @@ const closeTransactions = () => {
 const viewSpecificAccountRecord = () => {
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
+  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'block';
   document.getElementById('viewSpeficAccount').style.scaleY = '1.2s';
@@ -198,6 +213,7 @@ const showDebitPage = () => {
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
+  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('debitId').style.scaleY = '1.2s';
 };
 
