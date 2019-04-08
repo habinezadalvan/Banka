@@ -922,7 +922,7 @@ body{
 .main-area-right .createAccount{
     display: none;
     position: relative;
-    margin: 50px auto 0 auto;
+    margin: 82px auto 0 auto;
     width: 90%;
     background: #3b5998;
     padding: 20px;
@@ -997,6 +997,11 @@ body{
     text-align: center;
     margin-left: 70px;
 }
+.main-area-right .createAccount input[type="submit"]:hover{
+    background: rgb(253, 176, 9);
+    opacity: .5;
+    color: #3b5998;
+}
 .closecreateAccount-icon{
     text-decoration: none;
     font-size: 30px;
@@ -1054,6 +1059,7 @@ body{
     display: none;
     position: relative;
     margin: 50px auto;
+    margin-top: 82px;
     width: 90%;
     height: 500px;
     background: #3b5998;
