@@ -140,8 +140,8 @@ body{
     }
     .navbar .navbar1 a{
         display: inline ;
-        padding: 23px 25px;
-        font-size: 20px;
+        padding: 23px 18px;
+        font-size: 12px;
     }
    
 }
@@ -166,8 +166,8 @@ body{
     }
     .navbar .navbar1 a{
         display: inline ;
-        padding: 23px 15px;
-        font-size: 18px;
+        padding: 23px 10px;
+        font-size: 15px;
     }
     .fa-bars{
         display: none;
@@ -511,7 +511,8 @@ body{
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
+    border-radius: 10px;
+    transition: transform 1s;
     animation: 2s animation;
     animation-fill-mode: forwards;
 }
@@ -520,6 +521,10 @@ body{
 @keyframes animation{
     0%{top:-100px;}
     100%{top:0px;}
+}
+.non-sliderTwo .signUp:hover{
+    transform: scale(.9);
+    background: #6b9aff;
 }
 .non-sliderTwo .signUp h2{
     margin: 0 0 30px;
@@ -633,12 +638,17 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    transition: transform 1s;
     animation: 2s animation;
     animation-fill-mode: forwards;
 }
 @keyframes animation{
     0%{top:-100px;}
     100%{top:0px;}
+}
+.non-sliderTwo .login:hover{
+    transform: scale(.9);
+    background: #6b9aff;
 }
 .non-sliderTwo .login h2{
     margin: 0 0 30px;
@@ -785,7 +795,8 @@ body{
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
+    border-radius: 10px;
+    transition: transform .7s;
     animation: 2s profile;
     animation-fill-mode: forwards;
 }
@@ -829,9 +840,14 @@ body{
 .profileImage button a:hover{
     color: #3b5998;
 }
+.profileImage:hover{
+    transform: scale(.9);
+    background: #6b9aff;
+    color: rgb(253, 176, 9);
+}
 .signupDashboard{ 
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 170px;
+    margin-top: 100px;
     text-align: center;
     padding: 0 80px;
     line-height: 1.6;
@@ -857,6 +873,10 @@ body{
 @keyframes leftanimation{
     0%{left:-50px;}
     100%{left:0px;}
+}
+.signupDashboard:hover{
+    color: rgb(253, 176, 9);
+
 }
 /* media queries for after sign up page */
 
@@ -909,6 +929,7 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
+    transition: transform 1s;
     animation: 2s animation;
     animation-fill-mode: forwards;
 }
@@ -916,6 +937,10 @@ body{
 @keyframes animation{
 0%{top:-50px;}
 100%{top:0px;}
+}
+.main-area-right .createAccount:hover{
+    transform: scale(.9);
+    background: #6b9aff;
 }
 .main-area-right .createAccount h2{
     margin: 0 0 30px;
@@ -999,6 +1024,7 @@ body{
    border: none;
 
 }
+
 /* media queries fron sign up button */
 
 @media all and (max-width: 1439px){
@@ -1036,6 +1062,7 @@ body{
     font-size: 15px;
     padding: 20px;
     box-sizing: border-box;
+    transition: transform 1s;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
     animation: 2s animation;
@@ -1046,6 +1073,9 @@ body{
 @keyframes animation{
 0%{top:-50px;}
 100%{top:0px;}
+}
+.main-area-right .transactionsPage:hover{
+    transform: scale(.9);
 }
 .main-area-right .transactionsPage h2{
     margin: 0 0 30px;
