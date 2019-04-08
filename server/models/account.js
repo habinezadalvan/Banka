@@ -7,7 +7,7 @@ const account = [
     email: 'habinezadalvan@gmail.com',
     type: 'saving',
     status: 'active',
-    balance: 0,
+    balance: 90000,
   },
 ];
 

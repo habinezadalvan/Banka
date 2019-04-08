@@ -48,7 +48,7 @@ describe('credit', () => {
   });
   it('should throw an error when the account do not exist', (done) => {
     chai.request(server)
-      .post('/api/v1/transactions/40007440/credit').send({
+      .post('/api/v1/transactions/4000744/credit').send({
         amount: '10000',
         cashier: '2',
       })
@@ -106,7 +106,7 @@ describe('debit', () => {
   it('should do debit transactions', (done) => {
     chai.request(server)
       .post('/api/v1/transactions/4000744000/debit').send({
-        amount: '0',
+        amount: '10000',
         cashier: '2',
       })
       .end((err, res) => {
