@@ -145,7 +145,7 @@ data structures for specific endpoints
   
 }``
 
-6. debit *
+*6. debit *
 
 ``{
 
