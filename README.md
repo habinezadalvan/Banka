@@ -3,3 +3,162 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/8e389dc649c302e0521d/maintainability)](https://codeclimate.com/github/habinezadalvan/Banka/maintainability)
 
 # Banka
+
+**Banka** is a light-weight core banking application that powers banking operations like account
+creation, customer deposit and withdrawals; and supports user to sign up and create bank accounts online.
+
+*gh-pages:*  https://habinezadalvan.github.io/Banka/UI/index.html
+
+Banka User Interface (UI) features
+-------------------------------------
+  1. User can sign up.
+
+  2. User can login.
+
+  3. User can create an account.
+
+  4. User can view account transaction history.
+
+  5. User can view a specific account transaction.
+
+  6. Staff can debit and credit user account.
+
+  7. Admin/staff can view all user accounts.
+
+  8. Admin/staff can view a specific user account.
+
+  9. Admin/staff can activate or deactivate or delete an account.
+
+  10. Admin can create staff and admin user accounts.
+  
+  Technology and frameworks used
+  -------------------------------
+  
+  **Frontend**
+  
+  1. html : For content
+  
+  2. css : For styling
+  
+  3. javascript : For extra functionality 
+  
+  **Backend**
+  
+  1. node.js : JavaScript run-time environment 
+  
+  2. Express : Framework for Node.js
+  
+  3. mocha : Testing framework
+  
+  4. chai : Assertion library for tests
+  
+  5. javascript : programming language
+  
+  
+  Prerequisities
+  ---------------
+  
+  1. node.js
+  
+  2. postman 
+  
+  How to run this application locally
+  ------------------------------------
+  
+  1. git clone https://github.com/habinezadalvan/Banka.git
+  
+  2. run ``npm install``
+  
+  3. run ``npm start`` to test bellow endpoints in postman
+  
+  4. application listen on http://localhost:3000
+  
+  5. to run tests run ``npm test``
+  
+  
+  Banka endpoints
+  ----------------
+  
+  | METHOD  | End-point  | functionality |
+| :------------ |:---------------:| -----:|
+| POST     | /api/v1/auth/signup |user signup |
+| POST     | /api/v1/auth/signin |user login |
+| POST | /api/v1/accounts  |user creates bank account |
+| POST     | /api/v1/transactions/:accountNumber/credit |cashier credit bank account |
+| POST     | /api/v1/transactions/:accountNumber/debit |cashier debit bank account |
+| PATCH | /api/v1/account/:accountNumber|cashier/admin activate/deactivate bank account |
+| DELETE     | /api/v1/account/:accountNumber | staff/admin delete account |
+| GET     | /api/v1/users       | get all users |
+| GET | /api/v1/accounts  |    get all accounts |
+| GET | /api/v1/transactions |    get all transactions |
+
+
+data structures for specific endpoints
+--------------------------------------
+
+*1. signup endpoint*
+
+``{
+	
+	"firstName":"christian",
+	"lastName":"habineza",
+	"email": "habichleon2040@gmail.com",
+	"password":"12345",
+	"confirmPassword":"12345"
+}``
+
+
+*2. login endpoint*
+
+``{
+
+	"email": "habinezadalvan@gmail.com",
+	"password":"12345"
+  
+}``
+
+*3. create bank account*
+
+``{
+
+	"email": "habinezadalvan@gmail.com",
+	"firstName": "christian",
+	"lastName":"habineza",
+	"type":"savings"
+  
+}``
+
+*4. activate or deactivate account*
+
+``{
+	
+	"status": "dormant"        //active or dormant
+
+}``
+
+*5. credit*
+
+``{
+
+	"amount": "30000",
+	"cashier": "2"
+  
+}``
+
+6. debit *
+
+``{
+
+	"amount": "5000",
+	"cashier": "2"
+  
+}``
+
+``I hope you've enjoyed the application``
+
+**developer**
+
+**Leon Christian Habineza**
+
+@ **Andela bootcamp cycle 5**
+  
