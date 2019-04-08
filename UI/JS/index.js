@@ -127,12 +127,12 @@ const closeHiddenMenuArea = () => {
 
 // display create account
 const showCreateAccount = () => {
+  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'block';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
-  document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
 // close create account
