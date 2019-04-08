@@ -4,13 +4,19 @@ class TransactionsValidation {
   // debit validation
   static debit(debitData) {
     const Schema = {
-      accountNumber: Joi.string(),
-      amount: Joi.required(),
+      amount: Joi.number().required(),
       cashier: Joi.number().required(),
-      transactionType: Joi.string().valid('credit', 'debit'),
-      accountBalance: Joi.string(),
     };
     return Joi.validate(debitData, Schema);
+  }
+
+  // credit validation
+  static credit(creditData) {
+    const Schema = {
+      amount: Joi.number().required(),
+      cashier: Joi.number().required(),
+    };
+    return Joi.validate(creditData, Schema);
   }
 }
 

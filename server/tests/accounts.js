@@ -145,6 +145,14 @@ describe('Bank accounts', () => {
         done();
       });
   });
+  it('should throw an error when the account to be activated or deactivated is not an integer', (done) => {
+    chai.request(server)
+      .patch('/api/v1/account/4000744000rt')
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
   it('should be able to delete a bank account', (done) => {
     chai.request(server)
       .delete('/api/v1/account/4000744000')
@@ -163,13 +171,12 @@ describe('Bank accounts', () => {
         done();
       });
   });
-  // it('should throw an error when the account to be deleted is not an integer', (done) => {
-  //   chai.request(server)
-  //     .delete('/api/v1/account/4000744000dsf')
-  //     .end((err, res) => {
-  //       res.should.have.status(400);
-  //       res.body.should.have.property('message');
-  //       done();
-  //     });
-  // });
+  it('should throw an error when the account to be deleted is not an integer or does not match the account number', (done) => {
+    chai.request(server)
+      .delete('/api/v1/account/400074400ty#')
+      .end((err, res) => {
+        res.should.have.status(404);
+        done();
+      });
+  });
 });
