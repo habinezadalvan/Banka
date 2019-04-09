@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -10,7 +11,7 @@ dotenv.config();
 class SignUp {
   static getUsers(req, res) {
     const signedUsers = users;
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       data: users,
     });

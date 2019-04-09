@@ -36,7 +36,7 @@ class Login {
       // sign up Authentication
       const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
       users.push(logindata);
-      res.status(200).json({
+      return res.status(200).json({
         status: 200,
         data: {
           token,
@@ -47,12 +47,11 @@ class Login {
         },
         message: 'Welcome to Banka, you have successfully login',
       });
-    } else {
-      res.status(400).json({
-        status: 400,
-        message: 'INCORRECT EMAIL OR PASSWORD',
-      });
     }
+    return res.status(400).json({
+      status: 400,
+      message: 'INCORRECT EMAIL OR PASSWORD',
+    });
   }
 }
 
