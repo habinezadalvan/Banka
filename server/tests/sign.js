@@ -5,7 +5,6 @@ import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import server from '../app';
-import users from '../models/signup';
 
 dotenv.config();
 

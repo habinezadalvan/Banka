@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import server from '../app';
-import account from '../models/account';
+
 
 dotenv.config();
 
@@ -223,15 +223,6 @@ describe('Bank accounts', () => {
         done();
       });
   });
-  // it('should throw an error when the account to be deleted is not an integer or does not match the account number', (done) => {
-  //   chai.request(server)
-  //     .delete('/api/v1/account/400074400ty#')
-  //     .set('Authorization', token)
-  //     .end((err, res) => {
-  //       res.should.have.status(400);
-  //       done();
-  //     });
-  // });
 });
 
 // CREATE BANK ACCOUNT BEFORE TRANSACTIONS

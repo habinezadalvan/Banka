@@ -65,7 +65,8 @@ class Account {
       });
     }
     // verify if the account activate or deactive exist
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
+    const enteredAcc = parseInt(req.params.accountNumber);
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
     if (!accountData) {
       return res.status(404).json({
         status: 404,
@@ -95,7 +96,8 @@ class Account {
 
   // DELETE A BANK ACCOUNT
   static deleteAccount(req, res) {
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
+    const enteredAcc = parseInt(req.params.accountNumber);
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
     if (!accountData) {
       return res.status(404).json({
         status: 404,

@@ -4,7 +4,6 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import server from '../app';
-import users from '../models/signup';
 
 dotenv.config();
 

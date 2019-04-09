@@ -6,7 +6,7 @@ import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import server from '../app';
-import account from '../models/account';
+
 
 dotenv.config();
 
