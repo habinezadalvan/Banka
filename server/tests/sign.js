@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import server from '../app';
 import users from '../models/signup';
@@ -11,6 +12,10 @@ dotenv.config();
 
 chai.use(chaiHttp);
 chai.should();
+
+const payload = { id: 1 };
+
+const token = jwt.sign(payload, process.env.SECRETKEY);
 
 // signup tests part
 
@@ -37,12 +42,16 @@ describe('signup', () => {
       .post('/api/v1/auth/signup').send({
         firstName: 'chris',
         lastName: 'habineza',
-        email: 'habine@gmail.com',
+        email: 'habineza@gmail.com',
         password: 'qwerty',
         confirmPassword: 'qwer',
       })
       .end((err, res) => {
+        console.log(res.body);
         res.should.have.status(400);
+        res.body.should.be.an('object');
+        res.body.should.have.property('status');
+        res.body.should.have.property('message');
         done();
       });
   });
@@ -57,10 +66,7 @@ describe('signup', () => {
         confirmPassword: 'qwerty',
       })
       .end((err, res) => {
-        const signupdata = users.find(email => email.email === res.body.email);
-        if (signupdata) {
-          res.should.have.status(400);
-        }
+        res.should.have.status(400);
       });
     done();
   });
@@ -133,6 +139,7 @@ describe('signup', () => {
   it('should get all users', (done) => {
     chai.request(server)
       .get('/api/v1/users')
+      .set('Authorization', token)
       .end((err, res) => {
         res.should.have.status(200);
         done();

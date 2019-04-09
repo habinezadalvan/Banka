@@ -8,13 +8,13 @@ class Account {
   // GET ALL ACCOUNTS
   static getAllCounts(erq, res) {
     const accountData = account;
-    if (!accountData) {
-      res.status(404).json({
+    if (accountData.length === 0) {
+      return res.status(404).json({
         status: 404,
         message: 'No bank account found',
       });
     }
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       data: accountData,
     });
@@ -24,7 +24,7 @@ class Account {
   static createBankAccount(req, res) {
     const { error } = validation.AccountsValidation(req.body);
     if (error) {
-      res.status(400).json({
+      return res.status(400).json({
         status: 400,
         error: error.details[0].message,
       });
@@ -42,7 +42,7 @@ class Account {
       balance: parseFloat('0'),
     };
     account.push(accountData);
-    res.status(201).json({
+    return res.status(201).json({
       status: 201,
       data: {
         accountNumber: accountData.accountNumber,
@@ -59,7 +59,7 @@ class Account {
   static activateDeactivateAccount(req, res) {
     const { error } = validation.patchValidation(req.body);
     if (error) {
-      res.status(400).json({
+      return res.status(400).json({
         status: 400,
         error: error.details[0].message,
       });
@@ -67,20 +67,20 @@ class Account {
     // verify if the account activate or deactive exist
     const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
     if (!accountData) {
-      res.status(404).json({
+      return res.status(404).json({
         status: 404,
         message: 'The account you are trying to activate or deactivate do not exist',
       });
     }
     // eslint-disable-next-line no-self-compare
     if (isNaN(req.params.accountNumber)) {
-      res.status(404).json({
-        status: 404,
+      return res.status(400).json({
+        status: 400,
         message: 'The account number do not exist or is not an integer',
       });
     }
     accountData.status = req.body.status;
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       data: {
         accountData: accountData.accountNumber,
@@ -97,21 +97,21 @@ class Account {
   static deleteAccount(req, res) {
     const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
     if (!accountData) {
-      res.status(404).json({
+      return res.status(404).json({
         status: 404,
         message: 'The account you are trying to delete do not exist',
       });
     }
     // eslint-disable-next-line no-self-compare
-    if (isNaN(req.params.accountNumber)) {
-      res.status(404).json({
-        status: 404,
-        message: 'The account number do not exist or is not an integer',
-      });
-    }
+    // if (isNaN(req.params.accountNumber)) {
+    //   return res.status(400).json({
+    //     status: 400,
+    //     message: 'The account number do not exist or is not an integer',
+    //   });
+    // }
     const accountToBeDeleted = account.indexOf(accountData);
     account.splice(accountToBeDeleted, 1);
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       message: 'The bank account has been deleted successfully',
     });

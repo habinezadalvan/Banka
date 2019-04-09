@@ -10,7 +10,7 @@ dotenv.config();
 class SignUp {
   static getUsers(req, res) {
     const signedUsers = users;
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       data: users,
     });
