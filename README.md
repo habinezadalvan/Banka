@@ -80,7 +80,7 @@ Banka User Interface (UI) features
   ----------------
   
   | METHOD  | End-point  | functionality |
-| :------------ |:---------------:| -----:|
+| ------------ |---------------| -----|
 | POST     | /api/v1/auth/signup |user signup |
 | POST     | /api/v1/auth/signin |user login |
 | POST | /api/v1/accounts  |user creates bank account |
