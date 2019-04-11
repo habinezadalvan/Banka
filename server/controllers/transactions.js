@@ -28,7 +28,8 @@ class Transactions {
         error: error.details[0].message,
       });
     }
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber, 10));
+    const accNumberParam = parseInt(req.params.accountNumber, 10);
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === accNumberParam);
     if (!accountData) {
       return res.status(400).json({
         status: 400,
@@ -68,7 +69,8 @@ class Transactions {
         error: error.details[0].message,
       });
     }
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber, 10));
+    const accNumberParam = parseInt(req.params.accountNumber, 10);
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === accNumberParam);
     if (!accountData) {
       return res.status(400).json({
         status: 400,
