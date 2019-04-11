@@ -26,6 +26,7 @@ class SignUp {
       });
     }
     const newId = (users.length + 1);
+    const randomId = Math.floor(Math.random() * 10) + 1;
     const newPassword = (req.body.password);
     let signupdata = users.find(email => email.email === req.body.email);
     if (signupdata) {
@@ -36,7 +37,7 @@ class SignUp {
     }
     const hash = bcrypt.hashSync(newPassword, 10);
     signupdata = {
-      id: newId,
+      id: newId + randomId,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,

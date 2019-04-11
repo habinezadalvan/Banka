@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-spaces */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable radix */
 import account from '../models/account';
@@ -30,9 +31,12 @@ class Account {
       });
     }
     const newId = (account.length + 1);
-    const accountnumber = (4000744000 + account.length);
+    const randomId = Math.floor(Math.random() * 10) + 1;
+    const random = Math.floor(Math.random() * 10000000) + 100;
+    // eslint-disable-next-line template-curly-spacing
+    const accountnumber = parseInt(`4000${  random  }${newId}`, 10);
     const accountData = {
-      id: newId,
+      id: randomId + newId,
       accountNumber: accountnumber,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -74,7 +78,7 @@ class Account {
       });
     }
     // eslint-disable-next-line no-self-compare
-    if (isNaN(req.params.accountNumber)) {
+    if ((isNaN(req.params.accountNumber))) {
       return res.status(400).json({
         status: 400,
         message: 'The account number do not exist or is not an integer',
@@ -96,7 +100,7 @@ class Account {
 
   // DELETE A BANK ACCOUNT
   static deleteAccount(req, res) {
-    const enteredAcc = parseInt(req.params.accountNumber);
+    const enteredAcc = parseInt(req.params.accountNumber, 10);
     const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
     if (!accountData) {
       return res.status(404).json({
@@ -104,13 +108,6 @@ class Account {
         message: 'The account you are trying to delete do not exist',
       });
     }
-    // eslint-disable-next-line no-self-compare
-    // if (isNaN(req.params.accountNumber)) {
-    //   return res.status(400).json({
-    //     status: 400,
-    //     message: 'The account number do not exist or is not an integer',
-    //   });
-    // }
     const accountToBeDeleted = account.indexOf(accountData);
     account.splice(accountToBeDeleted, 1);
     return res.status(200).json({

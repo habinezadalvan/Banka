@@ -1,13 +1,5 @@
 const users = [
   {
-    id: 3,
-    firstName: 'christian',
-    lastName: 'habineza',
-    email: 'habichleon20@gmail.com',
-    password: '$2b$10$EsBoEWLvt/TR90ADWSE.Ou3NyivcwjrPA.StNozVO9VhWHfyrCA52',
-    type: 'client',
-  },
-  {
     id: 2,
     firstName: 'christian',
     lastName: 'habineza',
