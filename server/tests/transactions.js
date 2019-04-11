@@ -34,6 +34,7 @@ describe('create account hook', () => {
         type: 'savings',
       })
       .end((err, res) => {
+        // console.log(res.body);
         res.should.have.status(201);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
@@ -48,6 +49,7 @@ it('should THROW ERROW WHEN NO TRANSACTIONS', (done) => {
     .get('/api/v1/transactions')
     .set('Authorization', token)
     .end((err, res) => {
+      // console.log(res.body);
       res.should.have.status(404);
       res.body.should.be.an('object');
       res.body.should.have.property('status');
@@ -58,19 +60,41 @@ it('should THROW ERROW WHEN NO TRANSACTIONS', (done) => {
 // // CREDIT TESTS
 
 describe('credit', () => {
-  it('should do credit transactions', (done) => {
+  // GET ALL BANK ACCOUNTS
+  it('should be able to get all bank accounts', (done) => {
     chai.request(server)
-      .post('/api/v1/transactions/4000744000/credit')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
-      .send({
-        amount: '10000',
-        cashier: '2',
-      })
       .end((err, res) => {
-        res.should.have.status(201);
+        // console.log(res.body);
+        res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('data');
         done();
+      });
+  });
+
+  // DO CREDIT TRANSACTION
+  it('should do credit transactions', (done) => {
+    chai.request(server)
+      .get('/api/v1/accounts')
+      .set('Authorization', token)
+      .set('Authorization', token)
+      .end((err, res) => {
+        chai.request(server)
+          .post(`/api/v1/transactions/${res.body.data[0].accountNumber}/credit`)
+          .set('Authorization', token)
+          .send({
+            amount: '10000',
+            cashier: '2',
+          })
+          .end((err, res) => {
+            // console.log(res.body);
+            res.should.have.status(201);
+            res.body.should.be.an('object');
+            res.body.should.have.property('data');
+            done();
+          });
       });
   });
   it('should throw an error when the account to credit on do not exists', (done) => {
@@ -141,7 +165,7 @@ describe('credit', () => {
       .post('/api/v1/transactions/40007440/credit')
       .set('Authorization', token)
       .send({
-        amount: '10000',
+        amount: '100000',
         cashier: '2idi',
       })
       .end((err, res) => {
@@ -156,17 +180,24 @@ describe('credit', () => {
 describe('debit', () => {
   it('should do debit transactions', (done) => {
     chai.request(server)
-      .post('/api/v1/transactions/4000744000/debit')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
-      .send({
-        amount: '10000',
-        cashier: '2',
-      })
       .end((err, res) => {
-        res.should.have.status(201);
-        res.body.should.be.an('object');
-        res.body.should.have.property('data');
-        done();
+        // console.log(res.body);
+        chai.request(server)
+          .post(`/api/v1/transactions/${res.body.data[0].accountNumber}/debit`)
+          .set('Authorization', token)
+          .send({
+            amount: '10000',
+            cashier: '2',
+          })
+          .end((err, res) => {
+            // console.log(res.body);
+            res.should.have.status(201);
+            res.body.should.be.an('object');
+            res.body.should.have.property('data');
+            done();
+          });
       });
   });
   it('should throw an error when the account to debit on do not exists', (done) => {
@@ -184,15 +215,21 @@ describe('debit', () => {
   });
   it('should throw an error when there is no enough amount', (done) => {
     chai.request(server)
-      .post('/api/v1/transactions/4000744000/debit')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
-      .send({
-        amount: '10000',
-        cashier: '2',
-      })
       .end((err, res) => {
-        res.should.have.status(400);
-        done();
+        chai.request(server)
+          .post(`/api/v1/transactions/${res.body.data[0].accountNumber}/debit`)
+          .set('Authorization', token)
+          .send({
+            amount: '500000',
+            cashier: '2',
+          })
+          .end((err, res) => {
+            console.log(res.body);
+            res.should.have.status(400);
+            done();
+          });
       });
   });
   it('should throw an error when amount is not provided', (done) => {
@@ -245,11 +282,13 @@ describe('debit', () => {
         done();
       });
   });
+  // get all the transactions
   it('should GET ALL TRANSACTIONS', (done) => {
     chai.request(server)
       .get('/api/v1/transactions')
       .set('Authorization', token)
       .end((err, res) => {
+        // console.log(res.body);
         res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('status');

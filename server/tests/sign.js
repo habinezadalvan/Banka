@@ -46,7 +46,6 @@ describe('signup', () => {
         confirmPassword: 'qwer',
       })
       .end((err, res) => {
-        console.log(res.body);
         res.should.have.status(400);
         res.body.should.be.an('object');
         res.body.should.have.property('status');

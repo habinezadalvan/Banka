@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable radix */
-import moment from 'moment';
 import transactions from '../models/transactions';
 import validation from '../helpers/transactions';
 import account from '../models/account';
@@ -29,7 +28,7 @@ class Transactions {
         error: error.details[0].message,
       });
     }
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber, 10));
     if (!accountData) {
       return res.status(400).json({
         status: 400,
@@ -41,9 +40,10 @@ class Transactions {
         message: `you have insufficient amount of balance and your balance is ${accountData.balance}`,
       });
     }
+    const randomId = Math.floor(Math.random() * 10) + 1;
     const debitData = {
-      transactionId: transactions.length + 1,
-      createdOn: Date,
+      transactionId: (randomId + transactions.length + 1),
+      createdOn: new Date(),
       accountNumber: req.params.accountNumber,
       cashier: req.body.cashierNumber,
       transactionType: 'debit',
@@ -68,16 +68,17 @@ class Transactions {
         error: error.details[0].message,
       });
     }
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber));
+    const accountData = account.find(bankAcc => bankAcc.accountNumber === parseInt(req.params.accountNumber, 10));
     if (!accountData) {
       return res.status(400).json({
         status: 400,
         message: 'The account you are trying to credit to does not exists',
       });
     }
+    const randomId = Math.floor(Math.random() * 10) + 1;
     const creditData = {
-      transactionId: transactions.length + 1,
-      createdOn: Date,
+      transactionId: (randomId + transactions.length + 1),
+      createdOn: new Date(),
       accountNumber: req.params.accountNumber,
       cashier: req.body.cashierNumber,
       transactionType: 'credit',

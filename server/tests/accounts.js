@@ -19,18 +19,16 @@ const payload = {
 
 const token = jwt.sign(payload, process.env.SECRETKEY);
 
-before('signup hook', () => {
-  it('should signup', (done) => {
+before('login hook', () => {
+  it('should login', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
-        firstName: 'christian',
-        lastName: 'habineza',
-        email: 'habichleon2040@gmail.com',
+      .post('/api/v1/auth/signin').send({
+        email: 'habinezadalvan@gmail.com',
         password: '12345',
-        confirmPassword: '12345',
       })
       .end((err, res) => {
-        res.should.have.status(201);
+        // console.log(res.body);
+        res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
         res.body.should.have.property('data');
@@ -39,32 +37,18 @@ before('signup hook', () => {
   });
 });
 // GET ALL ACCOUNTS WHEN NONE EXISTS
-
 describe('get accounts when do not exists', () => {
   it('should throw 404 error if there is no bank accounts', (done) => {
     chai.request(server)
       .get('/api/v1/accounts')
       .set('Authorization', token)
       .end((err, res) => {
+        // console.log(res.body);
         res.should.have.status(404);
         done();
       });
   });
 });
-
-//   it('should throw 404 error if there is no bank accounts', (done) => {
-//     chai.request(server)
-//       .get('/api/v1/accounts')
-//       .end((err, res) => {
-//         const accountData = account;
-//         if (!accountData) {
-//           res.should.have.status(404);
-//         }
-//         done();
-//       });
-//   });
-// });
-
 // // CREATE BANK ACCOUNT
 
 describe('Bank accounts', () => {
@@ -79,6 +63,7 @@ describe('Bank accounts', () => {
         type: 'saving',
       })
       .end((err, res) => {
+        // console.log(res.body);
         res.should.have.status(201);
         res.body.should.be.an('object');
         res.body.should.have.property('data');
@@ -141,18 +126,61 @@ describe('Bank accounts', () => {
         done();
       });
   });
-  it('should be able to activate or deactivate an account', (done) => {
+  // GET ALL BANK ACCOUNTS
+
+  it('should be able to get all bank accounts', (done) => {
     chai.request(server)
-      .patch('/api/v1/account/4000744000')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
-      .send({
-        status: 'active',
-      })
       .end((err, res) => {
+        // console.log(res.body);
         res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('data');
         done();
+      });
+  });
+  it('should throw an error when unauthorized', (done) => {
+    chai.request(server)
+      .get('/api/v1/accounts')
+      .end((err, res) => {
+        res.should.have.status(401);
+        done();
+      });
+  });
+  it('should throw an error when wrong token', (done) => {
+    chai.request(server)
+      .get('/api/v1/accounts')
+      .set('Authorization', 'wwwewe')
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.an('object');
+        res.body.should.have.property('err');
+        res.body.err.should.have.property('name');
+        res.body.err.should.have.property('message');
+        done();
+      });
+  });
+
+  // activate or deactivate bank account
+  it('should be able to activate or deactivate an account', (done) => {
+    chai.request(server)
+      .get('/api/v1/accounts')
+      .set('Authorization', token)
+      .end((err, res) => {
+        // console.log(res.body);
+        chai.request(server)
+          .patch(`/api/v1/account/${res.body.data[0].accountNumber}`)
+          .set('Authorization', token)
+          .send({
+            status: 'active',
+          })
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.an('object');
+            res.body.should.have.property('data');
+            done();
+          });
       });
   });
   it('should throw an errow when status is not entered', (done) => {
@@ -193,24 +221,39 @@ describe('Bank accounts', () => {
   });
   it('should throw an error when the account to be activated or deactivated is not an integer', (done) => {
     chai.request(server)
-      .patch('/api/v1/account/4000744000rt')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
-      .send({
-        status: 'active',
-      })
       .end((err, res) => {
-        res.should.have.status(400);
-        done();
+        // console.log(res.body);
+        chai.request(server)
+          .patch(`/api/v1/account/${res.body.data[0].accountNumber}${'hsh'}`)
+          .set('Authorization', token)
+          .send({
+            status: 'active',
+          })
+          .end((err, res) => {
+            // console.log(res.body);
+            res.should.have.status(400);
+            done();
+          });
       });
   });
+  // delete bank account
   it('should be able to delete a bank account', (done) => {
     chai.request(server)
-      .delete('/api/v1/account/4000744000')
+      .get('/api/v1/accounts')
       .set('Authorization', token)
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('message');
-        done();
+        // console.log(res.body);
+        chai.request(server)
+          .delete(`/api/v1/account/${res.body.data[0].accountNumber}`)
+          .set('Authorization', token)
+          .end((err, res) => {
+            // console.log(res.body);
+            res.should.have.status(200);
+            res.body.should.have.property('message');
+            done();
+          });
       });
   });
   it('should throw an error when there is no bank account to delete', (done) => {
@@ -220,65 +263,6 @@ describe('Bank accounts', () => {
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.have.property('message');
-        done();
-      });
-  });
-});
-
-// CREATE BANK ACCOUNT BEFORE TRANSACTIONS
-
-describe('create account hook', () => {
-  it('should create account hook', (done) => {
-    chai.request(server)
-      .post('/api/v1/accounts')
-      .set('Authorization', token)
-      .send({
-        email: 'habinezadalvan@gmail.com',
-        firstName: 'christian',
-        lastName: 'habineza',
-        type: 'savings',
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
-        res.body.should.be.an('object');
-        res.body.should.have.property('status');
-        res.body.should.have.property('data');
-        done();
-      });
-  });
-});
-// // GET ALL BANK ACCOUNTS
-
-describe('get all bank accounts', () => {
-  it('should be able to get all bank accounts', (done) => {
-    chai.request(server)
-      .get('/api/v1/accounts')
-      .set('Authorization', token)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.an('object');
-        res.body.should.have.property('data');
-        done();
-      });
-  });
-  it('should throw an error when unauthorized', (done) => {
-    chai.request(server)
-      .get('/api/v1/accounts')
-      .end((err, res) => {
-        res.should.have.status(401);
-        done();
-      });
-  });
-  it('should throw an error when wrong token', (done) => {
-    chai.request(server)
-      .get('/api/v1/accounts')
-      .set('Authorization', 'wwwewe')
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.be.an('object');
-        res.body.should.have.property('err');
-        res.body.err.should.have.property('name');
-        res.body.err.should.have.property('message');
         done();
       });
   });
