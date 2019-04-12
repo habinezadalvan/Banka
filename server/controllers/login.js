@@ -34,7 +34,14 @@ class Login {
         password: truePassword,
       };
       // sign up Authentication
-      const token = jwt.sign({ id: logindata.id }, process.env.SECRETKEY);
+      const payload = {
+        id: logindata.id,
+        firstName: logindata.firstName,
+        lastName: logindata.lastName,
+        email: logindata.email,
+      };
+
+      const token = jwt.sign(payload, process.env.SECRETKEY);
       users.push(logindata);
       return res.status(200).json({
         status: 200,

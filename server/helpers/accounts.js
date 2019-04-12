@@ -5,10 +5,7 @@ class ValidateAccounts {
   static AccountsValidation(accountData) {
     const Schema = {
       accountNumber: Joi.number(),
-      firstName: Joi.string().required(),
-      lastName: Joi.string().required(),
-      email: Joi.string().required().email().max(100),
-      status: Joi.valid('active', 'dormant'),
+      status: Joi.valid('active', 'dormant', 'draft'),
       type: Joi.string().required(),
     };
     return Joi.validate(accountData, Schema);

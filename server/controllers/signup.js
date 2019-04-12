@@ -26,7 +26,7 @@ class SignUp {
       });
     }
     const newId = (users.length + 1);
-    const randomId = Math.floor(Math.random() * 10) + 1;
+    const randomId = Math.floor(Math.random() * 1000) + 100;
     const newPassword = (req.body.password);
     let signupdata = users.find(email => email.email === req.body.email);
     if (signupdata) {
@@ -45,7 +45,14 @@ class SignUp {
       type: 'client',
     };
     // sign up Authentication
-    const token = jwt.sign({ id: signupdata.id }, process.env.SECRETKEY);
+    const payload = {
+      id: signupdata.id,
+      firstName: signupdata.firstName,
+      lastName: signupdata.lastName,
+      email: signupdata.email,
+    };
+
+    const token = jwt.sign(payload, process.env.SECRETKEY);
     // validate confirmPassword
     if (req.body.password !== req.body.confirmPassword) {
       return res.status(400).json({
