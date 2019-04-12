@@ -16,6 +16,9 @@ chai.should();
 
 const payload = {
   id: 1,
+  firstName: 'christian',
+  lastName: 'habineza',
+  email: 'habinezadalvan@gmail.com',
 };
 
 const token = jwt.sign(payload, process.env.SECRETKEY);
@@ -58,9 +61,6 @@ describe('Bank accounts', () => {
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        firstName: 'christian',
-        lastName: 'habineza',
-        email: 'habinezadalvan@gmail.com',
         type: 'saving',
       })
       .end((err, res) => {

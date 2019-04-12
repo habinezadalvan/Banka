@@ -17,8 +17,10 @@ chai.should();
 
 const payload = {
   id: 1,
+  firstName: 'christian',
+  lastName: 'habineza',
+  email: 'habinezadalvan@gmail.com',
 };
-
 const token = jwt.sign(payload, process.env.SECRETKEY);
 
 // CREATE BANK ACCOUNT BEFORE TRANSACTIONS
@@ -29,9 +31,6 @@ describe('create account hook', () => {
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        email: 'habinezadalvan@gmail.com',
-        firstName: 'christian',
-        lastName: 'habineza',
         type: 'savings',
       })
       .end((err, res) => {
