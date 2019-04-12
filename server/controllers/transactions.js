@@ -41,21 +41,29 @@ class Transactions {
         message: `you have insufficient amount of balance and your balance is ${accountData.balance}`,
       });
     }
-    const randomId = Math.floor(Math.random() * 10) + 1;
+    const randomId = Math.floor(Math.random() * 1000) + 100;
     const debitData = {
       transactionId: (randomId + transactions.length + 1),
       createdOn: new Date(),
-      accountNumber: req.params.accountNumber,
-      cashier: req.body.cashierNumber,
       transactionType: 'debit',
+      accountNumber: req.params.accountNumber,
+      cashier: req.body.cashier,
       amount: parseFloat(req.body.amount),
+      oldBalance: (accountData.balance - parseFloat(req.body.amount)) + parseFloat(req.body.amount),
       newBalance: accountData.balance - parseFloat(req.body.amount),
     };
     accountData.balance = debitData.newBalance;
     transactions.push(debitData);
     return res.status(201).json({
       status: 201,
-      data: debitData,
+      data: {
+        transactionId: debitData.transactionId,
+        accountNumber: debitData.accountNumber,
+        amount: debitData.amount,
+        cashier: debitData.cashier,
+        transactionType: debitData.transactionType,
+        accountBalance: debitData.newBalance,
+      },
     });
   }
 
@@ -77,13 +85,13 @@ class Transactions {
         message: 'The account you are trying to credit to does not exists',
       });
     }
-    const randomId = Math.floor(Math.random() * 10) + 1;
+    const randomId = Math.floor(Math.random() * 1000) + 100;
     const creditData = {
       transactionId: (randomId + transactions.length + 1),
       createdOn: new Date(),
-      accountNumber: req.params.accountNumber,
-      cashier: req.body.cashierNumber,
       transactionType: 'credit',
+      accountNumber: req.params.accountNumber,
+      cashier: req.body.cashier,
       amount: parseFloat(req.body.amount),
       oldBalance: accountData.balance,
       newBalance: accountData.balance + parseFloat(req.body.amount),
@@ -92,7 +100,14 @@ class Transactions {
     transactions.push(creditData);
     return res.status(201).json({
       status: 201,
-      data: creditData,
+      data: {
+        transactionId: creditData.transactionId,
+        accountNumber: creditData.accountNumber,
+        amount: creditData.amount,
+        cashier: creditData.cashier,
+        transactionType: creditData.transactionType,
+        accountBalance: creditData.newBalance,
+      },
     });
   }
 }
