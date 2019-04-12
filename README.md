@@ -93,7 +93,7 @@ Banka User Interface (UI) features
 | GET | /api/v1/transactions |    get all transactions |
 
 
-data structures for specific endpoints
+data structures examples for specific endpoints 
 --------------------------------------
 
 *1. signup endpoint*
@@ -121,10 +121,7 @@ data structures for specific endpoints
 
 ``{
 
-	"email": "habinezadalvan@gmail.com",
-	"firstName": "christian",
-	"lastName":"habineza",
-	"type":"savings"
+	"type":"savings"  // savings or current
   
 }``
 
