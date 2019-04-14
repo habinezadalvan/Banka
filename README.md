@@ -31,7 +31,7 @@ Banka User Interface (UI) features
 
   10. Admin can create staff and admin user accounts.
   
-  Technology, tools and frameworks used
+  Technology and tools used
   ------------------------------
   
   **Frontend**
@@ -89,7 +89,7 @@ Banka User Interface (UI) features
   Banka endpoints
   ----------------
   
-  | METHOD  | End-point  | functionality |
+  | METHOD  | End-point  | Description |
 | ------------ |---------------| -----|
 | POST     | /api/v1/auth/signup |user signup |
 | POST     | /api/v1/auth/signin |user login |
