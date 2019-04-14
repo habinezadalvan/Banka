@@ -31,7 +31,7 @@ Banka User Interface (UI) features
 
   10. Admin can create staff and admin user accounts.
   
-  Technology and frameworks used
+  Technology, tools and frameworks used
   ------------------------------
   
   **Frontend**
@@ -40,19 +40,29 @@ Banka User Interface (UI) features
   
   2. css : For styling
   
-  3. javascript : For extra functionality 
+  3. Javascript : For extra functionality 
+  
+  4. gh-pages : For hosting UI
   
   **Backend**
   
-  1. node.js : JavaScript run-time environment 
+  1. Node.js : JavaScript run-time environment 
   
   2. Express : Framework for Node.js
   
-  3. mocha : Testing framework
+  3. Mocha : Testing framework
   
-  4. chai : Assertion library for tests
+  4. Chai : Assertion library for tests
   
-  5. javascript : programming language
+  5. Javascript : programming language
+  
+  6. Heroku : For backend app deployment
+  
+  6. Travis CI : Continuous integration testing
+  
+  7. Coverall : Continuous integration test coverage
+  
+  8. Code-Climate : Continuous integration code quality
   
   
   Prerequisities
