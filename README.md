@@ -31,6 +31,14 @@ Banka User Interface (UI) features
 
   10. Admin can create staff and admin user accounts.
   
+  
+  **UI validation Key notes**
+  1. When login or sign up, password should be 6 to 12 characters with at least 1 capital and small letters, and a number.
+  
+  2. To access the staff and admin page you should use staff@gmail.com and admin@gmail.com respectively.
+  
+  3. To access user's dashboard you can login or sign up with any email.
+  
   Technology and tools used
   ------------------------------
   
