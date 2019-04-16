@@ -101,3 +101,54 @@ body{
     right: 15px;
 
 }
+
+/* media queries for login */
+
+@media (max-width: 1440px){
+    .non-slider .login .loginInput{
+        margin-left: 120px;
+    }
+    .non-slider .login{
+        width: 50%;
+    }
+    .non-slider .login input[type="submit"]{
+        margin-left: 120px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 1024px){
+    .non-slider .login .loginInput{
+        margin-left: 90px;
+    }
+    .non-slider .login{
+        width: 60%;
+    }
+    .non-slider .login input[type="submit"]{
+        margin-left: 90px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 768px){
+    .non-slider .login .loginInput{
+        margin-left: 85px;
+    }
+    .non-slider .login{
+        width: 70%;
+    }
+    .non-slider .login input[type="submit"]{
+        margin-left: 85px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 425px){
+    .non-slider .login .loginInput{
+        margin-left: 50px;
+    }
+    .non-slider .login{
+        width: 80%;
+    }
+    .non-slider .login input[type="submit"]{
+        margin-left: 50px;
+        margin-bottom: 30px;
+    }
+}

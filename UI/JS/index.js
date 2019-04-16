@@ -110,7 +110,7 @@ const onInputLoginFunction = () => {
 };
 // AFTER SIGN UP PAGE
 const showHiddenMenuArea = () => {
-  document.getElementById('hidden-nav-bar').style.width = '30%';
+  document.getElementById('hidden-nav-bar').style.width = '40%';
   document.getElementById('main-areaPage').style.marginLeft = '0';
   document.getElementById('navbarId').style.marginLeft = '0';
   document.getElementById('barsMenu').style.display = 'none';
