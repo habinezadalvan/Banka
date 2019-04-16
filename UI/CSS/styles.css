@@ -1,16 +1,18 @@
 body{
+    border: 2px solid black;
     margin: 0;
     padding: 0;
+    height: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    
 }
 /* navigation bar styling */
 .navbar{
     /* border: 2px solid red; */
-    background-color: #3b5998;
+    background-color:#4f7de0;
     display: flex;
     width: 100%;
-    height: 70px;
+    height: 5%;
     
     
 }
@@ -150,6 +152,7 @@ body{
         margin: 0;
         padding: 0;
         width: 100%;
+        height: 100%;
         background-position: relative;
        
     }
@@ -182,6 +185,7 @@ body{
     body{
         margin: 0;
         padding: 0;
+        height: 100%;
         width: 100%;
     }
     .navbar{
@@ -209,43 +213,38 @@ body{
     .navbar .navbar2 {
         font-size: 25px;
     }
-    #main-area .slider{
-        flex-basis: 30%;
-    }
-    #main-area .non-slider{
-        flex-basis: 70%;
-    }
    
 }
 
 /* MAIN AREA STYLING */
 
 #main-area{
+    /* border: 2px solid gold; */
    display: flex;
    flex-direction: column;
    transition: margin-left 0.5s; 
    width: 100%;
-   height: 670px;
+   height: 100%;
    padding: 0;
    margin:0;
 }
-
 #main-area .main-area-images{
-    /* height: 300px; */
+    height: 500px;
     width: 100%;
 }
 
 #main-area .slider{
+    /* border: 2px solid red; */
     flex-basis: 40%;
-    border-bottom-left-radius: 2%;
     overflow: hidden;
     background: #0c2d75;
     opacity: .9;
     z-index: 3;
-    border-bottom: 5px solid rgb(253, 176, 9);
+    /* border-bottom: 5px solid rgb(253, 176, 9); */
 }
 #main-area .non-slider{
-    background: #3b5998;
+    /* border: 2px solid green; */
+    background:whi;
     flex-basis: 60%;
 }
 
@@ -326,7 +325,7 @@ body{
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 70px;
+    padding-top: 230px;
     width: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     z-index: 9;
@@ -343,7 +342,7 @@ body{
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 30px;
+    padding-top: 160px;
     width: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     z-index: 9;
@@ -395,23 +394,25 @@ body{
     .non-slider{
         display: block;
     }
+    #main-area .slider{
+        flex-basis: 30%;
+    }
+    #main-area .non-slider{
+        flex-basis: 70%;
+    }
 
 }
 
 /* styles for non-sliding body */
 .non-slider{
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
 }
-.non-sliderOne{
-    flex-basis: 30%;
-    margin: 15px 0 15px 10px;
 
+.non-slider{
+    /* flex-basis: 70%; */
 }
-.non-sliderTwo{
-    flex-basis: 70%;
-}
-.homeServices{
+/* .homeServices{
     width: 90%;
     margin: 15px auto;
     padding: 0;
@@ -424,17 +425,17 @@ body{
      transition-duration: 1s;
     /* animation: homeServices 4s; */
     
-}
+/* }
 .homeServices:hover{
     background:#3b5998;
     transform: rotateY(180deg);
-}
+} */
 /* @keyframes homeServices{
     0%{left: -1000px}
     100%{left: 0px;}
 } */
 
-.more{
+/* .more{
     width: 90%;
     height: 60px;
     padding-top: 7px;
@@ -445,8 +446,8 @@ body{
     background-size: 100% 100%;
     transition-property: all;
      transition-duration: 1s;
-    /* animation: homeServices 10s  ease infinite; */
-}
+    animation: homeServices 10s  ease infinite; */
+/* }
 .more:hover{
     background:#3b5998;
     transform: rotateY(180deg);
@@ -456,7 +457,7 @@ body{
     color:white;
     padding-top: 5px;
 
-}
+}  */
 
 .non-sliderOne h1{
     text-align: center;
@@ -497,269 +498,67 @@ body{
     75%{margin-top:10px}
     100%{margin-top:0}
 }
-/* css styles for user sign up */
 
-.non-sliderTwo{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.non-sliderTwo .signUp{
-    display: none;
-    position: relative;
-    margin: 50px auto;
-    width: 90%;
-    background: #3b5998;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px;
-    transition: transform 1s;
-    animation: 2s animation;
-    animation-fill-mode: forwards;
-}
-
-/* signup keyframes animation */
-@keyframes animation{
-    0%{top:-100px;}
-    100%{top:0px;}
-}
-.non-sliderTwo .signUp:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-}
-.non-sliderTwo .signUp h2{
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-}
-.non-sliderTwo .signUp .signUpInput{
-    position: relative;
-}
-.non-sliderTwo .signUp .signUpInput input{
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    margin-bottom: 20px;
-}
-.non-sliderTwo .signUp .signUpInput label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff;
-    pointer-events: none;
-    transition: .9s;
-}
-.non-sliderTwo .signUp .signUpInput input:focus ~ label,
-.non-sliderTwo .signUp .signUpInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-}
-
-.non-sliderTwo .signUp input[type="submit"]{
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: rgb(253, 176, 9);
-    padding: 15px 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: center;
-    margin-left: 430px;
-}
-.non-sliderTwo .signUp input[type="submit"]:hover{
-    background: rgb(253, 176, 9);
-    opacity: .5;
-    color: #3b5998;
-}
-.closeSignUp-icon{
-    text-decoration: none;
-    font-size: 30px;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 15px;
-
-}
-.closeSignUp-icon:hover{
-    color: #6b9aff;
-}
 /* media queries fron sign up button */
 
 @media all and (max-width: 1440px){
-    .non-sliderTwo .signUp input[type="submit"]{
-        margin-left: 380px;
-    }
-}
-
-@media all and (max-width: 1024px){
-    .non-sliderTwo .signUp input[type="submit"]{
-        margin-left: 250px;
-    }
-}
-@media all and (max-width: 959px){
-    .non-sliderTwo .signUp input[type="submit"]{
-        margin-left: 255px;
-
-    }
-}
-@media all and (max-width: 649px){
-    .non-sliderTwo .signUp input[type="submit"]{
-        margin-left: 118px;
-    }
-}
-.errMessage{
-    display: none;
-    color: rgb(252, 193, 66);
-}
-/* css styles for login UI */
-
-.non-sliderTwo .login{
-    display: none;
-    position: relative;
-    margin: 50px auto;
-    width: 90%;
-    background: #3b5998;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
-    transition: transform 1s;
-    animation: 2s animation;
-    animation-fill-mode: forwards;
-}
-@keyframes animation{
-    0%{top:-100px;}
-    100%{top:0px;}
-}
-.non-sliderTwo .login:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-}
-.non-sliderTwo .login h2{
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-}
-.non-sliderTwo .login .loginInput{
-    position: relative;
-}
-.non-sliderTwo .login .loginInput input{
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    margin-bottom: 20px;
-}
-.non-sliderTwo .login .loginInput label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff;
-    pointer-events: none;
-    transition: .9s;
-}
-.non-sliderTwo .login .loginInput input:focus ~ label,
-.non-sliderTwo .login .loginInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-}
-
-.non-sliderTwo .login input[type="submit"]{
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: rgb(253, 176, 9);
-    padding: 15px 30px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 18px;
-    text-align: center;
-    margin-left: 430px;
-}
-.non-sliderTwo .login input[type="submit"]:hover{
-    background: rgb(253, 176, 9);
-    opacity: .5;
-    color: #3b5998;
-}
-.closeSignUp-icon{
-    text-decoration: none;
-    font-size: 30px;
-    color: #fff;
-    position: absolute;
-    top: 0;
-    right: 15px;
-
-}
-/* media queries fron sign up button */
-
-@media all and (max-width: 1440px){
-    .non-sliderTwo .login input[type="submit"]{
+    .non-slider .login input[type="submit"]{
         margin-left: 380px;
     }
 }
 @media all and (max-width: 1024px){
-    .non-sliderTwo .login input[type="submit"]{
+    .non-slider .login input[type="submit"]{
         margin-left: 250px;
     }
 }
 @media all and (max-width: 959px){
-    .non-sliderTwo .login input[type="submit"]{
+    .non-slider .login input[type="submit"]{
         margin-left: 270px;
     }
     
 }
 @media all and (max-width: 649px){
-    .non-sliderTwo .login input[type="submit"]{
+    .non-slider .login input[type="submit"]{
         margin-left: 118px;
     }
 }
+.save{
+    border: 2px solid black;
+    width: 20%;
+    float: left;
+    margin: 20px;
+    margin-left: 30px;
+    padding: 20px;
+    text-align: center;
+    height: 200px;
+}
 .adsArea{
-    position: relative;
+    widows: 100%;
+    margin: 50px;
     padding: 0;
     text-align: center;
-    margin-top: 150px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+}
+.window{
+    /* border: 2px solid black; */
+    width: 25%;
+    margin-left: 20px;
+    text-align: center;
+    height: 250px;
+    background-color:#4f7de0;
+    color: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,.9);
+}
+.window:hover{
+    background: #6b9aff;
+}
+.window i {
+    margin-top: 10px;
+    font-size: 80px;
     color: rgb(253, 176, 9);
+}
+.window h1 {
     font-size: 40px;
-    font-weight: 900;
-    animation: 2s adsarea;
-    animation-fill-mode: forwards;
-}
-.adsArea:hover{
-    color: #4a6f8d;
-}
-@keyframes adsarea{
-    0%{left: -200px;}
-    100%{left: 0px;}
 }
 /* AFTER SIGN UP PAGE STYLING */
 #main-areaPage{
@@ -769,82 +568,111 @@ body{
     transition: margin-left 0.5s; 
     border-top: 4px solid rgb(253, 176, 9);
     width: 100%;
-    height: 726px;
+    height: 800px;
 }
 .fa-bars{
     display: none;
 }
 .main-area-left{
+    /* border: 2px solid black; */
     flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
 }
 .main-area-right{
+    /* border: 2px solid red; */
     text-align: center;
     flex-basis: 70%;
-}
-
-.profileImage{
-    display: block;
-    position: relative;
-    margin: 80px auto 0 auto;
-    width: 80%;
-    height: 350px;
-    background: #3b5998;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: url('../ASSETS/analysis-banking-businesswoman-1451448.jpg');
+    background-size: cover;
+ }
+.main-area-left .profile{
+    font-size: 20px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px auto;
+    width: 100%;
     text-align: center;
-    color: #fff;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px;
-    transition: transform .7s;
-    animation: 2s profile;
-    animation-fill-mode: forwards;
+    /* padding-top: 30px; */
 }
-
-
-
+.main-area-left .profileTitle{
+    background: #4f7de0;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin-top: 10px;
+}
+.main-area-left .profileTitle h2{
+    margin-top: 5px;
+}
+.main-area-left .profile img{
+    margin-left: 50px;
+    border-radius: 100%;
+}
+.main-area-left .sideMenu{
+    width: 70%;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main-area-left .sideMenu ul{
+    /* border: 2px solid red; */
+    list-style: none;
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+    margin-left: 50px;
+}
+.main-area-left .sideMenu ul li{
+    /* border: 2px solid yellow; */
+    padding: 20px;
+}
+.main-area-left .sideMenu ul a{
+    /* border: 2px solid blue; */
+    text-decoration: none;
+    color: white;
+}
+.main-area-left .sideMenu ul a:hover{
+    color: #4f7de0;
+}
+/* 
 @keyframes profile{
 0%{top:-80px}
 100%{top: 0px}
-}
+} */
 
-.profileImage h2{
+/* .main-area-left h2{
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
-}
-.profileImage img{
+} */
+
+/* .profile{
+    margin-left: 250px;
+    margin-top: 20px;
+} */
+/* .profile img{
     position: absolute;
-    margin-left: 0;
-    text-align: center;
-    border-radius: 100%;  
+    margin-left: 120px;
+    border-radius: 100%;
 }
-
-.profileImage button{
-    margin: 120px 0 0 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    background: rgb(253, 176, 9);
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 10px;
-    text-align: center;
-
+.profile span {
+    color: white;
+    margin-top: 100px;
 }
-.profileImage button a {
+.profile button a {
     text-decoration: none;
 }
-.profileImage button a:hover{
+.profile button a:hover{
     color: #3b5998;
-}
-.profileImage:hover{
+} */
+/* .main-area-left:hover{
     transform: scale(.9);
     background: #6b9aff;
     color: rgb(253, 176, 9);
-}
+} */
 .signupDashboard{ 
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 100px;
@@ -893,7 +721,7 @@ body{
     .main-area-right{
         flex-basis: 90%;
     }
-    .profileImage{
+    .main-area-left{
         margin-bottom: 80px;
     }
     .adsArea{
@@ -922,26 +750,26 @@ body{
 .main-area-right .createAccount{
     display: none;
     position: relative;
-    margin: 82px auto 0 auto;
-    width: 90%;
+    margin: 90px auto 0 auto;
+    width: 50%;
     background: #3b5998;
     padding: 20px;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
-    transition: transform 1s;
+    /* transition: transform 1s;
     animation: 2s animation;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; */
 }
 
-@keyframes animation{
+/* @keyframes animation{
 0%{top:-50px;}
 100%{top:0px;}
-}
-.main-area-right .createAccount:hover{
+} */
+/* .main-area-right .createAccount:hover{
     transform: scale(.9);
     background: #6b9aff;
-}
+} */
 .main-area-right .createAccount h2{
     margin: 0 0 30px;
     padding: 0;
@@ -950,21 +778,27 @@ body{
 }
 .main-area-right .createAccount .createAccountInput{
     position: relative;
+    margin-left: 50px;
+    width: 80%;
 }
 .main-area-right .createAccount .createAccountInput input{
-    width: 100%;
-    padding: 10px 0;
+    width: 80%;
+    padding: 17px 0;
+    margin-top: 10px;
     font-size: 16px;
-    letter-spacing: 1px;
-    color: #fff;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* letter-spacing: 1px; */
+    color: black;
+    pointer-events: fill;
+    /* border: none;
+    outline: none; */
+    /* border-bottom: 1px solid #fff; */
+    background: #ddd;
+    /* margin-bottom: 20px; */
 }
 .main-area-right .createAccount .createAccountInput label{
-    position: absolute;
+    /* position: absolute;
     top: 0;
     left: 0;
     padding:0;
@@ -973,16 +807,16 @@ body{
     letter-spacing: 1px;
     color: #fff;
     pointer-events: none;
-    transition: .9s;
+    transition: .9s; */
 }
-.main-area-right .createAccount .createAccountInput input:focus ~ label,
+/* .main-area-right .createAccount .createAccountInput input:focus ~ label,
 .main-area-right.createAccount .createAccountInput input:valid ~ label
 {
     top: -10px;
     left: 0;
     color: rgb(253, 176, 9);
     font-size: 15px;
-}
+} */
 
 .main-area-right .createAccount input[type="submit"]{
     background: transparent;
@@ -1011,21 +845,21 @@ body{
     right: 15px;
 
 }
-.createAccountInput select{
-    width: 100%;
-    height: 20px;
-    margin-bottom: 20px;
-    border: none;
-    outline: none;
-    background: transparent;
-    border-bottom: 1px solid #fff;
-    color: #ddd;
+.createAccount select{
+    width: 80%;
+    height: 40px;
+    /* padding: 20px; */
+    margin: 20px auto;
+    /* border: none;
+    outline: none; */
+     background: transparent;
+     color: white;
+    /* border-bottom: 1px solid #fff; */
     font-size: 16px;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
 }
-.createAccountInput select option{
+.createAccount select option{
    background:#3b5998;
-   color: #fff;
    border: none;
 
 }
@@ -1060,29 +894,65 @@ body{
     position: relative;
     margin: 50px auto;
     margin-top: 82px;
-    width: 90%;
+    width: 95%;
     height: 500px;
     background: #3b5998;
     color: #fff;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
-    transition: transform 1s;
+    /* transition: transform 1s; */
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
-    animation: 2s animation;
-    animation-fill-mode: forwards;
+    /* animation: 2s animation;
+    animation-fill-mode: forwards; */
 
 }
 
-@keyframes animation{
+.main-area-right .transactionsPageHome{
+
+    /* border: 2px solid red; */
+    /* display: none; */
+    position: relative;
+    margin: 50px auto;
+    margin-top: 82px;
+    width: 70%;
+    height: 500px;
+    background: #3b5998;
+    color: #fff;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    /* transition: transform 1s; */
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px; 
+    /* animation: 2s animation;
+    animation-fill-mode: forwards; */
+
+}
+
+.main-area-right .transactionsPageHome table, th, td{
+    margin:auto;
+    margin-left: 100px;
+    /* border-bottom: 1px solid white; */
+    text-align: center;
+    /* border-collapse: collapse; */
+    height: 40px;
+    table-layout: fixed;
+    /* opacity: .9; */
+    
+}
+
+
+/* @keyframes animation{
 0%{top:-50px;}
 100%{top:0px;}
-}
-.main-area-right .transactionsPage:hover{
+} */
+/* .main-area-right .transactionsPage:hover{
     transform: scale(.9);
-}
+} */
 .main-area-right .transactionsPage h2{
     margin: 0 0 30px;
     padding: 0;
@@ -1099,12 +969,12 @@ body{
 .main-area-right .transactionsPage table, th, td{
     margin:auto;
     margin-left: 5px;
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
     text-align: center;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     height: 40px;
     table-layout: fixed;
-    opacity: .9;
+    /* opacity: .9; */
     
 }
 
@@ -1185,11 +1055,11 @@ body{
 }
 /* footer styling */
 
-.footer{
+/* .footer{
     width: 100%;
     height: 62px;
     background-color: #3b5998;
-}
+} */
 #footerId{
     transition: margin-left 0.5s;
 }

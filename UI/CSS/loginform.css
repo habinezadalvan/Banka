@@ -1,0 +1,103 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../ASSETS/accounting.jpg');
+    background-size: cover;
+}
+/* css styles for login UI */
+
+.non-slider .login{
+    position: relative;
+    margin: 130px auto;
+    width: 30%;
+    background: #3b5998;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px; 
+    transition: transform 1s;
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+@keyframes animation{
+    0%{top:-100px;}
+    100%{top:0px;}
+}
+/* .non-slider .login:hover{
+    transform: scale(.9);
+    background: #6b9aff;
+} */
+.non-slider .login h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.non-slider .login .loginInput{
+    position: relative;
+    margin-left: 100px;
+    width: 80%;
+}
+.non-slider .login .loginInput input{
+    width: 80%;
+    padding: 17px 0;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    pointer-events: fill;
+    background: #ddd;
+}
+/* .non-slider .login .loginInput label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:0;
+    margin-top: -10px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+    pointer-events: none;
+    transition: .9s;
+} */
+/* .non-slider .login .loginInput input:focus ~ label,
+.non-slider .login .loginInput input:valid ~ label
+{
+    top: -10px;
+    left: 0;
+    color: rgb(253, 176, 9);
+    font-size: 15px;
+} */
+
+.non-slider .login input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin:10px 0 0 100px;
+    width: 64%;
+}
+.non-slider .login input[type="submit"]:hover{
+    background: rgb(253, 176, 9);
+    opacity: .5;
+    color: #3b5998;
+}
+.closeSignUp-icon{
+    text-decoration: none;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+}
