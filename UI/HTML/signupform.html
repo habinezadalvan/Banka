@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/signupform.css">
+    <title>signUp form</title>
+</head>
+<body>
+    
+    <!-- main area -->
+    <section id="main-area">
+        <div class="non-slider">
+                <!-- SIGN UP -->
+                <div class="signUp" id="userSignUp">
+                    <h2>Sign Up form</h2>
+                    <form action="../HTML/signup.html">
+                        <div class="signUpInput">
+                            <input type="text" name="" placeholder="  First Name"  required="">
+                            <!-- <label for="">First name</label> -->
+                        </div>
+                        <div class="signUpInput">
+                            <input type="text" name="" placeholder="  Last Name" required="">
+                            <!-- <label for="">Last name</label> -->
+                        </div>
+                        <div class="signUpInput">
+                            <input type="email" name="" placeholder="  Email" required="">
+                            <!-- <label for="email">Email</label> -->
+                        </div>
+                        <div class="signUpInput">
+                            <input type="password" name="" required="" placeholder="  Password" id="signupInput" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
+                            <!-- <label for="password">Password</label> -->
+                        </div>
+                        <div class="signUpInput">
+                            <input type="password" name="" placeholder="  Confirm Password" required="" id="confirmPasswordInput" oninput="submitSignupFunction()">
+                            <!-- <label for="password">compare Password</label> -->
+                        </div>
+                        <div id="errorMessage" class="errMessage">
+                            <p>Both passwords should match and have 6 to 12 characters, with at least one ([A-Z] & [a-z] & [0-9]</p>
+                        </div>
+                        <input type="submit" value="Sign Up" id="submitbutton">
+                    </form>
+                </div>
+        </div>
+    </section>
+    
+<script src="./JS/index.js"></script>
+</body>
+</html>

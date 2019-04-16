@@ -40,7 +40,7 @@ const signupFunction = () => {
 const closeSignUpFunction = () => {
   signupForm.style.display = 'none';
   document.getElementById('sliderId').style.display = 'block';
-  document.getElementById('ads-area').style.display = 'block';
+  document.getElementById('ads-area').style.display = 'flex';
 };
 // VALIDATE CONFIRM PASSWORD
 
@@ -85,11 +85,11 @@ const loginSubmitFunction = () => {
   const loggingInPerson = document.getElementById('loginEmailField').value;
 
   if ((loggingInPerson === christian || loggingInPerson === adminEmail) && password !== ' ') {
-    loginformAtt.setAttribute('action', './HTML/admin.html');
+    loginformAtt.setAttribute('action', '../HTML/admin.html');
   } else if (loggingInPerson === staffEmail) {
-    loginformAtt.setAttribute('action', './HTML/staff.html');
+    loginformAtt.setAttribute('action', '../HTML/staff.html');
   } else if ((loggingInPerson !== christian && loggingInPerson !== adminEmail && loggingInPerson !== staffEmail && loggingInPerson !== ' ' && password !== ' ')) {
-    loginformAtt.setAttribute('action', './HTML/login.html');
+    loginformAtt.setAttribute('action', '../HTML/login.html');
   } else {
     // window.location.href = './HTML/login.html';
   }
@@ -110,7 +110,7 @@ const onInputLoginFunction = () => {
 };
 // AFTER SIGN UP PAGE
 const showHiddenMenuArea = () => {
-  document.getElementById('hidden-nav-bar').style.width = '30%';
+  document.getElementById('hidden-nav-bar').style.width = '40%';
   document.getElementById('main-areaPage').style.marginLeft = '0';
   document.getElementById('navbarId').style.marginLeft = '0';
   document.getElementById('barsMenu').style.display = 'none';

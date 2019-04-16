@@ -15,14 +15,13 @@
             <span class="open-slide">
                 <i class="fas fa-bars" onclick="showHiddenMenuArea()" id="barsMenu"></i>
             </span>
-            <ul class="navbar-nav">
+            <!-- <ul class="navbar-nav">
                 <li><a href="#" onclick="showCreateAccount()">Credit</a></li>
                 <li><a href="#" onclick="showDebitPage()">Debit</a></li>
                 <li><a href="#" onclick="showTransaction()">Users' Accounts</a></li>
                 <li><a href="#" onclick="showResetPassword()">Reset Password</a></li>
                 <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
-                <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
-            </ul>
+            </ul> -->
        </div>
         <div class="navbar2">
             <span class="banka">
@@ -45,13 +44,27 @@
     <!-- main area -->
     <section id="main-areaPage" >
         <div class="main-area-left" id="main-area-leftId">
-            <div class="profileImage">
-                <h2>Cashier</h2>
-                <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
-                <button><a href="#">Edit Profile Picture</a></button>
-                <h3>Cashier: GISA</h3>
-                <h3>Branch: Gishushu</h3>
-            </div>
+            <div class="profileDiv">
+                <div class="profileTitle">
+                    <h2>Staff</h2>
+                </div>
+                <div class="profile">
+                    <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
+                    <p>Habineza Leon Christian <br>
+                    Branch: Gishushu 
+                    </p>
+                </div>
+        </div>
+        <div class="sideMenu">
+                <ul class="navbar-nav">
+                    <li><a href="#" onclick="showCreateAccount()"><i class="fas fa-credit-card"></i> &nbsp; Credit</a></li>
+                    <li><a href="#" onclick="showDebitPage()"><i class="fas fa-credit-card"></i> &nbsp; Debit</a></li>
+                    <li><a href="#" onclick="showTransaction()"><i class="fas fa-exchange-alt"></i> &nbsp; Users' Accounts</a></li>
+                    <li><a href="#" onclick="showResetPassword()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
+                    <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
+                    <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
+                </ul>
+        </div>
         </div>
         <div class="main-area-right" id="main-area-rightId">
             <!-- <h1>Welcome Banka!</h1> -->
@@ -60,26 +73,28 @@
                 <h2>Credit</h2>
                 <form action="">
                     <div class="createAccountInput">
-                        <input type="number" name="" required="">
-                        <label for="">Account Number</label>
+                        <input type="number" name="" placeholder=" Account Number" required="">
+                        <!-- <label for="">Account Number</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="float" name="" required="">
-                        <label for="">Amount</label>
+                        <input type="float" name="" placeholder=" Amount" required="">
+                        <!-- <label for="">Amount</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" required="">
-                        <label for="">Cashier</label>
+                        <input type="text" name="" placeholder=" Cashier" required="">
+                        <!-- <label for="">Cashier</label> -->
                     </div>
+                   
+                    <div class="createAccountInput">
+                        <input type="float" name="" placeholder=" Account Balance" required="">
+                        <!-- <label for="">Account Balance</label> -->
+                    </div>
+
                     <div class="createAccountInput">
                         <select name="accountType" id="">
                             <option value="">Transaction Type</option>
                             <option value="Current">Credit</option>
                         </select>
-                    </div>
-                    <div class="createAccountInput">
-                        <input type="float" name="" required="">
-                        <label for="">Account Balance</label>
                     </div>
                     
                     <input type="submit" value="Credit">
@@ -92,26 +107,27 @@
                     <h2>Debit</h2>
                     <form action="">
                         <div class="createAccountInput">
-                            <input type="number" name="" required="">
-                            <label for="">Account Number</label>
+                            <input type="number" name="" placeholder=" Account Number" required="">
+                            <!-- <label for="">Account Number</label> -->
                         </div>
                         <div class="createAccountInput">
-                            <input type="float" name="" required="">
-                            <label for="">Amount</label>
+                            <input type="float" name="" placeholder=" Amount" required="">
+                            <!-- <label for="">Amount</label> -->
                         </div>
                         <div class="createAccountInput">
-                            <input type="text" name="" required="">
-                            <label for="">Cashier</label>
+                            <input type="text" name="" placeholder=" Cashier" required="">
+                            <!-- <label for="">Cashier</label> -->
                         </div>
+                        <div class="createAccountInput">
+                            <input type="float" name="" placeholder=" Account Balance" required="">
+                            <!-- <label for="">Account Balance</label> -->
+                        </div>
+
                         <div class="createAccountInput">
                             <select name="accountType" id="">
                                 <option value="">Transaction Type</option>
                                 <option value="Current">Debit</option>
                             </select>
-                        </div>
-                        <div class="createAccountInput">
-                            <input type="float" name="" required="">
-                            <label for="">Account Balance</label>
                         </div>
                         
                         <input type="submit" value="Debit">
@@ -135,7 +151,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>1</td>
-                        <td>0699-2754-100</td>
+                        <td>040-2754-100</td>
                         <td>02-10-2018</td>
                         <td>GISA Chris</td>
                         <td>Saving</td>
@@ -145,7 +161,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>2</td>
-                        <td>0699-2700-105</td>
+                        <td>040-2700-105</td>
                         <td>03-10-2018</td>
                         <td>KAMI Christian</td>
                         <td>Saving</td>
@@ -155,7 +171,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>3</td>
-                        <td>0699-2754-078</td>
+                        <td>040-2754-078</td>
                         <td>02-10-2018</td>
                         <td>GAKWAYA Kevin</td>
                         <td>Current</td>
@@ -165,7 +181,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>4</td>
-                        <td>0699-2764-070</td>
+                        <td>040-2764-070</td>
                         <td>02-10-2018</td>
                         <td>GISA Christophe</td>
                         <td>Saving</td>
@@ -175,7 +191,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>5</td>
-                        <td>0699-2754-085</td>
+                        <td>040-2754-085</td>
                         <td>02-10-2018</td>
                         <td>GASANA Christophe</td>
                         <td>Current</td>
@@ -185,7 +201,7 @@
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>6</td>
-                        <td>0699-2750-020</td>
+                        <td>040-2750-020</td>
                         <td>02-10-2018</td>
                         <td>GISANA Chris</td>
                         <td>Saving</td>
@@ -214,7 +230,7 @@
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td>00040-0699-2754-100</td>
+                    <td>040-2754-100</td>
                     <td>02-10-2018</td>
                     <td>GISA Chris</td>
                     <td>Saving</td>
@@ -229,16 +245,16 @@
                 <h2>Reset Password</h2>
                 <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()">
-                        <label for="password">Old Password</label>
+                        <input type="password" name="" placeholder=" Old Password" required="" oninput="onInputPasswordCreateAccount()">
+                        <!-- <label for="password">Old Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
-                        <label for="password">New Password</label>
+                        <input type="password" name="" placeholder=" New Password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
+                        <!-- <label for="password">New Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()">
-                        <label for="password">Confirm New Password</label>
+                        <input type="password" name="" placeholder=" Confirm Password" required="" oninput="onInputPasswordCreateAccount()">
+                        <!-- <label for="password">Confirm New Password</label> -->
                     </div>
                     <div id="errorMessageCreateAccount" class="errMessage">
                         <p>Password characters should be 6 to 12</p>
@@ -249,14 +265,71 @@
             </div>
             <!-- WELCOME NOTE DIV -->
             <div class="signupDashboard" id="signupDashboard">
-                <h2>Welcome to Banka!</h2>
-                <h3>Get access and enjoy our online banking services</h3>
-                <span>
-                        Banka is a light-weight core banking application that powers banking operations like account
-                        creation, customer deposit and withdrawals. This app is meant to support a single bank, where
-                        users can signup and create bank accounts online, but must visit the branch to withdraw or
-                        deposit money..
-                </span>
+               
+            <div class="transactionsPageHome" id="transactionsPageHome">
+                <h3>List of recent Banka users</h3>
+                <table>
+                     <tr>
+                         <th>No</th>
+                         <th>Account Number</th>
+                         <th>Created On</th>
+                         <th>Owner</th>
+                         <th>Bank Type</th>
+                         <th>Status</th>
+                     </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>1</td>
+                         <td>040-2754-100</td>
+                         <td>02-10-2018</td>
+                         <td>GISA Chris</td>
+                         <td>Saving</td>
+                         <td>Active</td>
+                         </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>2</td>
+                         <td>040-2700-105</td>
+                         <td>03-10-2018</td>
+                         <td>KAMI Christian</td>
+                         <td>Saving</td>
+                         <td>Active</td>
+                         </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>3</td>
+                         <td>040-2754-078</td>
+                         <td>02-10-2018</td>
+                         <td>GAKWAYA Kevin</td>
+                         <td>Current</td>
+                         <td>Active</td>
+                       </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>4</td>
+                         <td>040-2764-070</td>
+                         <td>02-10-2018</td>
+                         <td>GISA Christophe</td>
+                         <td>Saving</td>
+                         <td>Active</td>
+                        </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>5</td>
+                         <td>040-2754-085</td>
+                         <td>02-10-2018</td>
+                         <td>GASANA Christophe</td>
+                         <td>Current</td>
+                         <td>Active</td>
+                       </tr>
+                     <tr onclick="viewSpecificAccountRecord()">
+                         <td>6</td>
+                         <td>040-2750-020</td>
+                         <td>02-10-2018</td>
+                         <td>GISANA Chris</td>
+                         <td>Saving</td>
+                         <td>Active</td>
+                        </tr>
+ 
+                 </table>
+                 <!-- <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a> -->
+            </div>
+
                 
             </div>
 

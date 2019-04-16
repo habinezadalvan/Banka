@@ -1,0 +1,228 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: url('../ASSETS/banka.jpg');
+    background-size: cover;
+}
+/* css styles for user sign up */
+
+.non-slider{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.non-slider .signUp{
+    position: relative;
+    margin: 130px auto;
+    width: 30%;
+    background: #4f7de0;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px;
+    transition: transform 1s;
+    animation: 2s animation;
+    animation-fill-mode: forwards;
+}
+
+/* signup keyframes animation */
+@keyframes animation{
+    0%{top:-100px;}
+    100%{top:0px;}
+}
+/* .non-slider .signUp:hover{
+    transform: scale(.9);
+    background: #6b9aff;
+} */
+.non-slider .signUp h2{
+    /* margin: 0 0 30px; */
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.non-slider .signUp .signUpInput{
+    position: relative;
+    margin-left: 100px;
+    width: 80%;
+}
+.non-slider .signUp .signUpInput input{
+    width: 80%;
+    padding: 17px 0;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* letter-spacing: 1px; */
+    color: black;
+    pointer-events: fill;
+    /* border: none;
+    outline: none; */
+    /* border-bottom: 1px solid #fff; */
+    background: #ddd;
+    /* margin-bottom: 20px; */
+}
+.non-slider .signUp .signUpInput label{
+    /* position: absolute; */
+    /* top: 0;
+    left: 0;
+    padding:0;
+    margin-top: -10px; */
+    /* font-size: 20px;
+    letter-spacing: 1px;
+    color: #fff; */
+    /* pointer-events: none; */
+    /* transition: .9s; */
+}
+/* .non-slider .signUp .signUpInput input:focus ~ label,
+.non-slider .signUp .signUpInput input:valid ~ label
+{
+    top: -10px;
+    left: 0;
+    color: rgb(253, 176, 9);
+    font-size: 15px;
+} */
+
+.non-slider .signUp input[type="submit"]{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    width: 64%;
+    padding: 17px 0;
+    margin: 10px;
+    margin-left: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.non-slider .signUp input[type="submit"]:hover{
+    background: rgb(253, 176, 9);
+    opacity: .5;
+    color: #3b5998;
+}
+.closeSignUp-icon{
+    text-decoration: none;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+}
+/* .closeSignUp-icon:hover{
+    color: #6b9aff;
+} */
+/* media queries fron sign up button */
+
+/* @media all and (max-width: 1440px){
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 70px;
+    }
+    .non-slider .signUp .signUpInput{
+        margin-left: 70px;
+    }
+}
+
+@media all and (max-width: 1024px){
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 70px;
+    }
+    .non-slider .signUp .signUpInput{
+        margin-left: 70px;
+    }
+    .non-slider .signUp{
+        width: 40%;
+    }
+}
+@media all and (max-width: 959px){
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 70px;
+    }
+    .non-slider .signUp .signUpInput{
+        margin-left: 70px;
+    }
+    .non-slider .signUp{
+        width: 50%;
+    }
+}
+@media all and (max-width: 649px){
+      .non-slider .signUp input[type="submit"]{
+        margin-left: 70px;
+    }
+    .non-slider .signUp .signUpInput{
+        margin-left: 70px;
+    }
+    .non-slider .signUp{
+        width: 50%;
+    }
+    .adsArea{
+        border: 2px solid red;
+       display: block;
+    }
+    .window{
+        border: 2px solid blue;
+        width: 100%;
+    }
+}
+.errMessage{
+    display: none;
+    color: rgb(252, 193, 66);
+} */
+
+
+
+/* media queries for login */
+
+@media (max-width: 1440px){
+    .non-slider .signUp .signUpInput{
+        margin-left: 120px;
+    }
+     .non-slider .signUp{
+        width: 50%;
+    }
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 120px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 1024px){
+    .non-slider .signUp .signUpInput{
+        margin-left: 90px;
+    }
+     .non-slider .signUp{
+        width: 60%;
+    }
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 90px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 768px){
+    .non-slider .signUp .signUpInput{
+        margin-left: 85px;
+    }
+     .non-slider .signUp{
+        width: 70%;
+    }
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 85px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 425px){
+    .non-slider .signUp .signUpInput{
+        margin-left: 50px;
+    }
+     .non-slider .signUp{
+        width: 80%;
+    }
+    .non-slider .signUp input[type="submit"]{
+        margin-left: 50px;
+        margin-bottom: 30px;
+    }
+}
