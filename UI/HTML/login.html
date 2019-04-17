@@ -17,10 +17,10 @@ height: 100%;">
                 <i class="fas fa-bars" onclick="showHiddenMenuArea()" id="barsMenu"></i>
             </span>
             <ul class="navbar-nav">
-                <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
+                <!-- <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
                 <li><a href="#" onclick="showTransaction()">Transactions</a></li>
                 <li><a href="#" onclick="showResetPassword()">Reset Password</a></li>
-                <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
+                <li><a href="../index.html" onclick="loginFunction()">Logout</a></li> -->
                 <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
             </ul>
        </div>
@@ -44,13 +44,26 @@ height: 100%;">
     <!-- main area -->
     <section id="main-areaPage" >
         <div class="main-area-left" id="main-area-leftId">
-            <div class="profileImage">
-                <h2>Your profile</h2>
-                <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
-                <button><a href="#">Edit Profile Picture</a></button>
-                <h3>User: Habineza Leon Christian</h3>
-                <h3>Your Accounts: 1 account(s)</h3>
-            </div>
+            <div class="profileDiv">
+                <div class="profileTitle">
+                    <h2>User profile</h2>
+                </div>
+                <div class="profile">
+                    <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
+                    <p>Habineza Leon Christian <br>
+                    Number of Account(s): 0 
+                    </p>
+                </div>
+        </div>
+        <div class="sideMenu">
+                <ul class="navbar-nav">
+                    <li><a href="#" onclick="showCreateAccount()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
+                    <li><a href="#" onclick="showTransaction()"><i class="fas fa-exchange-alt"></i> &nbsp; Transactions</a></li>
+                    <li><a href="#" onclick="showResetPassword()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
+                    <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
+                    <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
+                </ul>
+        </div>
         </div>
         <div class="main-area-right" id="main-area-rightId">
             <!-- <h1>Welcome Banka!</h1> -->
@@ -59,28 +72,28 @@ height: 100%;">
                 <h2>Create Account</h2>
                 <form action="">
                     <div class="createAccountInput">
-                        <input type="number" name="" required="">
-                        <label for="">Account Number</label>
+                        <input type="number" name="" placeholder="Account Number" required="">
+                        <!-- <label for="">Account Number</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" required="">
-                        <label for="">First name</label>
+                        <input type="text" name="" placeholder=" First Name" required="">
+                        <!-- <label for="">First name</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" required="">
-                        <label for="">Last name</label>
+                        <input type="text" name="" placeholder=" Last Name" required="">
+                        <!-- <label for="">Last name</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="email" name="" required="">
-                        <label for="email">Email</label>
+                        <input type="email" name="" placeholder=" Email" required="">
+                        <!-- <label for="email">Email</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" required="">
-                        <label for="password">Password</label>
+                        <input type="password" name="" placeholder=" Password" required="">
+                        <!-- <label for="password">Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="float" name="" required="">
-                        <label for="">Openning Balance</label>
+                        <input type="float" name="" placeholder="Opening Balance" required="">
+                        <!-- <label for="">Openning Balance</label> -->
                     </div>
                     <div class="createAccountInput">
                         <select name="accountType" id="">
@@ -109,57 +122,57 @@ height: 100%;">
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>500,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Emmanuel GISA</td>
                         <td>Debit</td>
-                        <td>1,200,000 frw</td>
-                        <td>700,000 frw</td>
+                        <td>2000 frw</td>
+                        <td>1000 frw</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>300,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Chris GATERA</td>
                         <td>Credit</td>
-                        <td>700,000 frw</td>
-                        <td>1,000,000 frw</td>
+                        <td>8000 frw</td>
+                        <td>9000 frw</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>300,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Chris GATERA</td>
                         <td>Credit</td>
-                        <td>1,000,000 frw</td>
-                        <td>1,300,000 frw</td>
+                        <td>9000 frw</td>
+                        <td>10000 frw</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>500,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Emmanuel GISA</td>
                         <td>Credit</td>
-                        <td>1,300,000 frw</td>
-                        <td>1,800,000 frw</td>
+                        <td>1000 frw</td>
+                        <td>2000 frw</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>500,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Emmanuel GISA</td>
                         <td>Credit</td>
-                        <td>1,800,000 frw</td>
-                        <td>2,300,000 frw</td>
+                        <td>1000 frw</td>
+                        <td>2000 frw</td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>00040-0699-2754-100</td>
-                        <td>500,000 frw</td>
+                        <td>04-2754-100</td>
+                        <td>1000 frw</td>
                         <td>Katia UMURUNGI</td>
                         <td>Credit</td>
-                        <td>2,300,000 frw</td>
-                        <td>2,800,000 frw</td>
+                        <td>2000 frw</td>
+                        <td>3000 frw</td>
                     </tr>
 
                 </table>
@@ -170,16 +183,16 @@ height: 100%;">
                 <h2>Reset Password</h2>
                 <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()">
-                        <label for="password">Old Password</label>
+                        <input type="password" name="" required="" placeholder=" Old password" oninput="onInputPasswordCreateAccount()">
+                        <!-- <label for="password">Old Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
-                        <label for="password">New Password</label>
+                        <input type="password" name="" placeholder=" New password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
+                        <!-- <label for="password">New Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" oninput="onInputPasswordCreateAccount()">
-                        <label for="password">Confirm New Password</label>
+                        <input type="password" name="" placeholder=" Confirm password" required="" oninput="onInputPasswordCreateAccount()">
+                        <!-- <label for="password">Confirm New Password</label> -->
                     </div>
                     <div id="errorMessageCreateAccount" class="errMessage">
                         <p>Password characters should be 6 to 12</p>

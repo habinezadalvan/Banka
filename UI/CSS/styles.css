@@ -827,7 +827,8 @@ body{
     background: #4f7de0;
     text-align: center;
     color: white;
-    width: 100%;
+    width: 80%;
+    border-top-right-radius: 50px;
     height: 40px;
     padding: 10px;
     margin-top: 10px;
@@ -954,6 +955,22 @@ body{
     }
 
 }
+@media (max-width: 1024px){
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .sideMenu ul{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 959px){
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .sideMenu ul{
+        margin-left: 10px;
+    }
+}
 
 @media (max-width: 649px){
     #main-areaPage{
@@ -963,14 +980,46 @@ body{
     }
     .main-area-left{
         flex-basis: 10%;
+        /* margin-top: -20px;
+        padding-top: 20px; */
         border-right: none;
     }
     .main-area-right{
         flex-basis: 90%;
     }
-    .main-area-left{
+    /* .main-area-left{
         margin-bottom: 80px;
+    } */
+
+    .main-area-left .sideMenu{
+        width: 60%;
+        font-size: 15px;
     }
+    .main-area-left .sideMenu ul{
+        /* border: 2px solid red; */
+        margin: 10px auto;
+        margin-left: 50px;
+        width: 100%;
+    }
+    .main-area-left .sideMenu ul li{
+        /* border: 2px solid yellow; */
+        padding: 12px;
+    }
+    .main-area-left .sideMenu ul a{
+        /* border: 2px solid blue; */
+    }
+    .main-area-left .profileTitle{
+        height: 30px;
+    }
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .profile img{
+        height: 50px;
+        width: 50px;
+        margin-left: 10px;
+    }
+  
     .adsArea{
         /* margin: 5px; */
         font-size: 20px;
@@ -1249,6 +1298,18 @@ body{
         position: relative;
         margin-left: 45px;
         width: 80%;
+        padding: 0;
+    }
+    .main-area-right .createAccount .createAccountInput input{
+        height: 15px;
+        padding: 2px;
+    }
+    .createAccount select{
+        height: 15px;
+    }
+    .main-area-right .createAccount input[type="submit"]{
+        height: 18px;
+        padding-top: 0;
     }
     .main-area-right .createAccount input[type="submit"]{
         width: 67%;
@@ -1378,7 +1439,7 @@ body{
 @media (max-width: 649px){
     .main-area-right .transactionsPage{
         font-size: 12px;
-        height: 500px;
+        height: 300px;
 
     }
     
