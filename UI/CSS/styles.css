@@ -1333,7 +1333,7 @@ body{
     margin: 50px auto;
     margin-top: 82px;
     width: 95%;
-    height: 500px;
+    /* height: 500px; */
     background: #3b5998;
     color: #fff;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1439,7 +1439,8 @@ body{
 @media (max-width: 649px){
     .main-area-right .transactionsPage{
         font-size: 12px;
-        height: 300px;
+        height: 400px;
+        margin-bottom: -50px;
 
     }
     
