@@ -1,9 +1,13 @@
 body{
     margin: 0;
     padding: 0;
+    width: 100%;
     height: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    
+}
+.container{
+    height: 100%;
 }
 /* navigation bar styling */
 .navbar{
@@ -11,7 +15,7 @@ body{
     background-color:#4f7de0;
     display: flex;
     width: 100%;
-    height: 5%;
+    height: 9.5%;
     
     
 }
@@ -228,13 +232,14 @@ body{
    margin:0;
 }
 #main-area .main-area-images{
-    height: 500px;
+    /* height: 500px; */
     width: 100%;
 }
 
 #main-area .slider{
     /* border: 2px solid red; */
-    flex-basis: 40%;
+    height: 50%;
+    flex-basis: 50%;
     overflow: hidden;
     background: #0c2d75;
     opacity: .9;
@@ -243,8 +248,9 @@ body{
 }
 #main-area .non-slider{
     /* border: 2px solid green; */
-    background:white;
-    flex-basis: 60%;
+    height: 40%;    
+    background:rgb(180, 76, 76);
+    flex-basis: 50%;
 }
 
 #main-area .slider figure div{
@@ -324,7 +330,7 @@ body{
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 230px;
+    padding-top: 180px;
     width: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     z-index: 9;
@@ -336,12 +342,12 @@ body{
     color: white;
 }
 #main-area .slider h1{
-    font-size: 90px;
+    font-size: 80px;
     font-weight: bold;
     color: rgb(253, 176, 9);
     text-align: center;
     position: absolute;
-    padding-top: 160px;
+    padding-top: 140px;
     width: 20%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     z-index: 9;
@@ -354,30 +360,108 @@ body{
     color: white;
 }
 
-/* media queries for sliding area */
-@media (max-width: 1439px){
+/* MEDIA QUERIES FOR MAIN DIVs */
+@media (max-width: 1440px){
+    body{
+        height: 100%;
+    }
+    .container{
+        height: 100%;
+    }
+    .navbar{
+        height: 17%;
+    }
+    #main-area{
+        height: 100%;
+    }
+    #main-area .slider{
+        /* border: 2px solid red; */
+        height: 100%;
+        flex-basis: 50%;
+    }
+    #main-area .non-slider{
+        /* border: 2px solid green; */
+        height: 100%;    
+        background:rgb(180, 76, 76);
+        flex-basis: 50%;
+    }
     #main-area .slider p{
         font-size: 27px;
     }
 }
-@media (max-width: 959px){
+@media (max-width: 1024px){
+    body{
+        height: 100%;
+    }
+    .container{
+        height: 100%;
+    }
+    .navbar{
+        height: 15%;
+    }
+    #main-area{
+        height: 100%;
+    }
+    #main-area .slider{
+        /* border: 2px solid red; */
+        height: 100%;
+        flex-basis: 50%;
+    }
+    #main-area .non-slider{
+        /* border: 2px solid green; */
+        height: 100%;    
+        flex-basis: 50%;
+    }
+    #main-area .slider p{
+        font-size: 27px;
+    }
+
+}
+@media (max-width: 768px){
+
+    body{
+        height: 100%;
+    }
+    .container{
+        height: 100%;
+    }
+    .navbar{
+        height: 15%;
+    }
+    #main-area{
+        height: 100%;
+    }
+    #main-area .slider{
+        /* border: 2px solid red; */
+        height: 100%;
+        flex-basis: 40%;
+    }
+    #main-area .non-slider{
+        /* border: 2px solid green; */
+        height: 100%;    
+        flex-basis: 60%;
+    }
+    #main-area .slider p{
+        font-size: 27px;
+    }
+
     #main-area .slider figure img{
         width: 100%;
         height: 500px;
     }
-    #main-area .slider h1{
-        font-size: 60px;
-    }
-    #main-area .slider p{
-        font-size: 25px;
-        padding-top: 135px;
-    }
-   
-    #main-area .slider .Three p{
-        color: white;
-    }
-}
+ }
 @media (max-width: 649px){
+
+    #main-area .slider{
+        /* border: 2px solid red; */
+        height: 100%;
+        flex-basis: 50%;
+    }
+    #main-area .non-slider{
+        /* border: 2px solid green; */
+        height: 100%;    
+        flex-basis: 50%;
+    }
     
     #main-area .slider figure img{
         width: 100%;
@@ -392,62 +476,6 @@ body{
     }
 
 }
-
-/* styles for non-sliding body */
-.non-slider{
-    /* display: flex;
-    flex-direction: row; */
-}
-
-.non-slider{
-    /* flex-basis: 70%; */
-}
-/* .homeServices{
-    width: 90%;
-    margin: 15px auto;
-    padding: 0;
-    font-size: 18px;
-    display: flex;
-    border-radius: 10px;
-    background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 ); 
-     background-size: 100% 100%;
-     transition-property: all;
-     transition-duration: 1s;
-    /* animation: homeServices 4s; */
-    
-/* }
-.homeServices:hover{
-    background:#3b5998;
-    transform: rotateY(180deg);
-} */
-/* @keyframes homeServices{
-    0%{left: -1000px}
-    100%{left: 0px;}
-} */
-
-/* .more{
-    width: 90%;
-    height: 60px;
-    padding-top: 7px;
-    color: #ddd;
-    border-radius: 10px;
-    margin: 20px auto 0 auto;
-    background: linear-gradient(100deg,rgb(253, 176, 9),#3b5998 );
-    background-size: 100% 100%;
-    transition-property: all;
-     transition-duration: 1s;
-    animation: homeServices 10s  ease infinite; */
-/* }
-.more:hover{
-    background:#3b5998;
-    transform: rotateY(180deg);
-}
-.homeServices a{
-    text-decoration: none;
-    color:white;
-    padding-top: 5px;
-
-}  */
 
 .non-sliderOne h1{
     text-align: center;
@@ -466,7 +494,6 @@ body{
 /* media queries for homeServices */
 @media (max-width: 959px){
     .non-slider{
-        border: 2px solid red;
         display: flex;
         flex-direction: row;
         /* flex-flow: column-reverse; */
@@ -538,9 +565,9 @@ body{
     flex-direction: row;
 }
 .window{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 23%;
-    margin-left: 10px;
+    margin-left: 22px;
     text-align: center;
     height: 250px;
     background-color:#4f7de0;
@@ -556,33 +583,75 @@ body{
     color: rgb(253, 176, 9);
 }
 .window h1 {
-    font-size: 40px;
+    font-size: 32px;
+    color: rgb(253, 176, 9);
 }
 /* Media querry for window part */
+@media (max-width: 1440px){
+.window{
+    height: 170px;
+}
+.window h1 {
+    font-size: 25px;
+}
+.window i {
+    margin-top: 10px;
+    font-size: 50px;
+}
+#main-area .slider .longParagraph p{
+    font-size: 20px;
+    padding-top: 50px;
+}
+#main-area .slider .Two p{
+    color: goldenrod;
+    padding-top: 50px;
+}
+#main-area .slider .Three p{
+    color: white;
+    padding-top: 50px;
+}
+#main-area .slider .Five p{
+    color: white;
+    padding-top: 50px;
+}
+#main-area .slider .Four p{
+    color: white;
+    padding-top: 50px;
+}
+#main-area .slider h1{
+    font-size: 90px;
+    font-weight: bold;
+    color: rgb(253, 176, 9);
+    text-align: center;
+    position: absolute;
+    padding-top: 30px;
+    width: 20%;
+}
+}
 @media (max-width: 1024px){
     #main-area .main-area-images{
-        height: 350px;
-        width: 100%;
+        /* height: 350px;
+        width: 100%; */
     }
     #main-area .slider .longParagraph p{
         font-size: 20px;
-        padding-top: 90px;
+        padding-top: 80px;
     }
     #main-area .slider .Two p{
         color: goldenrod;
-        padding-top: 90px;
+        padding-top: 80px;
     }
     #main-area .slider .Three p{
         color: white;
-        padding-top: 90px;
+        padding-top: 80px;
     }
     #main-area .slider .Five p{
         color: white;
-        padding-top: 90px;
+        padding-top: 80px;
     }
     #main-area .slider .Four p{
         color: white;
-        padding-top: 90px;
+        padding-top: 80px;
     }
     #main-area .slider h1{
         font-size: 90px;
@@ -590,7 +659,7 @@ body{
         color: rgb(253, 176, 9);
         text-align: center;
         position: absolute;
-        padding-top: 90px;
+        padding-top: 30px;
         width: 20%;
     }
     .adsArea{
@@ -605,33 +674,59 @@ body{
     }
     .window i {
         margin-top: 10px;
-        font-size: 80px;
+        font-size: 40px;
         color: rgb(253, 176, 9);
     }
     .window h1 {
-        font-size: 30px;
+        font-size: 22px;
     }
 }
-@media (max-width: 959px){
+@media (max-width: 768px){
+    #main-area .slider .longParagraph p{
+        font-size: 20px;
+        padding-top: 140px;
+    }
+    #main-area .slider .Two p{
+        color: goldenrod;
+        padding-top: 140px;
+    }
+    #main-area .slider .Three p{
+        color: white;
+        padding-top: 140px;
+    }
+    #main-area .slider .Five p{
+        color: white;
+        padding-top: 140px;
+    }
+    #main-area .slider .Four p{
+        color: white;
+        padding-top: 140px;
+    }
+    #main-area .slider h1{
+        font-size: 90px;
+        padding-top: 30px;
+    }
     .adsArea{
-        padding-left: 25px;
+        padding-left: 0px;
         flex-wrap: wrap;
-        margin-left: 40px;
+        margin-left: 0px;
     }
 
     .window{
-        border: 2px solid black;
-        margin-left: 27px;
-        width: 40%;
-        height: 250px;
+        /* border: 2px solid black; */
+        margin-left: 10px;
+        margin-top: 50px;
+        padding-top: 30px;
+        width: 48%;
+        height: 230px;
     }
     .window i {
         margin-top: 10px;
-        font-size: 70px;
+        font-size: 50px;
         color: rgb(253, 176, 9);
     }
     .window h1 {
-        font-size: 30px;
+        font-size: 25px;
     }
 
 }
@@ -640,18 +735,41 @@ body{
         flex-wrap: wrap;
     }
 @media (max-width: 425px){
+    #main-area .slider .longParagraph p{
+        font-size: 20px;
+        padding-top: 50px;
+    }
+    #main-area .slider .Two p{
+        color: goldenrod;
+        padding-top: 50px;
+    }
+    #main-area .slider .Three p{
+        color: white;
+        padding-top: 50px;
+    }
+    #main-area .slider .Five p{
+        color: white;
+        padding-top: 50px;
+    }
+    #main-area .slider .Four p{
+        color: white;
+        padding-top: 50px;
+    }
+    #main-area .slider h1{
+        font-size: 60px;
+        padding-top: 22px;
+    }
     .adsArea{
         /* margin-right: 10px; */
         flex-wrap: wrap;
-        height: 1350px;
         padding-left: 0px;
         padding-right: 20px;
     }
     .window{
-        border: 2px solid black;
+        /* border: 2px solid black; */
         margin-top: 5px;
         width: 95%;
-        height: 300px;
+        height: 200px;
         padding: 20px 5px 0 5px;
     }
     .window i {
@@ -674,21 +792,23 @@ body{
     transition: margin-left 0.5s; 
     border-top: 4px solid rgb(253, 176, 9);
     width: 100%;
-    height: 800px;
+    height: 100%;
 }
 .fa-bars{
     display: none;
 }
 .main-area-left{
     /* border: 2px solid black; */
-    flex-basis: 30%;
+    flex-basis: 20%;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 .main-area-right{
     /* border: 2px solid red; */
     text-align: center;
-    flex-basis: 70%;
+    flex-basis: 80%;
+    height: 100%;
     background: url('../ASSETS/analysis-banking-businesswoman-1451448.jpg');
     background-size: cover;
  }
@@ -714,12 +834,12 @@ body{
     margin-top: 5px;
 }
 .main-area-left .profile img{
-    margin-left: 50px;
+    margin-left: 40px;
     border-radius: 100%;
 }
 .main-area-left .sideMenu{
-    width: 70%;
-    font-size: 25px;
+    width: 60%;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .main-area-left .sideMenu ul{
@@ -728,7 +848,7 @@ body{
     margin: 10px auto;
     width: 100%;
     text-align: center;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 .main-area-left .sideMenu ul li{
     /* border: 2px solid yellow; */
@@ -812,12 +932,31 @@ body{
     color: rgb(253, 176, 9);
 
 }
+
+.errMessage{
+    display: none;
+}
 /* media queries for after sign up page */
+@media (max-width: 1440px){
+    body{
+        height: 100%;
+        width: 100%;
+        /* background: #d48c20 */
+    }
+    .container{
+        height: 100%;
+    }
+    #main-areaPage{
+       height: 100%;
+       
+    }
+
+}
 
 @media (max-width: 649px){
     #main-areaPage{
         flex-flow: column-reverse;
-       height: 1080px;
+       height: 100%;
         /* display: block; */
     }
     .main-area-left{
@@ -843,8 +982,9 @@ body{
         line-height: 1.2;
         padding-bottom: 20px;
     }
-}
 
+    }
+  
 /* CSS STYLES FOR MAIN-AREA RIGHT SIDE */
 
 /* media queries for main-area rigt side part */
@@ -890,7 +1030,7 @@ body{
 }
 .main-area-right .createAccount .createAccountInput input{
     width: 80%;
-    padding: 17px 0;
+    padding: 10px 0;
     margin-top: 10px;
     font-size: 16px;
     border-radius: 10px;
@@ -931,12 +1071,13 @@ body{
     outline: none;
     color: #fff;
     background: rgb(253, 176, 9);
-    padding: 15px 30px;
+    padding: 10px 30px;
     cursor: pointer;
     border-radius: 10px;
     font-size: 18px;
     text-align: center;
-    margin-left: 70px;
+    margin: 10px auto 0 -10px;
+    width: 64%;
 }
 .main-area-right .createAccount input[type="submit"]:hover{
     background: rgb(253, 176, 9);
@@ -952,8 +1093,12 @@ body{
     right: 15px;
 
 }
-.createAccount select{
+.createAccount .selectStaff{
     width: 80%;
+    margin-left: -5px;
+}
+.createAccount select{
+    width: 63%;
     height: 40px;
     /* padding: 20px; */
     margin: 20px auto;
@@ -971,6 +1116,8 @@ body{
 
 }
 
+
+
 /* media queries fron sign up button */
 
 @media (max-width: 1439px){
@@ -978,19 +1125,123 @@ body{
         margin-left:0;
     }
 }
-@media (max-width: 959px){
+/* @media (max-width: 959px){
     .main-area-right .createAccount input[type="submit"]{
         margin-left: 0;
     }
     #main-area{
         height: 1170px;
     }
-}
-@media (max-width: 649px){
+} */
+
+@media (min-width: 1800px){
+    .main-area-right .createAccount{
+        width: 50%;
+    }
+    .main-area-right .createAccount .createAccountInput{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto  auto 180px;
+        width: 80%;
+    } 
     .main-area-right .createAccount input[type="submit"]{
-        margin-left:0;
+        width: 64%;
+        margin-left: -2px;
+    } 
+
+    .navbar{
+        height: 10%;
     }
     
+}
+@media (max-width: 1440px){
+    .main-area-right .createAccount{
+        width: 90%;
+    }
+    .main-area-right .createAccount .createAccountInput{
+        position: relative;
+        margin-left: 45px;
+        width: 80%;
+    } 
+    .main-area-right .createAccount input[type="submit"]{
+        width: 64%;
+        margin-left: -110px;
+    } 
+
+    .navbar{
+        height: 10%;
+    }
+    .createAccount select{
+        margin-left: -100px;
+    }
+    
+}
+
+@media (max-width: 1024px){
+    .main-area-right .createAccount{
+        width: 90%;
+    }
+    .main-area-right .createAccount .createAccountInput{
+        position: relative;
+        margin-left: 45px;
+        width: 80%;
+    } 
+    .main-area-right .createAccount input[type="submit"]{
+        width: 64%;
+        margin-left: -35px;
+    } 
+
+    .navbar{
+        height: 10%;
+    }
+    .createAccount select{
+        margin-left: -50px;
+    }
+    
+}
+@media (max-width: 960px){
+    .main-area-right .createAccount{
+        width: 90%;
+    }
+    .main-area-right .createAccount .createAccountInput{
+        position: relative;
+        margin-left: 45px;
+        width: 80%;
+    }
+    .main-area-right .createAccount input[type="submit"]{
+        width: 64%;
+        margin-left: 10px;
+    }
+
+    .navbar{
+        height: 10%;
+    }
+    .createAccount select{
+        margin-left: 0px;
+    }
+    
+}
+@media (max-width: 649px){
+    .main-area-right .createAccount{
+        width: 90%;
+    }
+    .main-area-right .createAccount .createAccountInput{
+        position: relative;
+        margin-left: 45px;
+        width: 80%;
+    }
+    .main-area-right .createAccount input[type="submit"]{
+        width: 67%;
+        margin-left: 20px;
+    }
+
+    .navbar{
+        height: 10%;
+    }
+    .createAccount select{
+        margin-left: 7px;
+    }
 }
 
 /* TRANSACTION FIELD */
@@ -1162,13 +1413,7 @@ body{
     border-radius: 100%;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
 }
-/* footer styling */
 
-/* .footer{
-    width: 100%;
-    height: 62px;
-    background-color: #3b5998;
-} */
 #footerId{
     transition: margin-left 0.5s;
 }
