@@ -39,6 +39,7 @@ class Login {
         firstName: logindata.firstName,
         lastName: logindata.lastName,
         email: logindata.email,
+        type: logindata.type,
       };
 
       const token = jwt.sign(payload, process.env.SECRETKEY);

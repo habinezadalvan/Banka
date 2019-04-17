@@ -43,6 +43,7 @@ class SignUp {
       email: req.body.email,
       password: hash,
       type: 'client',
+      isAdmin: 'false',
     };
     // sign up Authentication
     const payload = {
@@ -50,6 +51,7 @@ class SignUp {
       firstName: signupdata.firstName,
       lastName: signupdata.lastName,
       email: signupdata.email,
+      type: signupdata.type,
     };
 
     const token = jwt.sign(payload, process.env.SECRETKEY);
