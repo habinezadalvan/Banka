@@ -10,6 +10,12 @@ dotenv.config();
 // class for signup endpoint
 class SignUp {
   static getUsers(req, res) {
+    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this oparation!',
+      });
+    }
     const signedUsers = users;
     return res.status(200).json({
       status: 200,
@@ -64,6 +70,9 @@ class SignUp {
     }
     if (req.body.type !== 'client') {
       signupdata.type = 'staff';
+    }
+    if (req.body.isAdmin !== 'false') {
+      signupdata.isAdmin = 'true';
     }
     users.push(signupdata);
     return res.status(201).json({

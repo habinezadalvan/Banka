@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 class Authorization {
-  static authorization(req, res, next){
+  static authorization(req, res, next) {
     const token = req.headers.authorization;
     if (!token || token === ' ') {
       return res.status(401).json({
@@ -23,7 +23,7 @@ class Authorization {
         next();
       }
     });
-  };
+  }
 }
 
 
