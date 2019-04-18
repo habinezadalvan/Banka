@@ -17,7 +17,7 @@ class Login {
       });
     }
     const newPassword = (req.body.password);
-    let logindata = users.find(email => email.email === req.body.email);
+    let logindata = users.find(email => email.email.toLowerCase() === req.body.email.toLowerCase());
     if (!logindata) {
       return res.status(400).json({
         status: 400,

@@ -28,7 +28,7 @@ class SignUp {
     const newId = (users.length + 1);
     const randomId = Math.floor(Math.random() * 1000) + 100;
     const newPassword = (req.body.password);
-    let signupdata = users.find(email => email.email === req.body.email);
+    let signupdata = users.find(email => email.email.toLowerCase() === req.body.email.toLowerCase());
     if (signupdata) {
       return res.status(400).json({
         status: 400,
@@ -71,7 +71,6 @@ class SignUp {
         firstName: signupdata.firstName,
         lastName: signupdata.lastName,
         email: signupdata.email,
-        password: signupdata.password,
       },
     });
   }
