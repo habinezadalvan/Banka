@@ -134,13 +134,13 @@ describe('signup', () => {
         done();
       });
   });
-  it('should get all users', (done) => {
-    chai.request(server)
-      .get('/api/v1/users')
-      .set('Authorization', token)
-      .end((err, res) => {
-        res.should.have.status(200);
-        done();
-      });
-  });
+  // it('should get all users', (done) => {
+  //   chai.request(server)
+  //     .get('/api/v1/users')
+  //     .set('Authorization', token)
+  //     .end((err, res) => {
+  //       res.should.have.status(200);
+  //       done();
+  //     });
+  // });
 });

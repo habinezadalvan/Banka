@@ -46,6 +46,12 @@ class Account {
       status: 'active',
       balance: parseFloat('0'),
     };
+    if (req.user.type !== 'client') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this oparation!',
+      });
+    }
     account.push(accountData);
     return res.status(201).json({
       status: 201,
@@ -85,6 +91,12 @@ class Account {
         message: 'The account number do not exist or is not an integer',
       });
     }
+    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this oparation!',
+      });
+    }
     accountData.status = req.body.status;
     return res.status(200).json({
       status: 200,
@@ -110,6 +122,12 @@ class Account {
       });
     }
     const accountToBeDeleted = account.indexOf(accountData);
+    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this oparation!',
+      });
+    }
     account.splice(accountToBeDeleted, 1);
     return res.status(200).json({
       status: 200,
