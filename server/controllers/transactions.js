@@ -53,6 +53,12 @@ class Transactions {
       newBalance: accountData.balance - parseFloat(req.body.amount),
     };
     accountData.balance = debitData.newBalance;
+    if (req.user.type !== 'staff') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this transaction!',
+      });
+    }
     transactions.push(debitData);
     return res.status(201).json({
       status: 201,
@@ -97,6 +103,12 @@ class Transactions {
       newBalance: accountData.balance + parseFloat(req.body.amount),
     };
     accountData.balance = creditData.newBalance;
+    if (req.user.type !== 'staff') {
+      return res.status(401).json({
+        status: 401,
+        message: 'You are not allowed to perform this transaction!',
+      });
+    }
     transactions.push(creditData);
     return res.status(201).json({
       status: 201,

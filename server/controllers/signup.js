@@ -62,6 +62,9 @@ class SignUp {
         message: 'Password and confirm password do not match!',
       });
     }
+    if (req.body.type !== 'client') {
+      signupdata.type = 'staff';
+    }
     users.push(signupdata);
     return res.status(201).json({
       status: 201,

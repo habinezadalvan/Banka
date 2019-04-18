@@ -6,7 +6,7 @@ class ValidateSignUp {
     const Schema = {
       firstName: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
       lastName: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
-      email: Joi.string().required().email({minDomainAtoms: 2}).trim(),
+      email: Joi.string().required().email({ minDomainAtoms: 2 }).trim(),
       password: Joi.string().required(),
       confirmPassword: Joi.string().required(),
       type: Joi.string().valid('client', 'staff'),

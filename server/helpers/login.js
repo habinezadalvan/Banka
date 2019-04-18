@@ -4,7 +4,7 @@ import Joi from 'joi';
 class validateLogin {
   static loginValidation(logindata) {
     const Schema = {
-      email: Joi.string().required().email().max(100),
+      email: Joi.string().required().email().trim(),
       password: Joi.string().required(),
     };
     return Joi.validate(logindata, Schema);
