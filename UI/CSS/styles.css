@@ -249,7 +249,7 @@ body{
 #main-area .non-slider{
     /* border: 2px solid green; */
     height: 40%;    
-    background:rgb(180, 76, 76);
+    /* background:rgb(180, 76, 76); */
     flex-basis: 50%;
 }
 
@@ -382,7 +382,7 @@ body{
     #main-area .non-slider{
         /* border: 2px solid green; */
         height: 100%;    
-        background:rgb(180, 76, 76);
+        /* background:rgb(180, 76, 76); */
         flex-basis: 50%;
     }
     #main-area .slider p{
@@ -684,41 +684,43 @@ body{
 @media (max-width: 768px){
     #main-area .slider .longParagraph p{
         font-size: 20px;
-        padding-top: 140px;
+        padding-top: 110px;
     }
     #main-area .slider .Two p{
         color: goldenrod;
-        padding-top: 140px;
+        padding-top: 110px;
     }
     #main-area .slider .Three p{
         color: white;
-        padding-top: 140px;
+        padding-top: 110px;
     }
     #main-area .slider .Five p{
         color: white;
-        padding-top: 140px;
+        padding-top: 110px;
     }
     #main-area .slider .Four p{
         color: white;
-        padding-top: 140px;
+        padding-top: 110px;
     }
     #main-area .slider h1{
-        font-size: 90px;
+        font-size: 60px;
         padding-top: 30px;
     }
     .adsArea{
         padding-left: 0px;
         flex-wrap: wrap;
         margin-left: 0px;
+        /* padding-top: 20px; */
+        
     }
 
     .window{
         /* border: 2px solid black; */
         margin-left: 10px;
         margin-top: 50px;
-        padding-top: 30px;
+        padding-top: 20px;
         width: 48%;
-        height: 230px;
+        height: 170px;
     }
     .window i {
         margin-top: 10px;
@@ -825,7 +827,8 @@ body{
     background: #4f7de0;
     text-align: center;
     color: white;
-    width: 100%;
+    width: 80%;
+    border-top-right-radius: 50px;
     height: 40px;
     padding: 10px;
     margin-top: 10px;
@@ -952,6 +955,22 @@ body{
     }
 
 }
+@media (max-width: 1024px){
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .sideMenu ul{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 959px){
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .sideMenu ul{
+        margin-left: 10px;
+    }
+}
 
 @media (max-width: 649px){
     #main-areaPage{
@@ -961,17 +980,66 @@ body{
     }
     .main-area-left{
         flex-basis: 10%;
+        /* margin-top: -20px;
+        padding-top: 20px; */
         border-right: none;
     }
     .main-area-right{
         flex-basis: 90%;
     }
-    .main-area-left{
+    /* .main-area-left{
         margin-bottom: 80px;
+    } */
+
+    .main-area-left .sideMenu{
+        width: 60%;
+        font-size: 15px;
     }
+    .main-area-left .sideMenu ul{
+        /* border: 2px solid red; */
+        margin: 10px auto;
+        margin-left: 50px;
+        width: 100%;
+    }
+    .main-area-left .sideMenu ul li{
+        /* border: 2px solid yellow; */
+        padding: 12px;
+    }
+    .main-area-left .sideMenu ul a{
+        /* border: 2px solid blue; */
+    }
+    .main-area-left .profileTitle{
+        height: 30px;
+    }
+    .main-area-left .profile p{
+        font-size: 15px;
+    }
+    .main-area-left .profile img{
+        height: 50px;
+        width: 50px;
+        margin-left: 10px;
+    }
+  
     .adsArea{
-        margin: 5px;
-        font-size: 30px;
+        /* margin: 5px; */
+        font-size: 20px;
+    }
+    .window{
+        height: 100px;
+        width: 60%;
+        margin-left: 90px;
+        padding-top: 0px;
+    }
+    .window h3{
+        font-size: 10px;
+    }
+    .window i {
+        margin-top: 10px;
+        font-size: 25px;
+        color: rgb(253, 176, 9);
+    }
+    .window h1 {
+        font-size: 10px;
     }
     .signupDashboard{ 
         margin-top: 20px;
@@ -1230,6 +1298,18 @@ body{
         position: relative;
         margin-left: 45px;
         width: 80%;
+        padding: 0;
+    }
+    .main-area-right .createAccount .createAccountInput input{
+        height: 15px;
+        padding: 2px;
+    }
+    .createAccount select{
+        height: 15px;
+    }
+    .main-area-right .createAccount input[type="submit"]{
+        height: 18px;
+        padding-top: 0;
     }
     .main-area-right .createAccount input[type="submit"]{
         width: 67%;
@@ -1253,7 +1333,7 @@ body{
     margin: 50px auto;
     margin-top: 82px;
     width: 95%;
-    height: 500px;
+    /* height: 500px; */
     background: #3b5998;
     color: #fff;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1268,51 +1348,6 @@ body{
 
 }
 
-.main-area-right .transactionsPageHome{
-
-    /* border: 2px solid red; */
-    /* display: none; */
-    position: relative;
-    margin: 50px auto;
-    margin-top: 82px;
-    width: 70%;
-    height: 500px;
-    background: #3b5998;
-    color: #fff;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    /* transition: transform 1s; */
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
-    /* animation: 2s animation;
-    animation-fill-mode: forwards; */
-
-}
-
-.main-area-right .transactionsPageHome table, th, td{
-    margin:auto;
-    margin-left: 100px;
-    /* border-bottom: 1px solid white; */
-    text-align: center;
-    /* border-collapse: collapse; */
-    height: 40px;
-    table-layout: fixed;
-    /* opacity: .9; */
-    
-}
-.main-area-right .transactionsPageHome table tr:hover{
-    background: #6b9aff;
-}
-
-/* @keyframes animation{
-0%{top:-50px;}
-100%{top:0px;}
-} */
-/* .main-area-right .transactionsPage:hover{
-    transform: scale(.9);
-} */
 .main-area-right .transactionsPage h2{
     margin: 0 0 30px;
     padding: 0;
@@ -1359,7 +1394,8 @@ body{
 @media (max-width: 649px){
     .main-area-right .transactionsPage{
         font-size: 12px;
-        height: 500px;
+        height: 400px;
+        margin-bottom: -50px;
 
     }
     
@@ -1413,6 +1449,50 @@ body{
     border-radius: 100%;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
 }
+
+/* ADMIN AND STAFF DASHBOARD TABLE */
+
+.newusersTable .transactionsPageHome table{
+    text-align: center;
+    margin: auto;
+    color: #fff;
+}
+.newusersTable .transactionsPageHome table tr:hover{
+    color: #4f7de0;
+}
+
+/* ADMIN CREATE ACCOUNT SELECT PART */
+.createAccountInput select{
+    width: 78%;
+}
+@media (min-width: 1800px){
+    .createAccountInput select{
+        margin-left: 2px;
+        width: 80%;
+    }
+}
+@media (min-width: 1440px){
+    .createAccountInput select{
+        margin-left: 4px;
+        width: 80%;
+    }
+}
+@media (min-width: 960px){
+    .createAccountInput select{
+        margin-left: 8px;
+        width: 80%;
+    }
+}
+/* STAFF DASHBOARD PAGE */
+.staffNewUsers table{
+    text-align: center;
+    margin: auto;
+    color: #fff;
+}
+.staffNewUsers table tr:hover{
+    color: #4f7de0;
+}
+
 
 #footerId{
     transition: margin-left 0.5s;
