@@ -1483,6 +1483,17 @@ body{
         width: 80%;
     }
 }
+/* STAFF DASHBOARD PAGE */
+.staffNewUsers table{
+    text-align: center;
+    margin: auto;
+    color: #fff;
+}
+.staffNewUsers table tr:hover{
+    color: #4f7de0;
+}
+
+
 #footerId{
     transition: margin-left 0.5s;
 }
