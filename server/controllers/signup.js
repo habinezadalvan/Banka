@@ -28,7 +28,7 @@ class SignUp {
     const newId = (users.length + 1);
     const randomId = Math.floor(Math.random() * 1000) + 100;
     const newPassword = (req.body.password);
-    let signupdata = users.find(email => email.email === req.body.email);
+    let signupdata = users.find(email => email.email.toLowerCase() === req.body.email.toLowerCase());
     if (signupdata) {
       return res.status(400).json({
         status: 400,
@@ -43,6 +43,7 @@ class SignUp {
       email: req.body.email,
       password: hash,
       type: 'client',
+      isAdmin: 'false',
     };
     // sign up Authentication
     const payload = {
@@ -50,6 +51,7 @@ class SignUp {
       firstName: signupdata.firstName,
       lastName: signupdata.lastName,
       email: signupdata.email,
+      type: signupdata.type,
     };
 
     const token = jwt.sign(payload, process.env.SECRETKEY);
@@ -60,6 +62,9 @@ class SignUp {
         message: 'Password and confirm password do not match!',
       });
     }
+    if (req.body.type !== 'client') {
+      signupdata.type = 'staff';
+    }
     users.push(signupdata);
     return res.status(201).json({
       status: 201,
@@ -69,7 +74,6 @@ class SignUp {
         firstName: signupdata.firstName,
         lastName: signupdata.lastName,
         email: signupdata.email,
-        password: signupdata.password,
       },
     });
   }
