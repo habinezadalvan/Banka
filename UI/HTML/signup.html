@@ -34,9 +34,9 @@ height: 100%;" >
     <!-- Side navigation bar -->
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
-        <a href="#" onclick="showCreateAccount()">Create Account</a>
-        <a href="#" onclick="showTransaction()">Transactions</a>
-        <li><a href="#" onclick="showResetPassword()">Reset Password</a></li>
+        <a href="#" onclick="showCreateAccountSignup()">Create Account</a>
+        <a href="#" onclick="showTransactionsSignup()">Transactions</a>
+        <a href="#" onclick="showResetPasswordSignup()">Reset Password</a>
         <a href="../index.html">Logout</a>
         <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
 
@@ -57,9 +57,9 @@ height: 100%;" >
                 </div>
                 <div class="sideMenu">
                         <ul class="navbar-nav">
-                            <li><a href="#" onclick="showCreateAccount()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
-                            <li><a href="#" onclick="showTransaction()"><i class="fas fa-exchange-alt"></i> &nbsp; Transactions</a></li>
-                            <li><a href="#" onclick="showResetPassword()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
+                            <li id="signup1"><a href="#" onclick="showCreateAccountSignup()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
+                            <li id="signup2"><a href="#" onclick="showTransactionsSignup()"><i class="fas fa-exchange-alt"></i> &nbsp; Transactions</a></li>
+                            <li id="signup3"><a href="#" onclick="showResetPasswordSignup()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
                             <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
                             <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
                         </ul>
@@ -71,7 +71,7 @@ height: 100%;" >
         </div>
         <div class="main-area-right" id="main-area-rightId">
             <!-- CREATE ACCOUNT -->
-            <div class="createAccount" id="usercreateAccount">
+            <div class="createAccount" id="signupCreateAccount">
                 <h2>Create Account</h2>
                 <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
@@ -110,11 +110,11 @@ height: 100%;" >
                     </div>
                     <input type="submit" value="Create Account" id="createAccountSubmit">
                 </form>
-                <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
+                <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeSignup()">&times;</a>
             </div>
             <!-- TRANSACTION FIELD -->
 
-           <div class="transactionsPage" id="transaction-page">
+           <div class="transactionsPage" id="transactionsSignup">
                <h3>List of Transactions</h3>
                 <table>
                     <tr>
@@ -136,10 +136,10 @@ height: 100%;" >
                         <td>--</td>
                     </tr>
                 </table>
-                <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a>
+                <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeSignup()">&times;</a>
            </div>
            <!-- CREATE RESET PASSWORD -->
-           <div class="createAccount" id="restpassword">
+           <div class="createAccount" id="restpasswordSignup">
             <h2>Reset Password</h2>
             <form action="" id="userCreateBankAccountId">
                 <div class="createAccountInput">
@@ -159,10 +159,10 @@ height: 100%;" >
                 </div>
                 <input type="submit" value="Reset Password" id="createAccountSubmit">
             </form>
-            <a href="#" class="closecreateAccount-icon" id="closeResetPassword" onclick="closeResetPassword()">&times;</a>
+            <a href="#" class="closecreateAccount-icon" id="closeResetPassword" onclick="closeSignup()">&times;</a>
             </div>
            <!-- WELCOME NOTE DIV -->
-            <div class="signupDashboard" id="signupDashboard">
+            <div class="signupDashboard" id="signupDashboardId">
                 <h2>Welcome to Banka!</h2>
                 <h3>Get access and enjoy our online banking services</h3>
                 <span>

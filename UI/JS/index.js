@@ -127,6 +127,10 @@ const closeHiddenMenuArea = () => {
 
 // display create account
 const showCreateAccount = () => {
+  document.getElementById('liCreateAcc').setAttribute('class', 'current');
+  document.getElementById('liUsersAcc').removeAttribute('class', 'current');
+  document.getElementById('liResetPassword').removeAttribute('class', 'current');
+  document.getElementById('liDebit').removeAttribute('class', 'current');
   document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'block';
   document.getElementById('signupDashboard').style.display = 'none';
@@ -135,13 +139,21 @@ const showCreateAccount = () => {
   document.getElementById('debitId').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
+
+
 // close create account
 const closeCreateAccount = () => {
+  document.getElementById('liCreateAcc').removeAttribute('class', 'current');
+  document.getElementById('liUsersAcc').setAttribute('class', 'current');
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'block';
 };
 // RESET PASSWORD
 const showResetPassword = () => {
+  document.getElementById('liResetPassword').setAttribute('class', 'current');
+  document.getElementById('liCreateAcc').removeAttribute('class', 'current');
+  document.getElementById('liUsersAcc').removeAttribute('class', 'current');
+  document.getElementById('liDebit').removeAttribute('class', 'current');
   document.getElementById('restpassword').style.display = 'block';
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'none';
@@ -150,6 +162,8 @@ const showResetPassword = () => {
   document.getElementById('debitId').style.display = 'none';
 };
 const closeResetPassword = () => {
+  document.getElementById('liUsersAcc').setAttribute('class', 'current');
+  document.getElementById('liResetPassword').removeAttribute('class', 'current');
   document.getElementById('restpassword').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'block';
 };
@@ -173,6 +187,10 @@ const onInputPasswordCreateAccount = () => {
 
 // display transactions
 const showTransaction = () => {
+  document.getElementById('liUsersAcc').setAttribute('class', 'current');
+  document.getElementById('liCreateAcc').removeAttribute('class', 'current');
+  document.getElementById('liResetPassword').removeAttribute('class', 'current');
+  document.getElementById('liDebit').removeAttribute('class', 'current');
   document.getElementById('transaction-page').style.display = 'block';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('restpassword').style.display = 'none';
@@ -184,6 +202,7 @@ const showTransaction = () => {
 };
 // close transaction page
 const closeTransactions = () => {
+  document.getElementById('liUsersAcc').setAttribute('class', 'current');
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'block';
 };
@@ -208,6 +227,10 @@ const closeSpecificAccount = () => {
 // DEBIT PAGE FOR STAFF
 // display debit
 const showDebitPage = () => {
+  document.getElementById('liDebit').setAttribute('class', 'current');
+  document.getElementById('liCreateAcc').removeAttribute('class', 'current');
+  document.getElementById('liUsersAcc').removeAttribute('class', 'current');
+  document.getElementById('liResetPassword').removeAttribute('class', 'current');
   document.getElementById('debitId').style.display = 'block';
   document.getElementById('viewSpeficAccount').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'none';
@@ -219,8 +242,160 @@ const showDebitPage = () => {
 
 // close debit page
 const closeDebitPage = () => {
+  document.getElementById('liUsersAcc').setAttribute('class', 'current');
+  document.getElementById('liDebit').removeAttribute('class', 'current');
   document.getElementById('debitId').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'block';
+};
+
+// ADMIN PAGE
+
+// create account admin
+const showCreateAccountAdmin = () => {
+  document.getElementById('usercreateAccountAdmin').style.display = 'block';
+  document.getElementById('AdminDashboardAccounts').style.display = 'none';
+  document.getElementById('usersAccountsAdmin').style.display = 'none';
+  document.getElementById('restpasswordAdminId').style.display = 'none';
+  document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('admin1').setAttribute('class', 'current');
+  document.getElementById('admin2').removeAttribute('class', 'current');
+  document.getElementById('admin3').removeAttribute('class', 'current');
+};
+
+// users' accounts
+const showUsersAdmin = () => {
+  document.getElementById('usersAccountsAdmin').style.display = 'block';
+  document.getElementById('AdminDashboardAccounts').style.display = 'none';
+  document.getElementById('usercreateAccountAdmin').style.display = 'none';
+  document.getElementById('restpasswordAdminId').style.display = 'none';
+  document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('admin2').setAttribute('class', 'current');
+  document.getElementById('admin1').removeAttribute('class', 'current');
+  document.getElementById('admin3').removeAttribute('class', 'current');
+};
+
+// users' reset password
+const showResetPasswordAdmin = () => {
+  document.getElementById('restpasswordAdminId').style.display = 'block';
+  document.getElementById('AdminDashboardAccounts').style.display = 'none';
+  document.getElementById('usercreateAccountAdmin').style.display = 'none';
+  document.getElementById('usersAccountsAdmin').style.display = 'none';
+  document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('admin3').setAttribute('class', 'current');
+  document.getElementById('admin1').removeAttribute('class', 'current');
+  document.getElementById('admin2').removeAttribute('class', 'current');
+};
+
+// View user's account admin
+const viewAccountAdmin = () => {
+  document.getElementById('viewSpeficAccountAdmin').style.display = 'block';
+  document.getElementById('AdminDashboardAccounts').style.display = 'none';
+  document.getElementById('usercreateAccountAdmin').style.display = 'none';
+  document.getElementById('usersAccountsAdmin').style.display = 'none';
+  document.getElementById('admin2').setAttribute('class', 'current');
+  document.getElementById('admin1').removeAttribute('class', 'current');
+  document.getElementById('admin3').removeAttribute('class', 'current');
+};
+
+// close admin pages
+
+const closeAdminPages = () => {
+  document.getElementById('admin2').setAttribute('class', 'current');
+  document.getElementById('admin1').removeAttribute('class', 'current');
+  document.getElementById('admin3').removeAttribute('class', 'current');
+  document.getElementById('AdminDashboardAccounts').style.display = 'block';
+  document.getElementById('restpasswordAdminId').style.display = 'none';
+  document.getElementById('usercreateAccountAdmin').style.display = 'none';
+  document.getElementById('usersAccountsAdmin').style.display = 'none';
+  document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+};
+
+// AFTER SIGN UP PAGE
+
+// create account after signup
+const showCreateAccountSignup = () => {
+  document.getElementById('signupCreateAccount').style.display = 'block';
+  document.getElementById('transactionsSignup').style.display = 'none';
+  document.getElementById('restpasswordSignup').style.display = 'none';
+  document.getElementById('signupDashboardId').style.display = 'none';
+  document.getElementById('signup1').setAttribute('class', 'current');
+  document.getElementById('signup2').removeAttribute('class', 'current');
+  document.getElementById('signup3').removeAttribute('class', 'current');
+};
+
+// show transaction after signup
+const showTransactionsSignup = () => {
+  document.getElementById('transactionsSignup').style.display = 'block';
+  document.getElementById('signupCreateAccount').style.display = 'none';
+  document.getElementById('restpasswordSignup').style.display = 'none';
+  document.getElementById('signupDashboardId').style.display = 'none';
+  document.getElementById('signup2').setAttribute('class', 'current');
+  document.getElementById('signup1').removeAttribute('class', 'current');
+  document.getElementById('signup3').removeAttribute('class', 'current');
+};
+// reset password signup
+const showResetPasswordSignup = () => {
+  document.getElementById('restpasswordSignup').style.display = 'block';
+  document.getElementById('signupCreateAccount').style.display = 'none';
+  document.getElementById('transactionsSignup').style.display = 'none';
+  document.getElementById('signupDashboardId').style.display = 'none';
+  document.getElementById('signup3').setAttribute('class', 'current');
+  document.getElementById('signup2').removeAttribute('class', 'current');
+  document.getElementById('signup1').removeAttribute('class', 'current');
+};
+// close signup pages
+const closeSignup = () => {
+  document.getElementById('signupDashboardId').style.display = 'block';
+  document.getElementById('signupCreateAccount').style.display = 'none';
+  document.getElementById('transactionsSignup').style.display = 'none';
+  document.getElementById('restpasswordSignup').style.display = 'none';
+  document.getElementById('signup1').removeAttribute('class', 'current');
+  document.getElementById('signup2').removeAttribute('class', 'current');
+  document.getElementById('signup3').removeAttribute('class', 'current');
+};
+
+// AFTER LOGIN PAGE
+
+// create account after signup
+const showCreateAccountLogin = () => {
+  document.getElementById('LoginCreateAccountId').style.display = 'block';
+  document.getElementById('LoginTransactions').style.display = 'none';
+  document.getElementById('Loginrestpassword').style.display = 'none';
+  document.getElementById('LoginDashboardId').style.display = 'none';
+  document.getElementById('login1').setAttribute('class', 'current');
+  document.getElementById('login2').removeAttribute('class', 'current');
+  document.getElementById('login3').removeAttribute('class', 'current');
+};
+
+// show transaction after signup
+const showTransactionLogin = () => {
+  document.getElementById('LoginTransactions').style.display = 'block';
+  document.getElementById('LoginCreateAccountId').style.display = 'none';
+  document.getElementById('Loginrestpassword').style.display = 'none';
+  document.getElementById('LoginDashboardId').style.display = 'none';
+  document.getElementById('login2').setAttribute('class', 'current');
+  document.getElementById('login1').removeAttribute('class', 'current');
+  document.getElementById('login3').removeAttribute('class', 'current');
+};
+// reset password signup
+const showResetPasswordLogin = () => {
+  document.getElementById('Loginrestpassword').style.display = 'block';
+  document.getElementById('LoginCreateAccountId').style.display = 'none';
+  document.getElementById('LoginTransactions').style.display = 'none';
+  document.getElementById('LoginDashboardId').style.display = 'none';
+  document.getElementById('login3').setAttribute('class', 'current');
+  document.getElementById('login2').removeAttribute('class', 'current');
+  document.getElementById('login1').removeAttribute('class', 'current');
+};
+// close signup pages
+const closeLoginPages = () => {
+  document.getElementById('LoginDashboardId').style.display = 'block';
+  document.getElementById('LoginCreateAccountId').style.display = 'none';
+  document.getElementById('LoginTransactions').style.display = 'none';
+  document.getElementById('Loginrestpassword').style.display = 'none';
+  document.getElementById('login1').removeAttribute('class', 'current');
+  document.getElementById('login2').removeAttribute('class', 'current');
+  document.getElementById('login3').removeAttribute('class', 'current');
 };
 
 
