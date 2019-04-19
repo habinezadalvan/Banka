@@ -33,7 +33,7 @@ height: 100%;">
     <!-- Side navigation bar -->
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
-        <a href="#" onclick="showCreateAccount()">Create Account</a>
+        <li><a href="#" onclick="showCreateAccount()">Create Account</a></li>
         <li><a href="#" onclick="showTransaction()">Users' Accounts</a></li>
         <li><a href="#" onclick="showResetPassword()">Reset Password</a></li>
         <a href="../index.html">Logout</a>
@@ -57,7 +57,7 @@ height: 100%;">
         </div>
         <div class="sideMenu">
                 <ul class="navbar-nav">
-                    <li><a href="#" onclick="showCreateAccount()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
+                    <li><a class="current"href="#" onclick="showCreateAccount()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
                     <li><a href="#" onclick="showTransaction()"><i class="fas fa-exchange-alt"></i> &nbsp; Users' Accounts</a></li>
                     <li><a href="#" onclick="showResetPassword()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
                     <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
@@ -115,7 +115,7 @@ height: 100%;">
                         <th>Bank Type</th>
                         <th>Status</th>
                         <th>Balance</th>
-                        <th>Options</th>
+                        <!-- <th>Options</th> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>1</td>
@@ -125,7 +125,7 @@ height: 100%;">
                         <td>Saving</td>
                         <td>Active</td>
                         <td>700,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>2</td>
@@ -135,7 +135,7 @@ height: 100%;">
                         <td>Saving</td>
                         <td>Active</td>
                         <td>900,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>3</td>
@@ -145,7 +145,7 @@ height: 100%;">
                         <td>Current</td>
                         <td>Active</td>
                         <td>1,000,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>4</td>
@@ -155,7 +155,7 @@ height: 100%;">
                         <td>Saving</td>
                         <td>Active</td>
                         <td>700,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>5</td>
@@ -165,7 +165,7 @@ height: 100%;">
                         <td>Current</td>
                         <td>Active</td>
                         <td>700,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
                     <tr onclick="viewSpecificAccountRecord()">
                         <td>6</td>
@@ -175,7 +175,7 @@ height: 100%;">
                         <td>Saving</td>
                         <td>Active</td>
                         <td>800,000 frw</td>
-                        <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td>
+                        <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                     </tr>
 
                 </table>
@@ -184,28 +184,24 @@ height: 100%;">
 
            <!-- VIEW SPECIFIC ACCOUNT RECORD -->
            <div class="transactionsPage" id="viewSpeficAccount">
-               <h2>GISA Chris</h2>
-               <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="icon" width="100px" height="100px">
-               <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Account Number</th>
-                    <th>Created On</th>
-                    <th>Owner</th>
-                    <th>Bank Type</th>
-                    <th>Status</th>
-                    <th>Balance</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>040-2754-100</td>
-                    <td>02-10-2018</td>
-                    <td>GISA Chris</td>
-                    <td>Saving</td>
-                    <td>Active</td>
-                    <td>700,000 frw</td>
-                </tr>
-               </table>
+              <div class="singleAccountView">
+                <div class="singleAccountViewOne">
+                    <h2>GISA Chris</h2>
+                    <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="icon" width="100px" height="100px">
+     
+                    <p>Account Number:   040-2754-100</p>
+                    <p>Created On:   02-10-2018</p>
+                    <p>Owner:   GISA Chris</p>
+                    <p>Bank Type:   Saving</p>
+                    <p>Status:   Active</p>
+                    <p>Balance:   700,000 frw</p>
+                </div>
+                <div class="singleAccountViewTwo">
+                    <button class="green">Activate</button>
+                    <button class="yellow">Deactivate</button>
+                    <button class="red"> Delete</button>
+                </div>
+              </div>
                <a href="#" class="closecreateAccount-icon" id="closeSpecificAccount" onclick="closeSpecificAccount()">&times;</a>
            </div>
             <!-- CREATE RESET PASSWORD -->
@@ -234,7 +230,7 @@ height: 100%;">
             <!-- WELCOME NOTE DIV -->
                 <div class="newusersTable" id="signupDashboard">
                     <div class="transactionsPageHome" id="transactionsPageHomeId">
-                        <h3>List of recent Banka users</h3>
+                        <h3>List of Users' Accounts</h3>
                         <table>
                              <tr>
                                  <th>No</th>
@@ -243,6 +239,8 @@ height: 100%;">
                                  <th>Owner</th>
                                  <th>Bank Type</th>
                                  <th>Status</th>
+                                 <th>Balance</th>
+                                 <!-- <th>Options</th> -->
                              </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>1</td>
@@ -251,15 +249,19 @@ height: 100%;">
                                  <td>GISA Chris</td>
                                  <td>Saving</td>
                                  <td>Active</td>
-                                 </tr>
+                                 <td>700,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>2</td>
-                                 <td>040-2700-105</td>
+                                 <td>040-3700-105</td>
                                  <td>03-10-2018</td>
                                  <td>KAMI Christian</td>
                                  <td>Saving</td>
                                  <td>Active</td>
-                                 </tr>
+                                 <td>900,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>3</td>
                                  <td>040-2754-078</td>
@@ -267,7 +269,9 @@ height: 100%;">
                                  <td>GAKWAYA Kevin</td>
                                  <td>Current</td>
                                  <td>Active</td>
-                               </tr>
+                                 <td>1,000,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>4</td>
                                  <td>040-2764-070</td>
@@ -275,7 +279,9 @@ height: 100%;">
                                  <td>GISA Christophe</td>
                                  <td>Saving</td>
                                  <td>Active</td>
-                                </tr>
+                                 <td>700,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>5</td>
                                  <td>040-2754-085</td>
@@ -283,7 +289,9 @@ height: 100%;">
                                  <td>GASANA Christophe</td>
                                  <td>Current</td>
                                  <td>Active</td>
-                               </tr>
+                                 <td>700,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
                              <tr onclick="viewSpecificAccountRecord()">
                                  <td>6</td>
                                  <td>040-2750-020</td>
@@ -291,7 +299,9 @@ height: 100%;">
                                  <td>GISANA Chris</td>
                                  <td>Saving</td>
                                  <td>Active</td>
-                                </tr>
+                                 <td>800,000 frw</td>
+                                 <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
+                             </tr>
          
                          </table>
                          <!-- <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a> -->

@@ -1376,6 +1376,42 @@ body{
 .main-area-right .transactionsPage table tr:hover{
     background: #6b9aff;
 }
+
+.main-area-right .transactionsPage .singleAccountView{
+    display: flex;
+}
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewOne{
+    flex-basis: 60%;
+}
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo{
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+/* single account view two */
+
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
+    width: 30%;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+
+}
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo .green{
+    background: green;
+}
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo .yellow{
+    background: rgb(253, 176, 9);
+}
+.main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo .red{
+    background: red;
+}
 /* media queries for transactions */
 @media (max-width: 1024px){
     .main-area-right .transactionsPage{
@@ -1388,6 +1424,7 @@ body{
     .main-area-right .transactionsPage{
         font-size: 10px;
         height: 500px;
+        overflow: auto;
     }
 }
 
@@ -1396,6 +1433,7 @@ body{
         font-size: 12px;
         height: 400px;
         margin-bottom: -50px;
+        overflow: auto;
 
     }
     
@@ -1451,16 +1489,101 @@ body{
 }
 
 /* ADMIN AND STAFF DASHBOARD TABLE */
-
-.newusersTable .transactionsPageHome table{
-    text-align: center;
-    margin: auto;
+.newusersTable .transactionsPageHome{
+    position: relative;
+    margin: 50px auto;
+    margin-top: 82px;
+    width: 95%;
+    background: #3b5998;
     color: #fff;
-}
-.newusersTable .transactionsPageHome table tr:hover{
-    color: #4f7de0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(0,0,0,.9);
+    border-radius: 10px; 
 }
 
+
+.main-area-right .transactionsPageHome h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.main-area-right .transactionsPageHome table{
+    position: relative;
+    width: 100%;
+    background: transparent;
+
+}
+
+.main-area-right .transactionsPageHome table, th, td{
+    margin:auto;
+    margin-left: 5px;
+    text-align: center;
+    height: 40px;
+    table-layout: fixed;
+    
+}
+
+.main-area-right .transactionsPageHome table tr:hover{
+    background: #6b9aff;
+}
+.main-area-right .transactionsPageHome table tr input[type="submit"]{
+    background: transparent;
+    width: 50px;
+    height: 18px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(253, 176, 9);
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 5px;
+    font-size: 10px;
+    text-align: center;
+    margin-left: 1px;
+}
+.main-area-right .transactionsPageHome table tr input[type="submit"]:hover{
+    background: rgb(241, 194, 92);
+    color: #4a6f8d;
+}
+.main-area-right .transactionsPageHome table tr i{
+    margin: 0;
+    margin-left: 2px;
+    margin-top: 2px;
+    color: gold;
+}
+.main-area-right .transactionsPageHome table tr i:hover{
+    color: #ddd;
+}
+/* media queries for transactionspageHome */
+@media (max-width: 1024px){
+    .main-area-right .transactionsPageHome{
+        font-size: 10px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 959px){
+    .main-area-right .transactionsPageHome{
+        font-size: 10px;
+        height: 500px;
+        overflow: auto;
+    }
+}
+
+@media (max-width: 649px){
+    .main-area-right .transactionsPageHome{
+        font-size: 12px;
+        height: 400px;
+        margin-bottom: -50px;
+        overflow: auto;
+
+    }
+    
+}
 /* ADMIN CREATE ACCOUNT SELECT PART */
 .createAccountInput select{
     width: 78%;
