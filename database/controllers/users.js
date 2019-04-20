@@ -24,7 +24,6 @@ class Users {
   }
 */
 
-
   static async signup(req, res) {
     const { error } = validationSignup.signupValidation(req.body);
     if (error) {
@@ -34,7 +33,7 @@ class Users {
       });
     }
     const findEmail = 'SELECT * from users WHERE email = $1';
-    const email = [req.body.email];
+    const email = [req.body.email.toLowerCase()];
     const { rows } = await pool.query(findEmail, email);
 
     if (rows.length !== 0) {
@@ -58,6 +57,10 @@ class Users {
     } else {
       isAdmin = 'false';
     }
+    if ((req.body.email.toLowerCase() !== 'admin@gmail.com') || (rows[0].isadmin !== 'true')) {
+      type = 'client';
+      isAdmin = 'false';
+    }
     const signupValues = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -66,7 +69,7 @@ class Users {
       type,
       isAdmin,
     };
-    // validate confirmPassword
+      // validate confirmPassword
     if (req.body.password !== req.body.confirmPassword) {
       return res.status(400).json({
         status: 400,
