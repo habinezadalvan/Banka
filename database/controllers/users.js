@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import validationSignup from '../../server/helpers/signup';
+import validationLogin from '../../server/helpers/login';
 import pool from '../config/db';
 
 dotenv.config();
@@ -25,81 +26,137 @@ class Users {
 */
 
   static async signup(req, res) {
-    const { error } = validationSignup.signupValidation(req.body);
-    if (error) {
-      return res.status(400).json({
-        status: 400,
-        error: error.details[0].message,
-      });
-    }
-    const findEmail = 'SELECT * from users WHERE email = $1';
-    const email = [req.body.email.toLowerCase()];
-    const { rows } = await pool.query(findEmail, email);
+    try {
+      const { error } = validationSignup.signupValidation(req.body);
+      if (error) {
+        return res.status(400).json({
+          status: 400,
+          error: error.details[0].message,
+        });
+      }
+      const findEmail = 'SELECT * from users WHERE email = $1';
+      const email = [req.body.email.toLowerCase()];
+      const { rows } = await pool.query(findEmail, email);
 
-    if (rows.length !== 0) {
-      return res.status(400).json({
-        status: 400,
-        message: 'The email you have entered already exists in the system, try another one!',
-      });
-    }
-    const hash = bcrypt.hashSync(req.body.password, 10);
-    let type;
+      if (rows.length !== 0) {
+        return res.status(400).json({
+          status: 400,
+          message: 'The email you have entered already exists in the system, try another one!',
+        });
+      }
+      const hash = bcrypt.hashSync(req.body.password, 10);
+      let type;
 
-    if (req.body.type === 'staff') {
-      type = 'staff';
-    } else {
-      type = 'client';
-    }
-    let isAdmin;
+      if (req.body.type === 'staff') {
+        type = 'staff';
+      } else {
+        type = 'client';
+      }
+      let isAdmin;
 
-    if (req.body.isAdmin === 'true') {
-      isAdmin = 'true';
-    } else {
-      isAdmin = 'false';
-    }
-    if ((req.body.email.toLowerCase() !== 'admin@gmail.com') || (rows[0].isadmin !== 'true')) {
-      type = 'client';
-      isAdmin = 'false';
-    }
-    const signupValues = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: hash,
-      type,
-      isAdmin,
-    };
+      if (req.body.isAdmin === 'true') {
+        isAdmin = 'true';
+      } else {
+        isAdmin = 'false';
+      }
+      if ((req.body.email.toLowerCase() !== 'admin@gmail.com') || (rows[0].isadmin !== 'true')) {
+        type = 'client';
+        isAdmin = 'false';
+      }
+      const signupValues = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hash,
+        type,
+        isAdmin,
+      };
       // validate confirmPassword
-    if (req.body.password !== req.body.confirmPassword) {
-      return res.status(400).json({
-        status: 400,
-        message: 'Password and confirm password do not match!',
-      });
-    }
-    const queryText = 'INSERT INTO users (firstname, lastname, email, password,type, isadmin) VALUES($1, $2, $3, $4, $5, $6) RETURNING *';
-    const results = await pool.query(queryText, [signupValues.firstName, signupValues.lastName, signupValues.email, signupValues.password, signupValues.type, signupValues.isAdmin]);
+      if (req.body.password !== req.body.confirmPassword) {
+        return res.status(400).json({
+          status: 400,
+          message: 'Password and confirm password do not match!',
+        });
+      }
+      const queryText = 'INSERT INTO users (firstname, lastname, email, password,type, isadmin) VALUES($1, $2, $3, $4, $5, $6) RETURNING *';
+      const results = await pool.query(queryText, [signupValues.firstName, signupValues.lastName, signupValues.email, signupValues.password, signupValues.type, signupValues.isAdmin]);
 
-    // sign up Authentication
-    const payload = {
-      id: results.rows[0].id,
-      firstName: results.rows[0].firstname,
-      lastName: results.rows[0].lastname,
-      email: results.rows[0].email,
-      type: results.rows[0].type,
-    };
-
-    const token = jwt.sign(payload, process.env.SECRETKEY);
-
-    return res.status(201).json({
-      status: 201,
-      data: {
-        token,
+      // sign up Authentication
+      const payload = {
         id: results.rows[0].id,
         firstName: results.rows[0].firstname,
         lastName: results.rows[0].lastname,
         email: results.rows[0].email,
-      },
-    });
+        type: results.rows[0].type,
+      };
+
+      const token = jwt.sign(payload, process.env.SECRETKEY);
+
+      return res.status(201).json({
+        status: 201,
+        data: {
+          token,
+          id: results.rows[0].id,
+          firstName: results.rows[0].firstname,
+          lastName: results.rows[0].lastname,
+          email: results.rows[0].email,
+        },
+      });
+    } catch (err) {
+      console.log();
+    }
+  }
+
+  static async login(req, res) {
+    try {
+      const { error } = validationLogin.loginValidation(req.body);
+      if (error) {
+        return res.status(400).json({
+          status: 400,
+          error: error.details[0].message,
+        });
+      }
+      const newPassword = (req.body.password);
+      const findEmail = 'SELECT * FROM users WHERE email = $1';
+      const email = [req.body.email.toLowerCase()];
+      const { rows } = await pool.query(findEmail, email);
+      if (!rows[0]) {
+        return res.status(400).json({
+          status: 400,
+          message: 'INCORRECT EMAIL OR PASSWORD',
+        });
+      }
+      const truePassword = bcrypt.compareSync(newPassword, rows[0].password);
+      if (truePassword) {
+        // sign up Authentication
+        const payload = {
+          id: rows[0].id,
+          firstName: rows[0].firstName,
+          lastName: rows[0].lastName,
+          email: rows[0].email,
+          type: rows[0].type,
+        };
+
+        const token = jwt.sign(payload, process.env.SECRETKEY);
+        return res.status(200).json({
+          status: 200,
+          data: {
+            token,
+            id: rows[0].id,
+            firstName: rows[0].firstname,
+            lastName: rows[0].lastname,
+            email: rows[0].email,
+          },
+          message: 'Welcome to Banka, you have successfully login',
+        });
+      }
+      return res.status(400).json({
+        status: 400,
+        message: 'INCORRECT EMAIL OR PASSWORD',
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
