@@ -55,12 +55,12 @@ class Transactions {
         newBalance: parseFloat(rows[0].balance) - parseFloat(req.body.amount),
       };
 
-      // if (req.user.type !== 'staff') {
-      //   return res.status(401).json({
-      //     status: 401,
-      //     message: 'You are not allowed to perform this transaction!',
-      //   });
-      // }
+      if (req.user.type !== 'staff') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this transaction!',
+        });
+      }
       const updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
       const values = [debitData.newBalance, enteredAcc];
       await pool.query(updateAccount, values);
@@ -121,12 +121,12 @@ class Transactions {
         newBalance: parseFloat(rows[0].balance) + parseFloat(req.body.amount),
       };
 
-      // if (req.user.type !== 'staff') {
-      //   return res.status(401).json({
-      //     status: 401,
-      //     message: 'You are not allowed to perform this transaction!',
-      //   });
-      // }
+      if (req.user.type !== 'staff') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this transaction!',
+        });
+      }
       const updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
       const values = [creditData.newBalance, enteredAcc];
       await pool.query(updateAccount, values);
@@ -184,6 +184,31 @@ class Transactions {
       return res.status(200).json({
         status: 200,
         data: results.rows, // Arrange them as in the guideline??
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  static async getSpecificTransaction(req, res) {
+    try {
+      if (req.user.type !== 'client') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const transactionQueryText = 'SELECT * FROM transactions WHERE id = $1';
+      const { rows } = await pool.query(transactionQueryText, [parseInt(req.params.transactionId, 10)]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'That transaction do not exists',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: rows[0],
       });
     } catch (err) {
       console.log(err);
