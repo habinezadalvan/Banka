@@ -56,7 +56,7 @@ class Account {
         });
       }
       const queryText = 'INSERT INTO accounts (accountnumber, createdon, owner, type, status, balance) VALUES($1, $2, $3, $4, $5, $6)';
-      const results = await pool.query(queryText, [accountValues.accountNumber,
+      await pool.query(queryText, [accountValues.accountNumber,
         accountValues.createdOn,
         accountValues.owner,
         accountValues.type,
@@ -114,7 +114,7 @@ class Account {
       // }
       const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
       const values = [req.body.status, enteredAcc];
-      const results = await pool.query(queryText, values);
+      await pool.query(queryText, values);
 
       return res.status(200).json({
         status: 200,
@@ -146,18 +146,44 @@ class Account {
         });
       }
 
-      // if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-      //   return res.status(401).json({
-      //     status: 401,
-      //     message: 'You are not allowed to perform this oparation!',
-      //   });
-      // }
+      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
       const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
       await pool.query(queryText, [enteredAcc]);
 
       return res.status(200).json({
         status: 200,
         message: 'The bank account has been deleted successfully',
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  static async getAccountDetails(req, res) {
+    try {
+      if (req.user.type !== 'client') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const accDetailsQueryText = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const { rows } = await pool.query(accDetailsQueryText,
+        [parseInt(req.params.accountNumber, 10)]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'That Account does not exists',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: rows[0],
       });
     } catch (err) {
       console.log(err);
