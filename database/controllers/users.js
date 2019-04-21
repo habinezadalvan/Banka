@@ -59,7 +59,7 @@ class Users {
       } else {
         isAdmin = 'false';
       }
-      if ((req.body.email.toLowerCase() !== 'admin@gmail.com') || (rows[0].isadmin !== 'true')) {
+      if ((req.body.email.toLowerCase() !== 'admin@gmail.com'.toLowerCase()) || (rows[0].isadmin !== 'true')) {
         type = 'client';
         isAdmin = 'false';
       }

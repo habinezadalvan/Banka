@@ -2,6 +2,7 @@
 /* eslint-disable no-multi-spaces */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable radix */
+import moment from 'moment';
 import pool from '../config/db';
 import validation from '../../server/helpers/accounts';
 
@@ -26,52 +27,57 @@ class Account {
 
   // CREATE BANK ACCOUNT
   static async createBankAccount(req, res) {
-    const { error } = validation.AccountsValidation(req.body);
-    if (error) {
-      return res.status(400).json({
-        status: 400,
-        error: error.details[0].message,
-      });
-    }
-    const getAccounts = 'SELECT * FROM accounts';
-    const { rows } = await pool.query(getAccounts);
-    const random = Math.floor(Math.random() * 100000000000) + 100000;
-    // eslint-disable-next-line template-curly-spacing
-    const accountnumber = parseInt(`4000${  random  }${rows + 1}`, 10);
+    try {
+      const { error } = validation.AccountsValidation(req.body);
+      if (error) {
+        return res.status(400).json({
+          status: 400,
+          error: error.details[0].message,
+        });
+      }
+      const getAccounts = 'SELECT * FROM accounts';
+      const { rows } = await pool.query(getAccounts);
+      const random = Math.floor(Math.random() * 10000000) + 100;
+      // eslint-disable-next-line template-curly-spacing
+      const accountnumber = parseInt(`4000${  random  }${rows + 1}`, 10);
 
-    const accountValues = {
-      accountNumber: accountnumber,
-      createdOn: Date(),
-      owner: req.user.id,
-      type: req.body.type,
-      status: 'active',
-      balance: parseFloat('0'),
-    };
-    if (req.user.type !== 'client') {
-      return res.status(401).json({
-        status: 401,
-        message: 'You are not allowed to perform this oparation!',
-      });
-    }
-    const queryText = 'INSERT INTO accounts (accountnumber, createdon, owner, type, status, balance) VALUES($1, $2, $3, $4, $5, $6)';
-    const results = await pool.query(queryText, [accountValues.accountNumber,
-      accountValues.createdOn,
-      accountValues.owner,
-      accountValues.type,
-      accountValues.status,
-      accountValues.balance]);
+      const accountValues = {
+        accountNumber: accountnumber,
+        createdOn: moment().format('LL'),
+        owner: req.user.id,
+        type: req.body.type,
+        status: 'active',
+        balance: parseFloat('0'),
+      };
+      console.log(accountValues.owner);
+      if (req.user.type !== 'client') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const queryText = 'INSERT INTO accounts (accountnumber, createdon, owner, type, status, balance) VALUES($1, $2, $3, $4, $5, $6)';
+      const results = await pool.query(queryText, [accountValues.accountNumber,
+        accountValues.createdOn,
+        accountValues.owner,
+        accountValues.type,
+        accountValues.status,
+        accountValues.balance]);
 
-    return res.status(201).json({
-      status: 201,
-      data: {
-        accountNumber: results.accountNumber,
-        firstName: req.user.firstName,
-        lastName: req.user.lastName,
-        email: req.user.email,
-        type: results.type,
-        openingBalance: results.balance,
-      },
-    });
+      return res.status(201).json({
+        status: 201,
+        data: {
+          accountNumber: accountValues.accountNumber,
+          firstName: req.user.firstName,
+          lastName: req.user.lastName,
+          email: req.user.email,
+          type: accountValues.type,
+          openingBalance: accountValues.balance,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   // ACTIVATE OR DEACTIVE BANK ACCOUNT

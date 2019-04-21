@@ -15,7 +15,7 @@ const createTables = `
 
             CREATE TABLE IF NOT EXISTS accounts(
                     id SERIAL,
-                    accountnumber INTEGER PRIMARY KEY,
+                    accountnumber NUMERIC PRIMARY KEY,
                     createdon TIMESTAMP,
                     owner INTEGER NOT NULL,
                     type VARCHAR(30) NOT NULL,
