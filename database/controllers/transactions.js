@@ -105,7 +105,6 @@ class Transactions {
       const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
       const enteredAcc = parseInt(req.params.accountNumber, 10);
       const { rows } = await pool.query(getAccount, [enteredAcc]);
-      console.log(rows[0]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
@@ -150,6 +149,41 @@ class Transactions {
           transactionType: creditData.transactionType,
           accountBalance: creditData.newBalance,
         },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  static async viewAllAccountTransactions(req, res) {
+    try {
+      // verify whether this account exists
+      const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const enteredAcc = parseInt(req.params.accountNumber, 10);
+      const { rows } = await pool.query(getAccount, [enteredAcc]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'The account you are trying to view its transactions does not exists',
+        });
+      }
+      if (req.user.type !== 'client') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const transctionQueryText = 'SELECT * FROM transactions WHERE accountnumber = $1';
+      const results = await pool.query(transctionQueryText, [enteredAcc]);
+      if (results.rows.length === 0) {
+        return res.status(404).json({
+          status: 404,
+          message: 'There is no transaction yet!',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: results.rows, // Arrange them as in the guideline??
       });
     } catch (err) {
       console.log(err);
