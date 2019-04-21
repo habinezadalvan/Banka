@@ -5,7 +5,7 @@ class TransactionsValidation {
   static debit(debitData) {
     const Schema = {
       amount: Joi.number().required(),
-      cashier: Joi.number().required(),
+      // cashier: Joi.number().required(),
     };
     return Joi.validate(debitData, Schema);
   }
@@ -14,7 +14,7 @@ class TransactionsValidation {
   static credit(creditData) {
     const Schema = {
       amount: Joi.number().required(),
-      cashier: Joi.number().required(),
+      // cashier: Joi.number().required(),
     };
     return Joi.validate(creditData, Schema);
   }
