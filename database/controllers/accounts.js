@@ -133,27 +133,35 @@ class Account {
   }
 
   // DELETE A BANK ACCOUNT
-  static deleteAccount(req, res) {
-    const enteredAcc = parseInt(req.params.accountNumber, 10);
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
-    if (!accountData) {
-      return res.status(404).json({
-        status: 404,
-        message: 'The account you are trying to delete do not exist',
+  static async deleteAccount(req, res) {
+    try {
+      const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const enteredAcc = parseInt(req.params.accountNumber);
+      const { rows } = await pool.query(getAccount, [enteredAcc]);
+      console.log(rows);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'The account you are trying to Delete do not exist',
+        });
+      }
+
+      // if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      //   return res.status(401).json({
+      //     status: 401,
+      //     message: 'You are not allowed to perform this oparation!',
+      //   });
+      // }
+      const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
+      await pool.query(queryText, [enteredAcc]);
+
+      return res.status(200).json({
+        status: 200,
+        message: 'The bank account has been deleted successfully',
       });
+    } catch (err) {
+      console.log(err);
     }
-    const accountToBeDeleted = account.indexOf(accountData);
-    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-      return res.status(401).json({
-        status: 401,
-        message: 'You are not allowed to perform this oparation!',
-      });
-    }
-    account.splice(accountToBeDeleted, 1);
-    return res.status(200).json({
-      status: 200,
-      message: 'The bank account has been deleted successfully',
-    });
   }
 }
 
