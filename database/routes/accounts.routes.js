@@ -8,6 +8,7 @@ router.get('/api/v2/accounts', auth.authorization, Accounts.getAllCounts);
 router.post('/api/v2/accounts', auth.authorization, Accounts.createBankAccount);
 router.patch('/api/v2/account/:accountNumber', auth.authorization, Accounts.activateDeactivateAccount);
 router.delete('/api/v2/account/:accountNumber', auth.authorization, Accounts.deleteAccount);
+router.get('/api/v2/accounts/:accountNumber', auth.authorization, Accounts.getAccountDetails);
 
 
 export default router;

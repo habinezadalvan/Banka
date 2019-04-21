@@ -199,11 +199,12 @@ class Transactions {
         });
       }
       const transactionQueryText = 'SELECT * FROM transactions WHERE id = $1';
-      const { rows } = await pool.query(transactionQueryText, [parseInt(req.params.transactionId, 10)]);
+      const { rows } = await pool.query(transactionQueryText,
+        [parseInt(req.params.transactionId, 10)]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          message: 'That transaction do not exists',
+          message: 'That transaction does not exists',
         });
       }
       return res.status(200).json({
