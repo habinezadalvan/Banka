@@ -8,7 +8,7 @@ bcrypt.hash(process.env.ADMINPASSWORD, 10).then((hash) => {
   const adminValues = {
     firstName: 'Admin',
     lastName: 'admin',
-    email: 'admin@gmail.com',
+    email: 'admin@gmail.com'.toLowerCase(),
     password: hash,
     type: 'staff',
     isAdmin: 'true',
