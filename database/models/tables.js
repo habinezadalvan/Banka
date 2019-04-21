@@ -32,7 +32,7 @@ const createTables = `
                 amount NUMERIC NOT NULL,
                 oldbalance NUMERIC NOT NULL,
                 newbalance NUMERIC NOT NULL,
-                accountnumber INTEGER REFERENCES accounts(accountnumber) ON DELETE CASCADE
+                accountnumber NUMERIC REFERENCES accounts(accountnumber) ON DELETE CASCADE
             )`;
 
 pool.query(createTables).then(() => {

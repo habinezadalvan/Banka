@@ -47,7 +47,7 @@ class Account {
         owner: req.user.id,
         type: req.body.type,
         status: 'active',
-        balance: parseFloat('0'),
+        balance: parseFloat(0),
       };
       if (req.user.type !== 'client') {
         return res.status(401).json({
@@ -91,7 +91,7 @@ class Account {
       }
       // verify if the account activate or deactive exist
       const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
-      const enteredAcc = parseInt(req.params.accountNumber);
+      const enteredAcc = parseInt(req.params.accountNumber, 10);
       const { rows } = await pool.query(getAccount, [enteredAcc]);
       if (!rows[0]) {
         return res.status(404).json({
@@ -136,7 +136,7 @@ class Account {
   static async deleteAccount(req, res) {
     try {
       const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
-      const enteredAcc = parseInt(req.params.accountNumber);
+      const enteredAcc = parseInt(req.params.accountNumber, 10);
       const { rows } = await pool.query(getAccount, [enteredAcc]);
       console.log(rows);
       if (!rows[0]) {
