@@ -49,7 +49,6 @@ class Account {
         status: 'active',
         balance: parseFloat('0'),
       };
-      console.log(accountValues.owner);
       if (req.user.type !== 'client') {
         return res.status(401).json({
           status: 401,
@@ -81,48 +80,56 @@ class Account {
   }
 
   // ACTIVATE OR DEACTIVE BANK ACCOUNT
-  static activateDeactivateAccount(req, res) {
-    const { error } = validation.patchValidation(req.body);
-    if (error) {
-      return res.status(400).json({
-        status: 400,
-        error: error.details[0].message,
+  static async activateDeactivateAccount(req, res) {
+    try {
+      const { error } = validation.patchValidation(req.body);
+      if (error) {
+        return res.status(400).json({
+          status: 400,
+          error: error.details[0].message,
+        });
+      }
+      // verify if the account activate or deactive exist
+      const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const enteredAcc = parseInt(req.params.accountNumber);
+      const { rows } = await pool.query(getAccount, [enteredAcc]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'The account you are trying to activate or deactivate do not exist',
+        });
+      }
+      // eslint-disable-next-line no-self-compare
+      if ((isNaN(req.params.accountNumber))) {
+        return res.status(400).json({
+          status: 400,
+          message: 'The account number do not exist or is not an integer',
+        });
+      }
+      // if (req.user.type !== 'staff' || req.user.isadmin !== 'true') {
+      //   return res.status(401).json({
+      //     status: 401,
+      //     message: 'You are not allowed to perform this oparation!',
+      //   });
+      // }
+      const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
+      const values = [req.body.status, enteredAcc];
+      const results = await pool.query(queryText, values);
+
+      return res.status(200).json({
+        status: 200,
+        data: {
+          accountData: rows[0].accountnumber,
+          status: rows[0].status,
+          ownerId: rows[0].owner,
+          email: rows[0].email,
+          accountBalance: rows[0].balance,
+        },
+        message: 'The account has been updated',
       });
+    } catch (err) {
+      console.log(err);
     }
-    // verify if the account activate or deactive exist
-    const enteredAcc = parseInt(req.params.accountNumber);
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
-    if (!accountData) {
-      return res.status(404).json({
-        status: 404,
-        message: 'The account you are trying to activate or deactivate do not exist',
-      });
-    }
-    // eslint-disable-next-line no-self-compare
-    if ((isNaN(req.params.accountNumber))) {
-      return res.status(400).json({
-        status: 400,
-        message: 'The account number do not exist or is not an integer',
-      });
-    }
-    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-      return res.status(401).json({
-        status: 401,
-        message: 'You are not allowed to perform this oparation!',
-      });
-    }
-    accountData.status = req.body.status;
-    return res.status(200).json({
-      status: 200,
-      data: {
-        accountData: accountData.accountNumber,
-        status: accountData.status,
-        firstName: accountData.firstName,
-        lastName: accountData.lastName,
-        email: accountData.email,
-        accountBalance: '0',
-      },
-    });
   }
 
   // DELETE A BANK ACCOUNT
