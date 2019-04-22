@@ -90,12 +90,12 @@ class Account {
           message: 'Sorry the account number do not exist or is not an integer',
         });
       }
-      // if (req.user.type !== 'staff' || req.user.isadmin !== 'true') {
-      //   return res.status(401).json({
-      //     status: 401,
-      //     message: 'Sorry you are not Authorized to perform this oparation!',
-      //   });
-      // }
+      if (req.user.type !== 'staff') {
+        return res.status(401).json({
+          status: 401,
+          message: 'Sorry you are not Authorized to perform this oparation!',
+        });
+      }
       const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
       const values = [req.body.status, enteredAcc];
       await pool.query(queryText, values);
@@ -130,7 +130,7 @@ class Account {
         });
       }
 
-      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      if (req.user.type !== 'staff') {
         return res.status(401).json({
           status: 401,
           message: 'You are not allowed to perform this oparation!',
@@ -187,12 +187,12 @@ class Account {
           message: 'Sorry that user does not exist',
         });
       }
-      // if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-      //   return res.status(401).json({
-      //     status: 401,
-      //     message: 'Sorry you are not authorized to perform this operation!',
-      //   });
-      // }
+      if (req.user.type !== 'staff') {
+        return res.status(401).json({
+          status: 401,
+          message: 'Sorry you are not authorized to perform this operation!',
+        });
+      }
       const innnerJoinQueryText = 'SELECT createdon, accountnumber, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE email = $1';
       const results = await pool.query(innnerJoinQueryText, [req.params.email.toLowerCase()]);
 
@@ -214,7 +214,7 @@ class Account {
   // GET ALL ACCOUNTS
   static async getAllCounts(req, res) {
     try {
-      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      if (req.user.type !== 'staff') {
         console.log(req.user);
         return res.status(401).json({
           status: 401,
@@ -228,6 +228,35 @@ class Account {
         return res.status(404).json({
           status: 404,
           message: 'Sorry! No bank account found',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: rows,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // GET ALL ACTIVE BANK ACCOUNTS
+  static async getAllAccountsByStatus(req, res) {
+    try {
+      if (req.user.type !== 'staff') {
+        console.log(req.user);
+        return res.status(401).json({
+          status: 401,
+          message: 'Sorry you are not Authorized to perform this oparation!',
+        });
+      }
+      const queryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE status = $1';
+      const value = [req.query.status];
+      const { rows } = await pool.query(queryText, value);
+      console.log(rows);
+      if (rows.length === 0) {
+        return res.status(404).json({
+          status: 404,
+          message: 'Sorry! There is No such bank account found',
         });
       }
       return res.status(200).json({
