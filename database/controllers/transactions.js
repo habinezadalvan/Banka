@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable radix */
 import moment from 'moment';
@@ -5,19 +6,6 @@ import pool from '../config/db';
 import validation from '../../server/helpers/transactions';
 
 class Transactions {
-//   static getAllTransactions(req, res) {
-//     if (transactions.length === 0) {
-//       return res.status(404).json({
-//         status: 404,
-//         message: 'There is no transaction yet',
-//       });
-//     }
-//     return res.status(200).json({
-//       status: 200,
-//       data: transactions,
-//     });
-//   }
-
   // DEBIT BANK ACCOUNT
   static async debitMethod(req, res) {
     try {
@@ -41,7 +29,7 @@ class Transactions {
       } if (rows[0].balance < parseFloat(req.body.amount)) {
         return res.status(400).json({
           status: 400,
-          message: `you have insufficient amount of balance and your balance is ${rows[0].balance}`,
+          message: `Sorry! you have insufficient amount of balance and your balance is ${rows[0].balance}`,
         });
       }
       const debitData = {
@@ -58,7 +46,7 @@ class Transactions {
       if (req.user.type !== 'staff') {
         return res.status(401).json({
           status: 401,
-          message: 'You are not allowed to perform this transaction!',
+          message: 'Sorry ou are not allowed to perform this operation!',
         });
       }
       const updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
@@ -108,7 +96,7 @@ class Transactions {
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          message: 'The account you are trying to credit to does not exists',
+          message: 'Sorry the account you are trying to credit to does not exists',
         });
       }
       const creditData = {
@@ -124,7 +112,7 @@ class Transactions {
       if (req.user.type !== 'staff') {
         return res.status(401).json({
           status: 401,
-          message: 'You are not allowed to perform this transaction!',
+          message: 'Sorry you are not Authorized to perform this operation!',
         });
       }
       const updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
@@ -155,6 +143,7 @@ class Transactions {
     }
   }
 
+  // VIEW ALL ACCOUNT TRANSACTIONS
   static async viewAllAccountTransactions(req, res) {
     try {
       // verify whether this account exists
@@ -164,16 +153,16 @@ class Transactions {
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          message: 'The account you are trying to view its transactions does not exists',
+          message: 'Sorry! the account you are trying to view its transactions does not exists',
         });
       }
       if (req.user.type !== 'client') {
         return res.status(401).json({
           status: 401,
-          message: 'You are not allowed to perform this oparation!',
+          message: 'Sorry! You are not Authorized to perform this oparation!',
         });
       }
-      const transctionQueryText = 'SELECT * FROM transactions WHERE accountnumber = $1';
+      const transctionQueryText = 'SELECT id, createdon, type, accountnumber, amount, oldbalance, newbalance  FROM transactions WHERE accountnumber = $1';
       const results = await pool.query(transctionQueryText, [enteredAcc]);
       if (results.rows.length === 0) {
         return res.status(404).json({
@@ -190,21 +179,22 @@ class Transactions {
     }
   }
 
+  // VIEW A SPECIFIC ACCOUNT TRANSACTION
   static async getSpecificTransaction(req, res) {
     try {
       if (req.user.type !== 'client') {
         return res.status(401).json({
           status: 401,
-          message: 'You are not allowed to perform this oparation!',
+          message: 'Sorry! you are not Authorized to perform this oparation!',
         });
       }
-      const transactionQueryText = 'SELECT * FROM transactions WHERE id = $1';
+      const transactionQueryText = 'SELECT id, createdon, type, accountnumber, amount, oldbalance, newbalance FROM transactions WHERE id = $1';
       const { rows } = await pool.query(transactionQueryText,
         [parseInt(req.params.transactionId, 10)]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          message: 'That transaction does not exists',
+          message: 'Sorry that transaction does not exists',
         });
       }
       return res.status(200).json({
