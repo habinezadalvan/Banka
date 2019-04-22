@@ -189,6 +189,41 @@ class Account {
       console.log(err);
     }
   }
+
+  static async getAllUserAccounts(req, res) {
+    try {
+      // VERIFY WHETHER THE USER EXISTS
+      const findEmail = 'SELECT * FROM users WHERE email = $1';
+      const { rows } = await pool.query(findEmail, [req.params.email.toLowerCase()]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'Sorry that user does not exist',
+        });
+      }
+      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const innnerJoinQueryText = 'SELECT createdon, accountnumber, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE email = $1';
+      const results = await pool.query(innnerJoinQueryText, [req.params.email.toLowerCase()]);
+
+      if (results.rows.length === 0) {
+        return res.status(404).json({
+          status: 404,
+          message: 'Sorry the user has no account!',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: results.rows,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 export default Account;
