@@ -10,5 +10,6 @@ router.patch('/api/v2/account/:accountNumber', auth.authorization, Accounts.acti
 router.delete('/api/v2/account/:accountNumber', auth.authorization, Accounts.deleteAccount);
 router.get('/api/v2/accounts/:accountNumber', auth.authorization, Accounts.getAccountDetails);
 router.get('/api/v2/:email/accounts', auth.authorization, Accounts.getAllUserAccounts);
+router.get('/api/accounts', auth.authorization, Accounts.getAllAccountsByStatus);
 
 export default router;
