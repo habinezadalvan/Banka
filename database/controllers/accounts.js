@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-cond-assign */
 /* eslint-disable no-multi-spaces */
 /* eslint-disable no-restricted-globals */
@@ -8,23 +9,6 @@ import validation from '../../server/helpers/accounts';
 
 
 class Account {
-  // GET ALL ACCOUNTS
-  static async getAllCounts(erq, res) {
-    const queryText = 'SELECT * FROM accounts';
-    const { rows } = await pool.query(queryText);
-
-    if (rows.length === 0) {
-      return res.status(404).json({
-        status: 404,
-        message: 'No bank account found',
-      });
-    }
-    return res.status(200).json({
-      status: 200,
-      data: rows,
-    });
-  }
-
   // CREATE BANK ACCOUNT
   static async createBankAccount(req, res) {
     try {
@@ -103,13 +87,13 @@ class Account {
       if ((isNaN(req.params.accountNumber))) {
         return res.status(400).json({
           status: 400,
-          message: 'The account number do not exist or is not an integer',
+          message: 'Sorry the account number do not exist or is not an integer',
         });
       }
       // if (req.user.type !== 'staff' || req.user.isadmin !== 'true') {
       //   return res.status(401).json({
       //     status: 401,
-      //     message: 'You are not allowed to perform this oparation!',
+      //     message: 'Sorry you are not Authorized to perform this oparation!',
       //   });
       // }
       const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
@@ -164,6 +148,7 @@ class Account {
     }
   }
 
+  // VIEW ACCOUNT DETAILS BY USER
   static async getAccountDetails(req, res) {
     try {
       if (req.user.type !== 'client') {
@@ -172,13 +157,13 @@ class Account {
           message: 'You are not allowed to perform this oparation!',
         });
       }
-      const accDetailsQueryText = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const accDetailsQueryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1';
       const { rows } = await pool.query(accDetailsQueryText,
         [parseInt(req.params.accountNumber, 10)]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          message: 'That Account does not exists',
+          message: 'Sorry that Account does not exists',
         });
       }
       return res.status(200).json({
@@ -190,9 +175,10 @@ class Account {
     }
   }
 
+  // VIEW ALL ACCOUNTS OWNEE BY A SPECIFIC USER
   static async getAllUserAccounts(req, res) {
     try {
-      // VERIFY WHETHER THE USER EXISTS
+      // Verify whether the account exists
       const findEmail = 'SELECT * FROM users WHERE email = $1';
       const { rows } = await pool.query(findEmail, [req.params.email.toLowerCase()]);
       if (!rows[0]) {
@@ -201,12 +187,12 @@ class Account {
           message: 'Sorry that user does not exist',
         });
       }
-      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-        return res.status(401).json({
-          status: 401,
-          message: 'You are not allowed to perform this oparation!',
-        });
-      }
+      // if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+      //   return res.status(401).json({
+      //     status: 401,
+      //     message: 'Sorry you are not authorized to perform this operation!',
+      //   });
+      // }
       const innnerJoinQueryText = 'SELECT createdon, accountnumber, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE email = $1';
       const results = await pool.query(innnerJoinQueryText, [req.params.email.toLowerCase()]);
 
@@ -219,6 +205,34 @@ class Account {
       return res.status(200).json({
         status: 200,
         data: results.rows,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // GET ALL ACCOUNTS
+  static async getAllCounts(req, res) {
+    try {
+      if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
+        console.log(req.user);
+        return res.status(401).json({
+          status: 401,
+          message: 'You are not allowed to perform this oparation!',
+        });
+      }
+      const queryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner';
+      const { rows } = await pool.query(queryText);
+
+      if (rows.length === 0) {
+        return res.status(404).json({
+          status: 404,
+          message: 'Sorry! No bank account found',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: rows,
       });
     } catch (err) {
       console.log(err);

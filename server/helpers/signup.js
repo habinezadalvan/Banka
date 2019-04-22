@@ -4,13 +4,13 @@ import Joi from 'joi';
 class ValidateSignUp {
   static signupValidation(signupdata) {
     const Schema = {
-      firstName: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
-      lastName: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
+      firstname: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
+      lastname: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
       email: Joi.string().required().email({ minDomainAtoms: 2 }).trim(),
       password: Joi.string().required(),
-      confirmPassword: Joi.string().required(),
+      confirmpassword: Joi.string().required(),
       type: Joi.string().valid('client', 'staff'),
-      isAdmin: Joi.boolean(),
+      isadmin: Joi.boolean(),
     };
     return Joi.validate(signupdata, Schema);
   }

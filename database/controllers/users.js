@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -7,24 +8,9 @@ import pool from '../config/db';
 
 dotenv.config();
 
-// class for signup endpoint
+// USERS CLASS
 class Users {
-  /*
-  static getUsers(req, res) {
-    if (req.user.type !== 'staff' || req.user.isAdmin !== 'true') {
-      return res.status(401).json({
-        status: 401,
-        message: 'You are not allowed to perform this oparation!',
-      });
-    }
-    const signedUsers = users;
-    return res.status(200).json({
-      status: 200,
-      data: users,
-    });
-  }
-*/
-
+  // SIGN UP
   static async signup(req, res) {
     try {
       const { error } = validationSignup.signupValidation(req.body);
@@ -41,7 +27,7 @@ class Users {
       if (rows.length !== 0) {
         return res.status(400).json({
           status: 400,
-          message: 'The email you have entered already exists in the system, try another one!',
+          message: 'Sorry the email you have entered already exists in the system, try another one!',
         });
       }
       const hash = bcrypt.hashSync(req.body.password, 10);
@@ -52,42 +38,48 @@ class Users {
       } else {
         type = 'client';
       }
-      let isAdmin;
+      let isadmin;
 
-      if (req.body.isAdmin === 'true') {
-        isAdmin = 'true';
+      if (req.body.isadmin === 'true') {
+        isadmin = 'true';
       } else {
-        isAdmin = 'false';
+        isadmin = 'false';
       }
-      if ((req.body.email.toLowerCase() !== 'admin@gmail.com'.toLowerCase()) || (rows[0].isadmin !== 'true')) {
-        type = 'client';
-        isAdmin = 'false';
-      }
+      // if ((req.body.email.toLowerCase() !== 'admin@gmail.com'.toLowerCase()) || (rows[0].isadmin !== 'true')) {
+      //   type = 'client';
+      //   isadmin = 'false';
+      // }
       const signupValues = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         email: req.body.email,
         password: hash,
         type,
-        isAdmin,
+        isadmin,
       };
-      // validate confirmPassword
-      if (req.body.password !== req.body.confirmPassword) {
+      // validate for confirmpassword
+      if (req.body.password !== req.body.confirmpassword) {
         return res.status(400).json({
           status: 400,
           message: 'Password and confirm password do not match!',
         });
       }
       const queryText = 'INSERT INTO users (firstname, lastname, email, password,type, isadmin) VALUES($1, $2, $3, $4, $5, $6) RETURNING *';
-      const results = await pool.query(queryText, [signupValues.firstName, signupValues.lastName, signupValues.email, signupValues.password, signupValues.type, signupValues.isAdmin]);
+      const results = await pool.query(queryText, [signupValues.firstname,
+        signupValues.lastname,
+        signupValues.email,
+        signupValues.password,
+        signupValues.type,
+        signupValues.isadmin]);
 
       // sign up Authentication
       const payload = {
         id: results.rows[0].id,
-        firstName: results.rows[0].firstname,
-        lastName: results.rows[0].lastname,
+        firstname: results.rows[0].firstname,
+        lastname: results.rows[0].lastname,
         email: results.rows[0].email,
         type: results.rows[0].type,
+        isadmin: results.rows[0].isadmin,
       };
 
       const token = jwt.sign(payload, process.env.SECRETKEY);
@@ -97,8 +89,8 @@ class Users {
         data: {
           token,
           id: results.rows[0].id,
-          firstName: results.rows[0].firstname,
-          lastName: results.rows[0].lastname,
+          firstname: results.rows[0].firstname,
+          lastname: results.rows[0].lastname,
           email: results.rows[0].email,
         },
       });
@@ -107,6 +99,7 @@ class Users {
     }
   }
 
+  // LOGIN OR SIGNIN
   static async login(req, res) {
     try {
       const { error } = validationLogin.loginValidation(req.body);
@@ -131,20 +124,20 @@ class Users {
         // sign up Authentication
         const payload = {
           id: rows[0].id,
-          firstName: rows[0].firstName,
-          lastName: rows[0].lastName,
+          firstname: rows[0].firstname,
+          lastname: rows[0].lastname,
           email: rows[0].email,
           type: rows[0].type,
+          isadmin: rows[0].isadmin,
         };
-
         const token = jwt.sign(payload, process.env.SECRETKEY);
         return res.status(200).json({
           status: 200,
           data: {
             token,
             id: rows[0].id,
-            firstName: rows[0].firstname,
-            lastName: rows[0].lastname,
+            firstname: rows[0].firstname,
+            lastname: rows[0].lastname,
             email: rows[0].email,
           },
           message: 'Welcome to Banka, you have successfully login',
