@@ -7,6 +7,9 @@ import swaggerDoc from './swagger.json';
 const app = express();
 app.use(bodyParser.json());
 app.use('/swaggerapi', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.get('/', (req, res) => res.status(200).json({
+  message: 'Welcome to banka',
+}));
 
 app.use(router);
 
