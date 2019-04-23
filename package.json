@@ -5,13 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 server/tests/*.js --exit",
+    "testdb": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 database/tests/*.js --exit",
     "start": "nodemon --exec babel-node server/app.js",
     "startdb": "nodemon --exec babel-node database/app.database.js",
     "createadmin": "node --require @babel/register database/controllers/admin.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "createTables": "node --require @babel/register database/models/tables.js",
-    "droptables": "node --require @babel/register database/models/droptables.js",
-    "database": "concurrently \"npm run droptables\" \"npm run createTables\" \"npm run createadmin\""
+    "droptables": "node --require @babel/register database/models/droptables.js"
   },
   "repository": {
     "type": "git",
