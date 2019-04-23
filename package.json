@@ -10,7 +10,7 @@
     "startdb": "nodemon --exec babel-node database/app.database.js",
     "createadmin": "node --require @babel/register database/controllers/admin.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "createTables": "node --require @babel/register database/models/tables.js",
+    "createTables": "node --require @babel/register database/models/tables.js  && npm run createadmin",
     "droptables": "node --require @babel/register database/models/droptables.js"
   },
   "repository": {
