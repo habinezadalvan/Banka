@@ -16,7 +16,7 @@ deposit money..
   **BANKA END POINTS**
   ----------------
   
-  *Endpoints version two (V2) with postgresql database
+  *Endpoints version two (V2) with postgresql database*
   ---------------------------------------------------
   
   | METHOD  | END-POINTS  | DESCRIPTION |
@@ -35,7 +35,7 @@ deposit money..
 | GET | /api/v2/transactions/:transactionId |    get specific transaction |
 | GET | /api/v2/transactions |    get all transactions |
 
-*Endpoints version(v1) backend without postgresql datadase
+*Endpoints version(v1) backend without postgresql datadase*
 ------------------------------------------------------------
 
   | METHOD  | END-POINTS  | DESCRIPTION |
