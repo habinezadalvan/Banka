@@ -4,7 +4,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import server from '../app';
+import server from '../app.database';
 
 dotenv.config();
 
@@ -16,9 +16,10 @@ const payload = {
   id: 1,
   firstname: 'christian',
   lastname: 'habineza',
-  email: 'habinezadalvan@gmail.com',
+  email: 'tes@gmail.com',
+  type: 'client',
+  isadmin: 'false',
 };
-
 const token = jwt.sign(payload, process.env.SECRETKEY);
 
 // signup tests part
@@ -26,12 +27,12 @@ const token = jwt.sign(payload, process.env.SECRETKEY);
 describe('signup', () => {
   it('should be able to signup', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
-        firstname: 'chris',
+      .post('/api/v2/auth/signup').send({
+        firstname: 'christian',
         lastname: 'habineza',
-        email: 'habine@gmail.com',
-        password: 'qwerty',
-        confirmpassword: 'qwerty',
+        email: 'test10@gmail.com',
+        password: '12345',
+        confirmpassword: '12345',
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -43,7 +44,7 @@ describe('signup', () => {
 
   it('should give an error password and confirm password do not match', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         lastname: 'habineza',
         email: 'habineza@gmail.com',
@@ -61,7 +62,7 @@ describe('signup', () => {
 
   it('should varify whether email has been used/ is already in the system ', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         lastname: 'habineza',
         email: 'habinezadalvan@gmail.com',
@@ -76,7 +77,7 @@ describe('signup', () => {
 
   it('should give an error when firstname is not entered', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         lastname: 'habineza',
         email: 'habine@gmail.com',
         password: 'qwerty',
@@ -89,7 +90,7 @@ describe('signup', () => {
   });
   it('should give an error when lastname is not entered', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         email: 'habine@gmail.com',
         password: 'qwerty',
@@ -102,7 +103,7 @@ describe('signup', () => {
   });
   it('should give an error when email is not entered', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         lastname: 'habineza',
         password: 'qwerty',
@@ -115,7 +116,7 @@ describe('signup', () => {
   });
   it('should give an error when password is not entered', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         lastname: 'habineza',
         email: 'habine@gmail.com',
@@ -128,7 +129,7 @@ describe('signup', () => {
   });
   it('should give an error when confirm password is not entered', (done) => {
     chai.request(server)
-      .post('/api/v1/auth/signup').send({
+      .post('/api/v2/auth/signup').send({
         firstname: 'chris',
         lastname: 'habineza',
         email: 'habine@gmail.com',
@@ -139,13 +140,4 @@ describe('signup', () => {
         done();
       });
   });
-  // it('should get all users', (done) => {
-  //   chai.request(server)
-  //     .get('/api/v1/users')
-  //     .set('Authorization', token)
-  //     .end((err, res) => {
-  //       res.should.have.status(200);
-  //       done();
-  //     });
-  // });
 });
