@@ -13,7 +13,7 @@
     "startproduction": "DEV_ENV=production babel-node server/app.database.js && npm run createTables && npm run createadmin",
     "createadminTests": "DEV_ENV=test node --require @babel/register server/controllers/admin.js",
     "createadmin": "DEV_ENV=development node --require @babel/register server/controllers/admin.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "createTablesTests": "DEV_ENV=test node --require @babel/register server/models/tables.js && npm run createadminTests",
     "startv1": "nodemon --exec babel-node dummy/app.js",
     "testV1": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 dummy/tests/*.js --exit",
