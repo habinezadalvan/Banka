@@ -13,3 +13,7 @@ pool.on('connect', () => {
 });
 
 export default pool;
+
+if (process.env.NODE_ENV){
+  
+}
