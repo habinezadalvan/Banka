@@ -45,7 +45,7 @@ before('login hook', () => {
         type: 'saving',
       })
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(403);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
         res.body.should.have.property('message');
@@ -61,7 +61,7 @@ before('login hook', () => {
       .end(() => {
         // console.log(res.body);
         chai.request(server)
-          .delete(`/api/v2/account/${40003366878}`)
+          .delete(`/api/v2/account/${40007317369}`)
           .set('Authorization', token)
           .end((err, res) => {
             // console.log(res.body);

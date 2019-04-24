@@ -41,8 +41,8 @@ class Transactions {
       };
 
       if (req.user.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry ou are not allowed to perform this operation!',
         });
       }
@@ -107,8 +107,8 @@ class Transactions {
       };
 
       if (req.user.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry you are not Authorized to perform this operation!',
         });
       }
@@ -154,8 +154,8 @@ class Transactions {
         });
       }
       if (req.user.type !== 'client') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry! You are not Authorized to perform this oparation!',
         });
       }
@@ -180,8 +180,8 @@ class Transactions {
   static async getSpecificTransaction(req, res) {
     try {
       if (req.user.type !== 'client') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry! you are not Authorized to perform this oparation!',
         });
       }

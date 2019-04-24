@@ -49,9 +49,9 @@ class Users {
         isadmin = 'false';
       }
       const signupValues = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email,
+        firstname: req.body.firstname.trim(),
+        lastname: req.body.lastname.trim(),
+        email: req.body.email.trim(),
         password: hash,
         type,
         isadmin,
@@ -94,7 +94,10 @@ class Users {
         },
       });
     } catch (err) {
-      console.log();
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -147,7 +150,10 @@ class Users {
         message: 'INCORRECT EMAIL OR PASSWORD',
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server err',
+      });
     }
   }
 }
