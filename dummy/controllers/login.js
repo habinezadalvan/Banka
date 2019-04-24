@@ -28,16 +28,16 @@ class Login {
     if (truePassword) {
       logindata = {
         id: logindata.id,
-        firstName: logindata.firstName,
-        lastName: logindata.lastName,
+        firstname: logindata.firstname,
+        lastname: logindata.lastname,
         email: req.body.email,
         password: truePassword,
       };
       // sign up Authentication
       const payload = {
         id: logindata.id,
-        firstName: logindata.firstName,
-        lastName: logindata.lastName,
+        firstname: logindata.firstname,
+        lastname: logindata.lastname,
         email: logindata.email,
         type: logindata.type,
       };
@@ -49,8 +49,8 @@ class Login {
         data: {
           token,
           id: logindata.id,
-          firstName: logindata.firstName,
-          lastName: logindata.lastName,
+          firstname: logindata.firstname,
+          lastname: logindata.lastname,
           email: logindata.email,
         },
         message: 'Welcome to Banka, you have successfully login',

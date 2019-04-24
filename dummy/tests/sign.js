@@ -12,7 +12,12 @@ dotenv.config();
 chai.use(chaiHttp);
 chai.should();
 
-const payload = { id: 1 };
+const payload = {
+  id: 1,
+  firstname: 'christian',
+  lastname: 'habineza',
+  email: 'habinezadalvan@gmail.com',
+};
 
 const token = jwt.sign(payload, process.env.SECRETKEY);
 
@@ -22,11 +27,11 @@ describe('signup', () => {
   it('should be able to signup', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         email: 'habine@gmail.com',
         password: 'qwerty',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -39,11 +44,11 @@ describe('signup', () => {
   it('should give an error password and confirm password do not match', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         email: 'habineza@gmail.com',
         password: 'qwerty',
-        confirmPassword: 'qwer',
+        confirmpassword: 'qwer',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -57,11 +62,11 @@ describe('signup', () => {
   it('should varify whether email has been used/ is already in the system ', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         email: 'habinezadalvan@gmail.com',
         password: 'qwerty',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -69,26 +74,26 @@ describe('signup', () => {
     done();
   });
 
-  it('should give an error when firstName is not entered', (done) => {
+  it('should give an error when firstname is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        lastName: 'habineza',
+        lastname: 'habineza',
         email: 'habine@gmail.com',
         password: 'qwerty',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
         done();
       });
   });
-  it('should give an error when lastName is not entered', (done) => {
+  it('should give an error when lastname is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
+        firstname: 'chris',
         email: 'habine@gmail.com',
         password: 'qwerty',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -98,10 +103,10 @@ describe('signup', () => {
   it('should give an error when email is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         password: 'qwerty',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -111,10 +116,10 @@ describe('signup', () => {
   it('should give an error when password is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         email: 'habine@gmail.com',
-        confirmPassword: 'qwerty',
+        confirmpassword: 'qwerty',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -124,8 +129,8 @@ describe('signup', () => {
   it('should give an error when confirm password is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/auth/signup').send({
-        firstName: 'chris',
-        lastName: 'habineza',
+        firstname: 'chris',
+        lastname: 'habineza',
         email: 'habine@gmail.com',
         password: 'qwerty',
       })

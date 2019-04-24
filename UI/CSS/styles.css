@@ -11,7 +11,7 @@ body{
 }
 /* navigation bar styling */
 .navbar{
-    /* border: 2px solid red; */
+ 
     background-color:#4f7de0;
     display: flex;
     width: 100%;
@@ -26,12 +26,12 @@ body{
     transition-delay:0.5s;
 }
 .navbar1{
-    /* border: 2px solid white; */
+  
     flex-basis: 70%;
     display: flex;
 }
 .navbar .navbar1 a{
-    /* border: 2px solid black; */
+  
     text-decoration: none;
     margin:0;
     padding: 23px 40px;
@@ -44,7 +44,7 @@ body{
     
 }
 .navbar ul{
-    /* border: 2px solid white; */
+  
     flex-basis: 90%;
     height:100%;
     list-style: none;
@@ -66,7 +66,7 @@ body{
 
 
 .navbar2{
-    /* border: 2px solid green; */
+ 
     flex-basis: 30%;
     color: white;
     font-size: 40px;
@@ -222,7 +222,7 @@ body{
 /* MAIN AREA STYLING */
 
 #main-area{
-    /* border: 2px solid gold; */
+   
    display: flex;
    flex-direction: column;
    transition: margin-left 0.5s; 
@@ -232,24 +232,23 @@ body{
    margin:0;
 }
 #main-area .main-area-images{
-    /* height: 500px; */
+  
     width: 100%;
 }
 
 #main-area .slider{
-    /* border: 2px solid red; */
+   
     height: 50%;
     flex-basis: 50%;
     overflow: hidden;
     background: #0c2d75;
     opacity: .9;
     z-index: 3;
-    /* border-bottom: 5px solid rgb(253, 176, 9); */
+   
 }
 #main-area .non-slider{
-    /* border: 2px solid green; */
-    height: 40%;    
-    /* background:rgb(180, 76, 76); */
+    
+    height: 40%; 
     flex-basis: 50%;
 }
 
@@ -375,14 +374,13 @@ body{
         height: 100%;
     }
     #main-area .slider{
-        /* border: 2px solid red; */
+       
         height: 100%;
         flex-basis: 50%;
     }
     #main-area .non-slider{
-        /* border: 2px solid green; */
+       
         height: 100%;    
-        /* background:rgb(180, 76, 76); */
         flex-basis: 50%;
     }
     #main-area .slider p{
@@ -403,12 +401,12 @@ body{
         height: 100%;
     }
     #main-area .slider{
-        /* border: 2px solid red; */
+
         height: 100%;
         flex-basis: 50%;
     }
     #main-area .non-slider{
-        /* border: 2px solid green; */
+      
         height: 100%;    
         flex-basis: 50%;
     }
@@ -432,12 +430,12 @@ body{
         height: 100%;
     }
     #main-area .slider{
-        /* border: 2px solid red; */
+        
         height: 100%;
         flex-basis: 40%;
     }
     #main-area .non-slider{
-        /* border: 2px solid green; */
+      
         height: 100%;    
         flex-basis: 60%;
     }
@@ -453,12 +451,12 @@ body{
 @media (max-width: 649px){
 
     #main-area .slider{
-        /* border: 2px solid red; */
+       
         height: 100%;
         flex-basis: 50%;
     }
     #main-area .non-slider{
-        /* border: 2px solid green; */
+       
         height: 100%;    
         flex-basis: 50%;
     }
@@ -496,7 +494,7 @@ body{
     .non-slider{
         display: flex;
         flex-direction: row;
-        /* flex-flow: column-reverse; */
+       
     }
     .non-slider{
         flex-flow: row wrap;
@@ -507,7 +505,7 @@ body{
 @media (max-width: 649px){
     #main-area .non-slider{
         flex-direction: row;
-        /* flex-flow: column-reverse; */
+        
     }
     
 }
@@ -565,7 +563,7 @@ body{
     flex-direction: row;
 }
 .window{
-    /* border: 2px solid black; */
+ 
     width: 23%;
     margin-left: 22px;
     text-align: center;
@@ -630,8 +628,6 @@ body{
 }
 @media (max-width: 1024px){
     #main-area .main-area-images{
-        /* height: 350px;
-        width: 100%; */
     }
     #main-area .slider .longParagraph p{
         font-size: 20px;
@@ -710,12 +706,11 @@ body{
         padding-left: 0px;
         flex-wrap: wrap;
         margin-left: 0px;
-        /* padding-top: 20px; */
         
     }
 
     .window{
-        /* border: 2px solid black; */
+        
         margin-left: 10px;
         margin-top: 50px;
         padding-top: 20px;
@@ -762,13 +757,13 @@ body{
         padding-top: 22px;
     }
     .adsArea{
-        /* margin-right: 10px; */
+        
         flex-wrap: wrap;
         padding-left: 0px;
         padding-right: 20px;
     }
     .window{
-        /* border: 2px solid black; */
+       
         margin-top: 5px;
         width: 95%;
         height: 200px;
@@ -800,14 +795,14 @@ body{
     display: none;
 }
 .main-area-left{
-    /* border: 2px solid black; */
+   
     flex-basis: 20%;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .main-area-right{
-    /* border: 2px solid red; */
+ 
     text-align: center;
     flex-basis: 80%;
     height: 100%;
@@ -821,7 +816,7 @@ body{
     margin: 30px auto;
     width: 100%;
     text-align: center;
-    /* padding-top: 30px; */
+   
 }
 .main-area-left .profileTitle{
     background: #4f7de0;
@@ -846,7 +841,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .main-area-left .sideMenu ul{
-    /* border: 2px solid red; */
+ 
     list-style: none;
     margin: 10px auto;
     width: 100%;
@@ -854,11 +849,11 @@ body{
     margin-left: 30px;
 }
 .main-area-left .sideMenu ul li{
-    /* border: 2px solid yellow; */
+    
     padding: 20px;
 }
 .main-area-left .sideMenu ul a{
-    /* border: 2px solid blue; */
+
     text-decoration: none;
     color: white;
 }
@@ -869,43 +864,7 @@ body{
 .current{
     border-left: 2px solid yellow;
 }
-/* 
-@keyframes profile{
-0%{top:-80px}
-100%{top: 0px}
-} */
 
-/* .main-area-left h2{
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-} */
-
-/* .profile{
-    margin-left: 250px;
-    margin-top: 20px;
-} */
-/* .profile img{
-    position: absolute;
-    margin-left: 120px;
-    border-radius: 100%;
-}
-.profile span {
-    color: white;
-    margin-top: 100px;
-}
-.profile button a {
-    text-decoration: none;
-}
-.profile button a:hover{
-    color: #3b5998;
-} */
-/* .main-area-left:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-    color: rgb(253, 176, 9);
-} */
 .signupDashboard{ 
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-top: 100px;
@@ -948,7 +907,6 @@ body{
     body{
         height: 100%;
         width: 100%;
-        /* background: #d48c20 */
     }
     .container{
         height: 100%;
@@ -980,37 +938,32 @@ body{
     #main-areaPage{
         flex-flow: column-reverse;
        height: 100%;
-        /* display: block; */
+     
     }
     .main-area-left{
         flex-basis: 10%;
-        /* margin-top: -20px;
-        padding-top: 20px; */
         border-right: none;
     }
     .main-area-right{
         flex-basis: 90%;
     }
-    /* .main-area-left{
-        margin-bottom: 80px;
-    } */
 
     .main-area-left .sideMenu{
         width: 60%;
         font-size: 15px;
     }
     .main-area-left .sideMenu ul{
-        /* border: 2px solid red; */
+     
         margin: 10px auto;
         margin-left: 50px;
         width: 100%;
     }
     .main-area-left .sideMenu ul li{
-        /* border: 2px solid yellow; */
+       
         padding: 12px;
     }
     .main-area-left .sideMenu ul a{
-        /* border: 2px solid blue; */
+       
     }
     .main-area-left .profileTitle{
         height: 30px;
@@ -1025,7 +978,7 @@ body{
     }
   
     .adsArea{
-        /* margin: 5px; */
+       
         font-size: 20px;
     }
     .window{
@@ -1076,19 +1029,9 @@ body{
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
-    /* transition: transform 1s;
-    animation: 2s animation;
-    animation-fill-mode: forwards; */
+    
 }
 
-/* @keyframes animation{
-0%{top:-50px;}
-100%{top:0px;}
-} */
-/* .main-area-right .createAccount:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-} */
 .main-area-right .createAccount h2{
     margin: 0 0 30px;
     padding: 0;
@@ -1107,35 +1050,11 @@ body{
     font-size: 16px;
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    /* letter-spacing: 1px; */
     color: black;
     pointer-events: fill;
-    /* border: none;
-    outline: none; */
-    /* border-bottom: 1px solid #fff; */
     background: #ddd;
-    /* margin-bottom: 20px; */
+  
 }
-.main-area-right .createAccount .createAccountInput label{
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff;
-    pointer-events: none;
-    transition: .9s; */
-}
-/* .main-area-right .createAccount .createAccountInput input:focus ~ label,
-.main-area-right.createAccount .createAccountInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-} */
 
 .main-area-right .createAccount input[type="submit"]{
     background: transparent;
@@ -1172,15 +1091,10 @@ body{
 .createAccount select{
     width: 63%;
     height: 40px;
-    /* padding: 20px; */
     margin: 20px auto;
-    /* border: none;
-    outline: none; */
      background: transparent;
      color: white;
-    /* border-bottom: 1px solid #fff; */
     font-size: 16px;
-    /* letter-spacing: 1px; */
 }
 .createAccount select option{
    background:#3b5998;
@@ -1197,14 +1111,7 @@ body{
         margin-left:0;
     }
 }
-/* @media (max-width: 959px){
-    .main-area-right .createAccount input[type="submit"]{
-        margin-left: 0;
-    }
-    #main-area{
-        height: 1170px;
-    }
-} */
+
 
 @media (min-width: 1800px){
     .main-area-right .createAccount{
@@ -1331,24 +1238,19 @@ body{
 /* TRANSACTION FIELD */
 .main-area-right .transactionsPage{
 
-    /* border: 2px solid red; */
     display: none;
     position: relative;
     margin: 50px auto;
     margin-top: 82px;
     width: 95%;
-    /* height: 500px; */
     background: #3b5998;
     color: #fff;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     padding: 10px;
     box-sizing: border-box;
-    /* transition: transform 1s; */
     box-shadow: 0 5px 15px rgba(0,0,0,.9);
     border-radius: 10px; 
-    /* animation: 2s animation;
-    animation-fill-mode: forwards; */
 
 }
 
@@ -1368,12 +1270,9 @@ body{
 .main-area-right .transactionsPage table, th, td{
     margin:auto;
     margin-left: 5px;
-    /* border-bottom: 1px solid white; */
     text-align: center;
-    /* border-collapse: collapse; */
     height: 40px;
     table-layout: fixed;
-    /* opacity: .9; */
     
 }
 
@@ -1458,15 +1357,8 @@ body{
 
 /* AFTER LOGIN DASHBOARD STYLING */
 
-/* #main-areaPage{
-    height: 1200px;
-} */
-
 /* media queries for after login dashboard page */
 @media (max-width: 649px){
-    /* #main-areaPage{
-        height: 1600px;
-    } */
     
 }
 /* VIEW ACCOUNTS STYLING */
@@ -1623,16 +1515,6 @@ body{
         width: 80%;
     }
 }
-/* STAFF DASHBOARD PAGE */
-/* .staffNewUsers table{
-    text-align: center;
-    margin: auto;
-    color: #fff;
-}
-.staffNewUsers table tr:hover{
-    color: #4f7de0;
-} */
-
 
 #footerId{
     transition: margin-left 0.5s;

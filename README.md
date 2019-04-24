@@ -16,6 +16,28 @@ deposit money..
   **BANKA END POINTS**
   ----------------
   
+  *Endpoints version two (V2) with postgresql database*
+  ---------------------------------------------------
+  
+  | METHOD  | END-POINTS  | DESCRIPTION |
+| ------------ |---------------| -----|
+| POST     | /api/v2/auth/signup |user signup |
+| POST     | /api/v2/auth/signin |user login |
+| POST | /api/v2/accounts  |user creates bank account |
+| POST     | /api/v2/transactions/:accountNumber/credit |cashier credit bank account |
+| POST     | /api/v2/transactions/:accountNumber/debit |cashier debit bank account |
+| PATCH | /api/v2/account/:accountNumber|cashier/admin activate/deactivate bank account |
+| DELETE     | /api/v2/account/:accountNumber | staff/admin delete account |
+| GET | /api/v2/accounts  |    get all accounts |
+| GET | /api/accounts  |    get all active and dormant accounts |
+| GET | /api/v2/accounts/:accountNumber  |    get account details |
+ GET | /api/v2/accounts/:accountNumber/transactions  |    get account's transactions history |
+| GET | /api/v2/transactions/:transactionId |    get specific transaction |
+| GET | /api/v2/transactions |    get all transactions |
+
+*Endpoints version(v1) backend without postgresql datadase*
+------------------------------------------------------------
+
   | METHOD  | END-POINTS  | DESCRIPTION |
 | ------------ |---------------| -----|
 | POST     | /api/v1/auth/signup |user signup |
@@ -41,6 +63,8 @@ deposit money..
   
   2. postman 
   
+  3. postgresql 
+  
    **Technology and tools used**
   
   
@@ -54,7 +78,7 @@ deposit money..
   
   4. gh-pages : For hosting UI
   
-  *Backend*
+  *Backend and database*
   
   1. Node.js : JavaScript run-time environment 
   
@@ -73,6 +97,8 @@ deposit money..
   7. Coverall : Continuous integration test coverage
   
   8. Code-Climate : Continuous integration code quality
+  
+  9. postgresql : Database
   
   
   
@@ -97,7 +123,9 @@ deposit money..
   
   1. Get the application locally with above steps.
   
-  2. To run tests run ``npm test`` in terminal.
+  2. To run tests run ``npm run test`` in terminal to test only backend endpoints.
+  
+  3. To run tests run ``npm run testdb`` in terminal to test backend with postgresql database endpoints.
   
   
   **CONTRIBUTE**

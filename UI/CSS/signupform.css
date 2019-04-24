@@ -31,12 +31,8 @@ body{
     0%{top:-100px;}
     100%{top:0px;}
 }
-/* .non-slider .signUp:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-} */
+
 .non-slider .signUp h2{
-    /* margin: 0 0 30px; */
     padding: 0;
     color: #fff;
     text-align: center;
@@ -54,35 +50,10 @@ body{
     font-size: 16px;
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    /* letter-spacing: 1px; */
     color: black;
     pointer-events: fill;
-    /* border: none;
-    outline: none; */
-    /* border-bottom: 1px solid #fff; */
     background: #ddd;
-    /* margin-bottom: 20px; */
 }
-.non-slider .signUp .signUpInput label{
-    /* position: absolute; */
-    /* top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px; */
-    /* font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff; */
-    /* pointer-events: none; */
-    /* transition: .9s; */
-}
-/* .non-slider .signUp .signUpInput input:focus ~ label,
-.non-slider .signUp .signUpInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-} */
 
 .non-slider .signUp input[type="submit"]{
     background: transparent;
@@ -120,68 +91,6 @@ body{
     color: rgb(252, 193, 66);
 } 
 
-/* .closeSignUp-icon:hover{
-    color: #6b9aff;
-} */
-/* media queries fron sign up button */
-
-/* @media all and (max-width: 1440px){
-    .non-slider .signUp input[type="submit"]{
-        margin-left: 70px;
-    }
-    .non-slider .signUp .signUpInput{
-        margin-left: 70px;
-    }
-}
-
-@media all and (max-width: 1024px){
-    .non-slider .signUp input[type="submit"]{
-        margin-left: 70px;
-    }
-    .non-slider .signUp .signUpInput{
-        margin-left: 70px;
-    }
-    .non-slider .signUp{
-        width: 40%;
-    }
-}
-@media all and (max-width: 959px){
-    .non-slider .signUp input[type="submit"]{
-        margin-left: 70px;
-    }
-    .non-slider .signUp .signUpInput{
-        margin-left: 70px;
-    }
-    .non-slider .signUp{
-        width: 50%;
-    }
-}
-@media all and (max-width: 649px){
-      .non-slider .signUp input[type="submit"]{
-        margin-left: 70px;
-    }
-    .non-slider .signUp .signUpInput{
-        margin-left: 70px;
-    }
-    .non-slider .signUp{
-        width: 50%;
-    }
-    .adsArea{
-        border: 2px solid red;
-       display: block;
-    }
-    .window{
-        border: 2px solid blue;
-        width: 100%;
-    }
-}
-
-/* .errMessage{
-    display: none;
-    color: rgb(252, 193, 66);
-} 
-
-
 /* media queries for login */
 @media (min-width: 1800px){
     .non-slider .signUp .signUpInput{
@@ -198,7 +107,6 @@ body{
 
 @media (max-width: 1440px){
     .non-slider .signUp .signUpInput{
-        /* margin-left: 120px; */
         margin:0 auto;
         width: 80%;
         display: flex;
@@ -215,7 +123,6 @@ body{
 }
 @media (max-width: 1024px){
     .non-slider .signUp .signUpInput{
-        /* margin-left: 90px; */
         margin:0 auto;
         width: 80%;
         display: flex;
@@ -234,7 +141,6 @@ body{
 
 @media (max-width: 768px){
     .non-slider .signUp .signUpInput{
-        /* margin-left: 85px; */
         margin:0 auto;
         width: 81%;
         display: flex;
