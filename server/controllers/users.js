@@ -1,9 +1,8 @@
-/* eslint-disable consistent-return */
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import validationSignup from '../../server/helpers/signup';
-import validationLogin from '../../server/helpers/login';
+import validationSignup from '../../dummy/helpers/signup';
+import validationLogin from '../../dummy/helpers/login';
 import pool from '../config/db';
 
 dotenv.config();
