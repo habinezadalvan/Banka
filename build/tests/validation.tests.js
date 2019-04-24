@@ -57,7 +57,7 @@ before('login hook', function () {
   it('should be able to delete a bank account', function (done) {
     _chai.default.request(_app.default).get('/api/v2/accounts').set('Authorization', token).end(function () {
       // console.log(res.body);
-      _chai.default.request(_app.default).delete("/api/v2/account/".concat(40007317369)).set('Authorization', token).end(function (err, res) {
+      _chai.default.request(_app.default).delete("/api/v2/account/".concat(4000427782)).set('Authorization', token).end(function (err, res) {
         // console.log(res.body);
         res.should.have.status(200);
         res.body.should.have.property('message');

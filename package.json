@@ -4,8 +4,8 @@
   "description": "Banka is a light-weight core banking application that powers banking operations like account",
   "main": "app.js",
   "scripts": {
-    "start": "npm run compile && nodemon --exec babel-node server/app.database.js",
-    "dev": "npm run droptables && npm run createTables && npm run nodemon",
+    "start": "npm run compile && npm run createTables && nodemon --exec babel-node server/app.database.js",
+    "dev": "npm run droptables && npm run createTables && npm run start",
     "test": "DEV_ENV=test nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 server/tests/*.js --exit",
     "droptables": "DEV_ENV=development node --require @babel/register server/models/droptables.js",
     "createTables": "DEV_ENV=development node --require @babel/register server/models/tables.js && npm run createadmin",
