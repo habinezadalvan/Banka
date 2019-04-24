@@ -1,11 +1,6 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-multi-spaces */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable radix */
 import moment from 'moment';
 import pool from '../config/db';
-import validation from '../../server/helpers/accounts';
+import validation from '../../dummy/helpers/accounts';
 
 
 class Account {
@@ -22,7 +17,6 @@ class Account {
       const getAccounts = 'SELECT * FROM accounts';
       const { rows } = await pool.query(getAccounts);
       const random = Math.floor(Math.random() * 10000000) + 100;
-      // eslint-disable-next-line template-curly-spacing
       const accountnumber = parseInt(`4000${  random  }${rows + 1}`, 10);
 
       const accountValues = {
@@ -34,8 +28,8 @@ class Account {
         balance: parseFloat(0),
       };
       if (req.user.type !== 'client') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'You are not allowed to perform this oparation!',
         });
       }
@@ -59,7 +53,10 @@ class Account {
         },
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -83,7 +80,7 @@ class Account {
           message: 'The account you are trying to activate or deactivate do not exist',
         });
       }
-      // eslint-disable-next-line no-self-compare
+
       if ((isNaN(req.params.accountNumber))) {
         return res.status(400).json({
           status: 400,
@@ -91,8 +88,8 @@ class Account {
         });
       }
       if (req.user.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry you are not Authorized to perform this oparation!',
         });
       }
@@ -112,7 +109,10 @@ class Account {
         message: 'The account has been updated',
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -122,7 +122,6 @@ class Account {
       const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
       const enteredAcc = parseInt(req.params.accountNumber, 10);
       const { rows } = await pool.query(getAccount, [enteredAcc]);
-      // console.log(rows);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
@@ -131,8 +130,8 @@ class Account {
       }
 
       if (req.user.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'You are not allowed to perform this oparation!',
         });
       }
@@ -144,7 +143,10 @@ class Account {
         message: 'The bank account has been deleted successfully',
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -152,8 +154,8 @@ class Account {
   static async getAccountDetails(req, res) {
     try {
       if (req.user.type !== 'client') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'You are not allowed to perform this oparation!',
         });
       }
@@ -171,7 +173,10 @@ class Account {
         data: rows[0],
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -188,8 +193,8 @@ class Account {
         });
       }
       if (req.user.type !== 'staff') {
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry you are not authorized to perform this operation!',
         });
       }
@@ -207,7 +212,10 @@ class Account {
         data: results.rows,
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -216,8 +224,8 @@ class Account {
     try {
       if (req.user.type !== 'staff') {
         // console.log(req.user);
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'You are not allowed to perform this oparation!',
         });
       }
@@ -235,7 +243,10 @@ class Account {
         data: rows,
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 
@@ -244,8 +255,8 @@ class Account {
     try {
       if (req.user.type !== 'staff') {
         // console.log(req.user);
-        return res.status(401).json({
-          status: 401,
+        return res.status(403).json({
+          status: 403,
           message: 'Sorry you are not Authorized to perform this oparation!',
         });
       }
@@ -264,7 +275,10 @@ class Account {
         data: rows,
       });
     } catch (err) {
-      console.log(err);
+      return res.status(500).json({
+        status: 500,
+        message: 'Server error',
+      });
     }
   }
 }

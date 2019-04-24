@@ -1,8 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import server from '../app.database';
 
@@ -12,16 +9,6 @@ dotenv.config();
 chai.use(chaiHttp);
 chai.should();
 
-const payload = {
-  id: 1,
-  firstname: 'christian',
-  lastname: 'habineza',
-  email: 'tes@gmail.com',
-  type: 'client',
-  isadmin: 'false',
-};
-const token = jwt.sign(payload, process.env.SECRETKEY);
-
 // signup tests part
 
 describe('signup', () => {
@@ -30,7 +17,7 @@ describe('signup', () => {
       .post('/api/v2/auth/signup').send({
         firstname: 'christian',
         lastname: 'habineza',
-        email: 'test10@gmail.com',
+        email: 'tests7@gmail.com',
         password: '12345',
         confirmpassword: '12345',
       })

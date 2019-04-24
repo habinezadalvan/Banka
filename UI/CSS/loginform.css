@@ -26,10 +26,7 @@ body{
     0%{top:-100px;}
     100%{top:0px;}
 }
-/* .non-slider .login:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-} */
+
 .non-slider .login h2{
     margin: 0 0 30px;
     padding: 0;
@@ -52,26 +49,6 @@ body{
     pointer-events: fill;
     background: #ddd;
 }
-/* .non-slider .login .loginInput label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff;
-    pointer-events: none;
-    transition: .9s;
-} */
-/* .non-slider .login .loginInput input:focus ~ label,
-.non-slider .login .loginInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-} */
 
 .non-slider .login input[type="submit"]{
     background: transparent;
@@ -124,7 +101,6 @@ body{
 
 @media (max-width: 1440px){
     .non-slider .login .loginInput{
-        /* margin-left: 120px; */
         margin: 0 auto 0 105px;
         width: 80%;
         display: flex;

@@ -13,7 +13,6 @@ bcrypt.hash(process.env.ADMINPASSWORD, 10).then((hash) => {
     type: 'staff',
     isAdmin: 'true',
   };
-
   const queryText = 'INSERT INTO users (firstname, lastname, email, password, type, isadmin) VALUES($1, $2, $3, $4, $5, $6)';
   pool.query(queryText, [adminValues.firstName,
     adminValues.lastName,
