@@ -684,27 +684,27 @@ body{
 @media (max-width: 768px){
     #main-area .slider .longParagraph p{
         font-size: 20px;
-        padding-top: 110px;
+        padding-top: 90px;
     }
     #main-area .slider .Two p{
         color: goldenrod;
-        padding-top: 110px;
+        padding-top: 70px;
     }
     #main-area .slider .Three p{
         color: white;
-        padding-top: 110px;
+        padding-top: 90px;
     }
     #main-area .slider .Five p{
         color: white;
-        padding-top: 110px;
+        padding-top: 90px;
     }
     #main-area .slider .Four p{
         color: white;
-        padding-top: 110px;
+        padding-top: 90px;
     }
     #main-area .slider h1{
-        font-size: 60px;
-        padding-top: 30px;
+        font-size: 50px;
+        padding-top: 25px;
     }
     .adsArea{
         padding-left: 0px;
@@ -738,12 +738,12 @@ body{
     }
 @media (max-width: 425px){
     #main-area .slider .longParagraph p{
-        font-size: 20px;
-        padding-top: 50px;
+        font-size: 18px;
+        padding-top: 40px;
     }
     #main-area .slider .Two p{
         color: goldenrod;
-        padding-top: 50px;
+        padding-top: 40px;
     }
     #main-area .slider .Three p{
         color: white;
@@ -751,15 +751,15 @@ body{
     }
     #main-area .slider .Five p{
         color: white;
-        padding-top: 50px;
+        padding-top: 40px;
     }
     #main-area .slider .Four p{
         color: white;
-        padding-top: 50px;
+        padding-top: 40px;
     }
     #main-area .slider h1{
-        font-size: 60px;
-        padding-top: 22px;
+        font-size: 50px;
+        padding-top: 20px;
     }
     .adsArea{
         /* margin-right: 10px; */
@@ -811,7 +811,7 @@ body{
     text-align: center;
     flex-basis: 80%;
     height: 100%;
-    background: url('../ASSETS/analysis-banking-businesswoman-1451448.jpg');
+    background-image: linear-gradient(rgba(149,165,166 ,0.5), rgba(52,73,94 ,0.5)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
     background-size: cover;
  }
 .main-area-left .profile{

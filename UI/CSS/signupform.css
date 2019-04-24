@@ -3,7 +3,7 @@ body{
     margin: 0;
     height: 100%;
     width: 100%;
-    background: url('../ASSETS/banka.jpg');
+    background-image: linear-gradient(rgba(149,165,166 ,0.5), rgba(52,73,94 ,0.5)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
     background-size: cover;
 }
 /* css styles for user sign up */
@@ -13,7 +13,7 @@ body{
 }
 .non-slider .signUp{
     position: relative;
-    margin: 130px auto;
+    margin: 35px auto;
     width: 30%;
     background: #4f7de0;
     color: white;
@@ -263,4 +263,10 @@ body{
         width: 80%;
         margin-bottom: 30px;
     }
+}
+
+.backButton i {
+    position: relative;
+    font-size: 100px;
+    color: #4f7de0;
 }
