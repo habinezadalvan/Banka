@@ -1,6 +1,4 @@
-/* eslint-disable no-shadow */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
+
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
@@ -25,14 +23,13 @@ const payload = {
 const token = jwt.sign(payload, process.env.SECRETKEY);
 
 before('login hook', () => {
-  it('should login', (done) => {
+  it('should login first', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
         email: 'admin@gmail.com',
-        password: '12345',
+        password: 'admin123',
       })
       .end((err, res) => {
-        // console.log(res.body);
         res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
@@ -48,7 +45,6 @@ before('login hook', () => {
         type: 'saving',
       })
       .end((err, res) => {
-        // console.log(res.body);
         res.should.have.status(401);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
@@ -57,18 +53,22 @@ before('login hook', () => {
       });
   });
 
-  // GET ALL BANK ACCOUNTS
-
-  it('should be able to get all bank accounts', (done) => {
+  // delete bank account
+  it('should be able to delete a bank account', (done) => {
     chai.request(server)
       .get('/api/v2/accounts')
       .set('Authorization', token)
-      .end((err, res) => {
-      // console.log(res.body);
-        res.should.have.status(200);
-        res.body.should.be.an('object');
-        res.body.should.have.property('data');
-        done();
+      .end(() => {
+        // console.log(res.body);
+        chai.request(server)
+          .delete(`/api/v2/account/${40003366878}`)
+          .set('Authorization', token)
+          .end((err, res) => {
+            // console.log(res.body);
+            res.should.have.status(200);
+            res.body.should.have.property('message');
+            done();
+          });
       });
   });
 });

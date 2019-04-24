@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
@@ -17,8 +15,8 @@ describe('login', () => {
   it('should be able to login', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        email: 'tests@gmail.com',
-        password: '12345',
+        email: 'admin@gmail.com',
+        password: 'admin123',
       })
       .end((err, res) => {
         res.should.have.status(200);
@@ -41,7 +39,7 @@ describe('login', () => {
   it('should throw error when Incorrect password', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        email: 'habinezadalvan@gmail.com',
+        email: 'admin@gmail.com',
         password: '12345sdfsd',
       })
       .end((err, res) => {
@@ -52,7 +50,7 @@ describe('login', () => {
   it('should throw error when entered no email', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        password: '12345sdfsd',
+        password: 'admin123',
       })
       .end((err, res) => {
         res.should.have.status(400);
@@ -62,7 +60,7 @@ describe('login', () => {
   it('should throw error when no password entered', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        email: 'habinezadalvan@gmail.com',
+        email: 'admin@gmail.com',
       })
       .end((err, res) => {
         res.should.have.status(400);

@@ -4,16 +4,19 @@
   "description": "Banka is a light-weight core banking application that powers banking operations like account",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 server/tests/*.js --exit",
-    "testdb": "DEV_ENV=test npm run test:dev && DEV_ENV=test nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 database/tests/*.js --exit",
-    "start": "nodemon --exec babel-node server/app.js",
-    "startdb": "nodemon --exec babel-node database/app.database.js",
-    "start:prod": "babel-node database/app.database.js && npm run createTables && npm run createadmin",
-    "createadmin": "node --require @babel/register database/controllers/admin.js",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 dummy/tests/*.js --exit",
+    "testdb": "DEV_ENV=test nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 server/tests/*.js --exit",
+    "start": "nodemon --exec babel-node dummy/app.js",
+    "startdb": "DEV_ENV=development nodemon --exec babel-node server/app.database.js",
+    "startdbTests": "DEV_ENV=test nodemon --exec babel-node server/app.database.js",
+    "startproduction": "DEV_ENV=production babel-node server/app.database.js && npm run createTables && npm run createadmin",
+    "createadminTests": "DEV_ENV=test node --require @babel/register server/controllers/admin.js",
+    "createadmin": "DEV_ENV=development node --require @babel/register server/controllers/admin.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test:dev":"npm run droptables && npm run createTables && npm run createadmin",
-    "createTables": "node --require @babel/register database/models/tables.js",
-    "droptables": "node --require @babel/register database/models/droptables.js"
+    "createTablesTests": "DEV_ENV=test node --require @babel/register server/models/tables.js && npm run createadminTests",
+    "createTables": "DEV_ENV=development node --require @babel/register server/models/tables.js && npm run createadmin",
+    "droptablesTests": "DEV_ENV=test node --require @babel/register server/models/droptables.js",
+    "droptables": "DEV_ENV=development node --require @babel/register server/models/droptables.js"
   },
   "repository": {
     "type": "git",

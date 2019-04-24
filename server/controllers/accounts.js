@@ -1,11 +1,6 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-multi-spaces */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable radix */
 import moment from 'moment';
 import pool from '../config/db';
-import validation from '../../server/helpers/accounts';
+import validation from '../../dummy/helpers/accounts';
 
 
 class Account {
@@ -22,7 +17,6 @@ class Account {
       const getAccounts = 'SELECT * FROM accounts';
       const { rows } = await pool.query(getAccounts);
       const random = Math.floor(Math.random() * 10000000) + 100;
-      // eslint-disable-next-line template-curly-spacing
       const accountnumber = parseInt(`4000${  random  }${rows + 1}`, 10);
 
       const accountValues = {
