@@ -17,7 +17,7 @@ describe('signup', () => {
       .post('/api/v2/auth/signup').send({
         firstname: 'christian',
         lastname: 'habineza',
-        email: 'tests5@gmail.com',
+        email: 'tests7@gmail.com',
         password: '12345',
         confirmpassword: '12345',
       })

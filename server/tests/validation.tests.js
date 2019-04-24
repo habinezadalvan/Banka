@@ -61,7 +61,7 @@ before('login hook', () => {
       .end(() => {
         // console.log(res.body);
         chai.request(server)
-          .delete(`/api/v2/account/${40002726553}`)
+          .delete(`/api/v2/account/${4000427782}`)
           .set('Authorization', token)
           .end((err, res) => {
             // console.log(res.body);
