@@ -7,9 +7,11 @@ exports.default = void 0;
 
 var _moment = _interopRequireDefault(require("moment"));
 
+var _mail = _interopRequireDefault(require("@sendgrid/mail"));
+
 var _db = _interopRequireDefault(require("../config/db"));
 
-var _transactions = _interopRequireDefault(require("../../dummy/helpers/transactions"));
+var _transactions = _interopRequireDefault(require("../helpers/transactions"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58,18 +60,34 @@ function () {
                 }));
 
               case 4:
+                if (!(req.user.type !== 'staff' || req.user.isadmin === 'true')) {
+                  _context.next = 6;
+                  break;
+                }
+
+                return _context.abrupt("return", res.status(403).json({
+                  status: 403,
+                  message: 'Sorry ou are not allowed to perform this operation!'
+                }));
+
+              case 6:
+                if (!(req.user.type === 'staff' && req.user.isadmin === 'false')) {
+                  _context.next = 27;
+                  break;
+                }
+
                 // verify whether this account exists
                 getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
                 enteredAcc = parseInt(req.params.accountNumber, 10);
-                _context.next = 8;
+                _context.next = 11;
                 return _db.default.query(getAccount, [enteredAcc]);
 
-              case 8:
+              case 11:
                 _ref = _context.sent;
                 rows = _ref.rows;
 
                 if (rows[0]) {
-                  _context.next = 12;
+                  _context.next = 15;
                   break;
                 }
 
@@ -78,9 +96,9 @@ function () {
                   message: 'The account you are trying to debit from does not exists'
                 }));
 
-              case 12:
+              case 15:
                 if (!(rows[0].balance < parseFloat(req.body.amount))) {
-                  _context.next = 14;
+                  _context.next = 17;
                   break;
                 }
 
@@ -89,7 +107,7 @@ function () {
                   message: "Sorry! you have insufficient amount of balance and your balance is ".concat(rows[0].balance)
                 }));
 
-              case 14:
+              case 17:
                 debitData = {
                   createdOn: (0, _moment.default)().format('LL'),
                   type: 'debit',
@@ -99,29 +117,17 @@ function () {
                   oldBalance: parseFloat(rows[0].balance) - parseFloat(req.body.amount) + parseFloat(req.body.amount),
                   newBalance: parseFloat(rows[0].balance) - parseFloat(req.body.amount)
                 };
-
-                if (!(req.user.type !== 'staff')) {
-                  _context.next = 17;
-                  break;
-                }
-
-                return _context.abrupt("return", res.status(403).json({
-                  status: 403,
-                  message: 'Sorry ou are not allowed to perform this operation!'
-                }));
-
-              case 17:
                 updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
                 values = [debitData.newBalance, enteredAcc];
-                _context.next = 21;
+                _context.next = 22;
                 return _db.default.query(updateAccount, values);
 
-              case 21:
+              case 22:
                 debitquery = 'INSERT INTO transactions (createdon, type, accountnumber, cashier, amount, oldbalance, newbalance) VALUES($1,$2,$3,$4,$5,$6,$7)';
-                _context.next = 24;
+                _context.next = 25;
                 return _db.default.query(debitquery, [debitData.createdOn, debitData.type, debitData.accountNumber, debitData.cashier, debitData.amount, debitData.oldBalance, debitData.newBalance]);
 
-              case 24:
+              case 25:
                 results = _context.sent;
                 return _context.abrupt("return", res.status(201).json({
                   status: 201,
@@ -135,17 +141,21 @@ function () {
                   }
                 }));
 
-              case 28:
-                _context.prev = 28;
+              case 27:
+                _context.next = 32;
+                break;
+
+              case 29:
+                _context.prev = 29;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 31:
+              case 32:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 28]]);
+        }, _callee, null, [[0, 29]]);
       }));
 
       function debitMethod(_x, _x2) {
@@ -182,18 +192,34 @@ function () {
                 }));
 
               case 4:
+                if (!(req.user.type !== 'staff' || req.user.isadmin === 'true')) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                return _context2.abrupt("return", res.status(403).json({
+                  status: 403,
+                  message: 'Sorry ou are not allowed to perform this operation!'
+                }));
+
+              case 6:
+                if (!(req.user.type === 'staff' && req.user.isadmin === 'false')) {
+                  _context2.next = 25;
+                  break;
+                }
+
                 // verify whether this account exists
                 getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
                 enteredAcc = parseInt(req.params.accountNumber, 10);
-                _context2.next = 8;
+                _context2.next = 11;
                 return _db.default.query(getAccount, [enteredAcc]);
 
-              case 8:
+              case 11:
                 _ref2 = _context2.sent;
                 rows = _ref2.rows;
 
                 if (rows[0]) {
-                  _context2.next = 12;
+                  _context2.next = 15;
                   break;
                 }
 
@@ -202,7 +228,7 @@ function () {
                   message: 'Sorry the account you are trying to credit to does not exists'
                 }));
 
-              case 12:
+              case 15:
                 creditData = {
                   createdOn: (0, _moment.default)().format('LL'),
                   type: 'credit',
@@ -212,29 +238,17 @@ function () {
                   oldBalance: parseFloat(rows[0].balance),
                   newBalance: parseFloat(rows[0].balance) + parseFloat(req.body.amount)
                 };
-
-                if (!(req.user.type !== 'staff')) {
-                  _context2.next = 15;
-                  break;
-                }
-
-                return _context2.abrupt("return", res.status(403).json({
-                  status: 403,
-                  message: 'Sorry you are not Authorized to perform this operation!'
-                }));
-
-              case 15:
                 updateAccount = 'UPDATE accounts SET balance = $1 WHERE accountnumber = $2';
                 values = [creditData.newBalance, enteredAcc];
-                _context2.next = 19;
+                _context2.next = 20;
                 return _db.default.query(updateAccount, values);
 
-              case 19:
+              case 20:
                 creditquery = 'INSERT INTO transactions (createdon, type, accountnumber, cashier, amount, oldbalance, newbalance) VALUES($1,$2,$3,$4,$5,$6,$7)';
-                _context2.next = 22;
+                _context2.next = 23;
                 return _db.default.query(creditquery, [creditData.createdOn, creditData.type, creditData.accountNumber, creditData.cashier, creditData.amount, creditData.oldBalance, creditData.newBalance]);
 
-              case 22:
+              case 23:
                 results = _context2.sent;
                 return _context2.abrupt("return", res.status(201).json({
                   status: 201,
@@ -248,17 +262,21 @@ function () {
                   }
                 }));
 
-              case 26:
-                _context2.prev = 26;
+              case 25:
+                _context2.next = 30;
+                break;
+
+              case 27:
+                _context2.prev = 27;
                 _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
 
-              case 29:
+              case 30:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 26]]);
+        }, _callee2, null, [[0, 27]]);
       }));
 
       function creditMethod(_x3, _x4) {

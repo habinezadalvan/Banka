@@ -32,7 +32,7 @@ var token = _jsonwebtoken.default.sign(payload, process.env.SECRETKEY);
 before('login hook', function () {
   it('should login first before creating bank account', function (done) {
     _chai.default.request(_app.default).post('/api/v2/auth/signin').send({
-      email: 'user1@gmail.com',
+      email: 'tests1@gmail.com',
       password: '12345'
     }).end(function (err, res) {
       // console.log(res.body);

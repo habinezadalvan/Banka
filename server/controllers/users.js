@@ -1,9 +1,10 @@
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import validationSignup from '../../dummy/helpers/signup';
-import validationLogin from '../../dummy/helpers/login';
+import validationSignup from '../helpers/signup';
+import validationLogin from '../helpers/login';
 import pool from '../config/db';
+import '@babel/polyfill';
 
 dotenv.config();
 

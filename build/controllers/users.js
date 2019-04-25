@@ -11,11 +11,13 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
-var _signup2 = _interopRequireDefault(require("../../dummy/helpers/signup"));
+var _signup2 = _interopRequireDefault(require("../helpers/signup"));
 
-var _login2 = _interopRequireDefault(require("../../dummy/helpers/login"));
+var _login2 = _interopRequireDefault(require("../helpers/login"));
 
 var _db = _interopRequireDefault(require("../config/db"));
+
+require("@babel/polyfill");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -4,17 +4,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 // DATABASE CONNECTION
-if (process.env.DEV_ENV === 'production') {
+if (process.env === 'production') {
   module.exports = new Pool({
     connectionString: process.env.DATABASE_URL,
   });
 }
-if (process.env.DEV_ENV === 'development') {
+if (process.env === 'development') {
   module.exports = new Pool({
     connectionString: process.env.DATABASE_URL,
   });
 }
-if (process.env.DEV_ENV === 'test') {
+if (process.env === 'test') {
   module.exports = new Pool({
     connectionString: process.env.TEST_DATABASE_URL,
   });

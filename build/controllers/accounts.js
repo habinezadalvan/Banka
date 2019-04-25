@@ -9,7 +9,7 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _db = _interopRequireDefault(require("../config/db"));
 
-var _accounts = _interopRequireDefault(require("../../dummy/helpers/accounts"));
+var _accounts = _interopRequireDefault(require("../helpers/accounts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57,11 +57,27 @@ function () {
                 }));
 
               case 4:
+                if (!(req.user.type !== 'client')) {
+                  _context.next = 6;
+                  break;
+                }
+
+                return _context.abrupt("return", res.status(403).json({
+                  status: 403,
+                  message: 'You are not allowed to perform this oparation!'
+                }));
+
+              case 6:
+                if (!(req.user.type === 'client')) {
+                  _context.next = 19;
+                  break;
+                }
+
                 getAccounts = 'SELECT * FROM accounts';
-                _context.next = 7;
+                _context.next = 10;
                 return _db.default.query(getAccounts);
 
-              case 7:
+              case 10:
                 _ref = _context.sent;
                 rows = _ref.rows;
                 random = Math.floor(Math.random() * 10000000) + 100;
@@ -74,23 +90,11 @@ function () {
                   status: 'active',
                   balance: parseFloat(0)
                 };
-
-                if (!(req.user.type !== 'client')) {
-                  _context.next = 14;
-                  break;
-                }
-
-                return _context.abrupt("return", res.status(403).json({
-                  status: 403,
-                  message: 'You are not allowed to perform this oparation!'
-                }));
-
-              case 14:
                 queryText = 'INSERT INTO accounts (accountnumber, createdon, owner, type, status, balance) VALUES($1, $2, $3, $4, $5, $6)';
-                _context.next = 17;
+                _context.next = 18;
                 return _db.default.query(queryText, [accountValues.accountNumber, accountValues.createdOn, accountValues.owner, accountValues.type, accountValues.status, accountValues.balance]);
 
-              case 17:
+              case 18:
                 return _context.abrupt("return", res.status(201).json({
                   status: 201,
                   data: {
@@ -103,20 +107,24 @@ function () {
                   }
                 }));
 
-              case 20:
-                _context.prev = 20;
+              case 19:
+                _context.next = 24;
+                break;
+
+              case 21:
+                _context.prev = 21;
                 _context.t0 = _context["catch"](0);
                 return _context.abrupt("return", res.status(500).json({
                   status: 500,
                   message: 'Server error'
                 }));
 
-              case 23:
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 20]]);
+        }, _callee, null, [[0, 21]]);
       }));
 
       function createBankAccount(_x, _x2) {
@@ -152,29 +160,8 @@ function () {
                 }));
 
               case 4:
-                // verify if the account activate or deactive exist
-                getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
-                enteredAcc = parseInt(req.params.accountNumber, 10);
-                _context2.next = 8;
-                return _db.default.query(getAccount, [enteredAcc]);
-
-              case 8:
-                _ref2 = _context2.sent;
-                rows = _ref2.rows;
-
-                if (rows[0]) {
-                  _context2.next = 12;
-                  break;
-                }
-
-                return _context2.abrupt("return", res.status(404).json({
-                  status: 404,
-                  message: 'The account you are trying to activate or deactivate do not exist'
-                }));
-
-              case 12:
                 if (!isNaN(req.params.accountNumber)) {
-                  _context2.next = 14;
+                  _context2.next = 6;
                   break;
                 }
 
@@ -183,9 +170,9 @@ function () {
                   message: 'Sorry the account number do not exist or is not an integer'
                 }));
 
-              case 14:
-                if (!(req.user.type !== 'staff')) {
-                  _context2.next = 16;
+              case 6:
+                if (!(req.user.isadmin !== 'true')) {
+                  _context2.next = 8;
                   break;
                 }
 
@@ -194,13 +181,60 @@ function () {
                   message: 'Sorry you are not Authorized to perform this oparation!'
                 }));
 
-              case 16:
+              case 8:
+                if (!(req.user.isadmin === 'true')) {
+                  _context2.next = 26;
+                  break;
+                }
+
+                getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+                enteredAcc = parseInt(req.params.accountNumber, 10);
+                _context2.next = 13;
+                return _db.default.query(getAccount, [enteredAcc]);
+
+              case 13:
+                _ref2 = _context2.sent;
+                rows = _ref2.rows;
+
+                if (rows[0]) {
+                  _context2.next = 17;
+                  break;
+                }
+
+                return _context2.abrupt("return", res.status(404).json({
+                  status: 404,
+                  message: 'The account you are trying to activate or deactivate do not exist'
+                }));
+
+              case 17:
+                if (!(rows[0].status === 'active' && req.body.status === 'active')) {
+                  _context2.next = 19;
+                  break;
+                }
+
+                return _context2.abrupt("return", res.status(400).json({
+                  status: 400,
+                  message: 'The account is already ACTIVE'
+                }));
+
+              case 19:
+                if (!(rows[0].status === 'dormant' && req.body.status === 'dormant')) {
+                  _context2.next = 21;
+                  break;
+                }
+
+                return _context2.abrupt("return", res.status(400).json({
+                  status: 400,
+                  message: 'The account is already DORMANT'
+                }));
+
+              case 21:
                 queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
                 values = [req.body.status, enteredAcc];
-                _context2.next = 20;
+                _context2.next = 25;
                 return _db.default.query(queryText, values);
 
-              case 20:
+              case 25:
                 return _context2.abrupt("return", res.status(200).json({
                   status: 200,
                   data: {
@@ -213,20 +247,24 @@ function () {
                   message: 'The account has been updated'
                 }));
 
-              case 23:
-                _context2.prev = 23;
+              case 26:
+                _context2.next = 31;
+                break;
+
+              case 28:
+                _context2.prev = 28;
                 _context2.t0 = _context2["catch"](0);
                 return _context2.abrupt("return", res.status(500).json({
                   status: 500,
                   message: 'Server error'
                 }));
 
-              case 26:
+              case 31:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 23]]);
+        }, _callee2, null, [[0, 28]]);
       }));
 
       function activateDeactivateAccount(_x3, _x4) {
@@ -249,28 +287,9 @@ function () {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
-                enteredAcc = parseInt(req.params.accountNumber, 10);
-                _context3.next = 5;
-                return _db.default.query(getAccount, [enteredAcc]);
 
-              case 5:
-                _ref3 = _context3.sent;
-                rows = _ref3.rows;
-
-                if (rows[0]) {
-                  _context3.next = 9;
-                  break;
-                }
-
-                return _context3.abrupt("return", res.status(404).json({
-                  status: 404,
-                  message: 'The account you are trying to Delete do not exist'
-                }));
-
-              case 9:
                 if (!(req.user.type !== 'staff')) {
-                  _context3.next = 11;
+                  _context3.next = 3;
                   break;
                 }
 
@@ -279,31 +298,71 @@ function () {
                   message: 'You are not allowed to perform this oparation!'
                 }));
 
-              case 11:
-                queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
-                _context3.next = 14;
-                return _db.default.query(queryText, [enteredAcc]);
+              case 3:
+                if (!(req.user.type === 'staff')) {
+                  _context3.next = 18;
+                  break;
+                }
+
+                getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+                enteredAcc = parseInt(req.params.accountNumber, 10);
+                _context3.next = 8;
+                return _db.default.query(getAccount, [enteredAcc]);
+
+              case 8:
+                _ref3 = _context3.sent;
+                rows = _ref3.rows;
+
+                if (rows[0]) {
+                  _context3.next = 12;
+                  break;
+                }
+
+                return _context3.abrupt("return", res.status(404).json({
+                  status: 404,
+                  message: 'The account you are trying to Delete do not exist'
+                }));
+
+              case 12:
+                if (!(rows[0].balance > 0 && rows[0].status === 'active')) {
+                  _context3.next = 14;
+                  break;
+                }
+
+                return _context3.abrupt("return", res.status(400).json({
+                  status: 400,
+                  message: "The account you are trying to delete has some amount on it, the amount is ".concat(rows[0].balance)
+                }));
 
               case 14:
+                queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
+                _context3.next = 17;
+                return _db.default.query(queryText, [enteredAcc]);
+
+              case 17:
                 return _context3.abrupt("return", res.status(200).json({
                   status: 200,
                   message: 'The bank account has been deleted successfully'
                 }));
 
-              case 17:
-                _context3.prev = 17;
+              case 18:
+                _context3.next = 23;
+                break;
+
+              case 20:
+                _context3.prev = 20;
                 _context3.t0 = _context3["catch"](0);
                 return _context3.abrupt("return", res.status(500).json({
                   status: 500,
                   message: 'Server error'
                 }));
 
-              case 20:
+              case 23:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 17]]);
+        }, _callee3, null, [[0, 20]]);
       }));
 
       function deleteAccount(_x5, _x6) {
@@ -338,16 +397,21 @@ function () {
                 }));
 
               case 3:
+                if (!(req.user.type === 'client')) {
+                  _context4.next = 12;
+                  break;
+                }
+
                 accDetailsQueryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1';
-                _context4.next = 6;
+                _context4.next = 7;
                 return _db.default.query(accDetailsQueryText, [parseInt(req.params.accountNumber, 10)]);
 
-              case 6:
+              case 7:
                 _ref4 = _context4.sent;
                 rows = _ref4.rows;
 
                 if (rows[0]) {
-                  _context4.next = 10;
+                  _context4.next = 11;
                   break;
                 }
 
@@ -356,26 +420,30 @@ function () {
                   message: 'Sorry that Account does not exists'
                 }));
 
-              case 10:
+              case 11:
                 return _context4.abrupt("return", res.status(200).json({
                   status: 200,
                   data: rows[0]
                 }));
 
-              case 13:
-                _context4.prev = 13;
+              case 12:
+                _context4.next = 17;
+                break;
+
+              case 14:
+                _context4.prev = 14;
                 _context4.t0 = _context4["catch"](0);
                 return _context4.abrupt("return", res.status(500).json({
                   status: 500,
                   message: 'Server error'
                 }));
 
-              case 16:
+              case 17:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 13]]);
+        }, _callee4, null, [[0, 14]]);
       }));
 
       function getAccountDetails(_x7, _x8) {
@@ -429,15 +497,20 @@ function () {
                 }));
 
               case 10:
+                if (!(req.user.type === 'staff')) {
+                  _context5.next = 18;
+                  break;
+                }
+
                 innnerJoinQueryText = 'SELECT createdon, accountnumber, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE email = $1';
-                _context5.next = 13;
+                _context5.next = 14;
                 return _db.default.query(innnerJoinQueryText, [req.params.email.toLowerCase()]);
 
-              case 13:
+              case 14:
                 results = _context5.sent;
 
                 if (!(results.rows.length === 0)) {
-                  _context5.next = 16;
+                  _context5.next = 17;
                   break;
                 }
 
@@ -446,26 +519,30 @@ function () {
                   message: 'Sorry the user has no account!'
                 }));
 
-              case 16:
+              case 17:
                 return _context5.abrupt("return", res.status(200).json({
                   status: 200,
                   data: results.rows
                 }));
 
-              case 19:
-                _context5.prev = 19;
+              case 18:
+                _context5.next = 23;
+                break;
+
+              case 20:
+                _context5.prev = 20;
                 _context5.t0 = _context5["catch"](0);
                 return _context5.abrupt("return", res.status(500).json({
                   status: 500,
                   message: 'Server error'
                 }));
 
-              case 22:
+              case 23:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 19]]);
+        }, _callee5, null, [[0, 20]]);
       }));
 
       function getAllUserAccounts(_x9, _x10) {

@@ -25,7 +25,7 @@ before('login hook', () => {
   it('should login first before creating bank account', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        email: 'user1@gmail.com',
+        email: 'tests1@gmail.com',
         password: '12345',
       })
       .end((err, res) => {
