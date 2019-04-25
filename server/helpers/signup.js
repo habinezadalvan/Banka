@@ -12,7 +12,11 @@ class ValidateSignUp {
       type: Joi.string().valid('client', 'staff'),
       isadmin: Joi.boolean(),
     };
-    return Joi.validate(signupdata, Schema);
+    const validationOptions = {
+      abortEarly: false, // Allows it go through all
+      allowUnknown: true, // allow unknown keys that will be ignored
+    };
+    return Joi.validate(signupdata, Schema, validationOptions);
   }
 }
 

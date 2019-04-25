@@ -59,12 +59,10 @@ before('login hook', () => {
       .get('/api/v2/accounts')
       .set('Authorization', token)
       .end(() => {
-        // console.log(res.body);
         chai.request(server)
           .delete(`/api/v2/account/${4000427782}`)
           .set('Authorization', token)
           .end((err, res) => {
-            // console.log(res.body);
             res.should.have.status(200);
             res.body.should.have.property('message');
             done();

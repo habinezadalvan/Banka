@@ -1,5 +1,5 @@
 import moment from 'moment';
-import sgMail from '@sendgrid/mail';
+import mail from '@sendgrid/mail';
 import pool from '../config/db';
 import validation from '../helpers/transactions';
 
@@ -15,13 +15,13 @@ class Transactions {
           error: error.details[0].message,
         });
       }
-      if ((req.user.type !== 'staff') || (req.user.isadmin === 'true')) {
+      if (req.user.type !== 'staff' || req.user.isadmin === true) {
         return res.status(403).json({
           status: 403,
           message: 'Sorry ou are not allowed to perform this operation!',
         });
       }
-      if ((req.user.type === 'staff') && (req.user.isadmin === 'false')) {
+      if (req.user.type === 'staff' && req.user.isadmin === false) {
         // verify whether this account exists
         const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
         const enteredAcc = parseInt(req.params.accountNumber, 10);
@@ -61,6 +61,20 @@ class Transactions {
           debitData.oldBalance,
           debitData.newBalance]);
 
+        //  DEBIT NOTIFICATION
+
+        const queryText = 'SELECT * FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1;';
+        const result = await pool.query(queryText, [enteredAcc]);
+        console.log(result.rows[0].email);
+        mail.setApiKey(process.env.SENDGRID_API_KEY);
+        const message = {
+          to: result.rows[0].email,
+          from: 'bank@gmail.com',
+          subject: 'Withdrwal message',
+          html: `<strong>Thank you for using banka, the transaction has done successfully. You have credited ${debitData.amount} frw and now your account balance is ${debitData.newBalance} frw </strong>`,
+        };
+        mail.send(message);
+
         return res.status(201).json({
           status: 201,
           data: {
@@ -89,13 +103,13 @@ class Transactions {
           error: error.details[0].message,
         });
       }
-      if ((req.user.type !== 'staff') || (req.user.isadmin === 'true')) {
+      if (req.user.type !== 'staff' || req.user.isadmin === true) {
         return res.status(403).json({
           status: 403,
           message: 'Sorry ou are not allowed to perform this operation!',
         });
       }
-      if ((req.user.type === 'staff') && (req.user.isadmin === 'false')) {
+      if (req.user.type === 'staff' && req.user.isadmin === false) {
         // verify whether this account exists
         const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
         const enteredAcc = parseInt(req.params.accountNumber, 10);
@@ -128,6 +142,20 @@ class Transactions {
           creditData.amount,
           creditData.oldBalance,
           creditData.newBalance]);
+
+        // CREDIT NOTIFICATION
+
+        const queryText = 'SELECT * FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1;';
+        const result = await pool.query(queryText, [enteredAcc]);
+        mail.setApiKey(process.env.SENDGRID_API_KEY);
+        const message = {
+          to: result.rows[0].email,
+          from: 'bank@gmail.com',
+          subject: 'Deposit message',
+          html: `<strong>Thank you for using banka, the transaction has done successfully. You have credited ${creditData.amount} frw and now your account balance is ${creditData.newBalance} frw </strong>`,
+        };
+        mail.send(message);
+
         return res.status(201).json({
           status: 201,
           data: {

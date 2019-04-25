@@ -1,3 +1,4 @@
+
 import moment from 'moment';
 import pool from '../config/db';
 import validation from '../helpers/accounts';
@@ -9,9 +10,14 @@ class Account {
     try {
       const { error } = validation.AccountsValidation(req.body);
       if (error) {
+        const responseError = [];
+        error.details.map((e) => {
+          responseError.push({ message: e.message });
+        });
+
         return res.status(400).json({
           status: 400,
-          error: error.details[0].message,
+          error: responseError,
         });
       }
       if (req.user.type !== 'client') {
@@ -79,13 +85,13 @@ class Account {
           message: 'Sorry the account number do not exist or is not an integer',
         });
       }
-      if (req.user.isadmin !== 'true') {
+      if (req.user.isadmin !== true) {
         return res.status(403).json({
           status: 403,
           message: 'Sorry you are not Authorized to perform this oparation!',
         });
       }
-      if (req.user.isadmin === 'true') {
+      if (req.user.isadmin === true) {
         const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
         const enteredAcc = parseInt(req.params.accountNumber, 10);
         const { rows } = await pool.query(getAccount, [enteredAcc]);
@@ -120,7 +126,7 @@ class Account {
             email: rows[0].email,
             accountBalance: rows[0].balance,
           },
-          message: 'The account has been updated',
+          message: `The account has been updated to ${req.body.status}`,
         });
       }
     } catch (err) {
@@ -130,6 +136,7 @@ class Account {
       });
     }
   }
+
 
   // DELETE A BANK ACCOUNT
   static async deleteAccount(req, res) {
@@ -150,22 +157,25 @@ class Account {
             message: 'The account you are trying to Delete do not exist',
           });
         }
-        if (rows[0].balance > 0 && rows[0].status === 'active') {
+        if (rows[0].balance > 0) {
           return res.status(400).json({
             status: 400,
-            message: `The account you are trying to delete has some amount on it, the amount is ${rows[0].balance}`,
+            message: `The account you are trying to delete has some amount on it and you can not delete an account with money, the amount is ${rows[0].balance}`,
           });
         }
 
-        const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
-        await pool.query(queryText, [enteredAcc]);
+        if (rows[0].balance <= 0) {
+          const queryText = 'DELETE FROM accounts WHERE accountnumber = $1';
+          await pool.query(queryText, [enteredAcc]);
 
-        return res.status(200).json({
-          status: 200,
-          message: 'The bank account has been deleted successfully',
-        });
+          return res.status(200).json({
+            status: 200,
+            message: 'The bank account has been deleted successfully',
+          });
+        }
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',

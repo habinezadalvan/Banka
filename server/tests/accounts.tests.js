@@ -1,35 +1,26 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
 import server from '../app.database';
 
 
 dotenv.config();
-
-
 chai.use(chaiHttp);
 chai.should();
 
-const payload = {
-  id: 1,
-  firstname: 'christian',
-  lastname: 'habineza',
-  email: 'tes@gmail.com',
-  type: 'client',
-  isadmin: 'false',
-};
-const token = jwt.sign(payload, process.env.SECRETKEY);
+let usertoken;
 
-before('login hook', () => {
+// // CREATE BANK ACCOUNT
+
+describe('Bank accounts', () => {
   it('should login first before creating bank account', (done) => {
     chai.request(server)
       .post('/api/v2/auth/signin').send({
-        email: 'tests1@gmail.com',
+        email: 'habinezadalvan@gmail.com',
         password: '12345',
       })
       .end((err, res) => {
-        // console.log(res.body);
+        usertoken = res.body.data.token;
         res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('status');
@@ -37,17 +28,12 @@ before('login hook', () => {
         done();
       });
   });
-});
-
-// // CREATE BANK ACCOUNT
-
-describe('Bank accounts', () => {
   it('should be able to create bank account', (done) => {
     chai.request(server)
       .post('/api/v2/accounts')
-      .set('Authorization', token)
+      .set('Authorization', usertoken)
       .send({
-        type: 'saving',
+        type: 'savings',
       })
       .end((err, res) => {
         // console.log(res.body);
@@ -58,62 +44,19 @@ describe('Bank accounts', () => {
       });
   });
 
-  it('should throw an error when firstname is not entered', (done) => {
+  it('should throw an error when type is different from savings or draft', (done) => {
     chai.request(server)
       .post('/api/v2/accounts')
-      .set('Authorization', token)
+      .set('Authorization', usertoken)
       .send({
-        lastname: 'habineza',
-        email: 'habinezadalvan@gmail.com',
-        type: 'saving',
+        type: 'saviiiiiing',
       })
       .end((err, res) => {
         res.should.have.status(400);
         done();
       });
   });
-  it('should throw an error when lastname is not entered', (done) => {
-    chai.request(server)
-      .post('/api/v2/accounts')
-      .set('Authorization', token)
-      .send({
-        firstname: 'christian',
-        email: 'habinezadalvan@gmail.com',
-        type: 'saving',
-      })
-      .end((err, res) => {
-        res.should.have.status(400);
-        done();
-      });
-  });
-  it('should throw an error when email is not given', (done) => {
-    chai.request(server)
-      .post('/api/v2/accounts')
-      .set('Authorization', token)
-      .send({
-        firstname: 'christian',
-        lastname: 'habineza',
-        type: 'saving',
-      })
-      .end((err, res) => {
-        res.should.have.status(400);
-        done();
-      });
-  });
-  it('should throw an error when type is not given', (done) => {
-    chai.request(server)
-      .post('/api/v2/accounts')
-      .set('Authorization', token)
-      .send({
-        firstname: 'christian',
-        lastname: 'habineza',
-        email: 'habinezadalvan@gmail.com',
-      })
-      .end((err, res) => {
-        res.should.have.status(400);
-        done();
-      });
-  });
+
 
   it('should throw an error when unauthorized', (done) => {
     chai.request(server)
@@ -136,51 +79,25 @@ describe('Bank accounts', () => {
         done();
       });
   });
-
-  it('should throw an errow when status is not entered', (done) => {
+  it('should throw an error when there is no bank account to delete', (done) => {
     chai.request(server)
-      .patch('/api/v2/account/4000744000')
-      .set('Authorization', token)
-      .send({
-      })
+      .delete('/api/v2/account/400074400078')
+      .set('Authorization', usertoken)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(404);
+        res.body.should.have.property('message');
         done();
       });
   });
-  it('should throw an error when status is different from active and dormant', (done) => {
-    chai.request(server)
-      .patch('/api/v2/account/4000744000')
-      .set('Authorization', token)
-      .send({
-        status: 'proactive',
-      })
-      .end((err, res) => {
-        res.should.have.status(400);
-        done();
-      });
-  });
-
   it('should throw an error when the account does not exist', (done) => {
     chai.request(server)
       .patch('/api/v2/account/40007440002')
-      .set('Authorization', token)
+      .set('Authorization', usertoken)
       .send({
         status: 'active',
       })
       .end((err, res) => {
         res.should.have.status(404);
-        done();
-      });
-  });
-
-  it('should throw an error when there is no bank account to delete', (done) => {
-    chai.request(server)
-      .delete('/api/v2/account/400074400078')
-      .set('Authorization', token)
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property('message');
         done();
       });
   });
