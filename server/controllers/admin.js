@@ -39,3 +39,5 @@ bcrypt.hash(process.env.ADMINPASSWORD, 10).then((hash) => {
     adminValues.type,
     adminValues.isAdmin]);
 });
+
+console.log('admin and staff have been inserted in the database successfully');
