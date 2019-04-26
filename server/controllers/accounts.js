@@ -208,6 +208,7 @@ class Account {
         });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',
