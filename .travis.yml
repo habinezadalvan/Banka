@@ -2,11 +2,6 @@ language: node_js
 
 node_js:
   - "stable"
-cache:
-  directories:
-    - "node_modules"
-addons:
-  postgresql: "9.6"
 
 services:
   - postgresql
@@ -28,4 +23,7 @@ script:
 
 after_success:
   - npm run coveralls
- 
+
+cache:
+  directories:
+    - "node_modules"
