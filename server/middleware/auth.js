@@ -18,7 +18,6 @@ class Authorization {
         });
       } else {
         req.user = decode;
-        console.log(decode.id);
         next();
       }
     });
