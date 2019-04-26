@@ -50,10 +50,6 @@ class Users {
       } else {
         isadmin = 'false';
       }
-      if ((req.body.email.toLowerCase() !== 'admin@gmail.com'.toLowerCase()) || (rows[0].isadmin !== true)) {
-        type = 'client';
-        isadmin = 'false';
-      }
       const signupValues = {
         firstname: req.body.firstname.trim(),
         lastname: req.body.lastname.trim(),
