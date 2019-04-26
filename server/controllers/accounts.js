@@ -175,7 +175,6 @@ class Account {
         }
       }
     } catch (err) {
-      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',
@@ -208,7 +207,6 @@ class Account {
         });
       }
     } catch (err) {
-      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',
@@ -261,7 +259,6 @@ class Account {
   static async getAllCounts(req, res) {
     try {
       if (req.user.type !== 'staff') {
-        // console.log(req.user);
         return res.status(403).json({
           status: 403,
           message: 'You are not allowed to perform this oparation!',
@@ -292,7 +289,6 @@ class Account {
   static async getAllAccountsByStatus(req, res) {
     try {
       if (req.user.type !== 'staff') {
-        // console.log(req.user);
         return res.status(403).json({
           status: 403,
           message: 'Sorry you are not Authorized to perform this oparation!',
@@ -301,7 +297,6 @@ class Account {
       const queryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE status = $1';
       const value = [req.query.status];
       const { rows } = await pool.query(queryText, value);
-      // console.log(rows);
       if (rows.length === 0) {
         return res.status(404).json({
           status: 404,

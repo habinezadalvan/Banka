@@ -65,7 +65,6 @@ class Transactions {
 
         const queryText = 'SELECT * FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1;';
         const result = await pool.query(queryText, [enteredAcc]);
-        console.log(result.rows[0].email);
         mail.setApiKey(process.env.SENDGRID_API_KEY);
         const message = {
           to: result.rows[0].email,
@@ -255,7 +254,6 @@ class Transactions {
         });
       }
     } catch (err) {
-      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',

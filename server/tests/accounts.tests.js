@@ -9,6 +9,8 @@ chai.use(chaiHttp);
 chai.should();
 
 let usertoken;
+let accountnumber;
+let staffToken;
 
 // // CREATE BANK ACCOUNT
 
@@ -36,7 +38,7 @@ describe('Bank accounts', () => {
         type: 'savings',
       })
       .end((err, res) => {
-        // console.log(res.body);
+        accountnumber = res.body.data.accountNumber;
         res.should.have.status(201);
         res.body.should.be.an('object');
         res.body.should.have.property('data');
@@ -79,26 +81,62 @@ describe('Bank accounts', () => {
         done();
       });
   });
-  it('should throw an error when there is no bank account to delete', (done) => {
+
+  // login as a staff
+  it('should login first before creating bank account', (done) => {
     chai.request(server)
-      .delete('/api/v2/account/400074400078')
-      .set('Authorization', usertoken)
+      .post('/api/v2/auth/signin').send({
+        email: 'staff@gmail.com',
+        password: '12345',
+      })
       .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property('message');
+        staffToken = res.body.data.token;
+        res.should.have.status(200);
+        res.body.should.be.an('object');
+        res.body.should.have.property('status');
+        res.body.should.have.property('data');
         done();
       });
   });
-  it('should throw an error when the account does not exist', (done) => {
+  // do transactions
+  // CREDIT
+  it('should do credit', (done) => {
     chai.request(server)
-      .patch('/api/v2/account/40007440002')
-      .set('Authorization', usertoken)
-      .send({
-        status: 'active',
-      })
-      .end((err, res) => {
-        res.should.have.status(404);
-        done();
+      .get('/api/v2/accounts')
+      .set('Authorization', staffToken)
+      .end(() => {
+        chai.request(server)
+          .post(`/api/v2/transactions/${accountnumber}/credit`)
+          .set('Authorization', staffToken)
+          .send({
+            amount: '1000000',
+          })
+          .end((err, res) => {
+            res.should.have.status(201);
+            res.body.should.be.an('object');
+            res.body.should.have.property('data');
+            done();
+          });
+      });
+  });
+  // DEBIT
+  it('should do credit', (done) => {
+    chai.request(server)
+      .get('/api/v2/accounts')
+      .set('Authorization', staffToken)
+      .end(() => {
+        chai.request(server)
+          .post(`/api/v2/transactions/${accountnumber}/debit`)
+          .set('Authorization', staffToken)
+          .send({
+            amount: '20000',
+          })
+          .end((err, res) => {
+            res.should.have.status(201);
+            res.body.should.be.an('object');
+            res.body.should.have.property('data');
+            done();
+          });
       });
   });
 });
