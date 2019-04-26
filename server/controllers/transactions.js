@@ -181,17 +181,8 @@ class Transactions {
   // VIEW ALL ACCOUNT TRANSACTIONS
   static async viewAllAccountTransactions(req, res) {
     try {
-      // verifying whether a user is the owner of the account
-      const queryText = 'SELECT * FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE accountnumber = $1;';
-      const result = await pool.query(queryText, [parseInt(req.params.accountNumber, 10)]);
 
       if (req.user.type !== 'client') {
-        return res.status(403).json({
-          status: 403,
-          message: 'Sorry! You are not Authorized to perform this oparation!',
-        });
-      }
-      if (req.user.id !== result.rows[0].id) {
         return res.status(403).json({
           status: 403,
           message: 'Sorry! You are not Authorized to perform this oparation!',
@@ -222,6 +213,7 @@ class Transactions {
         });
       }
     } catch (err) {
+      console.log(err)
       return res.status(500).json({
         status: 500,
         message: 'Server error',

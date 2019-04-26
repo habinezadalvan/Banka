@@ -91,44 +91,30 @@ class Account {
           message: 'Sorry you are not Authorized to perform this oparation!',
         });
       }
-      if (req.user.isadmin === true) {
-        const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
-        const enteredAcc = parseInt(req.params.accountNumber, 10);
-        const { rows } = await pool.query(getAccount, [enteredAcc]);
-        if (!rows[0]) {
-          return res.status(404).json({
-            status: 404,
-            message: 'The account you are trying to activate or deactivate do not exist',
-          });
-        }
-        if (rows[0].status === 'active' && req.body.status === 'active') {
-          return res.status(400).json({
-            status: 400,
-            message: 'The account is already ACTIVE',
-          });
-        }
-        if (rows[0].status === 'dormant' && req.body.status === 'dormant') {
-          return res.status(400).json({
-            status: 400,
-            message: 'The account is already DORMANT',
-          });
-        }
-        const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
-        const values = [req.body.status, enteredAcc];
-        await pool.query(queryText, values);
-
-        return res.status(200).json({
-          status: 200,
-          data: {
-            accountData: rows[0].accountnumber,
-            status: rows[0].status,
-            ownerId: rows[0].owner,
-            email: rows[0].email,
-            accountBalance: rows[0].balance,
-          },
-          message: `The account has been updated to ${req.body.status}`,
+      const getAccount = 'SELECT * FROM accounts WHERE accountnumber = $1';
+      const enteredAcc = parseInt(req.params.accountNumber, 10);
+      const { rows } = await pool.query(getAccount, [enteredAcc]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          message: 'The account you are trying to activate or deactivate do not exist',
         });
       }
+      const queryText = 'UPDATE accounts SET status = $1 WHERE accountnumber = $2';
+      const values = [req.body.status, enteredAcc];
+      await pool.query(queryText, values);
+
+      return res.status(200).json({
+        status: 200,
+        data: {
+          accountData: rows[0].accountnumber,
+          status: rows[0].status,
+          ownerId: rows[0].owner,
+          email: rows[0].email,
+          accountBalance: rows[0].balance,
+        },
+        message: `The account has been updated to ${req.body.status}`,
+      });
     } catch (err) {
       return res.status(500).json({
         status: 500,
