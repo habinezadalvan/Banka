@@ -3,6 +3,7 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
+console.log(process.env.NODE_ENV);
 // DATABASE CONNECTION
 if (process.env.NODE_ENV === 'production') {
   module.exports = new Pool({
