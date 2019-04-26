@@ -16,8 +16,7 @@
     "createTablesTests": "NODE_ENV=test node --require @babel/register server/models/tables.js",
     "startv1": "nodemon --exec babel-node dummy/app.js",
     "testV1": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 dummy/tests/*.js --exit",
-    "droptablesTests": "NODE_ENV=test node --require @babel/register server/models/droptables.js",
-    "build": "rm -rf ./build && ./node_modules/.bin/babel ./server -d ./build --copy-files"
+    "droptablesTests": "NODE_ENV=test node --require @babel/register server/models/droptables.js"
   },
   "repository": {
     "type": "git",
