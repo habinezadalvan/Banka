@@ -1,12 +1,7 @@
 language: node_js
 
 node_js:
-  - "stable"
-cache:
-  directories:
-    - "node_modules"
-addons:
-  postgresql: "9.6"
+  - "10"
 
 services:
   - postgresql
@@ -23,8 +18,12 @@ after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   
 script:
+  - npm install 
   - npm run test
 
 after_success:
   - npm run coveralls
- 
+
+cache:
+  directories:
+    - "node_modules"

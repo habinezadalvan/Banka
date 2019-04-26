@@ -25,6 +25,8 @@
         "import/no-useless-path-segments": 0,
         "no-shadow": 0,
         "no-undef": 0,
-        " no-self-compare": 0
+        " no-self-compare": 0,
+        "import/first":0,
+        "array-callback-return": 0
     }
 }

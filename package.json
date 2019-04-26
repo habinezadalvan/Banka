@@ -4,21 +4,19 @@
   "description": "Banka is a light-weight core banking application that powers banking operations like account",
   "main": "app.js",
   "scripts": {
-    "start": "npm run compile && npm run createTables && nodemon --exec babel-node server/app.database.js",
-    "dev": "npm run droptables && npm run createTables && npm run start",
-    "test": "DEV_ENV=test nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 server/tests/*.js --exit",
-    "droptables": "DEV_ENV=development node --require @babel/register server/models/droptables.js",
-    "createTables": "DEV_ENV=development node --require @babel/register server/models/tables.js && npm run createadmin",
-    "startTests": "DEV_ENV=test nodemon --exec babel-node server/app.database.js",
-    "startproduction": "DEV_ENV=production babel-node server/app.database.js && npm run createTables && npm run createadmin",
-    "createadminTests": "DEV_ENV=test node --require @babel/register server/controllers/admin.js",
-    "createadmin": "DEV_ENV=development node --require @babel/register server/controllers/admin.js",
+    "start": "node ./build/app.database.js",
+    "start-dev": "npm run createTables && npm run createadmin && NODE_ENV=development nodemon --exec babel-node server/app.database.js",
+    "start-devtest": "NODE_ENV=test nodemon --exec babel-node server/app.database.js",
+    "test": "npm run droptablesTests &&  npm run createTablesTests && NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/polyfill --require @babel/register --timeout 5000 server/tests/index.tests.js --exit",
+    "droptables": "NODE_ENV=development node --require @babel/register server/models/droptables.js",
+    "createTables": "NODE_ENV=development node --require @babel/register server/models/tables.js",
+    "createadmin": "NODE_ENV=development node --require @babel/register server/controllers/admin.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "createTablesTests": "DEV_ENV=test node --require @babel/register server/models/tables.js && npm run createadminTests",
+    "createTablesTests": "NODE_ENV=test node --require @babel/register server/models/tables.js",
     "startv1": "nodemon --exec babel-node dummy/app.js",
     "testV1": "nyc --reporter=html --reporter=text mocha --require babel-polyfill --require @babel/register --timeout 5000 dummy/tests/*.js --exit",
-    "droptablesTests": "DEV_ENV=test node --require @babel/register server/models/droptables.js",
-    "compile": "./node_modules/.bin/babel ./server -d ./build"
+    "droptablesTests": "NODE_ENV=test node --require @babel/register server/models/droptables.js",
+    "build": "rm -rf ./build && ./node_modules/.bin/babel ./server -d ./build --copy-files"
   },
   "repository": {
     "type": "git",
@@ -34,9 +32,10 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.2",
     "@babel/register": "^7.4.0",
-    "babel-polyfill": "^6.26.0",
+    "@sendgrid/mail": "^6.3.1",
     "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
@@ -48,7 +47,8 @@
     "moment": "^2.24.0",
     "nodemon": "^1.18.10",
     "pg": "^7.10.0",
-    "swagger-ui-express": "^4.0.2"
+    "swagger-ui-express": "^4.0.2",
+    "validatorjs": "^3.15.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
