@@ -19,7 +19,6 @@ describe('login', () => {
         password: '12345',
       })
       .end((err, res) => {
-        console.log(res.body.data.token);
         res.should.have.status(200);
         res.body.should.be.an('object');
         res.body.should.have.property('data');
