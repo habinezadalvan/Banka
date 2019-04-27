@@ -32,7 +32,7 @@ describe('login', () => {
         password: '12345',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -43,7 +43,7 @@ describe('login', () => {
         password: '12345sdfsd',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -53,7 +53,7 @@ describe('login', () => {
         password: 'admin123',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -63,7 +63,7 @@ describe('login', () => {
         email: 'admin@gmail.com',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });

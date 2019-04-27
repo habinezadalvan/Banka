@@ -57,7 +57,7 @@ describe('signup', () => {
         confirmpassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(409);
       });
     done();
   });
@@ -71,7 +71,7 @@ describe('signup', () => {
         confirmpassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -84,7 +84,7 @@ describe('signup', () => {
         confirmpassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -97,7 +97,7 @@ describe('signup', () => {
         confirmpassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -110,7 +110,7 @@ describe('signup', () => {
         confirmpassword: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });
@@ -123,7 +123,7 @@ describe('signup', () => {
         password: 'qwerty',
       })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(403);
         done();
       });
   });

@@ -1,6 +1,7 @@
 
 import moment from 'moment';
 import pool from '../../config/db';
+import validation from '../../helpers/accounts';
 
 class Account {
   // CREATE BANK ACCOUNT
@@ -13,6 +14,18 @@ class Account {
         });
       }
       if (req.user.type === 'client') {
+        const { error } = validation.AccountsValidation(req.body);
+        if (error) {
+          const responseError = [];
+          error.details.map((e) => {
+            responseError.push({ message: e.message });
+          });
+
+          return res.status(403).json({
+            status: 403,
+            error: responseError,
+          });
+        }
         const getAccounts = 'SELECT * FROM accounts';
         const { rows } = await pool.query(getAccounts);
         const random = Math.floor(Math.random() * 10000000) + 100;
