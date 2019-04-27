@@ -66,8 +66,8 @@ class Account {
       }
       if (req.user.type === 'staff') {
         if ((isNaN(req.params.accountNumber))) {
-          return res.status(400).json({
-            status: 400,
+          return res.status(403).json({
+            status: 403,
             message: 'Sorry the account number do not exist or is not an integer',
           });
         }
