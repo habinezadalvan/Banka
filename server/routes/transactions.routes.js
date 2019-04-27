@@ -1,6 +1,6 @@
 import express from 'express';
 import auth from '../middleware/auth';
-import Transactions from '../controllers/transactions';
+import Transactions from '../controllers/transactions/view.transactions';
 import credit from '../controllers/transactions/credit.transaction';
 import debit from '../controllers/transactions/debit.transaction';
 
