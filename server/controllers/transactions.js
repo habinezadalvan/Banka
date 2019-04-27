@@ -18,7 +18,7 @@ class Transactions {
       if (req.user.type !== 'staff' || req.user.isadmin === true) {
         return res.status(403).json({
           status: 403,
-          message: 'Sorry ou are not allowed to perform this operation!',
+          message: 'Sorry! this service is strictly for the right personnel!',
         });
       }
       if (req.user.type === 'staff' && req.user.isadmin === false) {
@@ -108,7 +108,7 @@ class Transactions {
       if (req.user.type !== 'staff' || req.user.isadmin === true) {
         return res.status(403).json({
           status: 403,
-          message: 'Sorry ou are not allowed to perform this operation!',
+          message: 'Sorry! this service is strictly for the right personnel!',
         });
       }
       if (req.user.type === 'staff' && req.user.isadmin === false) {
@@ -181,11 +181,10 @@ class Transactions {
   // VIEW ALL ACCOUNT TRANSACTIONS
   static async viewAllAccountTransactions(req, res) {
     try {
-
       if (req.user.type !== 'client') {
         return res.status(403).json({
           status: 403,
-          message: 'Sorry! You are not Authorized to perform this oparation!',
+          message: 'Sorry! this service is strictly for the right personnel!',
         });
       }
       if (req.user.type === 'client') {
@@ -213,7 +212,6 @@ class Transactions {
         });
       }
     } catch (err) {
-      console.log(err)
       return res.status(500).json({
         status: 500,
         message: 'Server error',
@@ -227,7 +225,7 @@ class Transactions {
       if (req.user.type !== 'client') {
         return res.status(403).json({
           status: 403,
-          message: 'Sorry! you are not Authorized to perform this oparation!',
+          message: 'Sorry! this service is strictly for the right personnel!',
         });
       }
       if (req.user.type === 'client') {
