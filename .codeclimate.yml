@@ -2,3 +2,4 @@ exclude_patterns:
 - "UI/"
 - "server/tests/"
 - "dummy/tests/"
+- "dummy/"
