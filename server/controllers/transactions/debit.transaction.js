@@ -41,8 +41,8 @@ const debit = {
           });
         }
         if (rows[0].balance < parseFloat(req.body.amount)) {
-          return res.status(400).json({
-            status: 400,
+          return res.status(403).json({
+            status: 403,
             message: `Sorry! you have insufficient amount of balance and your balance is ${rows[0].balance}`,
           });
         }
@@ -93,6 +93,7 @@ const debit = {
             transactionType: debitData.type,
             accountBalance: debitData.newBalance,
           },
+          message: 'The transaction has been done successfully and the confirmation email has been sent to the client',
         });
       }
     } catch (err) {

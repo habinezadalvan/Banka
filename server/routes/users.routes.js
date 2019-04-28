@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.post('/api/v2/auth/signup', signupController.signup);
 router.post('/api/v2/auth/signin', loginController.login);
-router.post('/api/v2/auth/staffaccount', auth.authorization, CreateStaff.createStaffAccount);
+router.post('/api/v2/auth/createStaff', auth.authorization, CreateStaff.createStaffAccount);
 
 export default router;

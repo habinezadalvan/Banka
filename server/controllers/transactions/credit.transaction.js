@@ -86,6 +86,7 @@ const credit = {
             transactionType: creditData.transactionType,
             accountBalance: creditData.newBalance,
           },
+          message: 'The transaction has been done successfully and the confirmation email has been sent to the client',
         });
       }
     } catch (err) {
