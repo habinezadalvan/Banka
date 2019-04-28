@@ -12,6 +12,8 @@ deposit money..
 
 *gh-pages:*  https://habinezadalvan.github.io/Banka/UI/index.html
 
+*Api documentation:* https://bankabackend.herokuapp.com/swaggerapi/#/
+
 
   **BANKA END POINTS**
   ----------------
@@ -23,6 +25,7 @@ deposit money..
 | ------------ |---------------| -----|
 | POST     | /api/v2/auth/signup |user signup |
 | POST     | /api/v2/auth/signin |user login |
+| POST     | /api/v2/auth/createStaff |Admin creates staff/admin user account |
 | POST | /api/v2/accounts  |user creates bank account |
 | POST     | /api/v2/transactions/:accountNumber/credit |cashier credit bank account |
 | POST     | /api/v2/transactions/:accountNumber/debit |cashier debit bank account |
