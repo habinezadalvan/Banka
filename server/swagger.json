@@ -4,7 +4,7 @@
       "version": "2",
       "title": "Banka API Endpoints Documentation"
     },
-    "host": "localhost:3000",
+    "host": "https://bankabackend.herokuapp.com",
     "basePath": "/",
     "jwtsecurity": {
             "type": "apiKey",
