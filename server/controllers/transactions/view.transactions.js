@@ -73,28 +73,28 @@ class Transactions {
         });
       }
       if (req.user.type === 'client') {
-        // find the owner of the account
-        const findaccount = 'SELECT * FROM transactions INNER JOIN accounts ON accounts.accountnumber = transactions.accountnumber WHERE transactions.id = $1';
-        const account = await pool.query(findaccount, [parseInt(req.params.transactionId, 10)]);
-        // verify whether person requesting for a transaction is the owner
-        if (account.rows[0].owner !== req.user.id) {
-          return res.status(403).json({
-            status: 403,
-            message: 'Sorry! only the owner of the account can view a specific transaction',
-          });
-        }
         // verify whether the transaction Id is a number
-        if ((isNaN(req.params.accountNumber))) {
+        if ((isNaN(req.params.transactionId))) {
           return res.status(403).json({
             status: 403,
             message: 'Sorry! the transaction id does not exist or is not an integer',
           });
         }
+        // find the owner of the account
+        const findaccount = 'SELECT * FROM transactions INNER JOIN accounts ON accounts.accountnumber = transactions.accountnumber WHERE transactions.id = $1';
+        const account = await pool.query(findaccount, [parseInt(req.params.transactionId, 10)]);
 
-        if (!account.rows[0]) {
+        if (account.rows.length === 0) {
           return res.status(404).json({
             status: 404,
             message: 'Sorry! That transaction does not exists.',
+          });
+        }
+        // verify whether person requesting for a transaction is the owner
+        if (account.rows[0].owner !== req.user.id) {
+          return res.status(403).json({
+            status: 403,
+            message: 'Sorry! only the owner of the account can view a specific transaction',
           });
         }
 
@@ -114,6 +114,7 @@ class Transactions {
         });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',

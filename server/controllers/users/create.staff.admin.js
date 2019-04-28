@@ -45,7 +45,7 @@ class CreateStaff {
         const newStaffValues = {
           firstname: req.body.firstname.trim(),
           lastname: req.body.lastname.trim(),
-          email: req.body.email.trim(),
+          email: req.body.email.trim().toLowerCase(),
           password: hash,
           type: 'staff',
           isadmin: req.body.isadmin,

@@ -5,7 +5,7 @@
       "title": "Banka API Endpoints Documentation"
     },
     "host": "localhost:3000",
-    "basePath": "/api/v2/",
+    "basePath": "/",
     "jwtsecurity": {
             "type": "apiKey",
             "name": "Authorization",
@@ -39,13 +39,13 @@
                 "password": {
                     "type": "string"
                 },
-                "confirmPassword": {
+                "confirmpassword": {
                     "type": "string"
                 }
 
             }
         },
-        "Admin_Staff_signup": {
+        "AdminCreateStaff": {
             "type": "object",
             "properties" : {
                 "firstname": {
@@ -60,10 +60,7 @@
                 "password": {
                     "type": "string"
                 },
-                "confirmPassword": {
-                    "type": "string"
-                },
-                "type": {
+                "confirmpassword": {
                     "type": "string"
                 },
                 "isadmin": {
@@ -117,12 +114,12 @@
         }
     }, 
     "paths": {
-        "/auth/signup": {
+        "/api/v2/auth/signup": {
           "post": {
             "tags": [
-              "Sign up"
+              "users"
             ],
-            "description": "Get all Bank clients",
+            "description": "Sign up is the first step to access banka services",
             "parameters": [
               {
                 "name": "user",
@@ -138,19 +135,32 @@
             ],
             "responses": {
               "201": {
-                "description": "Welcome to Banka, Your user account has been created",
-                "schema": {
-                  "$ref": "#/definitions/signup"
-                }
+                "description": "success: when a post request is done successfully"
+              },
+              "403": {
+                "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+              },
+              "401": {
+                "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+              },
+              "409": {
+                "description": "Conflict Error"
+              },
+              "400": {
+                "description": "Syntax Error: when password and comfirmpassword do not match"
+              },
+              "500": {
+                "description": "Server Error"
               }
+
             }
        
         }
     },
-    "/auth/signin": {
+    "/api/v2/auth/signin": {
         "post": {
           "tags": [
-            "LOGIN"
+            "users"
           ],
           "description": "User Log in",
           "parameters": [
@@ -168,16 +178,437 @@
           ],
           "responses": {
             "200": {
-              "description": "You have successfully log in Banka",
-              "schema": {
-                "$ref": "#/definitions/signin"
-              }
+              "description": "Successfully request"
+            },
+            "403": {
+              "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+            },
+            "401": {
+              "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+            },
+            "500": {
+              "description": "Server Error"
             }
           }
      
       }
     },
-    "/transactions/{accountNumber}/credit": {
+    "/api/v2/auth/createStaff": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "description": "Sign up is the first step to access banka services",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The admin token",
+            "required":true
+          
+          },
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "For the new user should sign up",
+            "schema": {
+              "$ref": "#/definitions/AdminCreateStaff"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: when a post request is done successfully"
+          },
+          "403": {
+            "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+          },
+          "401": {
+            "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+          },
+          "409": {
+            "description": "Conflict Error"
+          },
+          "400": {
+            "description": "Syntax Error: when password and comfirmpassword do not match"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+   
+    }
+},
+
+"/api/v2/accounts": {
+  "post": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "Create Bank account",
+    "parameters": [
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+          
+        
+      },
+      {
+          "name":"account type",
+          "in": "body",
+          "description" :"Valid Bank Account type is current or savings",
+          "schema": {
+              "$ref": "#/definitions/account"
+        }
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "201": {
+        "description": "success: when a post request is done successfully"
+      },
+      "403": {
+        "description": "Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+      },
+      "401": {
+        "description": "Error: this is when someone tries to create account when he/she is not authorized"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+    }
+
+},
+"get": {
+  "tags": [
+    "Accounts"
+  ],
+  "description": "View all Bank accounts",
+  "parameters": [
+    {
+        "name":"Authorization",
+        "in": "header",
+        "description" :"Token",
+        "required":true
+      
+    } 
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "responses": {
+    "200": {
+        "description": "{success}The list of all Bank accounts"
+      
+    },
+    "404": {
+        "description": "Not found Error: There is no Bank accounts"
+      
+    },
+    "403": {
+      "description": "Forbidden Error: This is when someone tries to get all when he/she is not the right person"
+  },
+  "500": {
+    "description": "Server Error"
+  }
+
+  }
+
+}
+
+},
+"/api/v2/accounts/{accountNumber}/transactions": {
+  "get": {
+    "tags": [
+      "Transactions"
+    ],
+    "description": "View account transactions history",
+    "parameters": [
+      {
+          "name":"accountNumber",
+          "in": "path",
+          "description" :"Transactions",
+          "required":true,
+          "type":"integer"
+        
+      },
+     
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+        
+      } 
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "successful request"
+      
+    },
+    "404": {
+        "description": "Not found Error: There is no Bank accounts"
+      
+    },
+    "403": {
+      "description": "Forbidden Error: This is when someone tries to get all when he/she is not the right person"
+  },
+  "500": {
+    "description": "Server Error"
+  }
+    }
+
+}
+},
+"/api/accounts?status=active": {
+  "get": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "View all active Bank accounts",
+    "parameters": [
+      {
+          "name":"status",
+          "in": "query",
+          "description" :"bank status",
+          "required":true
+        
+      },
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+        
+      } 
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful request"
+      },
+      "403": {
+          "description": "Forbidden erron: when someone tries to view account details while he/she is not allowed"
+      },
+      "404": {
+          "description": "There are no account"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+    }
+
+}
+},
+"/api/v2/accounts/{accountNumber}": {
+  "get": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "View a specific account’s details",
+    "parameters": [
+      {
+          "name":"accountNumber",
+          "in": "path",
+          "description" :"View a specific account’s details",
+          "required":true 
+      },
+     
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+        
+      } 
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful request"
+      },
+      "403": {
+          "description": "Forbidden erron: when someone tries to view account details while he/she is not allowed"
+      },
+      "404": {
+          "description": "There are no account"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+    }
+
+}
+},
+"/api/v2/{user-email-address}/accounts": {
+  "get": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "View all accounts owned by a specific user",
+    "parameters": [
+      {
+          "name":"user-email-address",
+          "in": "path",
+          "description" :"The email address of the client",
+          "required":true 
+      },
+     
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"The admin token",
+          "required":true
+        
+      } 
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful request"
+      },
+      "403": {
+          "description": "Forbidden erron: when someone tries to view account details while he/she is not allowed"
+      },
+      "404": {
+          "description": "There are no account"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+
+    }
+
+}
+},
+
+"/api/v2/account/{accountNumber}": {
+  "patch": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "Activate or deactivate a Bank account",
+    "parameters": [
+      {
+          "name":"accountNumber",
+          "in": "path",
+          "description" :"account Number",
+          "required":true
+          
+        
+      },
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+          
+        
+      },
+      
+      {
+          "name":"account status",
+          "in": "body",
+          "description" :"Bank Account status should be active or dormant",
+          "schema": {
+              "$ref": "#/definitions/account_status"
+        }
+      }
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Successful request"
+        
+      },
+      "403": {
+        "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+      },
+      "401": {
+        "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+      },
+      "409": {
+        "description": "Conflict Error"
+      },
+      "400": {
+        "description": "Syntax Error: when account number is not integer"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+    }
+}
+},
+"/api/v2/account/{accountnumber}": {
+  "delete": {
+    "tags": [
+      "Accounts"
+    ],
+    "description": "Delete bank account account by staff",
+    "parameters": [
+      {
+          "name":"accountnumber",
+          "in": "path",
+          "description" :"The account number to delete",
+          "required":true
+        
+      },
+     
+      {
+          "name":"Authorization",
+          "in": "header",
+          "description" :"Token",
+          "required":true
+        
+      }  
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "responses": {
+      "200": {
+        "description": "Bank account has been deleted successfully"
+        
+      },
+      "404": {
+          "description": "The account you are trying to delete does not exists"
+          
+        },
+        "403": {
+          "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+        },
+        "401": {
+          "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+        },
+        "400": {
+          "description": "Syntax Error: when account number is not integer"
+        },
+        "500": {
+          "description": "Server Error"
+        }
+    }
+
+}
+},
+"/api/v2/transactions/{accountNumber}/credit": {
         "post": {
           "tags": [
             "Transactions"
@@ -213,390 +644,28 @@
           ],
           "responses": {
             "201": {
-              "description": "Transaction sucessful",
-              "schema": {
-                "$ref": "#/definitions/transaction"
-              }
+              "description": "Transaction sucessful"
               
-            }
-          }
-     
-      }
-    },
-    "/accounts": {
-        "post": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "Create Bank account",
-          "parameters": [
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Token",
-                "required":true
-                
-              
-            },
-            {
-                "name":"account type",
-                "in": "body",
-                "description" :"Valid Bank Account type is current or savings",
-                "schema": {
-                    "$ref": "#/definitions/account"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "You have successfully created Bank account",
-              "schema": {
-                "$ref": "#/definitions/account"
-              }
-            }
-          }
-     
-      }
-    },
-    "/accounts/{accountNumber}/transactions": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "View account transactions history",
-          "parameters": [
-            {
-                "name":"accountNumber",
-                "in": "path",
-                "description" :"Transactions",
-                "required":true,
-                "type":"integer"
-              
-            },
-           
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Token",
-                "required":true
-              
-            } 
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-             
-              
-            }
-          }
-     
-      }
-    },
-    "/accounts?status=active": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "View all active Bank accounts",
-          "parameters": [
-            {
-                "name":"status",
-                "in": "query",
-                "description" :"Token",
-                "required":true
-              
-            },
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Token",
-                "required":true
-              
-            } 
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-                "description": "All active Bank accounts"
-              
-            },
-            "400": {
-                "description": "There are no active accounts"
-            }
-          }
-     
-      }
-    },
-    "/accounts/{account-number}": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "View a specific account’s details",
-          "parameters": [
-            {
-                "name":"accountNumber",
-                "in": "path",
-                "description" :"View a specific account’s details",
-                "required":true 
-            },
-           
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Token",
-                "required":true
-              
-            } 
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Your account details"
-            },
-            "400": {
-                "description": "There are no account details"
-            },
-            "404": {
-                "description": "There are no account"
-            }
-          }
-     
-      }
-    },
-    "/user/{user-email-address}/accounts": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "View all accounts owned by a specific user",
-          "parameters": [
-            {
-                "name":"user-email-address",
-                "in": "path",
-                "description" :"The email address of the client",
-                "required":true 
-            },
-           
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"The admin token",
-                "required":true
-              
-            } 
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-                "description": "All user's Bank accounts"
-            },
-            "404": {
-                "description": "There are no accounts"
-            }
-          }
-     
-      }
-    },
-    "/accounts": {
-        "get": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "View all Bank accounts",
-          "parameters": [
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"The admin token",
-                "required":true
-              
-            } 
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-                "description": "{success}The list of all Bank accounts"
               
             },
             "404": {
-                "description": "No Bank accounts"
+              "description": "No found error: The account you are  does not exists"
               
+            },
+            "403": {
+              "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials"
+            },
+            "401": {
+              "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+            },
+            "500": {
+              "description": "Server Error"
             }
           }
      
       }
     },
-    "/staff/auth/signin": {
-        "post": {
-          "tags": [
-            "Staff/admin"
-          ],
-          "description": "Create Bank account",
-          "parameters": [
-           
-            {
-                "name":"log in",
-                "in": "body",
-                "description" :"Staff log in",
-                "schema": {
-                    "$ref": "#/definitions/signin"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "Bank account created successfully",
-              "schema": {
-                "$ref": "#/definitions/signin"
-              }
-            }
-          }
-     
-      }
-    },
-    "/staff/auth/signup": {
-        "post": {
-          "tags": [
-            "Staff/admin"
-          ],
-          "description": "Create a staff account",
-          "parameters": [
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"The admin token",
-                "required":true
-                
-              
-            },
-           
-            {
-                "name":"staff",
-                "in": "body",
-                "description" :"Staff sign up",
-                "schema": {
-                    "$ref": "#/definitions/staffsignup"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Welcome to Banka, Your staff account has been created",
-              "schema": {
-                "$ref": "#/definitions/staffsignup"
-              }
-            }
-          }
-     
-      }
-    },
-    "/accounts/{accountNumber}": {
-        "patch": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "Activate or deactivate a Bank account",
-          "parameters": [
-            {
-                "name":"accountNumber",
-                "in": "path",
-                "description" :"account Number",
-                "required":true
-                
-              
-            },
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Cashier token",
-                "required":true
-                
-              
-            },
-            
-            {
-                "name":"account status",
-                "in": "body",
-                "description" :"Bank Account status should be active or dormant",
-                "schema": {
-                    "$ref": "#/definitions/account_status"
-              }
-            }
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "200": {
-              "description": "The account has been updated",
-              "schema": {
-                "$ref": "#/definitions/account_status"
-              }
-            }
-          }
-     
-      }
-    },
-    "/accounts/{accountnumber}": {
-        "delete": {
-          "tags": [
-            "Accounts"
-          ],
-          "description": "Create a staff account",
-          "parameters": [
-            {
-                "name":"accountnumber",
-                "in": "path",
-                "description" :"The account number to delete",
-                "required":true
-              
-            },
-           
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"Token",
-                "required":true
-              
-            }  
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Bank account has been deleted successfully"
-              
-            },
-            "404": {
-                "description": "The account you are trying to delete does not exists"
-                
-              }
-          }
-     
-      }
-    },
-    "/transactions/{accountNumber}/debit": {
+    "/api/v2/transactions/{accountNumber}/debit": {
         "post": {
           "tags": [
             "Transactions"
@@ -632,71 +701,29 @@
           ],
           "responses": {
             "201": {
-              "description": "Transaction sucessful",
-              "schema": {
-                "$ref": "#/definitions/transaction"
-              }
+              "description": "Transaction sucessful"
+              
               
             },
             "404": {
-                "description": "The account you are trying to debit from do not exists"
-                
-              }
+              "description": "No found error: The account you are  does not exists"
+              
+            },
+            "403": {
+              "description": "Forbidden Error: this is when someone is not allowed to perform such operation or entered wrong credentials, or you have insufficient amount"
+            },
+            "401": {
+              "description": "Unauthorized Error: this is when someone tries to create account when he/she is not authorized"
+            },
+            "500": {
+              "description": "Server Error"
+            }
           }
      
       }
     },
-   
-     "/transactions/{accountNumber}/credit": {
-        "post": {
-          "tags": [
-            "Transactions"
-          ],
-          "description": "Credit a Bank Acoount",
-          "parameters": [
-            {
-                "name":"accountNumber",
-                "in": "path",
-                "description" :"The account number to credit",
-                "required":true
-              
-            },
-           
-            {
-                "name":"Authorization",
-                "in": "header",
-                "description" :"The cashier token",
-                "required":true
-              
-            },
-            {
-                "name":"Amount",
-                "in": "body",
-                "description" :"The amount of money to credit",
-                "schema": {
-                    "$ref": "#/definitions/transaction"
-              }
-            }  
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "responses": {
-            "201": {
-              "description": "Transaction sucessful",
-              "schema": {
-                "$ref": "#/definitions/transaction"
-              }
-              
-            }, "404": {
-                "description": "The account you are trying to credit from  do not exists"
-                
-              }
-          }
-     
-      }
-    },
-    "/transactions/{transactionId}": {
+
+    "/api/v2/transactions/{transactionId}": {
         "get": {
           "tags": [
             "Transactions"
@@ -723,12 +750,19 @@
           ],
           "responses": {
             "200": {
-                "description": "The list of all transactions"
-            },
-            "404": {
-                "description": "There is no transaction yet"
-                
-              }
+              "description": "successful request"
+            
+          },
+          "404": {
+              "description": "Not found Error: There is no transaction"
+            
+          },
+          "403": {
+            "description": "Forbidden Error: This is when someone tries to get all when he/she is not the right person"
+        },
+        "500": {
+          "description": "Server Error"
+        }
           }
      
       }

@@ -55,7 +55,7 @@ const signup = {
       const signupValues = {
         firstname: req.body.firstname.trim(),
         lastname: req.body.lastname.trim(),
-        email: req.body.email.trim(),
+        email: req.body.email.trim().toLowerCase(),
         password: hash,
         type,
         isadmin,
@@ -96,6 +96,7 @@ const signup = {
           lastname: results.rows[0].lastname,
           email: results.rows[0].email,
         },
+        message: 'Welcome to banka, you now have account in Banka! ENJOY THE BEST ONLINE SERVICES',
       });
     } catch (err) {
       return res.status(500).json({
