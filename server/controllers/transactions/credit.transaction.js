@@ -40,6 +40,12 @@ const credit = {
             message: 'Sorry the account number do not exist or is not an integer',
           });
         }
+        if (req.body.amount < 0) {
+          return res.status(403).json({
+            status: 403,
+            message: `Sorry! ${req.body.amount} is Negative, please enter valid amount`,
+          });
+        }
         const creditData = {
           createdOn: moment().format('LL'),
           type: 'credit',

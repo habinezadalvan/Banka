@@ -40,6 +40,12 @@ const debit = {
             message: 'Sorry the account number do not exist or is not an integer',
           });
         }
+        if (req.body.amount < 0) {
+          return res.status(403).json({
+            status: 403,
+            message: `Sorry! ${req.body.amount} is Negative, please enter valid amount`,
+          });
+        }
         if (rows[0].balance < parseFloat(req.body.amount)) {
           return res.status(403).json({
             status: 403,
