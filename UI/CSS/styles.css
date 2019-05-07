@@ -11,8 +11,7 @@ body{
 }
 /* navigation bar styling */
 .navbar{
-    /* border: 2px solid red; */
-    background-color:#4f7de0;
+    /* background-color:#4f7de0; */
     display: flex;
     width: 100%;
     height: 9.5%;
@@ -60,7 +59,7 @@ body{
 .fa-bars{
     margin:15px 10px 10px 15px;
     font-size: 30px;
-    color: white;
+    color: #1da1f2;
     display: none;
 }
 
@@ -81,8 +80,8 @@ body{
 
 @keyframes banka{
     0%{color: white;margin-right:0;margin-left: 0;}
-    25%{color: rgb(252, 193, 66);margin-right: 15px; margin-left: 0;}
-    50%{color: rgb(253, 176, 9);margin-right: 0; margin-left: 15px;}
+    25%{color: #1da1f2;margin-right: 15px; margin-left: 0;}
+    50%{color: #1da1f2;margin-right: 0; margin-left: 15px;}
     75%{color: teal;margin-right: 15px; margin-left: 0;}
     100%{color: white;margin-right: 15px; margin-left: 0;}
 }
@@ -244,7 +243,6 @@ body{
     background: #0c2d75;
     opacity: .9;
     z-index: 3;
-    /* border-bottom: 5px solid rgb(253, 176, 9); */
 }
 #main-area .non-slider{
     /* border: 2px solid green; */
@@ -496,7 +494,6 @@ body{
     .non-slider{
         display: flex;
         flex-direction: row;
-        /* flex-flow: column-reverse; */
     }
     .non-slider{
         flex-flow: row wrap;
@@ -507,11 +504,9 @@ body{
 @media (max-width: 649px){
     #main-area .non-slider{
         flex-direction: row;
-        /* flex-flow: column-reverse; */
     }
     
 }
-/* keyframes for homeServices */
 .more .one .two .three{
     animation: 5s homeServices 5s;
 }
@@ -710,12 +705,10 @@ body{
         padding-left: 0px;
         flex-wrap: wrap;
         margin-left: 0px;
-        /* padding-top: 20px; */
         
     }
 
     .window{
-        /* border: 2px solid black; */
         margin-left: 10px;
         margin-top: 50px;
         padding-top: 20px;
@@ -788,11 +781,11 @@ body{
 }
 /* AFTER SIGN UP PAGE STYLING */
 #main-areaPage{
-    background:#3b5998;
+    /* background:#1da1f2; */
     display: flex;
     flex-direction: row;
     transition: margin-left 0.5s; 
-    border-top: 4px solid rgb(253, 176, 9);
+    border-top: 4px solid #1da1f2;
     width: 100%;
     height: 100%;
 }
@@ -800,31 +793,28 @@ body{
     display: none;
 }
 .main-area-left{
-    /* border: 2px solid black; */
     flex-basis: 20%;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 .main-area-right{
-    /* border: 2px solid red; */
     text-align: center;
     flex-basis: 80%;
     height: 100%;
-    background-image: linear-gradient(rgba(149,165,166 ,0.5), rgba(52,73,94 ,0.5)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
+    background-image: linear-gradient(rgba(149,165,166 ,0.9), rgba(52,73,94 ,0.9)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
     background-size: cover;
  }
 .main-area-left .profile{
     font-size: 20px;
-    color: white;
+    color: #1da1f2;
     font-family: Arial, Helvetica, sans-serif;
     margin: 30px auto;
     width: 100%;
     text-align: center;
-    /* padding-top: 30px; */
 }
 .main-area-left .profileTitle{
-    background: #4f7de0;
+    background:#1da1f2;
     text-align: center;
     color: white;
     width: 80%;
@@ -839,6 +829,7 @@ body{
 .main-area-left .profile img{
     margin-left: 40px;
     border-radius: 100%;
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 .main-area-left .sideMenu{
     width: 60%;
@@ -846,7 +837,6 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 .main-area-left .sideMenu ul{
-    /* border: 2px solid red; */
     list-style: none;
     margin: 10px auto;
     width: 100%;
@@ -854,61 +844,23 @@ body{
     margin-left: 30px;
 }
 .main-area-left .sideMenu ul li{
-    /* border: 2px solid yellow; */
     padding: 20px;
 }
 .main-area-left .sideMenu ul a{
-    /* border: 2px solid blue; */
     text-decoration: none;
-    color: white;
+    color: #1da1f2;
 }
 .main-area-left .sideMenu ul a:hover{
-    color: #4f7de0;
+    color: #3b5998;
 }
 /* CURRENT PAGE */
 .current{
-    border-left: 2px solid yellow;
+    border-left: 2px solid #1da1f2;
 }
-/* 
-@keyframes profile{
-0%{top:-80px}
-100%{top: 0px}
-} */
 
-/* .main-area-left h2{
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-} */
-
-/* .profile{
-    margin-left: 250px;
-    margin-top: 20px;
-} */
-/* .profile img{
-    position: absolute;
-    margin-left: 120px;
-    border-radius: 100%;
-}
-.profile span {
-    color: white;
-    margin-top: 100px;
-}
-.profile button a {
-    text-decoration: none;
-}
-.profile button a:hover{
-    color: #3b5998;
-} */
-/* .main-area-left:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-    color: rgb(253, 176, 9);
-} */
 .signupDashboard{ 
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 100px;
+    margin-top: 200px;
     text-align: center;
     padding: 0 80px;
     line-height: 1.6;
@@ -936,7 +888,7 @@ body{
     100%{left:0px;}
 }
 .signupDashboard:hover{
-    color: rgb(253, 176, 9);
+    color: #ddd;
 
 }
 
@@ -980,12 +932,9 @@ body{
     #main-areaPage{
         flex-flow: column-reverse;
        height: 100%;
-        /* display: block; */
     }
     .main-area-left{
         flex-basis: 10%;
-        /* margin-top: -20px;
-        padding-top: 20px; */
         border-right: none;
     }
     .main-area-right{
@@ -1059,40 +1008,21 @@ body{
   
 /* CSS STYLES FOR MAIN-AREA RIGHT SIDE */
 
-/* media queries for main-area rigt side part */
-@media (max-width: 649px){
-    
-}
-/* create account styling */
-
-
 .main-area-right .createAccount{
     display: none;
     position: relative;
     margin: 90px auto 0 auto;
     width: 50%;
-    background: #3b5998;
+    background: white;
     padding: 20px;
     box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
-    /* transition: transform 1s;
-    animation: 2s animation;
-    animation-fill-mode: forwards; */
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 
-/* @keyframes animation{
-0%{top:-50px;}
-100%{top:0px;}
-} */
-/* .main-area-right .createAccount:hover{
-    transform: scale(.9);
-    background: #6b9aff;
-} */
 .main-area-right .createAccount h2{
     margin: 0 0 30px;
     padding: 0;
-    color: #fff;
+    color: #1da1f2;
     text-align: center;
 }
 .main-area-right .createAccount .createAccountInput{
@@ -1102,64 +1032,40 @@ body{
 }
 .main-area-right .createAccount .createAccountInput input{
     width: 80%;
-    padding: 10px 0;
+    padding: 17px 0 17px 17px;
     margin-top: 10px;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 25px;
     font-family: Arial, Helvetica, sans-serif;
-    /* letter-spacing: 1px; */
     color: black;
-    pointer-events: fill;
-    /* border: none;
-    outline: none; */
-    /* border-bottom: 1px solid #fff; */
-    background: #ddd;
-    /* margin-bottom: 20px; */
+    background: transparent;
+    border: 1px solid #1da1f2;
+    outline: none;
 }
-.main-area-right .createAccount .createAccountInput label{
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    padding:0;
-    margin-top: -10px;
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #fff;
-    pointer-events: none;
-    transition: .9s; */
-}
-/* .main-area-right .createAccount .createAccountInput input:focus ~ label,
-.main-area-right.createAccount .createAccountInput input:valid ~ label
-{
-    top: -10px;
-    left: 0;
-    color: rgb(253, 176, 9);
-    font-size: 15px;
-} */
+
 
 .main-area-right .createAccount input[type="submit"]{
     background: transparent;
     border: none;
     outline: none;
-    color: #fff;
-    background: rgb(253, 176, 9);
-    padding: 10px 30px;
+    color: #1da1f2;
+    padding: 17px 30px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 25px;
     font-size: 18px;
     text-align: center;
-    margin: 10px auto 0 -10px;
-    width: 64%;
+    margin: 20px auto 0 -30px;
+    width: 67%;
 }
 .main-area-right .createAccount input[type="submit"]:hover{
-    background: rgb(253, 176, 9);
-    opacity: .5;
-    color: #3b5998;
+    background: #1da1f2;
+    opacity: .9;
+    color: white;
 }
 .closecreateAccount-icon{
     text-decoration: none;
     font-size: 30px;
-    color: #fff;
+    color: #1da1f2;
     position: absolute;
     top: 0;
     right: 15px;
@@ -1170,25 +1076,17 @@ body{
     margin-left: -5px;
 }
 .createAccount select{
-    width: 63%;
-    height: 40px;
-    /* padding: 20px; */
-    margin: 20px auto;
-    /* border: none;
-    outline: none; */
-     background: transparent;
-     color: white;
-    /* border-bottom: 1px solid #fff; */
+    width: 67%;
+    height: 50px;
+    margin: 10px auto 10px -22px;
+    padding-left: 17px;
+    background: transparent;
+    color: gray;
     font-size: 16px;
-    /* letter-spacing: 1px; */
+    border: 1px solid #1da1f2;
+    border-radius: 25px;
+    outline: none;
 }
-.createAccount select option{
-   background:#3b5998;
-   border: none;
-
-}
-
-
 
 /* media queries fron sign up button */
 
@@ -1197,14 +1095,6 @@ body{
         margin-left:0;
     }
 }
-/* @media (max-width: 959px){
-    .main-area-right .createAccount input[type="submit"]{
-        margin-left: 0;
-    }
-    #main-area{
-        height: 1170px;
-    }
-} */
 
 @media (min-width: 1800px){
     .main-area-right .createAccount{
@@ -1290,6 +1180,7 @@ body{
         height: 10%;
     }
     .createAccount select{
+        width: 85%;
         margin-left: 0px;
     }
     
@@ -1297,6 +1188,8 @@ body{
 @media (max-width: 649px){
     .main-area-right .createAccount{
         width: 90%;
+        margin-top: 10px;
+        height: 300px;
     }
     .main-area-right .createAccount .createAccountInput{
         position: relative;
@@ -1306,18 +1199,23 @@ body{
     }
     .main-area-right .createAccount .createAccountInput input{
         height: 15px;
-        padding: 2px;
+        padding: 6px 0 5px 15px;
+        margin: 3px auto;
     }
-    .createAccount select{
-        height: 15px;
+    .createAccount .createAccountInput select{
+        height: 27px;
+        width: 86%;
+        margin: 3px auto auto 2px;
     }
-    .main-area-right .createAccount input[type="submit"]{
-        height: 18px;
-        padding-top: 0;
+    .createAccount .createAccountInput select option{
+        font-size: 10px;
+        background-size: 50%;
     }
     .main-area-right .createAccount input[type="submit"]{
         width: 67%;
         margin-left: 20px;
+        height: 30px;
+        padding: 5px;
     }
 
     .navbar{
@@ -1330,25 +1228,18 @@ body{
 
 /* TRANSACTION FIELD */
 .main-area-right .transactionsPage{
-
-    /* border: 2px solid red; */
     display: none;
     position: relative;
     margin: 50px auto;
     margin-top: 82px;
     width: 95%;
-    /* height: 500px; */
-    background: #3b5998;
-    color: #fff;
+    background: white;
+    color: black;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     padding: 10px;
     box-sizing: border-box;
-    /* transition: transform 1s; */
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
-    /* animation: 2s animation;
-    animation-fill-mode: forwards; */
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
 
 }
 
@@ -1362,23 +1253,19 @@ body{
     position: relative;
     width: 100%;
     background: transparent;
+    border-collapse: collapse;
 
 }
+
 
 .main-area-right .transactionsPage table, th, td{
     margin:auto;
     margin-left: 5px;
-    /* border-bottom: 1px solid white; */
+   border: 1px solid #ddd;
     text-align: center;
-    /* border-collapse: collapse; */
     height: 40px;
     table-layout: fixed;
-    /* opacity: .9; */
     
-}
-
-.main-area-right .transactionsPage table tr:hover{
-    background: #6b9aff;
 }
 
 .main-area-right .transactionsPage .singleAccountView{
@@ -1404,11 +1291,11 @@ body{
     border: none;
     outline: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 25px;
 
 }
 .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button:hover{
-    background: #4f7de0;
+    background: #1da1f2;
     color: white;
 }
 .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo .green{
@@ -1458,17 +1345,9 @@ body{
 
 /* AFTER LOGIN DASHBOARD STYLING */
 
-/* #main-areaPage{
-    height: 1200px;
-} */
 
 /* media queries for after login dashboard page */
-@media (max-width: 649px){
-    /* #main-areaPage{
-        height: 1600px;
-    } */
-    
-}
+
 /* VIEW ACCOUNTS STYLING */
 .main-area-right .transactionsPage table tr input[type="submit"]{
     background: transparent;
@@ -1511,14 +1390,13 @@ body{
     margin: 50px auto;
     margin-top: 82px;
     width: 95%;
-    background: #3b5998;
-    color: #fff;
+    background: white;
+    color: black;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     padding: 10px;
     box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px; 
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 
 
@@ -1532,6 +1410,7 @@ body{
     position: relative;
     width: 100%;
     background: transparent;
+    border-collapse: collapse;
 
 }
 
@@ -1544,9 +1423,6 @@ body{
     
 }
 
-.main-area-right .transactionsPageHome table tr:hover{
-    background: #6b9aff;
-}
 .main-area-right .transactionsPageHome table tr input[type="submit"]{
     background: transparent;
     width: 50px;
@@ -1592,13 +1468,24 @@ body{
 }
 
 @media (max-width: 649px){
+    .main-area-right{
+        height: 50%;
+    }
     .main-area-right .transactionsPageHome{
-        font-size: 12px;
+        font-size: 10px;
         height: 400px;
-        margin-bottom: -50px;
+        margin-top: 70px;
         overflow: auto;
 
     }
+    .navbar{
+        background-color: white;
+        height: 50px;
+    }
+    /* .newusersTable{
+        
+        margin-top: 10px;
+    } */
     
 }
 /* ADMIN CREATE ACCOUNT SELECT PART */
@@ -1623,16 +1510,6 @@ body{
         width: 80%;
     }
 }
-/* STAFF DASHBOARD PAGE */
-/* .staffNewUsers table{
-    text-align: center;
-    margin: auto;
-    color: #fff;
-}
-.staffNewUsers table tr:hover{
-    color: #4f7de0;
-} */
-
 
 #footerId{
     transition: margin-left 0.5s;
