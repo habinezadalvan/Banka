@@ -44,8 +44,8 @@ class SignUp {
     const hash = bcrypt.hashSync(newPassword, 10);
     signupdata = {
       id: newId + randomId,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       email: req.body.email,
       password: hash,
       type: 'client',
@@ -54,15 +54,15 @@ class SignUp {
     // sign up Authentication
     const payload = {
       id: signupdata.id,
-      firstName: signupdata.firstName,
-      lastName: signupdata.lastName,
+      firstname: signupdata.firstname,
+      lastname: signupdata.lastname,
       email: signupdata.email,
       type: signupdata.type,
     };
 
     const token = jwt.sign(payload, process.env.SECRETKEY);
     // validate confirmPassword
-    if (req.body.password !== req.body.confirmPassword) {
+    if (req.body.password !== req.body.confirmpassword) {
       return res.status(400).json({
         status: 400,
         message: 'Password and confirm password do not match!',
@@ -80,8 +80,8 @@ class SignUp {
       data: {
         token,
         id: signupdata.id,
-        firstName: signupdata.firstName,
-        lastName: signupdata.lastName,
+        firstname: signupdata.firstname,
+        lastname: signupdata.lastname,
         email: signupdata.email,
       },
     });

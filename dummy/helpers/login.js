@@ -7,11 +7,7 @@ class validateLogin {
       email: Joi.string().required().email().trim(),
       password: Joi.string().required(),
     };
-    const validationOptions = {
-      abortEarly: false,
-      allowUnknown: true,
-    };
-    return Joi.validate(logindata, Schema, validationOptions);
+    return Joi.validate(logindata, Schema);
   }
 }
 

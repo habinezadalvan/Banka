@@ -1,6 +1,4 @@
 /* eslint-disable no-shadow */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-undef */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
@@ -16,8 +14,8 @@ chai.should();
 
 const payload = {
   id: 1,
-  firstName: 'christian',
-  lastName: 'habineza',
+  firstname: 'christian',
+  lastname: 'habineza',
   email: 'habinezadalvan@gmail.com',
 };
 
@@ -71,12 +69,12 @@ describe('Bank accounts', () => {
   //       done();
   //     });
   // });
-  it('should throw an error when firstName is not entered', (done) => {
+  it('should throw an error when firstname is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        lastName: 'habineza',
+        lastname: 'habineza',
         email: 'habinezadalvan@gmail.com',
         type: 'saving',
       })
@@ -85,12 +83,12 @@ describe('Bank accounts', () => {
         done();
       });
   });
-  it('should throw an error when lastName is not entered', (done) => {
+  it('should throw an error when lastname is not entered', (done) => {
     chai.request(server)
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        firstName: 'christian',
+        firstname: 'christian',
         email: 'habinezadalvan@gmail.com',
         type: 'saving',
       })
@@ -104,8 +102,8 @@ describe('Bank accounts', () => {
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        firstName: 'christian',
-        lastName: 'habineza',
+        firstname: 'christian',
+        lastname: 'habineza',
         type: 'saving',
       })
       .end((err, res) => {
@@ -118,8 +116,8 @@ describe('Bank accounts', () => {
       .post('/api/v1/accounts')
       .set('Authorization', token)
       .send({
-        firstName: 'christian',
-        lastName: 'habineza',
+        firstname: 'christian',
+        lastname: 'habineza',
         email: 'habinezadalvan@gmail.com',
       })
       .end((err, res) => {

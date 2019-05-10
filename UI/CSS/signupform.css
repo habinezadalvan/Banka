@@ -30,6 +30,7 @@ body{
     0%{top:-100px;}
     100%{top:0px;}
 }
+
 .signUp h2{
     padding: 0;
     color: #1da1f2;
@@ -89,7 +90,6 @@ body{
     display: none;
     color: red;
 } 
-
 
 /* media queries for login */
 @media (min-width: 1800px){

@@ -17,8 +17,8 @@ chai.should();
 
 const payload = {
   id: 1,
-  firstName: 'christian',
-  lastName: 'habineza',
+  firstname: 'christian',
+  lastname: 'habineza',
   email: 'habinezadalvan@gmail.com',
 };
 const token = jwt.sign(payload, process.env.SECRETKEY);

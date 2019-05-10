@@ -39,7 +39,7 @@ class Account {
 
     const accountData = {
       id: randomId + newId,
-      accountNumber: accountnumber,
+      accountnumber: accountnumber,
       createdOn: Date(),
       owner: req.user.id,
       type: req.body.type,
@@ -56,9 +56,9 @@ class Account {
     return res.status(201).json({
       status: 201,
       data: {
-        accountNumber: accountData.accountNumber,
-        firstName: req.user.firstName,
-        lastName: req.user.lastName,
+        accountnumber: accountData.accountnumber,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
         email: req.user.email,
         type: accountData.type,
         openingBalance: accountData.balance,
@@ -76,8 +76,8 @@ class Account {
       });
     }
     // verify if the account activate or deactive exist
-    const enteredAcc = parseInt(req.params.accountNumber);
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
+    const enteredAcc = parseInt(req.params.accountnumber);
+    const accountData = account.find(bankAcc => bankAcc.accountnumber === enteredAcc);
     if (!accountData) {
       return res.status(404).json({
         status: 404,
@@ -85,7 +85,7 @@ class Account {
       });
     }
     // eslint-disable-next-line no-self-compare
-    if ((isNaN(req.params.accountNumber))) {
+    if ((isNaN(req.params.accountnumber))) {
       return res.status(400).json({
         status: 400,
         message: 'The account number do not exist or is not an integer',
@@ -101,10 +101,10 @@ class Account {
     return res.status(200).json({
       status: 200,
       data: {
-        accountData: accountData.accountNumber,
+        accountData: accountData.accountnumber,
         status: accountData.status,
-        firstName: accountData.firstName,
-        lastName: accountData.lastName,
+        firstname: accountData.firstname,
+        lastname: accountData.lastname,
         email: accountData.email,
         accountBalance: '0',
       },
@@ -113,8 +113,8 @@ class Account {
 
   // DELETE A BANK ACCOUNT
   static deleteAccount(req, res) {
-    const enteredAcc = parseInt(req.params.accountNumber, 10);
-    const accountData = account.find(bankAcc => bankAcc.accountNumber === enteredAcc);
+    const enteredAcc = parseInt(req.params.accountnumber, 10);
+    const accountData = account.find(bankAcc => bankAcc.accountnumber === enteredAcc);
     if (!accountData) {
       return res.status(404).json({
         status: 404,

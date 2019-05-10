@@ -6,13 +6,9 @@ class ValidateAccounts {
     const Schema = {
       accountNumber: Joi.number(),
       status: Joi.valid('active', 'dormant', 'draft'),
-      type: Joi.string().required().valid('savings', 'current'),
+      type: Joi.string().required(),
     };
-    const validationOptions = {
-      abortEarly: false,
-      allowUnknown: true,
-    };
-    return Joi.validate(accountData, Schema, validationOptions);
+    return Joi.validate(accountData, Schema);
   }
 
   static patchValidation(accountData) {

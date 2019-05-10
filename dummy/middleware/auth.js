@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -18,7 +19,6 @@ class Authorization {
         });
       } else {
         req.user = decode;
-        console.log(decode.id);
         next();
       }
     });
