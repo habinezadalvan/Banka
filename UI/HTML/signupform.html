@@ -13,30 +13,33 @@ height: 100%;">
     
     <!-- main area -->
     <section id="main-area">
+        <div class="backButton">
+                <a href="../index.html"><i class="fas fa-angle-left"></i></a>
+        </div>
         <div class="non-slider">
                 <!-- SIGN UP -->
                 <div class="signUp" id="userSignUp">
                     <h2>Sign Up form</h2>
                     <form action="../HTML/signup.html">
                         <div class="signUpInput">
-                            <input type="text" name="" placeholder="  First Name"  required="">
+                            <input type="text" name="" placeholder="First Name"  required="">
                             <!-- <label for="">First name</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="text" name="" placeholder="  Last Name" required="">
+                            <input type="text" name="" placeholder="Last Name" required="">
                             <!-- <label for="">Last name</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="email" name="" placeholder="  Email" required="">
+                            <input type="email" name="" placeholder="Email" required="">
                             <!-- <label for="email">Email</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" required="" placeholder="  Password" id="signupInput" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
+                            <input type="password" name="" required="" placeholder="Password" id="signupInput" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
                             <!-- <label for="password">Password</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" placeholder="  Confirm Password" required="" id="confirmPasswordInput" oninput="submitSignupFunction()">
-                            <!-- <label for="password">compare Password</label> -->
+                            <input type="password" name="" placeholder="Confirm Password" required="" id="confirmPasswordInput" oninput="submitSignupFunction()">
+                          
                         </div>
                         <div id="errorMessage" class="errMessage">
                             <p>Both passwords should match and have 6 to 12 characters, with at least one ([A-Z] & [a-z] & [0-9]</p>
@@ -47,6 +50,6 @@ height: 100%;">
         </div>
     </section>
     
-<script src="./JS/index.js"></script>
+<script src="../JS/index.js"></script>
 </body>
 </html>

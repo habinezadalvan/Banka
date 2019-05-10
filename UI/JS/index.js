@@ -52,11 +52,11 @@ const submitSignupFunction = () => {
   if ((password.value === confirmPassword.value) && (password.value.length >= 6 && password.value.length <= 12) && (password.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,12})$/))) {
     password.style.border = 'thin solid green';
     confirmPassword.style.border = 'thin solid green';
-    errorMessage.display = 'none';
+    errorMessage.style.display = 'none';
     submitbutton.removeAttribute('disabled');
   } else {
-    password.style.border = 'thin solid rgb(252, 193, 66)';
-    confirmPassword.style.border = 'thin solid rgb(252, 193, 66)';
+    password.style.border = 'thin solid red';
+    confirmPassword.style.border = 'thin solid red';
     errorMessage.style.display = 'inline';
     submitbutton.setAttribute('disabled', 'true');
   }
@@ -94,20 +94,7 @@ const loginSubmitFunction = () => {
     // window.location.href = './HTML/login.html';
   }
 };
-// VALIDATE LOGIN PASSWORD
-const onInputLoginFunction = () => {
-  const password = document.getElementById('loginPasswordField');
-  const errorMessageLogin = document.getElementById('errorMessageLogin');
-  if ((password.value.length >= 6 && password.value.length <= 12) && (password.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,12})$/))) {
-    loginButton.removeAttribute('disabled');
-    password.style.border = 'thin solid green';
-    errorMessageLogin.style.display = 'none';
-  } else {
-    loginButton.setAttribute('disabled', 'true');
-    password.style.border = 'thin solid rgb(252, 193, 66)';
-    errorMessageLogin.style.display = 'inline';
-  }
-};
+
 // AFTER SIGN UP PAGE
 const showHiddenMenuArea = () => {
   document.getElementById('hidden-nav-bar').style.width = '40%';

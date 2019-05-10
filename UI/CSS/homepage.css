@@ -1,0 +1,142 @@
+
+/* NEW HOME PAGE */
+.homepage{
+    position: relative;
+    margin: 0px auto;
+    padding: 100px 0;
+    width: 50%;
+}
+.banka{
+    display: flex;
+}
+.banka i{
+    font-size: 127px;
+    margin-top: 97px;
+    color: #1da1f2;
+}
+.banka h1{
+    margin-left: 50px;
+    font-size: 150px;
+    letter-spacing: 5px;
+    color: white;
+}
+.description{
+    border-bottom: 2px solid #1da1f2;
+}
+.description p{
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    margin-top: -100px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.submitbutton {
+    display: flex;
+    margin-top: 20px;
+}
+.submitbutton a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+.submitbutton a:hover{
+    color: #1da1f2;
+}
+.homepagelogin{
+    margin-right: 30px;
+}
+.homepagelogin button{
+    height: 40px;
+    width: 80px;
+    border: 1px solid #1da1f2;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+}
+.homepagesignup button{
+    height: 40px;
+    width: 80px;
+    border: 1px solid #1da1f2;
+    border-radius: 25px;
+    outline: none;
+    background: transparent;
+}
+
+/* media query */
+@media (max-width: 1440px){
+    .banka i{
+        font-size: 120px;
+        margin-top: 95px;
+        color: #1da1f2;
+    }
+    .banka h1{
+        margin-left: 25px;
+        font-size: 145px;
+        letter-spacing: 2px;
+        color: white;
+    }
+}
+@media (max-width: 1024px){
+    .homepage{
+        width: 70%;
+    }
+    .banka i{
+        font-size: 100px;
+        margin-top: 85px;
+        color: #1da1f2;
+    }
+    .banka h1{
+        margin-left: 25px;
+        font-size: 125px;
+        letter-spacing: 4px;
+        color: white;
+    }
+    .description p{
+        font-size: 18px;
+        letter-spacing: 1.2px;
+        margin-top: -100px;
+    }
+}
+@media (max-width: 768px){
+    .homepage{
+        width: 70%;
+    }
+    .banka i{
+        font-size: 48px;
+        margin-top: 37px;
+        color: #1da1f2;
+    }
+    .banka h1{
+        margin-left: 10px;
+        font-size: 60px;
+        letter-spacing: 2px;
+        color: white;
+    }
+    .description p{
+        font-size: 17px;
+        letter-spacing: 1.2px;
+        margin-top: -20px;
+    }
+}
+
+@media (max-width: 425px){
+    .homepage{
+        width: 70%;
+    }
+    .banka i{
+        font-size: 45px;
+        margin-top: 29px;
+        color: #1da1f2;
+    }
+    .banka h1{
+        margin-left: 10px;
+        font-size: 50px;
+        letter-spacing: 2px;
+        color: white;
+    }
+    .description p{
+        font-size: 15px;
+        letter-spacing: 1.2px;
+        margin-top: -10px;
+    }
+}

@@ -3,7 +3,7 @@ body{
     margin: 0;
     height: 100%;
     width: 100%;
-    background: url('../ASSETS/banka.jpg');
+    background-image: linear-gradient(rgba(149,165,166 ,0.9), rgba(52,73,94 ,0.9)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
     background-size: cover;
 }
 /* css styles for user sign up */
@@ -11,18 +11,17 @@ body{
 .non-slider{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.non-slider .signUp{
+.signUp{
     position: relative;
-    margin: 130px auto;
+    margin: 35px auto;
     width: 30%;
-    background: #4f7de0;
-    color: white;
+    background: white;
+    color: #4f7de0;
     padding: 20px;
     box-sizing: border-box;
-    box-shadow: 0 5px 15px rgba(0,0,0,.9);
-    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,.5);
     transition: transform 1s;
-    animation: 2s animation;
+    /* animation: 1s animation; */
     animation-fill-mode: forwards;
 }
 
@@ -32,50 +31,51 @@ body{
     100%{top:0px;}
 }
 
-.non-slider .signUp h2{
+.signUp h2{
     padding: 0;
-    color: #fff;
+    color: #1da1f2;
     text-align: center;
 }
-.non-slider .signUp .signUpInput{
+.signUp .signUpInput{
     position: relative;
-    margin: 0 auto 0 80px;
+    margin: 0 auto 0 75px;
     width: 80%;
 }
-.non-slider .signUp .signUpInput input{
+.signUp .signUpInput input{
     position: relative;
     width: 80%;
-    padding: 17px 0;
-    margin: 10px auto;
+    padding: 17px 0 17px 17px;
+    margin: 5px auto;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 25px;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    pointer-events: fill;
-    background: #ddd;
+    background: transparent;
+    outline: none;
+    border: 1px solid #1da1f2;
 }
 
-.non-slider .signUp input[type="submit"]{
+
+.signUp input[type="submit"]{
     background: transparent;
     border: none;
     outline: none;
     color: #fff;
-    background: rgb(253, 176, 9);
+    color: #1da1f2;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 25px;
     font-size: 16px;
     text-align: center;
     width: 64%;
     padding: 17px 0;
-    margin: 10px;
-    margin: 0 auto 40px 80px;
+    margin: 15px auto 40px 80px;
     font-family: Arial, Helvetica, sans-serif;
 
 }
-.non-slider .signUp input[type="submit"]:hover{
-    background: rgb(253, 176, 9);
-    opacity: .5;
-    color: #3b5998;
+.signUp input[type="submit"]:hover{
+    background: #1da1f2;
+    opacity: .9;
+    color: white;
 }
 .closeSignUp-icon{
     text-decoration: none;
@@ -88,50 +88,52 @@ body{
 }
 .errMessage{
     display: none;
-    color: rgb(252, 193, 66);
+    color: red;
 } 
 
 /* media queries for login */
 @media (min-width: 1800px){
-    .non-slider .signUp .signUpInput{
+    .signUp .signUpInput{
         margin: 0 auto 0 230px;
     }
-     .non-slider .signUp{
+     .signUp{
         width: 50%;
     }
-    .non-slider .signUp input[type="submit"]{
+    .signUp input[type="submit"]{
         margin: 0 auto 40px 230px;
         margin-bottom: 30px;
     }
 }
 
 @media (max-width: 1440px){
-    .non-slider .signUp .signUpInput{
+    .signUp .signUpInput{
+        /* margin-left: 120px; */
         margin:0 auto;
         width: 80%;
         display: flex;
         flex-direction: column;
     }
-     .non-slider .signUp{
+     .signUp{
         width: 50%;
     }
-    .non-slider .signUp input[type="submit"]{
+    .signUp input[type="submit"]{
         margin-left: 120px;
         margin-bottom: 30px;
         width: 65%;
     }
 }
 @media (max-width: 1024px){
-    .non-slider .signUp .signUpInput{
+    .signUp .signUpInput{
+        /* margin-left: 90px; */
         margin:0 auto;
         width: 80%;
         display: flex;
         flex-direction: column;
     }
-    .non-slider .signUp{
+    .signUp{
         width: 60%;
     }
-    .non-slider .signUp input[type="submit"]{
+    .signUp input[type="submit"]{
         margin-left: 100px;
         width: 65%;
         margin-bottom: 30px;
@@ -140,33 +142,40 @@ body{
    
 
 @media (max-width: 768px){
-    .non-slider .signUp .signUpInput{
+    .signUp .signUpInput{
+        /* margin-left: 85px; */
         margin:0 auto;
         width: 81%;
         display: flex;
         flex-direction: column;
     }
-     .non-slider .signUp{
+     .signUp{
         width: 70%;
     }
-    .non-slider .signUp input[type="submit"]{
+    .signUp input[type="submit"]{
         margin-left: 90px;
         margin-bottom: 30px;
     }
 }
 @media (max-width: 425px){
-    .non-slider .signUp .signUpInput{
+    .signUp .signUpInput{
         margin:0 auto;
         width: 100%;
         display: flex;
         flex-direction: column;
     }
-     .non-slider .signUp{
+     .signUp{
         width: 90%;
     }
-    .non-slider .signUp input[type="submit"]{
+    .signUp input[type="submit"]{
         margin-left: 35px;
         width: 80%;
         margin-bottom: 30px;
     }
+}
+
+.backButton i {
+    position: relative;
+    font-size: 100px;
+    color: white;
 }

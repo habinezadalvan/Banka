@@ -1,111 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" style="
-height: 100%;" >
+height: 100%; background-image: linear-gradient(rgba(149,165,166 ,0.9), rgba(52,73,94 ,0.9)), url(https://images.pexels.com/photos/1451448/pexels-photo-1451448.jpeg?cs=srgb&dl=analysis-banking-businesswoman-1451448.jpg&fm=jpg);
+    background-size: cover;" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/styles.css">
-    <title>Banka|welcome page</title>
+    <link rel="stylesheet" href="CSS/homepage.css">
+    <title>home page</title>
 </head>
 <body>
-    <div class="container">
-    <!-- main navigation bar -->
-    <nav class="navbar" id="navbarId">
-       <div class="navbar1" >
-            <span class="open-slide">
-                <i class="fas fa-bars" onclick="showHiddenMenu()" id="barsmenu"></i>
-            </span>
-            <ul class="navbar-nav">
-                <li><a class="current" href="index.html">Home</a></li>
-                <li><a href="./HTML/signupform.html" onclick="signupFunction()">sign up</a></li>
-                <li><a href="./HTML/loginform.html" onclick="loginFunction()">Login</a></li>
-                <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
-            </ul>
-       </div>
-        <div class="navbar2">
-            <span class="banka">
-                <i class="fas fa-university"></i>
-                <span>Banka</span> 
-            </span> 
-        </div>
-    </nav>
-    <!-- Side navigation bar -->
-    <div id="hidden-nav-bar" class="side-nav-bar">
-        <a href="#" class="close-icon" onclick="closeHiddenMenu()">&times;</a>
-        <a href="index.html">Home</a>
-        <a href="./HTML/signupform.html" onclick="signupFunction()">sign up</a>
-        <a href="./HTML/loginform.html" onclick="loginFunction()">Login</a>
-        <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
+    <div class="homepage">
 
+        <div class="banka">
+            <i class="fas fa-university"></i>
+            <h1>BANKA</h1>
+        </div>
+        <div class="description">
+            <p>
+                    Banka is a light-weight core banking application that powers banking operations like account
+                    creation, customer deposit and withdrawals. This app is meant to support a single bank, where
+                    users can signup and create bank accounts online, but must visit the branch to withdraw or
+                    deposit money..
+            </p>
+        </div>
+        <div class="submitbutton">
+            <div class="homepagelogin">
+                <button><a href="./HTML/loginform.html">Login</a></button>
+            </div>
+            <div class="homepagesignup">
+                <button><a href="./HTML/signupform.html">Sign up</a></button>
+            </div>
+        </div>
     </div>
-    <!-- main area -->
-    <section id="main-area">
-        <!-- SLIDING PART WITH IMAGES -->
-        <div class="main-area-images slider" id="sliderId">
-            <figure>
-                <div class="slides One">
-                    <h1>Welcome to BANKA</h1>
-                    <img src="./ASSETS/pexels-photo-1068523.jpeg" alt="image1" width="100%" height="50%">
-                </div>
-                <div class="slides Two">
-                        <p>Banka is a light-weight core banking application that powers banking operations like account
-                        creation, customer deposit and withdrawals.
-                        </p>
-                    <img src="./ASSETS/pexels-photo-1449052.jpeg" alt="image1" width="100%" height="50%">
-                </div>
-                <div class="slides longParagraph Three">
-                    <p>This app is meant to support a single bank, where
-                        users can signup and create bank accounts online,
-                        but must visit the branch to withdraw or deposit money..</p>
-                    <img src="./ASSETS/bank-banking-blue-50987.jpg" alt="image1" width="100%" height="50%">
-                </div>
-                <div class="slides Four">
-                    <p>Get started by signUp for new Client</p>
-                    <img src="./ASSETS/pexels-photo-886465.jpeg" alt="image1" width="100%" height="50%">
-                </div>
-                <div class="slides paragraph Five">
-                        <p>Login and enjoy all Banka services.
-                        </p>
-                    <img src="./ASSETS/pexels-photo.jpg" alt="image1" width="100%" height="50%">
-                </div>
-            </figure>    
-        </div>
-        <!-- NON-SLIDING PART -->
-        <div class="non-slider">
-                <div id="ads-area" class="adsArea">
-                        <div class="window">
-                            <i class="fas fa-piggy-bank"></i>
-                            <h3>With Bank user can</h3>
-                            <h1>Save</h1> 
-                        </div>
-                        <div class="window">
-                            <i class="fas fa-exchange-alt"></i>
-                            <h3>With Bank user can</h3>
-                            <h1>View Transactions</h1> 
-                        </div>
-                        <div class="window">
-                            <i class="fas fa-credit-card"></i>
-                            <h3>With Bank you can</h3>
-                            <h1>Staff can Debit</h1> 
-                        </div>
-                        <div class="window">
-                            <i class="fas fa-credit-card"></i>
-                            <h3>With Bank you can</h3>
-                            <h1>Staff can Credit</h1> 
-                        </div>
-                </div>
-            <!-- </div> -->
-        </div>
-    </section>
-
-    <footer class="footer" id="footerId">
-        <div></div>
-    </footer>
-
-    </div>
-    
 <script src="./JS/index.js"></script>
 </body>
 </html>
