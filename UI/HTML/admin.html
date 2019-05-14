@@ -83,14 +83,10 @@ height: 100%;">
                        
                     </div>
                     <div class="createAccountInput">
-
-                        <select name="accountType" class="selectItem">
-                            <option value="">Personel Type</option>
-                            <option value="Saving">Admin</option>
-                            <option value="Current">Staff</option>
-                        </select>
+                        <input type="password" name="" placeholder="User Type (admin or staff)" required="">
+                       
                     </div>
-                    <input type="submit" value="Create Account">
+                    <input type="submit" class="submitinput" value="Create Account">
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeAdminPages()">&times;</a>
             </div>
@@ -227,7 +223,7 @@ height: 100%;">
                     <div id="errorMessageCreateAccount" class="errMessage">
                         <p>Password characters should be 6 to 12</p>
                     </div>
-                    <input type="submit" value="Reset Password" id="createAccountSubmit">
+                    <input type="submit" class="submitinput" value="Reset Password" id="createAccountSubmit">
                 </form>
                     <a href="#" class="closecreateAccount-icon" id="closeResetPassword" onclick="closeAdminPages()">&times;</a>
             </div>

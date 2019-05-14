@@ -520,23 +520,23 @@ body{
 /* media queries fron sign up button */
 
 @media (max-width: 1440px){
-    .non-slider .login input[type="submit"]{
+    .non-slider .login  .submitinput{
         margin-left: 380px;
     }
 }
 @media (max-width: 1024px){
-    .non-slider .login input[type="submit"]{
+    .non-slider .login  .submitinput{
         margin-left: 250px;
     }
 }
 @media (max-width: 959px){
-    .non-slider .login input[type="submit"]{
+    .non-slider .login  .submitinput{
         margin-left: 270px;
     }
     
 }
 @media (max-width: 649px){
-    .non-slider .login input[type="submit"]{
+    .non-slider .login .submitinput{
         margin-left: 118px;
     }
 }
@@ -826,7 +826,6 @@ body{
     margin-top: 5px;
 }
 .main-area-left .profile img{
-    margin-left: 40px;
     border-radius: 100%;
     box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
@@ -870,8 +869,8 @@ body{
 /* animation for sign dashboard message */
     .signupDashboard h2{
     position: relative;
-    animation: 2s animation;
-    animation-fill-mode: forwards;
+    /* animation: 2s animation;
+    animation-fill-mode: forwards; */
 }
 @keyframes animation{
     0%{top:-1000px;}
@@ -1011,7 +1010,6 @@ body{
     background: white;
     padding: 20px;
     box-sizing: border-box;
-
     box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 
@@ -1042,7 +1040,7 @@ body{
 
 
 
-.main-area-right .createAccount input[type="submit"]{
+.main-area-right .createAccount .submitinput{
     background: transparent;
     border: none;
     outline: none;
@@ -1055,7 +1053,7 @@ body{
     margin: 20px auto 0 -30px;
     width: 67%;
 }
-.main-area-right .createAccount input[type="submit"]:hover{
+.main-area-right .createAccount .submitinput:hover{
     background: #1da1f2;
     opacity: .9;
     color: white;
@@ -1087,11 +1085,24 @@ body{
     outline: none;
 
 }
+.userprofilepar{
+    font-size: 16px;
+}
+
+/* CREATE BANK ACCOUNT NOTIFICATION */
+
+.createAccNotification{
+    display: none;
+}
+.successmsg{
+    display: none;
+    margin: 20px auto;
+}
 
 /* media queries fron sign up button */
 
 @media (max-width: 1439px){
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         margin-left:0;
     }
 }
@@ -1107,7 +1118,7 @@ body{
         margin: 0 auto  auto 180px;
         width: 80%;
     } 
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         width: 64%;
         margin-left: -2px;
     } 
@@ -1126,7 +1137,7 @@ body{
         margin-left: 45px;
         width: 80%;
     } 
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         width: 64%;
         margin-left: -110px;
     } 
@@ -1149,7 +1160,7 @@ body{
         margin-left: 45px;
         width: 80%;
     } 
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         width: 64%;
         margin-left: -35px;
     } 
@@ -1171,7 +1182,7 @@ body{
         margin-left: 45px;
         width: 80%;
     }
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         width: 64%;
         margin-left: 10px;
     }
@@ -1188,8 +1199,7 @@ body{
 @media (max-width: 649px){
     .main-area-right .createAccount{
         width: 90%;
-        margin-top: 10px;
-        height: 300px;
+        font-size: 10px;
     }
     .main-area-right .createAccount .createAccountInput{
         position: relative;
@@ -1211,7 +1221,7 @@ body{
         font-size: 10px;
         background-size: 50%;
     }
-    .main-area-right .createAccount input[type="submit"]{
+    .main-area-right .createAccount .submitinput{
         width: 67%;
         margin-left: 20px;
         height: 30px;
@@ -1356,7 +1366,7 @@ body{
 
 
 /* VIEW ACCOUNTS STYLING */
-.main-area-right .transactionsPage table tr input[type="submit"]{
+.main-area-right .transactionsPage table tr .submitinput{
     background: transparent;
     width: 50px;
     height: 18px;
@@ -1371,7 +1381,7 @@ body{
     text-align: center;
     margin-left: 1px;
 }
-.main-area-right .transactionsPage table tr input[type="submit"]:hover{
+.main-area-right .transactionsPage table tr .submitinput:hover{
     background: rgb(241, 194, 92);
     color: #4a6f8d;
 }
@@ -1430,7 +1440,7 @@ body{
     
 }
 
-.main-area-right .transactionsPageHome table tr input[type="submit"]{
+.main-area-right .transactionsPageHome table tr .submitinput{
     background: transparent;
     width: 50px;
     height: 18px;
@@ -1445,7 +1455,7 @@ body{
     text-align: center;
     margin-left: 1px;
 }
-.main-area-right .transactionsPageHome table tr input[type="submit"]:hover{
+.main-area-right .transactionsPageHome table tr .submitinput:hover{
     background: rgb(241, 194, 92);
     color: #4a6f8d;
 }
@@ -1517,6 +1527,8 @@ body{
         width: 80%;
     }
 }
+
+/* after sign up profile */
 
 #footerId{
     transition: margin-left 0.5s;

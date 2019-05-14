@@ -4,7 +4,7 @@ import Joi from 'joi';
 class ValidateSignUp {
   static signupValidation(signupdata) {
     const Schema = {
-      firstname: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
+      firstname: Joi.string().required().trim(),
       lastname: Joi.string().regex(/^[a-zA-Z]+$/).required().trim(),
       email: Joi.string().required().email({ minDomainAtoms: 2 }).trim(),
       password: Joi.string().required(),

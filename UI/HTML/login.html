@@ -46,9 +46,10 @@ height: 100%;">
                 </div>
                 <div class="profile">
                     <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
-                    <p>Habineza Leon Christian <br>
-                    Number of Account(s): 0 
-                    </p>
+                    <p id="loggedinuser" class="userprofilepar"> </p>
+                    <p id="loggedinuseremail" class="userprofilepar"> </p> <br>
+                    <hr>
+                    <p id="accNumb"> </p>
                 </div>
         </div>
         <div class="sideMenu">
@@ -66,38 +67,28 @@ height: 100%;">
             <!-- CREATE ACCOUNT -->
             <div class="createAccount" id="LoginCreateAccountId">
                 <h2>Create Account</h2>
-                <form action="">
+                <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
-                        <input type="number" name="" placeholder="Account Number" required="">
-                      
+                        <input type="text"  placeholder="First Name"  id="inputfirstname">
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" placeholder=" First Name" required="">
-                       
+                        <input type="text"  placeholder="Last Name"  id="inputlastname">
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" placeholder=" Last Name" required="">
-                       
+                        <input type="email"  placeholder="Email"  id="inputemail">
                     </div>
                     <div class="createAccountInput">
-                        <input type="email" name="" placeholder=" Email" required="">
-                       
+                        <input type="text" id="inputtype" placeholder="Account type(Savings or Current)" required="" id="inputemail">
                     </div>
-
-                
-
-                    <div class="createAccountInput">
-                        <input type="float" name="" placeholder="Opening Balance" required="">
-                        
+                    
+                    <input type="button" class="submitinput" value="Create Account" onfocus="createAccountSubmit()"  id="createAccountSubmitID"> <br>
+                    <hr>
+                    <div id="accmessage" class="successmsg"></div>
+                    <div class="createAccNotification" id="createAccountNotification">
+                        <p>Are you sure you want to create a bank account?</p>
+                        <input type="button" value="No" id="createAccValueNO" class="submitinput" onclick="NOclose()">
+                        <input type="submit" value="YES" id="createAccValueYES" class="submitinput" onclick="YESclose()">
                     </div>
-                    <div class="createAccountInput">
-                        <select name="accountType" id="">
-                            <option value="">Account Type</option>
-                            <option value="Saving">Savings</option>
-                            <option value="Current">Current</option>
-                        </select>
-                    </div>
-                    <input type="submit" value="Create Account">
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeLoginPages()">&times;</a>
             </div>
@@ -192,14 +183,13 @@ height: 100%;">
                     <div id="errorMessageCreateAccount" class="errMessage">
                         <p>Password characters should be 6 to 12</p>
                     </div>
-                    <input type="submit" value="Reset Password" id="createAccountSubmit">
+                    <input type="submit" class="submitinput" value="Reset Password" id="createAccountSubmit">
                 </form>
                     <a href="#" class="closecreateAccount-icon" id="closeResetPassword" onclick="closeLoginPages()">&times;</a>
             </div>
             <!-- WELCOME NOTE DIV -->
             <div class="signupDashboard" id="LoginDashboardId">
-                    <h2>Welcome to Banka!</h2>
-                    <h3>Get access and enjoy our online banking services</h3>
+                    <p id="200login"></p>
                     <span>
                             Banka is a light-weight core banking application that powers banking operations like account
                             creation, customer deposit and withdrawals. This app is meant to support a single bank, where
@@ -217,5 +207,10 @@ height: 100%;">
     </footer>
     
 <script src="../JS/index.js"></script>
+<script src="../JS/login.fetch.js"></script>
+<script src="../JS/loginCreateBankAcc.js"></script>
+
+
+
 </body>
 </html>

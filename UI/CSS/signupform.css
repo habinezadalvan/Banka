@@ -179,3 +179,8 @@ body{
     font-size: 100px;
     color: white;
 }
+
+.signupconflictmsg{
+    text-align: center;
+    margin-top: 3px;
+}

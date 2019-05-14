@@ -169,3 +169,9 @@ body{
     display: none;
     color: red;
 } 
+
+.signupconflictmsg{
+    text-align: center;
+    margin-top: 10px;
+    color: #1da1f2;
+}

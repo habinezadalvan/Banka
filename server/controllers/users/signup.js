@@ -30,7 +30,7 @@ const signup = {
       if (rows.length !== 0) {
         return res.status(409).json({
           status: 409,
-          message: 'Sorry the email you have entered already exists in the system, try another one!',
+          message: 'INCORRECT EMAIL OR PASSWORD!',
         });
       }
       const hash = bcrypt.hashSync(req.body.password, 10);

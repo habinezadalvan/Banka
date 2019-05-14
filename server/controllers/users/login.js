@@ -54,6 +54,8 @@ const login = {
             firstname: rows[0].firstname,
             lastname: rows[0].lastname,
             email: rows[0].email,
+            type: rows[0].type,
+            isadmin: rows[0].isadmin,
           },
           message: 'Welcome to Banka, you have successfully login',
         });
