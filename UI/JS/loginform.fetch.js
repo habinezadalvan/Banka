@@ -39,6 +39,6 @@ function loginfetchfunc(e) {
       if (data.type === 'staff' && data.isadmin === true) {
         window.location = '../HTML/admin.html';
       }
-      console.log(data);
+      console.log(data.token);
     });
 }

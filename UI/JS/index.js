@@ -233,6 +233,7 @@ const showCreateAccountAdmin = () => {
   document.getElementById('usersAccountsAdmin').style.display = 'none';
   document.getElementById('restpasswordAdminId').style.display = 'none';
   document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('admin1').setAttribute('class', 'current');
   document.getElementById('admin2').removeAttribute('class', 'current');
   document.getElementById('admin3').removeAttribute('class', 'current');
@@ -245,6 +246,7 @@ const showUsersAdmin = () => {
   document.getElementById('usercreateAccountAdmin').style.display = 'none';
   document.getElementById('restpasswordAdminId').style.display = 'none';
   document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('admin2').setAttribute('class', 'current');
   document.getElementById('admin1').removeAttribute('class', 'current');
   document.getElementById('admin3').removeAttribute('class', 'current');
@@ -295,6 +297,7 @@ const showCreateAccountSignup = () => {
   document.getElementById('restpasswordSignup').style.display = 'none';
   document.getElementById('signupDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('signup1').setAttribute('class', 'current');
   document.getElementById('signup2').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
@@ -307,6 +310,7 @@ const showTransactionsSignup = () => {
   document.getElementById('restpasswordSignup').style.display = 'none';
   document.getElementById('signupDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('signup2').setAttribute('class', 'current');
   document.getElementById('signup1').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
@@ -341,6 +345,7 @@ const showCreateAccountLogin = () => {
   document.getElementById('Loginrestpassword').style.display = 'none';
   document.getElementById('LoginDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('login1').setAttribute('class', 'current');
   document.getElementById('login2').removeAttribute('class', 'current');
   document.getElementById('login3').removeAttribute('class', 'current');
@@ -353,6 +358,7 @@ const showTransactionLogin = () => {
   document.getElementById('Loginrestpassword').style.display = 'none';
   document.getElementById('LoginDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('login2').setAttribute('class', 'current');
   document.getElementById('login1').removeAttribute('class', 'current');
   document.getElementById('login3').removeAttribute('class', 'current');

@@ -10,7 +10,7 @@ class ValidateSignUp {
       password: Joi.string().required(),
       confirmpassword: Joi.string().required(),
       type: Joi.string().valid('client', 'staff'),
-      isadmin: Joi.boolean(),
+      isadmin: Joi.boolean().valid('true', 'false'),
     };
     const validationOptions = {
       abortEarly: false, // Allows it go through all

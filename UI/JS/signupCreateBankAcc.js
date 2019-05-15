@@ -24,12 +24,18 @@ function createaccount(e) {
       } = result;
 
       if (status === 201) {
-        document.getElementById('accmessage').style.display = 'block';
-        document.getElementById('accmessage').innerHTML = message;
+        document.getElementById('signupCreateAccount').style.display = 'none';
+        document.getElementById('signupDashboardId').style.display = 'none';
+        document.getElementById('createdACCnotification').style.display = 'block';
+        document.getElementById('createdACCnotification').innerHTML = message;
       }
       if (status !== 201) {
         document.getElementById('accmessage').style.display = 'block';
         document.getElementById('accmessage').innerHTML = error[0].message;
+      }
+      if (status === 403 && (type !== 'savings' || type !== 'current')) {
+        document.getElementById('accmessage').style.display = 'block';
+        document.getElementById('accmessage').innerHTML = '<h3> SORRY! The account should be (savings or current) type, please enter the right bank account type.</h3>';
       }
     });
 }

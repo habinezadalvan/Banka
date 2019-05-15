@@ -892,6 +892,7 @@ body{
 
 .errMessage{
     display: none;
+    color: red;
 }
 /* media queries for after sign up page */
 @media (max-width: 1440px){
@@ -1005,7 +1006,7 @@ body{
 .main-area-right .createAccount{
     display: none;
     position: relative;
-    margin: 90px auto 0 auto;
+    margin: 40px auto 0 auto;
     width: 50%;
     background: white;
     padding: 20px;
@@ -1014,10 +1015,11 @@ body{
 }
 
 .main-area-right .createAccount h2{
-    margin: 0 0 30px;
+    margin: 0 0 20px;
     padding: 0;
     color: #1da1f2;
     text-align: center;
+    font-size: 16px;
 }
 .main-area-right .createAccount .createAccountInput{
     position: relative;
@@ -1200,6 +1202,7 @@ body{
     .main-area-right .createAccount{
         width: 90%;
         font-size: 10px;
+        margin-top: 10px;
     }
     .main-area-right .createAccount .createAccountInput{
         position: relative;
@@ -1241,8 +1244,7 @@ body{
 
     display: none;
     position: relative;
-    margin: 50px auto;
-    margin-top: 82px;
+    margin: 40px auto 0 auto;
     width: 95%;
 
     background: white;
@@ -1348,7 +1350,7 @@ body{
     .main-area-right .transactionsPage{
         font-size: 12px;
         height: 400px;
-        margin-bottom: -50px;
+        margin-top: 10px;
         overflow: auto;
 
     }
@@ -1404,8 +1406,7 @@ body{
 /* ADMIN AND STAFF DASHBOARD TABLE */
 .newusersTable .transactionsPageHome{
     position: relative;
-    margin: 50px auto;
-    margin-top: 82px;
+    margin: 40px auto 0 auto;
     width: 95%;
     background: white;
     color: black;
@@ -1490,8 +1491,7 @@ body{
     }
     .main-area-right .transactionsPageHome{
         font-size: 10px;
-        height: 400px;
-        margin-top: 70px;
+        margin-top: 30px;
         overflow: auto;
 
     }
@@ -1528,7 +1528,30 @@ body{
     }
 }
 
-/* after sign up profile */
+/* admin compare password error message */
+.signupconflictmsg{
+    text-align: center;
+    margin-top: 3px;
+}
+/* ADMIN CREATED STAFF/ADMIN */
+
+.createdstaff{
+    display: none;
+    margin: 70px auto;
+    color:#1da1f2;
+    width: 60%;
+    background: #fff;
+    padding: 20px;
+
+}
+
+
+/* @media (min-width: 659px){
+    .createdstaff{
+        font-size: 12px;
+    
+    }
+} */
 
 #footerId{
     transition: margin-left 0.5s;
