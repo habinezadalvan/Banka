@@ -72,29 +72,23 @@ height: 100%;" >
             <!-- CREDIT -->
             <div class="createAccount" id="usercreateAccount">
                 <h2>Credit</h2>
-                <form action="">
+                <form action="" id="creditsubmit">
                     <div class="createAccountInput">
-                        <input type="number" name="" placeholder=" Account Number" required="">
+                        <input type="number" id="creditAccountNumberId" placeholder=" Account Number" required="">
                         <!-- <label for="">Account Number</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="float" name="" placeholder=" Amount" required="">
+                        <input type="float" id="creditAmountId" placeholder=" Amount" required="">
                         <!-- <label for="">Amount</label> -->
                     </div>
-                    <div class="createAccountInput">
-                        <input type="text" name="" placeholder=" Cashier" required="">
-                        <!-- <label for="">Cashier</label> -->
+                    <input type="button" onfocus="createAccountSubmit()" class="submitinput" value="Credit">
+                    <hr>
+                    <div id="accmessage" class="successmsg"></div>
+                    <div class="createAccNotification" id="createAccountNotification">
+                        <p>Are you sure you want to CREDIT the above bank account?</p>
+                        <input type="button" value="No" id="createAccValueNO" class="submitinput" onclick="NOclose()">
+                        <input type="submit" value="YES" id="submitbutton" class="submitinput" onclick="YESclose()">
                     </div>
-                   
-                    <div class="createAccountInput">
-                        <input type="float" name="" placeholder=" Account Balance" required="">
-                        <!-- <label for="">Account Balance</label> -->
-                    </div>
-                    <div class="createAccountInput">
-                        <input type="float" name="" placeholder=" credit" required="">
-                        <!-- <label for="">Account Balance</label> -->
-                    </div>
-                    <input type="submit" class="submitinput" value="Credit">
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeCreateAccount()">&times;</a>
             </div>
@@ -111,20 +105,15 @@ height: 100%;" >
                             <input type="float" name="" placeholder="Amount" required="">
                             <!-- <label for="">Amount</label> -->
                         </div>
-                        <div class="createAccountInput">
-                            <input type="text" name="" placeholder="Cashier" required="">
-                            <!-- <label for="">Cashier</label> -->
-                        </div>
-                        <div class="createAccountInput">
-                            <input type="float" name="" placeholder="Account Balance" required="">
-                            <!-- <label for="">Account Balance</label> -->
-                        </div>
-                        <div class="createAccountInput">
-                            <input type="float" name="" placeholder="Debit" required="">
-                            <!-- <label for="">Account Balance</label> -->
-                        </div>
                         
-                        <input type="submit" class="submitinput" value="Debit">
+                    <input type="button" onfocus="createAccountSubmit()" class="submitinput" value="Debit">
+                    <hr>
+                    <div id="accmessage" class="successmsg"></div>
+                    <div class="createAccNotification" id="debitNotification">
+                        <p>Are you sure you want to DEBIT the above bank account?</p>
+                        <input type="button" value="No" id="debitValueNO" class="submitinput" onclick="NOclose()">
+                        <input type="submit" value="YES" id="debitYESbutton" class="submitinput" onclick="YESclose()">
+                    </div>
                     </form>
                     <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeDebitPage()">&times;</a>
                 </div>
@@ -328,10 +317,13 @@ height: 100%;" >
                              <td>800,000 frw</td>
                              <!-- <td><input type="submit" value="Activate"><input type="submit" value="Deactivate"><i class="fas fa-trash-alt"></i></td> -->
                          </tr>
-     
                      </table>
                      <!-- <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeTransactions()">&times;</a> -->
-                </div>
+                </div> 
+            </div>
+            <div id="createdACCnotification" class="createdstaff"> 
+                <p id="credit201message"></p>
+                <p id="creditDisplaymessage"></p>
             </div>
 
         </div>

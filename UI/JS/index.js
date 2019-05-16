@@ -124,6 +124,7 @@ const showCreateAccount = () => {
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
 
@@ -146,6 +147,7 @@ const showResetPassword = () => {
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
 };
 const closeResetPassword = () => {
@@ -172,7 +174,7 @@ const showTransaction = () => {
   document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
-  // document.getElementById('transaction-page').style.display = 'block';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
   document.getElementById('transaction-page').style.scaleY = '1.2s';
 };
@@ -213,6 +215,7 @@ const showDebitPage = () => {
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('restpassword').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('debitId').style.scaleY = '1.2s';
 };
 
@@ -388,14 +391,17 @@ const closeLoginPages = () => {
 
 const createAccountSubmit = () => {
   document.getElementById('createAccountNotification').style.display = 'block';
+  document.getElementById('debitNotification').style.display = 'block';
   document.getElementById('accmessage').style.display = 'none';
 };
 
 const NOclose = () => {
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
 };
 
 const YESclose = () => {
   document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
 };
 console.log('hey there');
