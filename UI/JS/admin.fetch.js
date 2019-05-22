@@ -1,10 +1,12 @@
 const token = localStorage.getItem('loggertoken');
 const firstname = localStorage.getItem('loginfirstname');
 const lastname = localStorage.getItem('loginlastname');
-const loggedAdminemail = localStorage.getItem('loggeremail');
+const loginemail = localStorage.getItem('loginemail');
 
 document.getElementById('loggedadmin').innerHTML = `Names: ${lastname} ${firstname}`;
-document.getElementById('loggedAdminEmail').innerHTML = loggeremail;
+document.getElementById('loggedadminemail').innerHTML = `Email: ${loginemail}`;
+
+console.log(token);
 
 // CREATE STAFF/ADMIN ACCOUNT
 

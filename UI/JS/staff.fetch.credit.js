@@ -30,7 +30,6 @@ function fetchcreditfunc(e) {
       } = result;
       if (status === 201) {
         document.getElementById('usercreateAccount').style.display = 'none';
-        // document.getElementById('transactionsPageHomeId').style.display = 'none';
         document.getElementById('createdACCnotification').style.display = 'block';
         document.getElementById('credit201message').innerHTML = message;
         document.getElementById('creditDisplaymessage').innerHTML = `You've credited ${amount} frw from ${accountNumber} account number and now the balance is ${data.accountBalance} frw.`;

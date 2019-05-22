@@ -125,6 +125,7 @@ const showCreateAccount = () => {
   document.getElementById('viewSpeficAccount').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
   document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
 
@@ -216,6 +217,8 @@ const showDebitPage = () => {
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('restpassword').style.display = 'none';
   document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
+  document.getElementById('DebitErrMessage').style.display = 'none';
   document.getElementById('debitId').style.scaleY = '1.2s';
 };
 
@@ -307,13 +310,14 @@ const showCreateAccountSignup = () => {
 };
 
 // show transaction after signup
-const showTransactionsSignup = () => {
+const ViewBankAccountsSignup = () => {
   document.getElementById('transactionsSignup').style.display = 'block';
   document.getElementById('signupCreateAccount').style.display = 'none';
   document.getElementById('restpasswordSignup').style.display = 'none';
   document.getElementById('signupDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
   document.getElementById('signup2').setAttribute('class', 'current');
   document.getElementById('signup1').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
@@ -393,7 +397,9 @@ const createAccountSubmit = () => {
   document.getElementById('createAccountNotification').style.display = 'block';
   document.getElementById('debitNotification').style.display = 'block';
   document.getElementById('accmessage').style.display = 'none';
+  document.getElementById('DebitErrMessage').style.display = 'none';
 };
+
 
 const NOclose = () => {
   document.getElementById('createAccountNotification').style.display = 'none';

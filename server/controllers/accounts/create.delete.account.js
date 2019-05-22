@@ -57,7 +57,7 @@ class Account {
             type: accountValues.type,
             openingBalance: accountValues.balance,
           },
-          message: `Thank you ${req.user.firstname} for choosing our Bank, you've successfully created a bank of the account number ${accountValues.accountNumber}. ENJOY THE BEST SERVICE!`,
+          message: `Thank you ${req.user.firstname} for choosing our Bank, you've successfully created a bank account of the account number ${accountValues.accountNumber}. ENJOY THE BEST SERVICE!`,
         });
       }
     } catch (err) {

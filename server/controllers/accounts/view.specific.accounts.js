@@ -48,7 +48,9 @@ class ViewAccounts {
   // VIEW ALL ACCOUNTS OWNED BY A SPECIFIC USER
   static async getAllUserAccounts(req, res) {
     try {
-      if (req.user.type !== 'staff') {
+      if (req.user.type !== 'staff' && (req.user.email  !== req.params.email.toLowerCase())) {
+        console.log(req.user.email);
+        console.log(req.params.email.toLowerCase());
         return res.status(403).json({
           status: 403,
           message: 'Sorry! this service is strictly for the right personnel!',
@@ -63,13 +65,13 @@ class ViewAccounts {
           message: 'Sorry that user does not exist',
         });
       }
-      if (req.user.type === 'staff') {
+      if (req.user.type === 'staff' || (req.user.email  === req.params.email.toLowerCase())) {
         const innnerJoinQueryText = 'SELECT createdon, accountnumber, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner WHERE email = $1';
         const results = await pool.query(innnerJoinQueryText, [req.params.email.toLowerCase()]);
         if (results.rows.length === 0) {
           return res.status(404).json({
             status: 404,
-            message: `Sorry ${rows[0].lastname} ${rows[0].firstname} has no account in your Bank!`,
+            message: `Sorry! There are no bank accounts for  ${rows[0].lastname} ${rows[0].firstname}  in the Bank system yet!`,
           });
         }
         return res.status(200).json({

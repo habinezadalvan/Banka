@@ -17,13 +17,6 @@ height: 100%;" >
             <span class="open-slide">
                 <i class="fas fa-bars" onclick="showHiddenMenuArea()" id="barsMenu"></i>
             </span>
-            <!-- <ul class="navbar-nav">
-                <li><a href="#" onclick="showCreateAccount()">Credit</a></li>
-                <li><a href="#" onclick="showDebitPage()">Debit</a></li>
-                <li><a href="#" onclick="showTransaction()">Users' Accounts</a></li>
-                <li><a href="#" onclick="showResetPassword()">Reset Password</a></li>
-                <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
-            </ul> -->
        </div>
         <div class="navbar2">
             <span class="banka">
@@ -51,12 +44,12 @@ height: 100%;" >
                     <h2>Staff</h2>
                 </div>
                 <div class="profile">
-                    <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
+                    <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="80px" height="80px">
                     <p id="loggedstaff" class="userprofilepar"> </p>
                     <p id="loggedstaffemail" class="userprofilepar"> </p>
                 </div>
-        </div>
-        <div class="sideMenu">
+            </div>
+        <div class="sideMenu" id="sideMenuID">
                 <ul class="navbar-nav">
                     <li id="liCreateAcc"><a href="#" onclick="showCreateAccount()"><i class="fas fa-credit-card"></i> &nbsp; Credit</a></li>
                     <li id="liDebit"><a href="#" onclick="showDebitPage()"><i class="fas fa-credit-card"></i> &nbsp; Debit</a></li>
@@ -96,19 +89,19 @@ height: 100%;" >
             <!-- DEBIT -->
             <div class="createAccount" id="debitId">
                     <h2>Debit</h2>
-                    <form action="">
+                    <form action="" id="debitsubmitformId">
                         <div class="createAccountInput">
-                            <input type="number" name="" placeholder="Account Number" required="">
+                            <input type="number" id="debitAccountnumberValueId" placeholder="Account Number" required="">
                             <!-- <label for="">Account Number</label> -->
                         </div>
                         <div class="createAccountInput">
-                            <input type="float" name="" placeholder="Amount" required="">
+                            <input type="float" id="debitAmountValueId" placeholder="Amount" required="">
                             <!-- <label for="">Amount</label> -->
                         </div>
                         
                     <input type="button" onfocus="createAccountSubmit()" class="submitinput" value="Debit">
                     <hr>
-                    <div id="accmessage" class="successmsg"></div>
+                    <div id="DebitErrMessage" class="successmsg"></div>
                     <div class="createAccNotification" id="debitNotification">
                         <p>Are you sure you want to DEBIT the above bank account?</p>
                         <input type="button" value="No" id="debitValueNO" class="submitinput" onclick="NOclose()">
@@ -224,15 +217,15 @@ height: 100%;" >
                 <h2>Reset Password</h2>
                 <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder=" Old Password" required="" oninput="onInputPasswordCreateAccount()">
+                        <input type="password" id="debitAccountnumberValue" placeholder=" Old Password" required="" oninput="onInputPasswordCreateAccount()">
                         <!-- <label for="password">Old Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder=" New Password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
+                        <input type="password" id="debitAccountnumberValue" placeholder=" New Password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
                         <!-- <label for="password">New Password</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder=" Confirm Password" required="" oninput="onInputPasswordCreateAccount()">
+                        <input type="password" id="debitAccountnumberValue" placeholder=" Confirm Password" required="" oninput="onInputPasswordCreateAccount()">
                         <!-- <label for="password">Confirm New Password</label> -->
                     </div>
                     <div id="errorMessageCreateAccount" class="errMessage">
@@ -334,6 +327,7 @@ height: 100%;" >
     </footer>
 </div>
 <script src="../JS/index.js"></script>
-<script src="../JS/staff.fetch.js"></script>
+<script src="../JS/staff.fetch.credit.js"></script>
+<script src="../JS/staff.fetch.debit.js"></script>
 </body>
 </html>

@@ -26,7 +26,6 @@ function loginfetchfunc(e) {
         await localStorage.setItem('loginlastname', `${data.lastname}`);
         await localStorage.setItem('loginemail', `${data.email}`);
         await localStorage.setItem('loggernames', `Names: ${data.lastname} ${data.firstname}`);
-        await localStorage.setItem('loggeremail', `Email: ${data.email}`);
         await localStorage.setItem('loggermessage', `${message}`);
         await localStorage.setItem('loggertoken', `${data.token}`);
       }

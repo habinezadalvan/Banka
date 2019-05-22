@@ -817,43 +817,43 @@ body{
     text-align: center;
     color: white;
     width: 80%;
-    border-top-right-radius: 50px;
-    height: 40px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 30px;
     padding: 10px;
     margin-top: 10px;
 }
 .main-area-left .profileTitle h2{
     margin-top: 5px;
+    font-size: 16px;
 }
 .main-area-left .profile img{
     border-radius: 100%;
     box-shadow: 0 1px 5px rgba(0,0,0,.5);
 }
 .main-area-left .sideMenu{
-    width: 60%;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .main-area-left .sideMenu ul{
     list-style: none;
-    margin: 10px auto;
-    width: 100%;
-    text-align: center;
-    margin-left: 30px;
 }
 .main-area-left .sideMenu ul li{
-    padding: 20px;
+    position: relative;
+    margin: auto auto auto 0px;
+    width: 80%;
+    padding: 10px;
 }
 .main-area-left .sideMenu ul a{
     text-decoration: none;
     color: #1da1f2;
 }
 .main-area-left .sideMenu ul a:hover{
-    color: #3b5998;
+    /* color: #3b5998; */
 }
 /* CURRENT PAGE */
 .current{
-    border-left: 2px solid #1da1f2;
+    border: 1px solid #9cc5df;
 }
 
 .signupDashboard{ 
@@ -878,8 +878,8 @@ body{
 }
 .signupDashboard h3, span{
     position: relative;
-    animation: 2s leftanimation;
-    animation-fill-mode: forwards;
+    /* animation: 2s leftanimation;
+    animation-fill-mode: forwards; */
 } 
 @keyframes leftanimation{
     0%{left:-50px;}
@@ -914,7 +914,7 @@ body{
         font-size: 15px;
     }
     .main-area-left .sideMenu ul{
-        margin-left: 10px;
+        margin-left: -10px;
     }
 }
 @media (max-width: 959px){
@@ -925,18 +925,24 @@ body{
         margin-left: 10px;
     }
 }
-
+@media (max-width: 768px){
+    .main-area-left .sideMenu ul{
+        margin-left: -25px;
+    }
+}
 @media (max-width: 649px){
+   
     #main-areaPage{
         flex-flow: column-reverse;
        height: 100%;
+       overflow: scroll;
     }
     .main-area-left{
-        flex-basis: 10%;
+        /* flex-basis: 0%; */
         border-right: none;
     }
     .main-area-right{
-        flex-basis: 90%;
+        /* flex-basis: 100%; */
     }
 
     .main-area-left .sideMenu{
@@ -952,6 +958,7 @@ body{
     .main-area-left .sideMenu ul li{
        
         padding: 12px;
+        margin-left: 30px;
     }
     .main-area-left .sideMenu ul a{
        
@@ -1006,7 +1013,7 @@ body{
 .main-area-right .createAccount{
     display: none;
     position: relative;
-    margin: 40px auto 0 auto;
+    margin: 30px auto 0 auto;
     width: 50%;
     background: white;
     padding: 20px;
@@ -1028,13 +1035,12 @@ body{
 }
 .main-area-right .createAccount .createAccountInput input{
     width: 80%;
-    padding: 17px 0 17px 17px;
-    margin-top: 10px;
-    font-size: 16px;
+    padding: 12px 0 12px 12px;
+    margin-top: 8px;
+    font-size: 13px;
     border-radius: 25px;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-
     background: transparent;
     border: 1px solid #1da1f2;
     outline: none;
@@ -1047,12 +1053,12 @@ body{
     border: none;
     outline: none;
     color: #1da1f2;
-    padding: 17px 30px;
+    padding: 12px 15px;
     cursor: pointer;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 13px;
     text-align: center;
-    margin: 20px auto 0 -30px;
+    margin: 13px auto 0 -30px;
     width: 67%;
 }
 .main-area-right .createAccount .submitinput:hover{
@@ -1328,7 +1334,7 @@ body{
 @media (max-width: 1024px){
     .main-area-right .transactionsPage{
         font-size: 10px;
-        height: 400px;
+       
     }
     .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
         width: 35%;
@@ -1337,8 +1343,7 @@ body{
 
 @media (max-width: 959px){
     .main-area-right .transactionsPage{
-        font-size: 10px;
-        height: 500px;
+        font-size: 13px;
         overflow: auto;
     }
     .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
@@ -1348,10 +1353,9 @@ body{
 
 @media (max-width: 649px){
     .main-area-right .transactionsPage{
-        font-size: 12px;
-        height: 400px;
+        font-size: 13px;
         margin-top: 10px;
-        overflow: auto;
+        overflow: scroll;
 
     }
     .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
@@ -1491,7 +1495,8 @@ body{
     }
     .main-area-right .transactionsPageHome{
         font-size: 10px;
-        margin-top: 30px;
+        margin-top: 10px;
+        height: 280px;
         overflow: auto;
 
     }
@@ -1544,15 +1549,38 @@ body{
     padding: 20px;
 
 }
+.account-detail{
+    border: 1px solid gray;
+    height: 30px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+}
+.account-detail input{
+    border: none;
+    background: transparent;
+    height: 30px;
+}
+.inputright{
+    border-right: 1px solid gray;
+    flex-basis: 70%;
+}
+.inputleft{
+    flex-basis: 30%;
+}
 
+.accountDetails{
+    text-align: initial;
+    position: relative;
+    width: 50%;
+    margin: 5px auto;
+}
 
-/* @media (min-width: 659px){
-    .createdstaff{
-        font-size: 12px;
-    
-    }
-} */
-
+.paragraphs .paragraph {
+    border: 1px solid gray;
+    margin-right:5px;
+    padding: 10px; 
+}
 #footerId{
     transition: margin-left 0.5s;
 }

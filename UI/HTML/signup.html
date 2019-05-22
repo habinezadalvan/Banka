@@ -35,7 +35,7 @@ height: 100%;" >
     <div id="hidden-nav-bar" class="side-nav-bar">
         <a href="#" class="close-icon" onclick="closeHiddenMenuArea()">&times;</a>
         <a href="#" onclick="showCreateAccountSignup()">Create Account</a>
-        <a href="#" onclick="showTransactionsSignup()">Transactions</a>
+        <a href="#" onclick="ViewBankAccountsSignup()">Bank accounts</a>
         <a href="#" onclick="showResetPasswordSignup()">Reset Password</a>
         <a href="../index.html">Logout</a>
         <!-- <a href="#" onclick="contactUsFunction()">contact us</a> -->
@@ -59,7 +59,7 @@ height: 100%;" >
                 <div class="sideMenu">
                         <ul class="navbar-nav">
                             <li id="signup1"><a href="#" onclick="showCreateAccountSignup()"><i class="fas fa-plus"></i> &nbsp; Create Account</a></li>
-                            <li id="signup2"><a href="#" onclick="showTransactionsSignup()"><i class="fas fa-exchange-alt"></i> &nbsp; Transactions</a></li>
+                            <li id="signup2"><a href="#" id="viewUsersAccountsId" onclick="ViewBankAccountsSignup()"><i class="fas fa-exchange-alt"></i> &nbsp; Bank accounts</a></li>
                             <li id="signup3"><a href="#" onclick="showResetPasswordSignup()"> <i class="fas fa-cog"></i> &nbsp; Reset Password</a></li>
                             <li><a href="../index.html" onclick="loginFunction()">Logout</a></li>
                             <!-- <li><a href="#" onclick="contactUsFunction()">contact us</a></li> -->
@@ -103,27 +103,10 @@ height: 100%;" >
             <!-- TRANSACTION FIELD -->
 
            <div class="transactionsPage" id="transactionsSignup">
-               <h3>List of Transactions</h3>
-                <table>
-                    <tr>
-                        <th>No</th>
-                        <th>Account Number</th>
-                        <th>Amount</th>
-                        <th>Cashier</th>
-                        <th>Transaction Type</th>
-                        <th>Old Balance</th>
-                        <th>New Balance</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                </table>
+
+               <div id="accountsListId"></div>
+
+               <div id="transactionsId"> </div>
                 <a href="#" class="closecreateAccount-icon" id="closeTransactions" onclick="closeSignup()">&times;</a>
            </div>
            <!-- CREATE RESET PASSWORD -->
@@ -163,6 +146,7 @@ height: 100%;" >
                 
             </div>
             <div id="createdACCnotification" class="createdstaff"></div>
+            
 
         </div>
     </section>
@@ -174,5 +158,7 @@ height: 100%;" >
 <script src="../JS/index.js"></script>
 <script src="../JS/signup.fetch.js"></script>
 <script src="../JS/signupCreateBankAcc.js"></script>
+<script src="../JS/viewSpecificAccount.js"></script>
+<script src="../JS/viewuserAccounts.fetch.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 const names = localStorage.getItem('signupData');
 const welcome = localStorage.getItem('message');
-const email = localStorage.getItem('email');
+const Email = localStorage.getItem('email');
 const userfirstname  = localStorage.getItem('userfirstname');
 const userlastname  = localStorage.getItem('userlastname');
 const useremail  = localStorage.getItem('useremail');
@@ -8,7 +8,7 @@ const useremail  = localStorage.getItem('useremail');
 
 document.getElementById('201signup').innerHTML = welcome;
 document.getElementById('signeduser').innerHTML = names;
-document.getElementById('useremail').innerHTML = email;
+document.getElementById('useremail').innerHTML = Email;
 
 
 document.getElementById('inputfirstname').setAttribute('disabled', 'true');
