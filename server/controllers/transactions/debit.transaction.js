@@ -49,7 +49,7 @@ const debit = {
         if (rows[0].balance < parseFloat(req.body.amount)) {
           return res.status(403).json({
             status: 403,
-            message: `Sorry! you have insufficient amount of balance and your balance is ${rows[0].balance}`,
+            message: `Sorry! The client has insufficient amount of balance and the balance is ${rows[0].balance} frw`,
           });
         }
         const debitData = {

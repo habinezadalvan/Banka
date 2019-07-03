@@ -45,8 +45,8 @@ const closeSignUpFunction = () => {
 // VALIDATE CONFIRM PASSWORD
 
 const submitSignupFunction = () => {
-  const password = document.getElementById('signupInput');
-  const confirmPassword = document.getElementById('confirmPasswordInput');
+  const password = document.getElementById('signuppassword');
+  const confirmPassword = document.getElementById('signupconfirmpassword');
   const errorMessage = document.getElementById('errorMessage');
   const submitbutton = document.getElementById('submitbutton');
   if ((password.value === confirmPassword.value) && (password.value.length >= 6 && password.value.length <= 12) && (password.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{6,12})$/))) {
@@ -124,6 +124,8 @@ const showCreateAccount = () => {
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('usercreateAccount').style.scaleY = '1.2s';
 };
 
@@ -146,6 +148,7 @@ const showResetPassword = () => {
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
 };
 const closeResetPassword = () => {
@@ -156,19 +159,8 @@ const closeResetPassword = () => {
 };
 // create account password validation
 
-const onInputPasswordCreateAccount = () => {
-  const passwordAreaId = document.getElementById('passwordAreaId');
-  const createAccountSubmit = document.getElementById('createAccountSubmit');
-  const errorMessageCreateAccount = document.getElementById('errorMessageCreateAccount');
-  if (passwordAreaId.value.length >= 6 && passwordAreaId.value.length <= 12) {
-    createAccountSubmit.removeAttribute('disabled');
-    passwordAreaId.style.border = 'thin solid green';
-    errorMessageCreateAccount.style.display = 'none';
-  } else {
-    createAccountSubmit.setAttribute('disabled', 'true');
-    passwordAreaId.style.border = 'thin solid rgb(252, 193, 66)';
-    errorMessageCreateAccount.style.display = 'inline';
-  }
+const createbankaccount = () => {
+
 };
 // TRANSACTIONS
 
@@ -183,7 +175,7 @@ const showTransaction = () => {
   document.getElementById('restpassword').style.display = 'none';
   document.getElementById('usercreateAccount').style.display = 'none';
   document.getElementById('viewSpeficAccount').style.display = 'none';
-  // document.getElementById('transaction-page').style.display = 'block';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('debitId').style.display = 'none';
   document.getElementById('transaction-page').style.scaleY = '1.2s';
 };
@@ -224,6 +216,9 @@ const showDebitPage = () => {
   document.getElementById('transaction-page').style.display = 'none';
   document.getElementById('signupDashboard').style.display = 'none';
   document.getElementById('restpassword').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
+  document.getElementById('DebitErrMessage').style.display = 'none';
   document.getElementById('debitId').style.scaleY = '1.2s';
 };
 
@@ -244,6 +239,7 @@ const showCreateAccountAdmin = () => {
   document.getElementById('usersAccountsAdmin').style.display = 'none';
   document.getElementById('restpasswordAdminId').style.display = 'none';
   document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('admin1').setAttribute('class', 'current');
   document.getElementById('admin2').removeAttribute('class', 'current');
   document.getElementById('admin3').removeAttribute('class', 'current');
@@ -256,6 +252,7 @@ const showUsersAdmin = () => {
   document.getElementById('usercreateAccountAdmin').style.display = 'none';
   document.getElementById('restpasswordAdminId').style.display = 'none';
   document.getElementById('viewSpeficAccountAdmin').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('admin2').setAttribute('class', 'current');
   document.getElementById('admin1').removeAttribute('class', 'current');
   document.getElementById('admin3').removeAttribute('class', 'current');
@@ -305,17 +302,23 @@ const showCreateAccountSignup = () => {
   document.getElementById('transactionsSignup').style.display = 'none';
   document.getElementById('restpasswordSignup').style.display = 'none';
   document.getElementById('signupDashboardId').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('signup1').setAttribute('class', 'current');
   document.getElementById('signup2').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
 };
 
 // show transaction after signup
-const showTransactionsSignup = () => {
+const ViewBankAccountsSignup = () => {
   document.getElementById('transactionsSignup').style.display = 'block';
   document.getElementById('signupCreateAccount').style.display = 'none';
   document.getElementById('restpasswordSignup').style.display = 'none';
   document.getElementById('signupDashboardId').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
   document.getElementById('signup2').setAttribute('class', 'current');
   document.getElementById('signup1').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
@@ -349,17 +352,22 @@ const showCreateAccountLogin = () => {
   document.getElementById('LoginTransactions').style.display = 'none';
   document.getElementById('Loginrestpassword').style.display = 'none';
   document.getElementById('LoginDashboardId').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('login1').setAttribute('class', 'current');
   document.getElementById('login2').removeAttribute('class', 'current');
   document.getElementById('login3').removeAttribute('class', 'current');
 };
 
 // show transaction after signup
-const showTransactionLogin = () => {
+const viewBankAccountLogin = () => {
   document.getElementById('LoginTransactions').style.display = 'block';
   document.getElementById('LoginCreateAccountId').style.display = 'none';
   document.getElementById('Loginrestpassword').style.display = 'none';
   document.getElementById('LoginDashboardId').style.display = 'none';
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
   document.getElementById('login2').setAttribute('class', 'current');
   document.getElementById('login1').removeAttribute('class', 'current');
   document.getElementById('login3').removeAttribute('class', 'current');
@@ -385,5 +393,23 @@ const closeLoginPages = () => {
   document.getElementById('login3').removeAttribute('class', 'current');
 };
 
+// CREATE BANK ACCOUNT NOTIFICATION 
 
+const createAccountSubmit = () => {
+  document.getElementById('createAccountNotification').style.display = 'block';
+  document.getElementById('debitNotification').style.display = 'block';
+  document.getElementById('accmessage').style.display = 'none';
+  document.getElementById('DebitErrMessage').style.display = 'none';
+};
+
+
+const NOclose = () => {
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
+};
+
+const YESclose = () => {
+  document.getElementById('createAccountNotification').style.display = 'none';
+  document.getElementById('debitNotification').style.display = 'none';
+};
 console.log('hey there');

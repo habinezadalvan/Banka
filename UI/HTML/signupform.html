@@ -20,30 +20,30 @@ height: 100%;">
                 <!-- SIGN UP -->
                 <div class="signUp" id="userSignUp">
                     <h2>Sign Up form</h2>
-                    <form action="../HTML/signup.html">
+                    <form action="../HTML/signup.html" id="signupsubmitform">
                         <div class="signUpInput">
-                            <input type="text" name="" placeholder="First Name"  required="">
+                            <input type="text" name="" placeholder="First Name"  required="" id="signupfirstname">
                             <!-- <label for="">First name</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="text" name="" placeholder="Last Name" required="">
+                            <input type="text" name="" placeholder="Last Name" required="" id="signuplastname">
                             <!-- <label for="">Last name</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="email" name="" placeholder="Email" required="">
+                            <input type="email" name="" placeholder="Email" required="" id="signupemail">
                             <!-- <label for="email">Email</label> -->
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" required="" placeholder="Password" id="signupInput" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
-                            <!-- <label for="password">Password</label> -->
+                            <input type="password" name="" required="" id="signuppassword" placeholder="Password" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
                         </div>
                         <div class="signUpInput">
-                            <input type="password" name="" placeholder="Confirm Password" required="" id="confirmPasswordInput" oninput="submitSignupFunction()">
+                            <input type="password" name="" placeholder="Confirm Password" id="signupconfirmpassword" required="" oninput="submitSignupFunction()">
                           
                         </div>
                         <div id="errorMessage" class="errMessage">
                             <p>Both passwords should match and have 6 to 12 characters, with at least one ([A-Z] & [a-z] & [0-9]</p>
                         </div>
+                        <div id="409" class="signupconflictmsg"></div>
                         <input type="submit" value="Sign Up" id="submitbutton">
                     </form>
                 </div>
@@ -51,5 +51,6 @@ height: 100%;">
     </section>
     
 <script src="../JS/index.js"></script>
+<script src="../JS/signupform.fetch.js"></script>
 </body>
 </html>

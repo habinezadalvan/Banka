@@ -16,7 +16,14 @@ class Transactions {
         // find the owner of the account
         const findRealOwner = 'SELECT * FROM accounts INNER JOIN transactions ON transactions.accountnumber = accounts.accountnumber WHERE accounts.accountnumber = $1';
         const realOwner = await pool.query(findRealOwner, [parseInt(req.params.accountNumber, 10)]);
-
+        console.log(realOwner.rows);
+        
+        if (realOwner.rows.length === 0) {
+          return res.status(404).json({
+            status: 404,
+            message: `Sorry! there is no transactions history yet for ${req.params.accountNumber} account number`,
+          });
+        }
         if (realOwner.rows[0].owner !== req.user.id) {
           return res.status(403).json({
             status: 403,
@@ -50,12 +57,14 @@ class Transactions {
             message: `Sorry! Your account ${enteredAcc} has no transaction yet!`,
           });
         }
+
         return res.status(200).json({
           status: 200,
           data: results.rows,
         });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',

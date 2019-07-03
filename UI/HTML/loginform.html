@@ -27,13 +27,11 @@ height: 100%;">
                                 <!-- <label for="email">Email</label> -->
                             </div>
                             <div class="loginInput">
-                                <input type="password" name="" placeholder="Password" required="" id="loginPasswordField" oninput="onInputLoginFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
+                                <input type="password" id="loginPasswordField" name="" placeholder="Password" required="" id="loginPasswordField"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
                                 <!-- <label for="password">Password</label> -->
 
                             </div>
-                            <div id="errorMessageLogin" class="errMessage">
-                                <p>Password characters should be 6 to 12, with ([A-Z], [a-z], [0-9]</p>
-                            </div>
+                            <div id="409" class="signupconflictmsg"></div>
                             <input type="submit" value="Login" id="loginButton" onclick="loginSubmitFunction()">
                         </form>
                         
@@ -42,5 +40,6 @@ height: 100%;">
     </section>
     
 <script src="../JS/index.js"></script>
+<script src="../JS/loginform.fetch.js"></script>
 </body>
 </html>

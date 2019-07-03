@@ -44,9 +44,8 @@ height: 100%;">
                 </div>
                 <div class="profile">
                     <img src="../ASSETS/IMG_1492 (1)-min.JPG" alt="profile" width="100px" height="100px">
-                    <p>Habineza Leon Christian <br>
-                    Branch: Gishushu 
-                    </p>
+                    <p id="loggedadmin" class="userprofilepar"> </p>
+                    <p id="loggedadminemail" class="userprofilepar"> </p>
                 </div>
         </div>
         <div class="sideMenu">
@@ -64,33 +63,46 @@ height: 100%;">
             <!-- CREATE ACCOUNT -->
             <div class="createAccount" id="usercreateAccountAdmin">
                 <h2>Create Admin/ Staff Account</h2>
-                <form action="">
+                <form action="" id="admincreatestaff">
                     <div class="createAccountInput">
 
-                        <input type="text" name="" placeholder="First Name" required="">
+                        <input type="text" id="createStaffId1" placeholder="First Name" required="">
                         <!-- <label for="">First name</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="text" name="" placeholder="Last Name" required="">
+                        <input type="text" id="createStaffId2" placeholder="Last Name" required="">
                         <!-- <label for="">Last name</label> -->
                     </div>
                     <div class="createAccountInput">
-                        <input type="email" name="" placeholder="Email" required="">
+                        <input type="email" id="createStaffId3" placeholder="Email" required="">
                         <!-- <label for="email">Email</label> -->
                     </div>
+
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder="Password" required="">
+                        <input type="password" name="" required="" id="signuppassword" placeholder="Password" oninput="submitSignupFunction()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}">
+                    </div>
+                    <div class="createAccountInput">
+                        <input type="password" name="" placeholder="Confirm Password" id="signupconfirmpassword" required="" oninput="submitSignupFunction()">
+                      
+                    </div>
+                    <div id="errorMessage" class="errMessage">
+                        <p>Both passwords should match and have 6 to 12 characters, with at least one ([A-Z] & [a-z] & [0-9]</p>
+                    </div>
+                    <div id="409" class="signupconflictmsg"></div>
+
+                    <div class="createAccountInput">
+                        <input type="boolean" id="createStaffId6" placeholder="isadmin (true or false)" required="">
                        
                     </div>
-                    <div class="createAccountInput">
+                    <input type="button" class="submitinput" value="Create Account" onfocus="createAccountSubmit()">
 
-                        <select name="accountType" class="selectItem">
-                            <option value="">Personel Type</option>
-                            <option value="Saving">Admin</option>
-                            <option value="Current">Staff</option>
-                        </select>
+                    <div id="accmessage" class="successmsg"></div>
+
+                    <div class="createAccNotification" id="createAccountNotification">
+                        <p>Are you sure you want to create an admin/staff account?</p>
+                        <input type="button" value="NO" id="createAccValueNO" class="submitinput" onclick="NOclose()">
+                        <input type="submit" value="YES" id="submitbutton" class="submitinput" onclick="YESclose()">
                     </div>
-                    <input type="submit" value="Create Account">
                 </form>
                 <a href="#" class="closecreateAccount-icon" id="closecreateAccount" onclick="closeAdminPages()">&times;</a>
             </div>
@@ -213,21 +225,21 @@ height: 100%;">
                 <h2>Reset Password</h2>
                 <form action="" id="userCreateBankAccountId">
                     <div class="createAccountInput">
-                        <input type="password" name="" required="" placeholder="Old Password" oninput="onInputPasswordCreateAccount()">
+                        <input type="password" id="createStaffId" required="" placeholder="Old Password" oninput="onInputPasswordCreateAccount()">
                        
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder="New Password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
+                        <input type="password" id="createStaffId" placeholder="New Password" required="" oninput="onInputPasswordCreateAccount()" id="passwordAreaId">
                     
                     </div>
                     <div class="createAccountInput">
-                        <input type="password" name="" placeholder="Confirm Password" required="" oninput="onInputPasswordCreateAccount()">
+                        <input type="password" id="createStaffId" placeholder="Confirm Password" required="" oninput="onInputPasswordCreateAccount()">
                        
                     </div>
                     <div id="errorMessageCreateAccount" class="errMessage">
                         <p>Password characters should be 6 to 12</p>
                     </div>
-                    <input type="submit" value="Reset Password" id="createAccountSubmit">
+                    <input type="submit" class="submitinput" value="Reset Password" id="createAccountSubmit">
                 </form>
                     <a href="#" class="closecreateAccount-icon" id="closeResetPassword" onclick="closeAdminPages()">&times;</a>
             </div>
@@ -310,7 +322,16 @@ height: 100%;">
                          </table>
                         
                     </div>
-    
+                    <div id="createdstaff" class="createdstaff">
+                        <h2>Thank for creating a new user</h2>
+                        <div id="paragraphs">
+                                <p id="adminStaffNames"></p>
+                                <p id="adminStaffEmail"></p>
+                                <p id="adminStaffPassword"></p>
+                                <p id="adminStaffType"></p>
+                                <p id="adminStaffIsadmin"></p>
+                        </div>
+                    </div>
                     
                 </div>
 
@@ -322,5 +343,6 @@ height: 100%;">
     </footer>
     
 <script src="../JS/index.js"></script>
+<script src="../JS/admin.fetch.js"></script>
 </body>
 </html>

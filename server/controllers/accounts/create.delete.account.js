@@ -51,16 +51,17 @@ class Account {
           status: 201,
           data: {
             accountNumber: accountValues.accountNumber,
-            firstName: req.user.firstName,
-            lastName: req.user.lastName,
+            firstName: req.user.firstname,
+            lastName: req.user.lastname,
             email: req.user.email,
             type: accountValues.type,
             openingBalance: accountValues.balance,
           },
-          message: `Thank you for choosing our Bank, your account is ${accountValues.accountNumber}. ENJOY THE BEST SERVICE!`,
+          message: `Thank you ${req.user.firstname} for choosing our Bank, you've successfully created a bank account of the account number ${accountValues.accountNumber}. ENJOY THE BEST SERVICE!`,
         });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({
         status: 500,
         message: 'Server error',
