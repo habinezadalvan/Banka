@@ -10,7 +10,7 @@ class ViewAllAccounts {
           message: 'Sorry! this service is strictly for the right personnel!',
         });
       }
-      const queryText = 'SELECT createdon, accountnumber, email, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner';
+      const queryText = 'SELECT createdon, accountnumber, email, firstname, lastname, accounts.type, status, balance FROM accounts INNER JOIN users ON users.id = accounts.owner';
       const { rows } = await pool.query(queryText);
 
       if (rows.length === 0) {

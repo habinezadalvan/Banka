@@ -318,6 +318,7 @@ const ViewBankAccountsSignup = () => {
   document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('createdACCnotification').style.display = 'none';
   document.getElementById('transactionsId').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
   document.getElementById('signup2').setAttribute('class', 'current');
   document.getElementById('signup1').removeAttribute('class', 'current');
   document.getElementById('signup3').removeAttribute('class', 'current');
@@ -359,13 +360,14 @@ const showCreateAccountLogin = () => {
 };
 
 // show transaction after signup
-const showTransactionLogin = () => {
+const viewBankAccountLogin = () => {
   document.getElementById('LoginTransactions').style.display = 'block';
   document.getElementById('LoginCreateAccountId').style.display = 'none';
   document.getElementById('Loginrestpassword').style.display = 'none';
   document.getElementById('LoginDashboardId').style.display = 'none';
   document.getElementById('createAccountNotification').style.display = 'none';
   document.getElementById('createdACCnotification').style.display = 'none';
+  document.getElementById('transactionsId').style.display = 'none';
   document.getElementById('login2').setAttribute('class', 'current');
   document.getElementById('login1').removeAttribute('class', 'current');
   document.getElementById('login3').removeAttribute('class', 'current');

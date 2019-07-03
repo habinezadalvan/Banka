@@ -1252,7 +1252,8 @@ body{
     position: relative;
     margin: 40px auto 0 auto;
     width: 95%;
-
+    height: 600px;
+    overflow: auto;
     background: white;
     color: black;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1333,6 +1334,7 @@ body{
 /* media queries for transactions */
 @media (max-width: 1024px){
     .main-area-right .transactionsPage{
+        height: 600px;
         font-size: 10px;
        
     }
@@ -1344,7 +1346,7 @@ body{
 @media (max-width: 959px){
     .main-area-right .transactionsPage{
         font-size: 13px;
-        overflow: auto;
+        height: 600px;
     }
     .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
         width: 50%;
@@ -1355,7 +1357,8 @@ body{
     .main-area-right .transactionsPage{
         font-size: 13px;
         margin-top: 10px;
-        overflow: scroll;
+        height: 280px;
+        /* overflow: auto; */
 
     }
     .main-area-right .transactionsPage .singleAccountView .singleAccountViewTwo button{
@@ -1412,6 +1415,8 @@ body{
     position: relative;
     margin: 40px auto 0 auto;
     width: 95%;
+    height: 600px;
+    overflow: auto;
     background: white;
     color: black;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -1477,14 +1482,14 @@ body{
 @media (max-width: 1024px){
     .main-area-right .transactionsPageHome{
         font-size: 10px;
-        height: 400px;
+        height: 600px;
     }
 }
 
 @media (max-width: 959px){
     .main-area-right .transactionsPageHome{
         font-size: 10px;
-        height: 500px;
+        height: 600px;
         overflow: auto;
     }
 }
@@ -1580,6 +1585,10 @@ body{
     border: 1px solid gray;
     margin-right:5px;
     padding: 10px; 
+}
+
+.fixedArea{
+   
 }
 #footerId{
     transition: margin-left 0.5s;
